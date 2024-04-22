@@ -1,0 +1,15 @@
+# npm folders to ignore
+/node_modules
+
+# CSS files
+/dist
+
+# The lint cache
+.eslintcache
+
+# Mac OS System file
+.DS_Store
+
+# Environmental Secrets
+.env
+cypress.env.json
