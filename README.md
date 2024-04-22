@@ -1,4 +1,5 @@
 # SemesterProject2_TheaOland
+
 My semester project for the second year at Noroff Frontend Development studies.
 
 # repo-name/course-name | Name of task/or your name of the webapp/site
@@ -9,7 +10,7 @@ This is my semesterproject the first half of my second year at Noroff. The cours
 
 ## Live app
 
-This project is deployed on [Github](place link to netlify here).
+This project is deployed on [Github](https://dwnwnd.github.io/SemesterProject2_TheaOland/).
 
 ## Course goal
 
@@ -18,9 +19,9 @@ The goal of this course was to:
 
 ## Course Assignment
 
-- [Brief](link to brief)
+- [Brief](/docs/SemesterProject2_brief_NoroffFront-endDevelopment.pdf)
 
-- [MarkingCriteria](link to marking criterea)
+- [MarkingCriteria](/docs/SemesterProject2_MarkingCriteria_NoroffFront-endDevelopment.pdf)
 
 ### Required features
 
@@ -49,7 +50,7 @@ The application must follow the following technical restrictions:
 
 ### Gantt chart
 
-[Excel Gantt chart](add link to Trello board here)
+[Excel Gantt chart](/docs/GanttChart_SemestetrProject2_TheaOland.xlsx)
 
 ### Kanban project board
 
@@ -57,11 +58,11 @@ The application must follow the following technical restrictions:
 
 ### Figma Prototype
 
-[Figma prototype](add link to Figma Prototype here)
+[Figma prototype](https://www.figma.com/file/fEF9XXRMWkV3eB73iZBU9C/SemesterProject2?type=design&node-id=0%3A1&mode=design&t=rbl7PndHnnI7GFk3-1)
 
 ### Style guide
 
-[Figma style guide](add link to Figma style guide here)
+[Figma style guide](https://www.figma.com/file/fEF9XXRMWkV3eB73iZBU9C/SemesterProject2?type=design&node-id=32%3A984&mode=design&t=rbl7PndHnnI7GFk3-1)
 
 ## Built with
 
@@ -84,11 +85,22 @@ git clone addlinkhere
 
 4. Install npm dependencies
 
-   > `npm install`
+```bash
+npm install
+```
 
-5. Run `watch` & `liveserver`
+5. Run tests
 
-   > `npm run dev`
+```bash
+ npm run test
+```
+
+### Add your own **.env** file based on the example
+
+1. Register a new user [here](https://dwnwnd.github.io/SemesterProject2_TheaOland/)
+2. Make a new file called `.env` in your root folder
+3. Copy the content from `.env.example` into your new `.env`file
+4. Populate the new `.env` file with the credentials for your newly registered user
 
 ## Validation
 
