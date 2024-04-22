@@ -1,0 +1,25 @@
+{
+  "name": "semesterproject2",
+  "version": "0.0.1",
+  "description": "My semester project for the second year at Noroff Frontend Development studies.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DWNWND/SemesterProject2_TheaOland.git"
+  },
+  "keywords": [
+    "semesterproject",
+    "noroff",
+    "auction-house"
+  ],
+  "author": "Thea Oland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DWNWND/SemesterProject2_TheaOland/issues"
+  },
+  "homepage": "https://github.com/DWNWND/SemesterProject2_TheaOland#readme"
+}
