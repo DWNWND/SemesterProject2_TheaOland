@@ -6,7 +6,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier -w src/js/**.js"
+    "format": "prettier -w src/js/**.js",
+    "lint": "eslint src/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,7 @@
   },
   "homepage": "https://github.com/DWNWND/SemesterProject2_TheaOland#readme",
   "devDependencies": {
-    "eslint": "^9.1.0",
+    "eslint": "^8.57.0",
     "prettier": "^3.2.5"
   }
 }
