@@ -5,7 +5,8 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier -w src/js/**.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/DWNWND/SemesterProject2_TheaOland/issues"
   },
-  "homepage": "https://github.com/DWNWND/SemesterProject2_TheaOland#readme"
+  "homepage": "https://github.com/DWNWND/SemesterProject2_TheaOland#readme",
+  "devDependencies": {
+    "eslint": "^9.1.0",
+    "prettier": "^3.2.5"
+  }
 }
