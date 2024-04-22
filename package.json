@@ -1,0 +1,56 @@
+{
+  "name": "semesterproject2",
+  "version": "0.0.2",
+  "description": "My semester project for the second year at Noroff Frontend Development studies.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "npm run test-unit && npm run test-e2e-cli",
+    "test-unit": "jest",
+    "test-e2e": "cypress open",
+    "test-e2e-cli": "cypress run",
+    "format": "prettier -w src/js/**.js",
+    "lint": "eslint src/**/*.js",
+    "lint-fix": "eslint src/**/*.js --cache --fix",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DWNWND/SemesterProject2_TheaOland.git"
+  },
+  "keywords": [
+    "semesterproject",
+    "noroff",
+    "auction-house"
+  ],
+  "author": "Thea Oland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DWNWND/SemesterProject2_TheaOland/issues"
+  },
+  "homepage": "https://github.com/DWNWND/SemesterProject2_TheaOland#readme",
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
+    "cypress": "^13.8.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-cypress": "^2.15.2",
+    "eslint-plugin-jest": "^28.2.0",
+    "husky": "^9.0.11",
+    "jest": "^29.2.0",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.html": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "prettier --write"
+    ]
+  }
+}
