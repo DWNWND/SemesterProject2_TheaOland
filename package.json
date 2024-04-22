@@ -28,6 +28,8 @@
   },
   "homepage": "https://github.com/DWNWND/SemesterProject2_TheaOland#readme",
   "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
     "eslint": "^8.57.0",
     "eslint-plugin-jest": "^28.2.0",
     "husky": "^9.0.11",
