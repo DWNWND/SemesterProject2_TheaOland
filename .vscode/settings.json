@@ -5,4 +5,8 @@
     "source.fixAll.eslint": "explicit"
   },
   "eslint.validate": ["javascript"],
+  "prettier.htmlWhitespaceSensitivity": "css",
+  "prettier.requireConfig": false,
+  "prettier.bracketSameLine": true,
+  "prettier.singleAttributePerLine": false
 }
