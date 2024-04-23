@@ -4,7 +4,7 @@
 //BTN-styles
 //linear-gradient border with border radius: https://gist.github.com/stereokai/36dc0095b9d24ce93b045e2ddc60d7a0
 //also: https://res.cloudinary.com/practicaldev/image/fetch/s--761_Vo9x--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/i/1kfsw08obq1iug2v37ex.png
-.btn {
+.btn-local {
   border-radius: 21px;
   border: double 1px transparent;
   background-origin: border-box;
@@ -31,6 +31,9 @@
   height: 25px;
 }
 
+.btn-width-100 {
+  width: 100%;
+}
 .btn-width-l {
   width: 249px;
 }
