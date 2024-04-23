@@ -2,13 +2,17 @@
 @import "_breakpoints";
 @import "_text";
 @import "_btns";
+@import "_variables";
+@import "_listings";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../node_modules/bootstrap/scss/variables";
 
 //Page-background
 //background generated at: https://www.csshero.org/mesher/
 body {
   height: 100vh;
   background-color: hsla(0, 100%, 94%, 1);
+  background-attachment: fixed;
   background-image: radial-gradient(
       at 40% 20%,
       hsla(28, 100%, 74%, 1) 0px,
