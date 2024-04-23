@@ -1,0 +1,19 @@
+@import "_colors";
+
+.login-form-labels {
+  font-size: 1rem;
+  color: $brown;
+}
+.register-form-labels {
+  font-size: 1rem;
+  color: $grayish-purple;
+}
+.login-form,
+.register-form {
+  background: linear-gradient(310deg, $gray-30, $gray-50);
+  backdrop-filter: blur(25px);
+  border: 1px solid;
+  border-image: linear-gradient($white-50, $white-30) 30;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
