@@ -4,7 +4,8 @@
   font-size: 1rem;
   color: $brown;
 }
-.register-form-labels {
+.register-form-labels,
+.new-listing-form-labels {
   font-size: 1rem;
   color: $grayish-purple;
 }
@@ -16,4 +17,13 @@
   border-image: linear-gradient($white-50, $white-30) 30;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
   padding: 1rem;
+}
+
+#new-listing input[type="datetime-local"]::-webkit-datetime-edit {
+  color: $grayish-purple;
+}
+
+//https://developer.mozilla.org/en-US/docs/Web/CSS/::file-selector-button
+#new-listing input[type="file"]::file-selector-button {
+  color: $grayish-purple;
 }

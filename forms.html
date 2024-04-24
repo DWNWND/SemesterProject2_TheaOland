@@ -114,3 +114,94 @@
     </form>
   </div>
 </div>
+<div class="container">
+  <div class="new-listing-form p-3">
+    <form id="new-listing" class="d-flex flex-column gap-5">
+      <div class="d-flex flex-column gap-2">
+        <h1 class="heading-1">Details</h1>
+        <div class="form-floating">
+          <input
+            title=""
+            type="text"
+            class="form-control"
+            id="new-listing-title"
+            placeholder="A hat and a rat"
+            required />
+          <label
+            for="new-listing-title"
+            class="new-listing-form-labels uppercase semi-bold"
+            >Title</label
+          >
+        </div>
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="new-listing-description"
+            placeholder="A new hat occupied by a rat. Perfect for a cat."
+            required />
+          <label
+            for="new-listing-description"
+            class="new-listing-form-labels uppercase semi-bold"
+            >Description</label
+          >
+        </div>
+        <div class="d-flex">
+          <label
+            for="new-listing-auction-deadline"
+            class="new-listing-form-labels uppercase extra-bold"
+            >Set auction deadline</label
+          >
+          <input
+            type="datetime-local"
+            class="form-control new-listing-auction-deadline text-purple"
+            id="new-listing-auction-deadline"
+            name="deadline"
+            required />
+        </div>
+      </div>
+      <div class="d-flex flex-column gap-2">
+        <h1 class="heading-1">Media</h1>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file -->
+        <label
+          for="media-uploads"
+          class="new-listing-form-labels uppercase extra-bold"
+          >Choose images to upload</label
+        >
+        <input
+          type="file"
+          id="media-uploads"
+          name="media"
+          class="form-control"
+          accept="image/*"
+          placeholder="upload media" />
+        <input
+          type="file"
+          id="media-uploads"
+          name="media"
+          class="form-control"
+          accept="image/*"
+          placeholder="upload media" />
+        <input
+          type="file"
+          id="media-uploads"
+          name="media"
+          class="form-control"
+          accept="image/*"
+          placeholder="upload media" />
+        <input
+          type="file"
+          id="media-uploads"
+          name="media"
+          class="form-control"
+          accept="image/*"
+          placeholder="upload media" />
+      </div>
+      <button
+        type="submit"
+        class="btn-local btn-height-l btn-width-m btn-purple btn-fontsize-l extra-bold uppercase">
+        Publish
+      </button>
+    </form>
+  </div>
+</div>
