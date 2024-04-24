@@ -2,7 +2,8 @@
 
 .register-form-labels,
 .new-listing-form-labels,
-.login-form-labels {
+.login-form-labels,
+.edit-profile-form-labels {
   font-size: 1rem;
 }
 
@@ -11,6 +12,7 @@
 }
 
 //https://developer.mozilla.org/en-US/docs/Web/CSS/::file-selector-button
-#new-listing input[type="file"]::file-selector-button {
+#new-listing input[type="file"]::file-selector-button,
+#edit-profile input[type="file"]::file-selector-button {
   color: $grayish-purple;
 }
