@@ -1,0 +1,25 @@
+@import "_colors";
+@import "_breakpoints";
+
+.auction-item {
+  max-width: 400px;
+}
+
+.media-gallery {
+  max-width: 100%;
+}
+.active {
+  border: 1px solid $grayish-purple;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .auction-item {
+    max-width: 1000px;
+  }
+  .auction-item .details {
+    width: 50%;
+  }
+  .auction-item .bids {
+    width: 50%;
+  }
+}
