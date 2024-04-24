@@ -10,5 +10,5 @@
   "prettier.bracketSameLine": true,
   "prettier.singleAttributePerLine": false,
   "prettier.configPath": "",
-  "prettier.printWidth": 160
+  "prettier.printWidth": 200
 }
