@@ -11,6 +11,7 @@
     <button class="btn-local btn-height-l btn-width-m btn-white-red btn-fontsize-l uppercase">Edit profile</button>
   </div>
 </div>
+
 <div class="container">
   <div class="user-profile text-center text-red glassmorphism">
     <div class="p-4 d-flex justify-content-center">
@@ -27,11 +28,11 @@
           <input type="text" class="form-control" id="bio" placeholder="Bio" required />
           <label for="bio" class="edit-profile-form-labels uppercase semi-bold text-grayish-purple">Bio</label>
         </div>
-        <label for="avatar-upload" class="new-listing-form-labels uppercase extra-bold text-grayish-purple">Upload new avatar image</label>
-        <input type="file" id="avatar-upload" name="avatar" class="form-control mb-3" accept="image/*" />
-        <button type="submit" for="edit-profile" class="btn-local btn-height-l btn-width-m btn-purple btn-fontsize-l extra-bold uppercase align-self-center">
-          Save
-        </button>
+        <div class="form-floating mb-3">
+          <label for="avatar-upload" class="new-listing-form-labels uppercase extra-bold text-grayish-purple">Upload new avatar image</label>
+          <input type="file" id="avatar-upload" name="avatar" class="form-control mb-3" accept="image/*" />
+        </div>
+        <button type="submit" for="edit-profile" class="btn-local btn-height-l btn-width-m btn-purple btn-fontsize-l extra-bold uppercase align-self-center">Save</button>
       </form>
       <div class="error-message"></div>
     </div>
