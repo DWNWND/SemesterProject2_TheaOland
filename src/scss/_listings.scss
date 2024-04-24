@@ -1,14 +1,14 @@
 @import "_colors";
 
 //Auction listins components
-.listing {
-  min-width: 165px;
-  background: linear-gradient(310deg, $gray-30, $gray-50);
-  backdrop-filter: blur(25px);
-  border: 1px solid;
-  border-image: linear-gradient($white-50, $white-30) 30;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-}
+// .listing {
+//   min-width: 165px;
+//   background: linear-gradient(310deg, $gray-30, $gray-50);
+//   backdrop-filter: blur(25px);
+//   border: 1px solid;
+//   border-image: linear-gradient($white-50, $white-30) 30;
+//   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+// }
 .listing-body {
   padding: 1rem;
 }
@@ -16,28 +16,6 @@
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-.bid-preview {
-  border-radius: 21px;
-  width: 100%;
-  background-color: $orange;
-}
-.latest-bid {
-  background-color: $light-purple;
-  width: 60%;
-  padding: 0.2rem;
-  border-radius: 21px;
-  font-size: 0.875rem;
-  text-align: center;
-  align-self: center;
-}
-.timer {
-  color: $white;
-  padding: 0.2rem;
-  width: 40%;
-  font-size: 0.625rem;
-  align-self: center;
-  text-align: center;
 }
 
 @media (min-width: $breakpoint-tablet) {
