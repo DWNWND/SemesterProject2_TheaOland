@@ -1,8 +1,9 @@
+<!-- LOGIN FORM -->
 <div class="container">
-  <div class="login-form glassmorphism">
+  <div class="glassmorphism">
     <h1 class="heading-1">Login</h1>
     <a class="link">Register</a>
-    <form id="login" class="d-flex flex-column gap-2 mt-4">
+    <form id="loginForm" class="d-flex flex-column gap-2 mt-4">
       <div class="form-floating">
         <input title="" type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required />
         <label for="loginEmail" class="login-form-labels uppercase semi-bold text-brown">Email address</label>
@@ -11,15 +12,16 @@
         <input type="password" class="form-control" id="loginPassword" placeholder="Password" required />
         <label for="loginPassword" class="login-form-labels uppercase semi-bold text-brown">Password</label>
       </div>
-      <button type="submit" for="login" class="btn-local btn-height-l btn-width-m btn-white-red extra-bold btn-fontsize-l uppercase mt-3">Login</button>
+      <button type="submit" for="loginForm" class="btn-local btn-height-l btn-width-m btn-white-red extra-bold btn-fontsize-l uppercase mt-3">Login</button>
     </form>
-    <div class="error-message"></div>
+    <div id="loginError" class="error-message"></div>
   </div>
 
-  <div class="register-form glassmorphism">
+  <!-- REGISTER FORM -->
+  <div class="glassmorphism">
     <h1 class="heading-1">Register</h1>
     <a class="link">Login</a>
-    <form id="register" action="" class="d-flex flex-column gap-2 mt-4">
+    <form id="registerForm" action="" class="d-flex flex-column gap-2 mt-4">
       <div class="form-floating">
         <input type="email" class="form-control" id="registerEmail" placeholder="name@example.com" required />
         <label for="registerEmail" class="register-form-labels uppercase semi-bold text-grayish-purple">Email address</label>
@@ -40,7 +42,7 @@
         <label for="registerRepeatPassword" class="register-form-labels uppercase semi-bold text-grayish-purple">Repeat password</label>
         <div id="registerRepeatPasswordError" class="form-text mb-3"></div>
       </div>
-      <button type="submit" for="register" class="btn-local btn-height-l btn-width-m btn-purple extra-bold btn-fontsize-l uppercase mt-3">Register</button>
+      <button type="submit" for="registerForm" class="btn-local btn-height-l btn-width-m btn-purple extra-bold btn-fontsize-l uppercase mt-3">Register</button>
     </form>
     <div class="error-message"></div>
   </div>
