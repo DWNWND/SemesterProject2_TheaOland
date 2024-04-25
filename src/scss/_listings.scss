@@ -1,0 +1,31 @@
+@import "_colors";
+
+//Auction listins components
+// .listing {
+//   min-width: 165px;
+//   background: linear-gradient(310deg, $gray-30, $gray-50);
+//   backdrop-filter: blur(25px);
+//   border: 1px solid;
+//   border-image: linear-gradient($white-50, $white-30) 30;
+//   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+// }
+.listing-body {
+  padding: 1rem;
+}
+.listing-title {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .latest-bid {
+    font-size: 1.25rem;
+  }
+  .timer {
+    font-size: 0.938rem;
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+}

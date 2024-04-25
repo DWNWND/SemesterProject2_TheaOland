@@ -1,0 +1,108 @@
+@import "_colors";
+@import "_breakpoints";
+
+//BTN-styles
+//linear-gradient border with border radius: https://gist.github.com/stereokai/36dc0095b9d24ce93b045e2ddc60d7a0
+//also: https://res.cloudinary.com/practicaldev/image/fetch/s--761_Vo9x--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/i/1kfsw08obq1iug2v37ex.png
+.btn-local {
+  border-radius: 21px;
+  border: double 1px transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-fontsize-l {
+  font-size: 1rem;
+}
+.btn-fontsize-m {
+  font-size: 0.875rem;
+}
+.btn-fontsize-s {
+  font-size: 0.75rem;
+}
+
+.btn-height-l {
+  height: 46px;
+}
+.btn-height-m {
+  height: 32px;
+}
+.btn-height-s {
+  height: 25px;
+}
+
+.btn-width-100 {
+  width: 100%;
+}
+.btn-width-l {
+  width: 249px;
+}
+.btn-width-m {
+  width: 192px;
+}
+.btn-width-s {
+  width: 142px;
+}
+.btn-width-xs {
+  width: 121px;
+}
+.btn-width-xxs {
+  width: 70px;
+}
+
+.btn-purple {
+  color: $dark-purple;
+  background-color: $light-purple;
+  background-image: linear-gradient($light-purple, $light-purple),
+    radial-gradient(circle at top left, $dark-purple-50, $dark-purple-30);
+}
+.btn-orange {
+  color: $white;
+  background-color: $orange;
+  background-image: linear-gradient($orange, $orange),
+    radial-gradient(circle at top left, $white-50, $white-30);
+}
+.btn-white-red {
+  color: $red;
+  background-color: $white;
+  background-image: linear-gradient($white, $white),
+    radial-gradient(circle at top left, $red-50, $red-30);
+}
+.btn-white-black {
+  color: black;
+  background-color: $white;
+  background-image: linear-gradient($white, $white),
+    radial-gradient(circle at top left, $black-50, $black-30);
+}
+.btn-pink {
+  color: $red;
+  background-color: $pink;
+  background-image: linear-gradient($pink, $pink),
+    radial-gradient(circle at top left, $red-50, $red-30);
+}
+
+@media (min-width: $breakpoint-tablet) {
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .heading-1 {
+    font-size: 1.87rem;
+  }
+  .heading-2 {
+    font-size: 1.25rem;
+  }
+  .btn-white-red:hover,
+  .btn-pink:hover {
+    border-color: $red;
+  }
+  .btn-white-black:hover {
+    border-color: black;
+  }
+  .btn-orange:hover {
+    border-color: $white;
+  }
+  .btn-purple:hover {
+    border-color: $dark-purple;
+  }
+}

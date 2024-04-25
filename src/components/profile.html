@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="user-profile text-center text-red glassmorphism">
+    <div class="p-4 d-flex justify-content-center">
+      <img src="/src/img/placeholder.png" class="img-profile" />
+    </div>
+    <h1 class="heading-1 text-red">Username</h1>
+    <p>Date registered:</p>
+    <p>registeredEmail@stud.noroff.no</p>
+    <p>Bio:</p>
+    <p>Credit:</p>
+    <button class="btn-local btn-height-l btn-width-m btn-white-red btn-fontsize-l uppercase">Edit profile</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="user-profile text-center text-red glassmorphism">
+    <div class="p-4 d-flex justify-content-center">
+      <img src="/src/img/placeholder.png" class="img-profile" />
+    </div>
+    <div class="edit-profile-form">
+      <form id="edit-profile" action="" class="d-flex flex-column gap-2 mt-4">
+        <div class="form-floating">
+          <input type="username" class="form-control" id="updateUsername" placeholder="Username" required />
+          <label for="updateUsername" class="edit-profile-form-labels uppercase semi-bold text-grayish-purple">Username</label>
+          <div id="usernameHelpBlock" class="form-text mb-3">The username must not contain punctuation symbols apart from underscore (_).</div>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="bio" placeholder="Bio" required />
+          <label for="bio" class="edit-profile-form-labels uppercase semi-bold text-grayish-purple">Bio</label>
+        </div>
+        <div class="form-floating mb-3">
+          <label for="avatar-upload" class="new-listing-form-labels uppercase extra-bold text-grayish-purple">Upload new avatar image</label>
+          <input type="file" id="avatar-upload" name="avatar" class="form-control mb-3" accept="image/*" />
+        </div>
+        <button type="submit" for="edit-profile" class="btn-local btn-height-l btn-width-m btn-purple btn-fontsize-l extra-bold uppercase align-self-center">Save</button>
+      </form>
+      <div class="error-message"></div>
+    </div>
+  </div>
+</div>

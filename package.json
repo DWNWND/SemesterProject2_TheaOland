@@ -1,6 +1,6 @@
 {
   "name": "semesterproject2",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "description": "My semester project for the second year at Noroff Frontend Development studies.",
   "type": "module",
   "main": "src/index.js",
@@ -12,6 +12,8 @@
     "format": "prettier -w src/js/**.js",
     "lint": "eslint src/**/*.js",
     "lint-fix": "eslint src/**/*.js --cache --fix",
+    "build": "sass src/scss:dist/css",
+    "watch": "sass --watch src/scss:dist/css",
     "prepare": "husky install"
   },
   "repository": {
@@ -39,7 +41,8 @@
     "husky": "^9.0.11",
     "jest": "^29.2.0",
     "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "sass": "^1.75.0"
   },
   "lint-staged": {
     "*.js": [
@@ -52,5 +55,8 @@
     "*.scss": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
   }
 }

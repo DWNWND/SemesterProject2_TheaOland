@@ -1,0 +1,73 @@
+@import "_colors";
+@import "_breakpoints";
+
+//Text-styles
+* {
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
+}
+
+.heading-1 {
+  font-weight: 600;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  color: black;
+}
+
+.heading-2 {
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: black;
+}
+
+.heading-3 {
+  font-weight: 800;
+  font-size: 0.875rem;
+  color: black;
+}
+
+p,
+.paragraph {
+  font-size: 0.875rem;
+  color: black;
+}
+
+.semi-bold {
+  font-weight: 600;
+}
+.extra-bold {
+  font-weight: 800;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+
+.link {
+  font-size: 1rem;
+  font-weight: 600; //semi bold
+  text-transform: uppercase;
+  color: $dark-red;
+}
+
+@media (min-width: $breakpoint-small-tablet) {
+  .heading-2 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .heading-1 {
+    font-size: 1.87rem;
+  }
+}

@@ -1,0 +1,31 @@
+@import "_colors";
+@import "_breakpoints";
+@import "_text";
+@import "_btns";
+@import "_variables";
+@import "_listings";
+@import "_forms";
+@import "_profile";
+@import "_item";
+@import "_bids";
+@import "_glassmorphism";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../node_modules/bootstrap/scss/variables";
+
+//Page-background
+//background generated at: https://www.csshero.org/mesher/
+body {
+  height: 100vh;
+  background-color: hsla(0, 100%, 94%, 1);
+  background-attachment: fixed;
+  background-image: radial-gradient(
+      at 40% 20%,
+      hsla(28, 100%, 74%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 1) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, hsla(340, 100%, 76%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 1) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, hsla(340, 100%, 82%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 1) 0px, transparent 50%);
+}
