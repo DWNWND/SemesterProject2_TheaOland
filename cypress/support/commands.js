@@ -51,3 +51,12 @@ Cypress.Commands.add("login", (url, email, password) => {
     url: "**/auction/listings/**",
   }).as("login");
 });
+
+Cypress.Commands.add("logout", () => {
+  cy.get("#logoutBtn").contains("Logout").should("be.visible").click();
+  cy.wait(1000);
+  cy.window().then((win) => {
+    const token = win.localStorage.getItem("token");
+    expect(token).to.be.null;
+  });
+});
