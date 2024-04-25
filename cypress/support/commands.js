@@ -23,3 +23,40 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("navigateToLoginForm", () => {
+  cy.get("#loginBtnLanding").click();
+  cy.wait(500);
+});
+
+Cypress.Commands.add("loginWithCredentials", (email, password) => {
+  cy.intercept({
+    method: "POST",
+    url: "**/auth/login",
+  }).as("loginWithCredentials");
+  cy.get("#loginEmail").type(email);
+  cy.get("#loginPassword").type(password);
+  cy.get("#loginForm").submit();
+});
+
+Cypress.Commands.add("login", (url, email, password) => {
+  cy.visit(url);
+  cy.wait(500);
+  cy.get("#landingPage").should("be.visible");
+  cy.navigateToLoginForm();
+  cy.loginWithCredentials(email, password);
+  cy.wait("@loginWithCredentials").its("response.statusCode").should("eq", 200);
+  cy.intercept({
+    method: "GET",
+    url: "**/auction/listings/**",
+  }).as("login");
+});
+
+Cypress.Commands.add("logout", () => {
+  cy.get("#logoutBtn").contains("Logout").should("be.visible").click();
+  cy.wait(1000);
+  cy.window().then((win) => {
+    const token = win.localStorage.getItem("token");
+    expect(token).to.be.null;
+  });
+});
