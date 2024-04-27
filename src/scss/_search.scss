@@ -1,0 +1,22 @@
+@import "_colors";
+@import "_breakpoints";
+
+#searchbar::placeholder {
+  color: $brown;
+  text-align: center;
+}
+
+.search {
+  max-width: 410px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: $breakpoint-desktop) {
+  #searchbar::placeholder {
+    text-align: left;
+  }
+  .search {
+    margin-left: 1rem;
+  }
+}
