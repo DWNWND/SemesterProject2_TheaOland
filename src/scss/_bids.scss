@@ -4,10 +4,11 @@
 .pill {
   border-radius: 21px;
   width: 100%;
+  min-width: 110px;
 }
-.latest-bid {
+.current-bid {
   background-color: $light-purple;
-  width: 60%;
+  width: 55%;
   padding: 0.2rem;
   border-radius: 21px;
   font-size: 0.875rem;
@@ -17,7 +18,7 @@
 .timer {
   color: $white;
   padding: 0.2rem;
-  width: 40%;
+  width: 45%;
   font-size: 0.625rem;
   align-self: center;
   text-align: center;
