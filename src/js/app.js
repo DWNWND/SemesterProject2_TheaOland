@@ -16,6 +16,6 @@
 
 // router();
 
-import { get } from "./api/listings/get.mjs";
+import { loggedOutFeed } from "./routes/feed.mjs";
 
-await get("listingsByPage", 1);
+await loggedOutFeed();
