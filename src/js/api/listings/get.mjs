@@ -1,5 +1,6 @@
 import { callApiWith } from "../apiCall.mjs";
 import { API_LISTINGS, API_PROFILES, loader } from "../../constants/index.mjs";
+import { PARAM_bids } from "../../constants/params.mjs";
 import { userFeedback } from "../../ui/components/errors/userFeedback.mjs";
 
 let page = 1;
@@ -37,7 +38,7 @@ export async function get(request, param) {
   }
   if (request === "listingsByPage") {
     const pageLimit = 10;
-    url = API_LISTINGS + `?limit=${pageLimit}&page=${param}`;
+    url = API_LISTINGS + PARAM_bids + `&limit=${pageLimit}&page=${param}`;
     result = await getData(url);
     console.log("this is", request, param, result);
     return result;
