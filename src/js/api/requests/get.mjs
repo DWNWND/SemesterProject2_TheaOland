@@ -1,14 +1,16 @@
 import { callApiWith } from "../apiCall.mjs";
-import { API_LISTINGS, API_PROFILES, loader } from "../../constants/index.mjs";
+import { API_LISTINGS, API_PROFILES } from "../../constants/index.mjs";
 import { PARAM_bids } from "../../constants/params.mjs";
 import { userFeedback } from "../../ui/components/errors/userFeedback.mjs";
 
 let page = 1;
 
 const errorMessage = "We are having some trouble with our servers, please wait and try again later";
+const loadMoreBtn = document.getElementById("loadMore");
+const loader = document.getElementById("loader");
 
 export async function getData(url) {
-  // const errorContainer = document.querySelector("");
+  const errorContainer = document.getElementById("userFeedback");
 
   const response = await callApiWith(url);
   if (response.ok) {
