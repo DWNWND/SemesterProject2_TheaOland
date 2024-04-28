@@ -1,4 +1,4 @@
-import { get } from "../api/listings/get.mjs";
+import { get } from "../api/requests/get.mjs";
 import { loadMoreListings } from "../events/listners/loadMore.mjs";
 import { load } from "../storage/load.mjs";
 
@@ -9,10 +9,66 @@ const userFeedback = document.getElementById("userFeedback");
 const uxElement = document.getElementById("uxElement");
 const searchElement = document.getElementById("searchElement");
 const paginationElement = document.getElementById("paginationElement");
+const pathname = window.location.pathname;
 let page = 1;
+
+function generateNav(username) {
+  //LOGIN BTN
+  const loginLink = document.createElement("a");
+  loginLink.setAttribute("href", "./auth/index.html");
+  const loginBtn = document.createElement("button");
+  loginBtn.classList.add("btn-local", "btn-height-l", "btn-width-m", "btn-white-red", "btn-fontsize-l", "uppercase");
+  loginBtn.setAttribute("id", "loginBtnLanding");
+  loginBtn.innerText = "Login";
+  loginLink.append(loginBtn);
+
+  //USERNAME BTN
+  const usernameLink = document.createElement("a");
+  usernameLink.setAttribute("href", "./profile/index.html");
+  const usernameBtn = document.createElement("button");
+  usernameBtn.classList.add("btn-local", "btn-height-l", "btn-width-l", "btn-pink", "btn-fontsize-l", "extra-bold", "uppercase");
+  usernameBtn.setAttribute("id", "usernameBtn");
+  usernameBtn.innerText = "username" //EDIT THIS LATER
+  usernameLink.append(usernameBtn);
+
+  //NEW LISTING BTN
+  const newlistingLink = document.createElement("a");
+  newlistingLink.setAttribute("href", "./edit/index.html");
+  const newlistingBtn = document.createElement("button");
+  newlistingBtn.classList.add("btn-local", "btn-height-l", "btn-width-l", "btn-orange", "btn-fontsize-l", "extra-bold", "uppercase");
+  newlistingBtn.setAttribute("id", "newlistingBtn");
+  newlistingBtn.innerText = "Add new listing";
+  newlistingLink.append(newlistingBtn);
+
+  //LOGOUT BTN
+  const logoutLink = document.createElement("a");
+  logoutLink.setAttribute("href", "/");
+  const logoutBtn = document.createElement("button");
+  logoutBtn.classList.add("btn-local", "btn-height-s", "btn-width-xs", "btn-white-black", "btn-fontsize-l", "lowercase");
+  logoutBtn.setAttribute("id", "logoutBtn");
+  logoutBtn.innerText = "log out";
+  logoutLink.append(logoutBtn);
+
+  const token = load("token");
+  const nav = document.getElementById("nav");
+
+  if (!token) {
+    nav.append(loginLink);
+  }
+  if ((token && pathname === "/") || (token && pathname.includes("listing"))) {
+    nav.append(newlistingLink, usernameLink, logoutLink);
+  }
+  if (token && pathname.includes("profile")) {
+    nav.append(newlistingLink, logoutLink);
+  }
+  if (token && pathname.includes("edit")) {
+    nav.append(usernameLink, logoutLink);
+  }
+}
 
 export async function generateFeed() {
   const listings = await get("listingsByPage", page);
+  generateNav()
   renderListings(listings, feed);
   loadMoreListings(loadMoreBtn);
 }
@@ -130,7 +186,6 @@ export function listingTemplate(listingData, userIsLoggedIn) {
     col.append(listing);
 
     //LISTINGS BY USER SPESIFIC
-    const pathname = window.location.pathname;
     if (pathname.includes("user")) {
       const editListingBtn = document.createElement("button");
       editListingBtn.classList.add("btn-local", "btn-height-s", "btn-width-100", "btn-white-black", "btn-fontsize-m", "uppercase");
