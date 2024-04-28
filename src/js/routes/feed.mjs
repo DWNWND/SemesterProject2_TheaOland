@@ -1,5 +1,5 @@
 import { get } from "../api/listings/get.mjs";
-import { loadMoreListings } from "../events/listners/nextPage.mjs";
+import { loadMoreListings } from "../events/listners/loadMore.mjs";
 import { load } from "../storage/load.mjs";
 
 const feed = document.getElementById("feed");
