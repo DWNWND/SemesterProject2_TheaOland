@@ -18,20 +18,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet" />
   </head>
-  <body>
+  <body class="container">
     <header class="text-center d-flex flex-column flex-xl-row justify-content-xl-between gap-4 p-3 mb-3">
       <div class="logo-container"><img src="./src/img/logo_oneline.svg" alt="" class="img-fluid" /></div>
       <nav class="justify-content-center align-self-center"><button class="btn-local btn-height-l btn-width-m btn-white-red btn-fontsize-l uppercase" id="loginBtnLanding">Login</button></nav>
     </header>
     <main>
-      <form class="search mb-3">
-        <input id="searchbar" class="form-control" type="search" placeholder="Search" aria-label="Search" />
+      <form id="searchElement" class="search mb-3 mb-xl-5">
+        <input id="searchbar" class="form-control" type="search" placeholder="Search listings" aria-label="Search" />
       </form>
-      <div class="container">
-        <div id="feed" class="row g-2"></div>
+      <div id="paginationElement">
+        <p class="heading-3 text-brown"><span id="currentPage"> X </span> out of <span id="totalPages">X</span> listings</p>
       </div>
-      <div id="loadmore" class="text-center w-100 mt-3">
-        <a href="#" class="link">Load more</a>
+      <div id="uxElement" class="d-flex flex-column align-items-center">
+        <div id="userFeedback" class="pb-3"></div>
+        <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>
+      </div>
+      <div id="feed" class="row g-2 g-sm-3"></div>
+      <div id="loadMore" class="text-center w-100 pt-4 pb-4">
+        <div class="link">Load more</div>
       </div>
     </main>
   </body>
