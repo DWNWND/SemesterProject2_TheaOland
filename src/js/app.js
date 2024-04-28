@@ -16,6 +16,6 @@
 
 // router();
 
-import { loggedOutFeed } from "./routes/feed.mjs";
+import { generateFeed } from "./routes/feed.mjs";
 
-await loggedOutFeed();
+await generateFeed();
