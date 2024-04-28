@@ -10,10 +10,7 @@
     <link rel="icon" href="" />
     <!-- update the favicon later -->
     <link rel="stylesheet" href="../dist/css/index.css" />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet" />
@@ -21,7 +18,9 @@
   <body class="container">
     <header class="text-center d-flex flex-column flex-xl-row justify-content-xl-between gap-4 p-3 mb-3">
       <div class="logo-container"><img src="./src/img/logo_oneline.svg" alt="" class="img-fluid" /></div>
-      <nav class="justify-content-center align-self-center"><button class="btn-local btn-height-l btn-width-m btn-white-red btn-fontsize-l uppercase" id="loginBtnLanding">Login</button></nav>
+      <nav id="nav" class="justify-content-center align-items-center d-flex flex-column flex-xl-row gap-2">
+        <!-- <a href="./auth/index.html"><button class="btn-local btn-height-l btn-width-m btn-white-red btn-fontsize-l uppercase" id="loginBtnLanding">Login</button></a> -->
+      </nav>
     </header>
     <main>
       <form id="searchElement" class="search mb-3 mb-xl-5">
