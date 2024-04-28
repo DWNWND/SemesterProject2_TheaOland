@@ -54,32 +54,30 @@
 .btn-purple {
   color: $dark-purple;
   background-color: $light-purple;
-  background-image: linear-gradient($light-purple, $light-purple),
-    radial-gradient(circle at top left, $dark-purple-50, $dark-purple-30);
+  background-image: linear-gradient($light-purple, $light-purple), radial-gradient(circle at top left, $dark-purple-50, $dark-purple-30);
 }
 .btn-orange {
   color: $white;
   background-color: $orange;
-  background-image: linear-gradient($orange, $orange),
-    radial-gradient(circle at top left, $white-50, $white-30);
+  background-image: linear-gradient($orange, $orange), radial-gradient(circle at top left, $white-50, $white-30);
 }
 .btn-white-red {
   color: $red;
   background-color: $white;
-  background-image: linear-gradient($white, $white),
-    radial-gradient(circle at top left, $red-50, $red-30);
+  background-image: linear-gradient($white, $white), radial-gradient(circle at top left, $red-50, $red-30);
 }
 .btn-white-black {
   color: black;
   background-color: $white;
-  background-image: linear-gradient($white, $white),
-    radial-gradient(circle at top left, $black-50, $black-30);
+  background-image: linear-gradient($white, $white), radial-gradient(circle at top left, $black-50, $black-30);
 }
 .btn-pink {
   color: $red;
   background-color: $pink;
-  background-image: linear-gradient($pink, $pink),
-    radial-gradient(circle at top left, $red-50, $red-30);
+  background-image: linear-gradient($pink, $pink), radial-gradient(circle at top left, $red-50, $red-30);
+}
+#loadMore {
+  display: none;
 }
 
 @media (min-width: $breakpoint-tablet) {
