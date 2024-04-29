@@ -42,7 +42,7 @@ Cypress.Commands.add("loginWithCredentials", (email, password) => {
 Cypress.Commands.add("login", (url, email, password) => {
   cy.visit(url);
   cy.wait(500);
-  cy.get("#landingPage").should("be.visible");
+  cy.get("#feedxx").should("be.visible");
   cy.navigateToLoginForm();
   cy.loginWithCredentials(email, password);
   cy.wait("@loginWithCredentials").its("response.statusCode").should("eq", 200);

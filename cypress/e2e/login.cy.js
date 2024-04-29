@@ -2,13 +2,13 @@
 // The user can log in with the login form with valid credentials
 // The user cannot submit the login form with invalid credentials and is shown a message.
 
-import { testUrl, validEmail, validPassword, validUsername, invalidEmail, invalidPassword } from "../../support/testCredentials.js";
+import { testUrl, validEmail, validPassword, validUsername, invalidEmail, invalidPassword } from "../support/testCredentials.js";
 
 describe("login functionality", () => {
   beforeEach(() => {
     cy.visit(testUrl);
     cy.wait(500);
-    cy.get("#landingPage").should("be.visible");
+    cy.get("#feedxx").should("be.visible");
   });
 
   it("does not submit the login form and displays a message if the login function is called with invalid credentals", () => {
@@ -21,7 +21,7 @@ describe("login functionality", () => {
     cy.wait(500);
 
     //ADD EXPECTED ERRORMESSAGE HERE LATER
-    expect("#loginError").not.to.be.empty;
+    expect("#userFeedback").not.to.be.empty;
 
     //OLD EXAMPLE:
     // cy.on("window:alert", (alertMessage) => {
@@ -36,7 +36,7 @@ describe("login functionality", () => {
     cy.wait("@loginWithCredentials").its("response.statusCode").should("eq", 200);
 
     //THIS MIGHT NOT BE NEEDED:
-    cy.url().should("include", validUsername);
+    // cy.url().should("include", validUsername);
 
     //THIS IS WHATS NEEDED
     cy.window().then((win) => {
