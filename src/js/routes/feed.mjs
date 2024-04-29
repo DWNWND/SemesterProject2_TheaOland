@@ -1,6 +1,7 @@
 import { get } from "../api/requests/get.mjs";
 import { loadMoreListings } from "../events/listners/loadMore.mjs";
 import { load } from "../storage/load.mjs";
+import { logoutFunctionality } from "../events/listners/logout.mjs";
 
 const feed = document.getElementById("feed");
 const loadMoreBtn = document.getElementById("loadMore");
@@ -8,9 +9,11 @@ const loader = document.getElementById("loader");
 const userFeedback = document.getElementById("userFeedback");
 const uxElement = document.getElementById("uxElement");
 const searchElement = document.getElementById("searchElement");
-const paginationElement = document.getElementById("paginationElement");
+// const paginationElement = document.getElementById("paginationElement");
 const pathname = window.location.pathname;
 let page = 1;
+const token = load("token");
+const profile = load("profile");
 
 function generateNav(username) {
   //LOGIN BTN
@@ -28,7 +31,7 @@ function generateNav(username) {
   const usernameBtn = document.createElement("button");
   usernameBtn.classList.add("btn-local", "btn-height-l", "btn-width-l", "btn-pink", "btn-fontsize-l", "extra-bold", "uppercase");
   usernameBtn.setAttribute("id", "usernameBtn");
-  usernameBtn.innerText = "username"; //EDIT THIS LATER
+  usernameBtn.innerText = username;
   usernameLink.append(usernameBtn);
 
   //NEW LISTING BTN
@@ -48,8 +51,8 @@ function generateNav(username) {
   logoutBtn.setAttribute("id", "logoutBtn");
   logoutBtn.innerText = "log out";
   logoutLink.append(logoutBtn);
+  logoutFunctionality(logoutBtn);
 
-  const token = load("token");
   const nav = document.getElementById("nav");
 
   if (!token) {
@@ -68,7 +71,16 @@ function generateNav(username) {
 
 export async function generateFeed() {
   const listings = await get("listingsByPage", page);
-  generateNav();
+
+  if (token) {
+    console.log("logged in");
+    const username = profile.name;
+    generateNav(username);
+  }
+  if (!token) {
+    console.log("not logged in");
+    generateNav();
+  }
   renderListings(listings, feed);
   loadMoreListings(loadMoreBtn);
 }
@@ -80,13 +92,13 @@ export function renderListings(listingsArray, container) {
     loader.style.display = "none";
     userFeedback.innerText = "there's no listings matching this search.";
   } else {
-    const token = load("token");
+    // const token = load("token");
     for (let i = 0; i < listingsArray.length; i++) {
       container.append(listingTemplate(listingsArray[i], token));
     }
     uxElement.innerHTML = "";
     searchElement.style.display = "block";
-    paginationElement.style.display = "block";
+    // paginationElement.style.display = "block";
     loadMoreBtn.style.display = "block";
   }
 }
@@ -165,7 +177,6 @@ export function listingTemplate(listingData, userIsLoggedIn) {
 
   //LISTINGS DISPLAYED PUBLICLY (NOT LOGGED IN)
   if (!userIsLoggedIn) {
-    console.log("theres no one loggedin");
     bidContainer.append(currentBid, bidTimer);
     listing.append(mainImg, titleContainer, bidContainer);
     col.append(listing);
