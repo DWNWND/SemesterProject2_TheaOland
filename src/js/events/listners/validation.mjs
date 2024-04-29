@@ -102,16 +102,17 @@ export function validation() {
     validateRepeatPassword(password.value, repeatPassword.value);
     validatePassword();
   });
+  const errorContainer = document.getElementById("userFeedback");
 
   loginPassword.addEventListener("input", () => {
     if (loginPassword.value === "") {
       // console.log("no password typed in")
-      // generalErrorContainer.innerText = "";
+      // errorContainer.innerText = "";
     }
   });
   loginEmail.addEventListener("input", () => {
     if (loginPassword.value === "" && loginPassword.value === "") {
-      // generalErrorContainer.innerText = "";
+      // errorContainer.innerText = "";
     }
   });
 }
