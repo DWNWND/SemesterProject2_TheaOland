@@ -1,7 +1,7 @@
-import { get } from "../api/requests/get.mjs";
-import { loadMoreListings } from "../events/listners/loadMore.mjs";
-import { load } from "../storage/load.mjs";
-import { logoutFunctionality } from "../events/listners/logout.mjs";
+import { get } from "../api/requests/get.js";
+import { loadMoreListings } from "../events/listners/loadMore.js";
+import { load } from "../storage/load.js";
+import { logoutFunctionality } from "../events/listners/logout.js";
 
 const feed = document.getElementById("feed");
 const loadMoreBtn = document.getElementById("loadMore");
@@ -104,9 +104,9 @@ export function renderListings(listingsArray, container) {
 }
 
 //ONE LISTING - NOT IN USE YET
-export function renderSingleListing(listing, container) {
-  container.append(listingSomething(listing));
-}
+// export function renderSingleListing(listing, container) {
+//   container.append(listingSomething(listing));
+// }
 
 // ALL LISTINGS TEMPLATE
 export function listingTemplate(listingData, userIsLoggedIn) {
@@ -115,7 +115,7 @@ export function listingTemplate(listingData, userIsLoggedIn) {
   const listingBids = listingData.bids.length;
   //Inspired by: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
   const listingEndsAt = new Date(listingData.endsAt);
-  const listingEndsAtDate = listingEndsAt.toLocaleDateString(); //NOTE: consider adding this or adjust design
+  // const listingEndsAtDate = listingEndsAt.toLocaleDateString(); //NOTE: consider adding this or adjust design
   const listingEndsAtTime = listingEndsAt.toLocaleTimeString();
 
   const col = document.createElement("div");

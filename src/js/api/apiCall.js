@@ -1,5 +1,5 @@
-import { load } from "../storage/load.mjs";
-import { API_KEY } from "../constants/index.mjs";
+import { load } from "../storage/load.js";
+import { API_KEY } from "../constants/index.js";
 
 export async function callApiWith(url, options = {}) {
   return fetch(url, {

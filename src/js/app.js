@@ -8,7 +8,7 @@ async function router() {
     case "/index.html":
       console.log("Home page/Feed");
 
-      const feedRequest = "./routes/feed.mjs";
+      const feedRequest = "./routes/feed.js";
       const { generateFeed } = await import(feedRequest);
       await generateFeed();
 
@@ -17,7 +17,7 @@ async function router() {
       console.log("Login/Register page");
       // generateAuth()
 
-      const authRequest = "./routes/auth.mjs";
+      const authRequest = "./routes/auth.js";
       const { generateAuth } = await import(authRequest);
       await generateAuth();
 

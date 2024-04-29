@@ -1,7 +1,7 @@
-import { callApiWith } from "../apiCall.mjs";
-import { API_BASE, API_REGISTER } from "../../constants/index.mjs";
-import { userFeedback } from "../../ui/components/errors/userFeedback.mjs";
-import { login } from "./index.mjs";
+import { callApiWith } from "../apiCall.js";
+import { API_BASE, API_REGISTER } from "../../constants/index.js";
+import { userFeedback } from "../../ui/components/errors/userFeedback.js";
+import { login } from "./index.js";
 
 let errorMessage;
 

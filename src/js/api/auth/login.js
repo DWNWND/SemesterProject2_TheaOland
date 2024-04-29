@@ -1,13 +1,12 @@
-import { callApiWith } from "../apiCall.mjs";
-import { API_BASE, API_LOGIN } from "../../constants/index.mjs";
-import { userFeedback } from "../../ui/components/errors/userFeedback.mjs";
-import { save } from "../../storage/index.mjs";
+import { callApiWith } from "../apiCall.js";
+import { API_BASE, API_LOGIN } from "../../constants/index.js";
+import { userFeedback } from "../../ui/components/errors/userFeedback.js";
+import { save } from "../../storage/index.js";
 
 let errorMessage;
+const errorContainer = document.getElementById("userFeedback");
 
 export async function login(email, password) {
-  const errorContainer = document.getElementById("userFeedback");
-
   try {
     const url = API_BASE + API_LOGIN;
 

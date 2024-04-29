@@ -1,5 +1,7 @@
-import { userFeedback } from "../../ui/components/errors/userFeedback.mjs";
-import { register, login } from "../../api/auth/index.mjs";
+import { userFeedback } from "../../ui/components/errors/userFeedback.js";
+import { register, login } from "../../api/auth/index.js";
+
+let errorMessage;
 
 export async function loginAuth(event) {
   event.preventDefault();
@@ -23,7 +25,7 @@ export async function registerAuth(event) {
     errorMessage = "Please fill in all the registration fields.";
     userFeedback(errorMessage, errorContainer);
   } else {
-    validatePassword(firstPassword, passwordRepeat);
+    // validatePassword(firstPassword, passwordRepeat);
     if (passwordRepeat === firstPassword) {
       await register(name, email, firstPassword);
     }

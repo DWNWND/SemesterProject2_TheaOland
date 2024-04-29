@@ -1,5 +1,5 @@
-import { renderListings } from "../../routes/feed.mjs";
-import { get } from "../../api/requests/get.mjs";
+import { renderListings } from "../../routes/feed.js";
+import { get } from "../../api/requests/get.js";
 
 const feed = document.getElementById("feed");
 let page = 1;

@@ -1,4 +1,4 @@
-import { load } from "../../storage/index.mjs";
+import { load } from "../../storage/index.js";
 
 export function logoutFunctionality(btn) {
   btn.addEventListener("mouseup", () => {

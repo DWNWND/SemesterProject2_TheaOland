@@ -1,6 +1,6 @@
 import { callApiWith } from "../apiCall.mjs";
 import { API_LISTINGS } from "../../constants/index.mjs";
-import { userFeedback } from "../../ui/components/errors/userFeedback.mjs";
+import { userFeedback } from "../../ui/components/errors/userFeedback.js";
 
 let errorMessage;
 
@@ -9,7 +9,7 @@ export async function publishListing(listing) {
 
   try {
     const url = API_LISTINGS;
-    const response = await callAPI(url, {
+    const response = await callApiWith(url, {
       method: "POST",
       body: JSON.stringify(listing),
     });

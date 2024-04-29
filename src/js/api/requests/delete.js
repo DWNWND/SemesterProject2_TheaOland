@@ -1,6 +1,6 @@
 import { callApiWith } from "../apiCall.mjs";
 import { API_LISTINGS } from "../../constants/index.mjs";
-import { userFeedback } from "../../ui/components/errors/userFeedback.mjs";
+import { userFeedback } from "../../ui/components/errors/userFeedback.js";
 
 let errorMessage;
 
