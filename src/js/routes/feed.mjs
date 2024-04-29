@@ -28,7 +28,7 @@ function generateNav(username) {
   const usernameBtn = document.createElement("button");
   usernameBtn.classList.add("btn-local", "btn-height-l", "btn-width-l", "btn-pink", "btn-fontsize-l", "extra-bold", "uppercase");
   usernameBtn.setAttribute("id", "usernameBtn");
-  usernameBtn.innerText = "username" //EDIT THIS LATER
+  usernameBtn.innerText = "username"; //EDIT THIS LATER
   usernameLink.append(usernameBtn);
 
   //NEW LISTING BTN
@@ -68,7 +68,7 @@ function generateNav(username) {
 
 export async function generateFeed() {
   const listings = await get("listingsByPage", page);
-  generateNav()
+  generateNav();
   renderListings(listings, feed);
   loadMoreListings(loadMoreBtn);
 }
@@ -111,6 +111,7 @@ export function listingTemplate(listingData, userIsLoggedIn) {
 
   const listing = document.createElement("div");
   listing.classList.add("listing", "glassmorphism");
+  listing.setAttribute("id", "listing");
 
   const mainImg = document.createElement("img");
   mainImg.classList.add("object-fit-cover", "main-listing-img");
