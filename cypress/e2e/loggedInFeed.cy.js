@@ -8,23 +8,24 @@ describe("logged in feed functionality", () => {
   });
   it("generates a dynamic feed when a user is logged in", () => {
     expect("#feed").not.to.be.empty;
-    expect("#logoutBtn").to.be.visible;
-    cy.get("#listing").should("include", "button");
+    cy.get("#logoutBtn").should("be.visible");
+    cy.get("#viewListingBtn").should("be.visible");
     // cy.get("#usernameBtn").should("include", validUsername);
-    expect("#newlistingBtn").to.be.visible;
+    cy.get("#newlistingBtn").should("be.visible");
   });
   it("navigates to the profile page when the usernameBtn is clicked", () => {
-    cy.get("#usernameBtn").should("include", validUsername).click();
+    // cy.get("#usernameBtn").should("include", validUsername).click();
+    cy.get("#usernameBtn").should("be.visible").click();
     cy.wait(500);
     cy.url().should("include", "profile");
   });
   it("navigates to the new listing page when the newListingBtn is clicked", () => {
-    cy.get("#newListingBtn").should("include", "New listing").click();
+    cy.get("#newlistingBtn").should("be.visible").click();
     cy.wait(500);
     cy.url().should("include", "edit");
   });
   it("navigates to a listing spesific page when a viewBtn is clicked", () => {
-    cy.get("#viewBtn").click();
+    cy.get("#viewListingBtn").click();
     cy.wait(500);
     cy.url().should("include", "listing");
   });

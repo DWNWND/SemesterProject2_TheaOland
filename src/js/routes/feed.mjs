@@ -179,6 +179,7 @@ export function listingTemplate(listingData, userIsLoggedIn) {
     const viewListingBtn = document.createElement("button");
     viewListingBtn.classList.add("btn-local", "btn-height-s", "btn-width-100", "btn-white-black", "btn-fontsize-m", "uppercase");
     viewListingBtn.setAttribute("href", "#");
+    viewListingBtn.setAttribute("id", "viewListingBtn");
     viewListingBtn.innerText = "View";
 
     bidContainer.append(currentBid, bidTimer);
