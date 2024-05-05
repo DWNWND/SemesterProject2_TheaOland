@@ -21,6 +21,7 @@ export async function login(email, password) {
     const { accessToken, ...profile } = result.data;
     save("token", accessToken);
     save("profile", profile);
+    location.pathname = "/";
     return;
     // return profile;
   }
@@ -33,5 +34,4 @@ export async function login(email, password) {
     userFeedback(feedbackMessage, errorContainer);
     throw new Error("An unexpected error occured, please try again later.", response.statusText);
   }
-  // throw new Error(response.statusText);
 }
