@@ -1,11 +1,11 @@
-import { authentication } from "../events/listners/auth.js";
-import { validation } from "../events/listners/validation.js";
+import { listenForAuthentication } from "../events/listners/authenticate.js";
+import { formValidation } from "../events/listners/formValidation.js";
 import { clearUserFeedback } from "../ui/components/errors/clearFeedback.js";
 
 const errorContainer = document.getElementById("userFeedback");
 
 export function generateAuth() {
-  authentication();
-  validation();
+  formValidation();
+  listenForAuthentication();
   clearUserFeedback(errorContainer);
 }
