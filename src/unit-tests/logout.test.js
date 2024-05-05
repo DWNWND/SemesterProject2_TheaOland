@@ -1,6 +1,5 @@
 //The logout function clears the token from browser storage
-
-import { logout } from "../js/api/auth/index.js";
+import { logout } from "../js/api/auth/logout.js";
 
 //MOCK: localStorage
 const localStorageMock = {
@@ -9,6 +8,7 @@ const localStorageMock = {
 global.localStorage = localStorageMock;
 
 describe("logout function", () => {
+  it("tests", () => {});
   it("clears the token from browser storage if triggered", () => {
     //Assertion
     logout();

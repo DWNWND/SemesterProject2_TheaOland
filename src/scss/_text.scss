@@ -18,7 +18,8 @@
   color: black;
 }
 
-.heading-2 {
+.heading-2,
+.heading-2-feed {
   font-weight: 800;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -54,6 +55,11 @@ p,
   font-size: 1rem;
   font-weight: 600; //semi bold
   text-transform: uppercase;
+  color: $dark-red;
+  text-decoration: underline;
+}
+
+.error {
   color: $dark-red;
 }
 

@@ -1,4 +1,4 @@
-export const testUrl = "/";
+export const testUrl = "index.html";
 
 export const validEmail = Cypress.env("USER_EMAIL");
 export const validPassword = Cypress.env("USER_PASSWORD");

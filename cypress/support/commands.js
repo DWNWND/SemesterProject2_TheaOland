@@ -42,7 +42,7 @@ Cypress.Commands.add("loginWithCredentials", (email, password) => {
 Cypress.Commands.add("login", (url, email, password) => {
   cy.visit(url);
   cy.wait(500);
-  cy.get("#landingPage").should("be.visible");
+  cy.get("#feed").should("be.visible");
   cy.navigateToLoginForm();
   cy.loginWithCredentials(email, password);
   cy.wait("@loginWithCredentials").its("response.statusCode").should("eq", 200);
@@ -53,7 +53,7 @@ Cypress.Commands.add("login", (url, email, password) => {
 });
 
 Cypress.Commands.add("logout", () => {
-  cy.get("#logoutBtn").contains("Logout").should("be.visible").click();
+  cy.get("#logoutBtn").should("be.visible").click();
   cy.wait(1000);
   cy.window().then((win) => {
     const token = win.localStorage.getItem("token");

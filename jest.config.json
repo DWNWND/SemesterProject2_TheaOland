@@ -1,0 +1,1 @@
+{ "setupFiles": ["./jsdom.js"] }

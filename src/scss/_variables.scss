@@ -1,11 +1,25 @@
 $border-radius: 0;
+$border-width: 0;
 $border-color: $white;
 $border-color-translucent: $white;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  smd: 600px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+// $input-placeholder-color: $brown;
 
 $theme-colors: (
   "brown": #b07472,
   "red": #a93338,
   "grayish-purple": #8a77a1,
+  "dark-purple": #6c35af,
   "orange": #d36b0d,
 );
 
