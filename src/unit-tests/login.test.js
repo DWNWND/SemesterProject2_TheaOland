@@ -1,5 +1,18 @@
 import { login } from "../js/api/auth/login.js";
 
+//MOCK: headers
+// global.Headers = () => {};
+
+//MOCK: location/window
+const location = new URL("http://127.0.0.1:5500/");
+// location.assign = jest.fn();
+// location.replace = jest.fn();
+// location.reload = jest.fn();
+
+// delete window.location;
+// window.location = location;
+global.location = location;
+
 //MOCK: successful fetch request
 const mockFetchSuccess = jest.fn().mockResolvedValue({
   ok: true,
