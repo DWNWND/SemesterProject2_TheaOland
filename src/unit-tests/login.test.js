@@ -17,7 +17,6 @@ global.location = location;
 const mockFetchSuccess = jest.fn().mockResolvedValue({
   ok: true,
   status: 200,
-  headers: { "content-type": "application/json" },
   json: async () => ({
     data: {
       accessToken: "accessToken",
@@ -31,8 +30,13 @@ const mockFetchSuccess = jest.fn().mockResolvedValue({
 const mockFetchFailure = jest.fn().mockResolvedValue({
   ok: false,
   status: 401,
-  headers: { "content-type": "application/json" },
 });
+
+//MOCK: Headers
+const headersMock = {
+  new: jest.fn(),
+};
+global.headers = headersMock;
 
 // //MOCK: localStorage
 const localStorageMock = {
