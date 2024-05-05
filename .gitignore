@@ -2,7 +2,7 @@
 /node_modules
 
 # CSS files
-/dist
+# /dist
 
 # The lint cache
 .eslintcache
