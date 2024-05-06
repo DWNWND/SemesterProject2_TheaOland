@@ -362,10 +362,6 @@ p,
     transform: rotate(360deg);
   }
 }
-#paginationElement {
-  display: none;
-}
-
 .glassmorphism {
   background: linear-gradient(310deg, rgba(226, 226, 237, 0.3), rgba(226, 226, 237, 0.5));
   border: 1px solid;
