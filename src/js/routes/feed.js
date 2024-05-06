@@ -58,7 +58,7 @@ function generateNav(username) {
   if (!token) {
     nav.append(loginLink);
   }
-  if ((token && pathname === "/") || (token && pathname.includes("listing"))) {
+  if ((token && (pathname === "/" || pathname.toLowerCase() === "/semesterproject2_theaoland/")) || (token && pathname.includes("listing"))) {
     nav.append(newlistingLink, usernameLink, logoutLink);
   }
   if (token && pathname.includes("profile")) {
