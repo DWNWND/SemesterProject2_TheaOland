@@ -5,7 +5,6 @@ async function router() {
 
   switch (pathname) {
     case "/":
-    case "/index.html":
       console.log("Home page/Feed");
 
       const feedRequest = "./routes/feed.js";
@@ -13,7 +12,16 @@ async function router() {
       await generateFeed();
 
       break;
-    case "/auth/index.html":
+
+    // case "/index.html":
+    //   console.log("Home page/Feed");
+
+    //   const feedRequest = "./routes/feed.js";
+    //   const { generateFeed } = await import(feedRequest);
+    //   await generateFeed();
+
+    //   break;
+    case "/auth/":
       console.log("Login/Register page");
       // generateAuth()
 
@@ -22,14 +30,14 @@ async function router() {
       await generateAuth();
 
       break;
-    case "/profile/index.html":
+    case "/profile/":
       console.log("Profile page");
       break;
 
-    case "/listing/index.html":
+    case "/listing/":
       console.log("Listing spesific page");
       break;
-    case "/edit/index.html":
+    case "/edit/":
       console.log("Edit/Publish listing page");
       break;
   }
