@@ -6,8 +6,8 @@ import { userFeedback } from "../ui/components/errors/userFeedback.js";
 import { search } from "../events/listners/onSearch.js";
 import { checkNavPagesBtns, updatePagination } from "../events/listners/pagination.js";
 
-const feedbackContainer = document.getElementById("feedbackContainer");
 const feed = document.getElementById("feed");
+const feedbackContainer = document.getElementById("feedbackContainer");
 const navPages = document.getElementById("navPages");
 const nxtBtn = document.getElementById("nxtBtn");
 const prvBtn = document.getElementById("prvBtn");
@@ -16,16 +16,18 @@ const uxElement = document.getElementById("uxElement");
 const searchElement = document.getElementById("searchElement");
 
 let page = 1;
-let feedbackMessage = "";
-
 const token = load("token");
 const profile = load("profile");
 
 export async function startFeed() {
-  const listingsByPage = await get("listingsByPage", page);
-  renderListings(listingsByPage, feed);
-  updatePagination(currentPage);
-  checkNavPagesBtns(currentPage);
+  try {
+    const listingsByPage = await get("listingsByPage", page);
+    renderListings(listingsByPage, feed);
+    updatePagination(currentPage);
+    checkNavPagesBtns(currentPage);
+  } catch (error) {
+    userFeedback(error, feedbackContainer);
+  }
 }
 
 export async function generateFeed() {
@@ -48,19 +50,20 @@ export function renderListings(listingsArray, container) {
   try {
     if (listingsArray.length === 0 || !listingsArray) {
       navPages.style.display = "none";
-      feedbackMessage = "there's no more listings in this search.";
-      userFeedback(feedbackMessage, feedbackContainer);
+      // checkNavPagesBtns(currentPage);
+      throw new Error("there's no more listings in this search.");
     } else {
       container.innerHTML = "";
       for (let i = 0; i < listingsArray.length; i++) {
         container.append(generate.listingTemplate(listingsArray[i], token));
       }
+      // checkNavPagesBtns(currentPage);
       uxElement.innerHTML = "";
       searchElement.style.display = "block";
       navPages.style.display = "block";
     }
   } catch (error) {
-    console.log(error);
+    userFeedback(error, feedbackContainer);
   }
 }
 
