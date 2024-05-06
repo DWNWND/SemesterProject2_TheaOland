@@ -21,7 +21,16 @@ export async function login(email, password) {
     const { accessToken, ...profile } = result.data;
     save("token", accessToken);
     save("profile", profile);
-    location.pathname = "/";
+
+    const pathname = window.location.pathname;
+    console.log(pathname);
+
+    if (pathname.toLowerCase().includes("/SemesterProject2_TheaOland/")) {
+      location.pathname = "/SemesterProject2_TheaOland/";
+    } else {
+      location.pathname = "/";
+    }
+
     return;
     // return profile;
   }
