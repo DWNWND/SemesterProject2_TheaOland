@@ -1,8 +1,8 @@
 async function router() {
   const pathname = window.location.pathname;
-  console.log(pathname);
+  console.log(pathname.toLowerCase());
 
-  if (pathname.toLowerCase().includes("/SemesterProject2_TheaOland/") || pathname === "/") {
+  if (pathname.toLowerCase().includes("/semesterproject2_theaoland/") || pathname === "/") {
     console.log("Home page/Feed");
     const feedRequest = "./routes/feed.js";
     const { generateFeed } = await import(feedRequest);
