@@ -21,7 +21,7 @@ async function router() {
     //   await generateFeed();
 
     //   break;
-    case "/auth/":
+    case "/auth/index.html":
       console.log("Login/Register page");
       // generateAuth()
 
