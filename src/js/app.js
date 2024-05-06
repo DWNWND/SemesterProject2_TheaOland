@@ -1,10 +1,12 @@
 async function router() {
   const pathname = window.location.pathname;
 
-  console.log(pathname);
+  const testPath = pathname.slice(pathname.lastIndexOf("/"));
+  console.log(testPath);
 
   switch (pathname) {
-    case "/SemesterProject2_TheaOland/":
+    // case "/SemesterProject2_TheaOland/":
+    case "/":
       console.log("Home page/Feed");
 
       const feedRequest = "./routes/feed.js";
@@ -21,7 +23,7 @@ async function router() {
     //   await generateFeed();
 
     //   break;
-    case "/auth/index.html":
+    case "/SemesterProject2_TheaOland/auth/index.html":
       console.log("Login/Register page");
       // generateAuth()
 
@@ -30,14 +32,14 @@ async function router() {
       await generateAuth();
 
       break;
-    case "/profile/":
+    case "/SemesterProject2_TheaOland/profile/index.html":
       console.log("Profile page");
       break;
 
-    case "/listing/":
+    case "/SemesterProject2_TheaOland/listing/index.html":
       console.log("Listing spesific page");
       break;
-    case "/edit/":
+    case "/SemesterProject2_TheaOland/edit/index.html":
       console.log("Edit/Publish listing page");
       break;
   }
