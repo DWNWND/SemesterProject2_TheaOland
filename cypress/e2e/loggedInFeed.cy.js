@@ -4,7 +4,7 @@ describe("logged in feed functionality", () => {
   beforeEach(() => {
     cy.login(testUrl, validEmail, validPassword);
     cy.wait("@login");
-    cy.wait(1000);
+    cy.wait(2000);
   });
   it("generates a dynamic feed when a user is logged in", () => {
     expect("#feed").not.to.be.empty;

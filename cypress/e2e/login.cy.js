@@ -3,7 +3,7 @@ import { testUrl, validEmail, validPassword, validUsername, invalidEmail, invali
 describe("login functionality", () => {
   beforeEach(() => {
     cy.visit(testUrl);
-    cy.wait(500);
+    cy.wait(1000);
     cy.get("#feed").should("be.visible");
   });
 
@@ -12,7 +12,7 @@ describe("login functionality", () => {
     cy.get("#loginForm").should("be.visible");
     cy.loginWithCredentials(invalidEmail, invalidPassword);
     cy.wait("@loginWithCredentials").its("response.statusCode").should("eq", 401);
-
+    cy.wait(1000);
     //ADD EXPECTED ERRORMESSAGE HERE LATER
     cy.get("#userFeedback").should("not.be.empty");
   });
