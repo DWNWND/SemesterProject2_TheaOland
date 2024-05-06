@@ -1,10 +1,10 @@
-import { get } from "../api/requests/get.js";
+import { get, currentPage } from "../api/requests/get.js";
 import { navigatePages } from "../events/listners/navPages.js";
 import { load } from "../storage/load.js";
 import * as generate from "../templates/index.js";
 import { userFeedback } from "../ui/components/errors/userFeedback.js";
 import { search } from "../events/listners/onSearch.js";
-import { totalPages, currentPage } from "../api/requests/get.js";
+import { updatePagination } from "../events/listners/pagination.js";
 
 const feedbackContainer = document.getElementById("feedbackContainer");
 const feed = document.getElementById("feed");
@@ -24,8 +24,7 @@ const profile = load("profile");
 export async function startFeed() {
   const listingsByPage = await get("listingsByPage", page);
   renderListings(listingsByPage, feed);
-  console.log("total pages count:", totalPages);
-  console.log("current page:", currentPage);
+  updatePagination(currentPage);
 }
 
 export async function generateFeed() {

@@ -1,6 +1,7 @@
 import { renderListings, startFeed } from "../../routes/feed.js";
 import { userFeedback } from "../../ui/components/errors/userFeedback.js";
-import { get } from "../../api/requests/get.js";
+import { get, currentPage } from "../../api/requests/get.js";
+import { updatePagination } from "./pagination.js";
 
 let query;
 let page = 1;
@@ -16,10 +17,12 @@ export async function search() {
       const listingsBySearch = await get("listingsBySearch", page, query);
       if (listingsBySearch.length >= 0) {
         renderListings(listingsBySearch, feed);
+        updatePagination(currentPage);
         feedbackMessage = "";
       }
       if (listingsBySearch.length === 0) {
         feedbackMessage = "there's no listings matching this search.";
+        updatePagination(0);
         feed.innerHTML = "";
       }
       userFeedback(feedbackMessage, feedbackContainer);

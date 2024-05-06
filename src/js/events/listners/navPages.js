@@ -1,6 +1,7 @@
 import { renderListings } from "../../routes/feed.js";
 import { get } from "../../api/requests/get.js";
-import { totalPages, currentPage } from "../../api/requests/get.js";
+import { totalPages } from "../../api/requests/get.js";
+import { updatePagination } from "./pagination.js";
 
 const feed = document.getElementById("feed");
 let page = 1;
@@ -11,8 +12,7 @@ export function navigatePages(nxtbtn, prvbtn) {
     const query = searchInput.value;
     page++;
 
-    console.log("total pages count:", totalPages);
-    console.log("current page:", page);
+    updatePagination(page);
 
     if (!query || query === "") {
       const listings = await get("listingsByPage", page);
@@ -29,8 +29,7 @@ export function navigatePages(nxtbtn, prvbtn) {
     const query = searchInput.value;
     page--;
 
-    console.log("total pages count:", totalPages);
-    console.log("current page:", page);
+    updatePagination(page);
 
     if (!query) {
       const listings = await get("listingsByPage", page);
