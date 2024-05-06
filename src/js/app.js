@@ -1,56 +1,34 @@
 async function router() {
   const pathname = window.location.pathname;
+  console.log(pathname);
 
-  //for the local version:
-  // const route = pathname.split("/")[1];
-
-  //for the deployed site:
-  const route = pathname.split("/")[2];
-
-  console.log(route);
-
-  switch (route) {
-    // case "/SemesterProject2_TheaOland/":
-    case "":
-      console.log("Home page/Feed");
-
-      const feedRequest = "./routes/feed.js";
-      const { generateFeed } = await import(feedRequest);
-      await generateFeed();
-
-      break;
-
-    // case "/index.html":
-    //   console.log("Home page/Feed");
-
-    //   const feedRequest = "./routes/feed.js";
-    //   const { generateFeed } = await import(feedRequest);
-    //   await generateFeed();
-
-    //   break;
-    case "auth":
-      console.log("Login/Register page");
-      // generateAuth()
-
-      const authRequest = "./routes/auth.js";
-      const { generateAuth } = await import(authRequest);
-      await generateAuth();
-
-      break;
-    case "profile":
-      console.log("Profile page");
-      break;
-
-    case "listing":
-      console.log("Listing spesific page");
-      break;
-    case "edit":
-      console.log("Edit/Publish listing page");
-      break;
+  if (pathname.toLowerCase().includes("/SemesterProject2_TheaOland/") || pathname === "/") {
+    console.log("Home page/Feed");
+    const feedRequest = "./routes/feed.js";
+    const { generateFeed } = await import(feedRequest);
+    await generateFeed();
+    return;
+  }
+  if (pathname.toLowerCase().includes("/auth/")) {
+    console.log("Login/Register page");
+    const authRequest = "./routes/auth.js";
+    const { generateAuth } = await import(authRequest);
+    await generateAuth();
+    return;
+  }
+  if (pathname.toLowerCase().includes("/listing/")) {
+    console.log("Listing spesific page");
+    return;
+  }
+  if (pathname.toLowerCase().includes("/profile/")) {
+    console.log("Profile page");
+    return;
+  }
+  if (pathname.toLowerCase().includes("/edit/")) {
+    console.log("Edit/Publish listing page");
+    return;
+  } else {
+    throw new Error("Pathname is not defined according to the router function. Pathname: ", pathname);
   }
 }
-
 router();
-
-// import { generateFeed } from "./routes/feed.mjs";
-// await generateFeed();
