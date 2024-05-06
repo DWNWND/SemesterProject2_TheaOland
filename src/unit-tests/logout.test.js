@@ -10,6 +10,7 @@ global.localStorage = localStorageMock;
 describe("logout function", () => {
   it("tests", () => {});
   it("clears the token from browser storage if triggered", () => {
+    expect.assertions(1);
     //Assertion
     logout();
     expect(localStorage.removeItem).toHaveBeenCalledWith("token");

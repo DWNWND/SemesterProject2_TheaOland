@@ -47,6 +47,8 @@ global.localStorage = localStorageMock;
 
 describe("login function", () => {
   it("stores a token when provided with valid credentials", async () => {
+    expect.assertions(3);
+
     global.fetch = mockFetchSuccess;
     await login("validEmail", "validPassword");
 
@@ -57,7 +59,7 @@ describe("login function", () => {
   });
   it("throws an error when calling login with invalid credentials", async () => {
     global.fetch = mockFetchFailure;
-
+    expect.assertions(1);
     // Assertions
     await expect(login("invalidEmail", "invalidPassword")).rejects.toThrow("Email and/or password does not match.");
   });
