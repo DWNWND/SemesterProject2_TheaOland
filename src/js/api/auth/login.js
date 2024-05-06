@@ -25,7 +25,7 @@ export async function login(email, password) {
     const pathname = window.location.pathname;
     console.log(pathname);
 
-    if (pathname.toLowerCase().includes("/SemesterProject2_TheaOland/")) {
+    if (pathname.toLowerCase().includes("/semesterproject2_theaoland/")) {
       location.pathname = "/SemesterProject2_TheaOland/";
     } else {
       location.pathname = "/";
