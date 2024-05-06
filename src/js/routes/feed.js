@@ -4,7 +4,7 @@ import { load } from "../storage/load.js";
 import * as generate from "../templates/index.js";
 import { userFeedback } from "../ui/components/errors/userFeedback.js";
 import { search } from "../events/listners/onSearch.js";
-import { updatePagination } from "../events/listners/pagination.js";
+import { checkNavPagesBtns, updatePagination } from "../events/listners/pagination.js";
 
 const feedbackContainer = document.getElementById("feedbackContainer");
 const feed = document.getElementById("feed");
@@ -25,6 +25,7 @@ export async function startFeed() {
   const listingsByPage = await get("listingsByPage", page);
   renderListings(listingsByPage, feed);
   updatePagination(currentPage);
+  checkNavPagesBtns(currentPage);
 }
 
 export async function generateFeed() {
