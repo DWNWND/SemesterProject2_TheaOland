@@ -45,7 +45,12 @@ function generateNav(username) {
 
   //LOGOUT BTN
   const logoutLink = document.createElement("a");
-  logoutLink.setAttribute("href", "/");
+
+  if (pathname.toLowerCase().includes("/semesterproject2_theaoland/")) {
+    logoutLink.setAttribute("href", "/SemesterProject2_TheaOland/");
+  } else {
+    logoutLink.setAttribute("href", "/");
+  }
   const logoutBtn = document.createElement("button");
   logoutBtn.classList.add("btn-local", "btn-height-s", "btn-width-xs", "btn-white-black", "btn-fontsize-l", "lowercase");
   logoutBtn.setAttribute("id", "logoutBtn");
