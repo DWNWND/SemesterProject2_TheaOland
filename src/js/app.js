@@ -4,7 +4,7 @@ async function router() {
   console.log(pathname);
 
   switch (pathname) {
-    case "/":
+    case "/SemesterProject2_TheaOland/":
       console.log("Home page/Feed");
 
       const feedRequest = "./routes/feed.js";
