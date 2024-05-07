@@ -24,6 +24,9 @@ async function router() {
   }
   if (pathname.toLowerCase().includes("/profile/")) {
     console.log("Pathname: ", pathname, ", Location: Profile page");
+    const profileRequest = "./routes/profile.js";
+    const { generateUserProfile } = await import(profileRequest);
+    await generateUserProfile();
     return;
   }
   if (pathname.toLowerCase().includes("/edit/")) {
