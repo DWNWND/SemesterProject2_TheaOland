@@ -34,10 +34,10 @@ export function listingTemplate(listingData, userIsLoggedIn) {
     }
   }
   //REMOVED THE MEDIA CHECK BECAUSE THE API ADDS A BASIC PLACEHOLDER IMG
-  // if (listingMedia === 0) {
-  //   mainImg.src = "src/img/placeholder.png";
-  //   mainImg.alt = "Placeholder image. The user have not uploaded any images for this listing.";
-  // }
+  if (listingMedia === 0) {
+    mainImg.src = "src/img/placeholder.jpg";
+    mainImg.alt = "Placeholder image. The user have not uploaded any images for this listing.";
+  }
 
   const titleContainer = document.createElement("div");
   titleContainer.classList.add("d-flex", "align-items-center", "justify-content-center", "title-container");
