@@ -197,6 +197,18 @@ p,
   width: 100%;
 }
 
+.smallText {
+  font-size: 0.7rem;
+}
+
+.mediumText {
+  font-size: 0.9rem;
+}
+
+.sum {
+  width: 50px;
+}
+
 @media (min-width: 233px) {
   .listing {
     min-width: 130px;
