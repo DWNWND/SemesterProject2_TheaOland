@@ -1,3 +1,4 @@
+import { coundownTimer } from "../events/listners/countdownTimer.js";
 const pathname = window.location.pathname;
 
 // ALL LISTINGS TEMPLATE
@@ -5,17 +6,18 @@ export function listingTemplate(listingData, userIsLoggedIn) {
   const listingMedia = listingData.media.length;
   const listingTitle = listingData.title;
   const listingBids = listingData.bids.length;
+  const listingID = listingData.id;
   //Inspired by: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
   const listingEndsAt = new Date(listingData.endsAt);
   // const listingEndsAtDate = listingEndsAt.toLocaleDateString(); //NOTE: consider adding this or adjust design
-  const listingEndsAtTime = listingEndsAt.toLocaleTimeString();
+  // const listingEndsAtTime = listingEndsAt.toLocaleTimeString();
 
   const col = document.createElement("div");
   col.classList.add("col");
 
   const listing = document.createElement("div");
   listing.classList.add("listing", "glassmorphism");
-  listing.setAttribute("id", "listing");
+  listing.setAttribute("id", listingID);
 
   const mainImg = document.createElement("img");
   mainImg.classList.add("object-fit-cover", "main-listing-img");
@@ -66,7 +68,8 @@ export function listingTemplate(listingData, userIsLoggedIn) {
 
   const bidTimer = document.createElement("div");
   bidTimer.classList.add("timer");
-  bidTimer.innerText = listingEndsAtTime;
+
+  coundownTimer(listingEndsAt, bidTimer);
 
   //LISTINGS DISPLAYED PUBLICLY (NOT LOGGED IN)
   if (!userIsLoggedIn) {
@@ -80,14 +83,18 @@ export function listingTemplate(listingData, userIsLoggedIn) {
     const listingFooter = document.createElement("div");
     listingFooter.classList.add("listing-footer", "d-flex", "flex-column", "gap-2");
 
+    const viewListingLink = document.createElement("a");
+    viewListingLink.setAttribute("href", `./listing/index.html?key=${listingID}`);
+
     const viewListingBtn = document.createElement("button");
     viewListingBtn.classList.add("btn-local", "btn-height-s", "btn-width-100", "btn-white-black", "btn-fontsize-m", "uppercase");
-    viewListingBtn.setAttribute("href", "#");
     viewListingBtn.setAttribute("id", "viewListingBtn");
     viewListingBtn.innerText = "View";
 
+    viewListingLink.append(viewListingBtn);
+
     bidContainer.append(currentBid, bidTimer);
-    listingFooter.append(bidContainer, viewListingBtn);
+    listingFooter.append(bidContainer, viewListingLink);
     listing.append(mainImg, titleContainer, listingFooter);
     col.append(listing);
 

@@ -17,6 +17,9 @@ async function router() {
   }
   if (pathname.toLowerCase().includes("/listing/")) {
     console.log("Pathname: ", pathname, ", Location: Listing spesific page");
+    const listingRequest = "./routes/listing.js";
+    const { generateListingSpesific } = await import(listingRequest);
+    await generateListingSpesific();
     return;
   }
   if (pathname.toLowerCase().includes("/profile/")) {

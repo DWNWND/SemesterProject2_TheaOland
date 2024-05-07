@@ -78,7 +78,7 @@ export async function get(request, param, sparam = "") {
     return result;
   }
   if (request === "singleListing") {
-    url = API_LISTINGS + `${param}`;
+    url = API_LISTINGS + `${param}?_bids=true&_seller=true`;
     result = await getData(url);
     console.log(request, "- listing-id: ", param, result);
     return result;

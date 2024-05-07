@@ -31,13 +31,24 @@ export function navTemplate(username) {
   newlistingBtn.innerText = "Add new listing";
   newlistingLink.append(newlistingBtn);
 
+  //HOMEFEED BTN
+  const homeLink = document.createElement("a");
+  homeLink.setAttribute("href", "./edit/index.html");
+  const homeBtn = document.createElement("button");
+  homeBtn.classList.add("btn-local", "btn-height-l", "btn-width-l", "btn-orange", "btn-fontsize-l", "extra-bold", "uppercase");
+  homeBtn.setAttribute("id", "newlistingBtn");
+  homeBtn.innerText = "Home";
+  homeLink.append(homeBtn);
+
   //LOGOUT BTN
   const logoutLink = document.createElement("a");
 
   if (pathname.toLowerCase().includes("/semesterproject2_theaoland/")) {
     logoutLink.setAttribute("href", "/SemesterProject2_TheaOland/");
+    homeLink.setAttribute("href", "/SemesterProject2_TheaOland/");
   } else {
     logoutLink.setAttribute("href", "/");
+    homeLink.setAttribute("href", "/");
   }
   const logoutBtn = document.createElement("button");
   logoutBtn.classList.add("btn-local", "btn-height-s", "btn-width-xs", "btn-white-black", "btn-fontsize-l", "lowercase");
@@ -51,8 +62,11 @@ export function navTemplate(username) {
   if (!token) {
     nav.append(loginLink);
   }
-  if ((token && (pathname === "/" || pathname.toLowerCase() === "/semesterproject2_theaoland/")) || (token && pathname.includes("listing"))) {
+  if (token && (pathname === "/" || pathname.toLowerCase() === "/semesterproject2_theaoland/")) {
     nav.append(newlistingLink, usernameLink, logoutLink);
+  }
+  if (token && pathname.includes("listing")) {
+    nav.append(newlistingLink, usernameLink, homeLink);
   }
   if (token && pathname.includes("profile")) {
     nav.append(newlistingLink, logoutLink);

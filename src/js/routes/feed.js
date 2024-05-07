@@ -66,8 +66,3 @@ export function renderListings(listingsArray, container) {
     userFeedback(error, feedbackContainer);
   }
 }
-
-//ONE LISTING - NOT IN USE YET
-// export function renderSingleListing(listing, container) {
-//   container.append(listingSomething(listing));
-// }
