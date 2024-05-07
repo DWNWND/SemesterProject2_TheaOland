@@ -1,19 +1,12 @@
 import { callApiWith } from "../apiCall.js";
 import { API_LISTINGS, API_PROFILES } from "../../constants/index.js";
-import { userFeedback } from "../../ui/components/errors/userFeedback.js";
-
-// let page = 1;
 
 export let totalPages = 0;
 export let currentPage = 0;
-
-// const errorMessage = "We are having some trouble with our servers, please wait and try again later";
-// const loadMoreBtn = document.getElementById("loadMore");
-// const loader = document.getElementById("loader");
+const navPages = document.getElementById("navPages");
+const loader = document.getElementById("loader");
 
 export async function getData(url) {
-  // const errorContainer = document.getElementById("userFeedback");
-
   const response = await callApiWith(url);
   if (response.ok) {
     const result = await response.json();
@@ -22,9 +15,8 @@ export async function getData(url) {
     const data = result.data;
     return data;
   } else if (!response.ok) {
-    // loader.style.display = "none";
-    // loadMoreBtn.style.display = "none";
-    // userFeedback(errorMessage, errorContainer);
+    loader.style.display = "none";
+    navPages.style.display = "none";
     throw new Error("couldn't fetch from api");
   }
 }
