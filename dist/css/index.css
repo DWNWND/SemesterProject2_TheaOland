@@ -285,7 +285,7 @@ p,
   .auction-item {
     max-width: 1000px;
   }
-  .auction-item .details {
+  .auction-item-details {
     width: 50%;
   }
   .auction-item .bids {

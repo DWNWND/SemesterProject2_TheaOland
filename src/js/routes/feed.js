@@ -48,21 +48,16 @@ export async function generateFeed() {
 
 //ARRAY OF LISTINGS (USING LISTING TEMPLATE)
 export function renderListings(listingsArray, container) {
-  try {
-    if (listingsArray.length === 0 || !listingsArray) {
-      navPages.style.display = "none";
-      throw new Error("there's no more listings in this search.");
-    } else {
-      container.innerHTML = "";
-      for (let i = 0; i < listingsArray.length; i++) {
-        container.append(generate.listingTemplate(listingsArray[i], token));
-      }
-      uxElement.innerHTML = "";
-      searchElement.style.display = "block";
-      navPages.style.display = "block";
+  if (listingsArray.length === 0 || !listingsArray) {
+    navPages.style.display = "none";
+    throw new Error("there's no more listings in this search.");
+  } else {
+    container.innerHTML = "";
+    for (let i = 0; i < listingsArray.length; i++) {
+      container.append(generate.listingTemplate(listingsArray[i], token));
     }
-  } catch (error) {
-    console.log(error);
-    userFeedback(error, feedbackContainer);
+    uxElement.innerHTML = "";
+    searchElement.style.display = "block";
+    navPages.style.display = "block";
   }
 }
