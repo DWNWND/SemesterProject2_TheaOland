@@ -1,18 +1,18 @@
-import { renderListings } from "../../routes/feed.js";
 import { get } from "../../api/requests/get.js";
-import { updatePagination, checkNavPagesBtns } from "./pagination.js";
+import { renderListings } from "../../routes/feed.js";
+import { search } from "./onSearch.js";
+import { updateCurrentPageDisplay, updatePaginationBtns } from "./pagination.js";
 
 const feed = document.getElementById("feed");
+const searchInput = document.getElementById("searchbar");
+const query = searchInput.value;
 let page = 1;
 
-export function navigatePages(nxtbtn, prvbtn) {
+export function listenForPageTurn(nxtbtn, prvbtn) {
   nxtbtn.addEventListener("click", async () => {
-    const searchInput = document.getElementById("searchbar");
-    const query = searchInput.value;
     page++;
-
-    updatePagination(page);
-    checkNavPagesBtns(page);
+    updateCurrentPageDisplay(page);
+    updatePaginationBtns(nxtbtn, prvbtn, page);
 
     if (!query || query === "") {
       const listings = await get("listingsByPage", page);
@@ -25,14 +25,11 @@ export function navigatePages(nxtbtn, prvbtn) {
     window.scrollTo(0, 0);
   });
   prvbtn.addEventListener("click", async () => {
-    const searchInput = document.getElementById("searchbar");
-    const query = searchInput.value;
     page--;
+    updateCurrentPageDisplay(page);
+    updatePaginationBtns(nxtbtn, prvbtn, page);
 
-    updatePagination(page);
-    checkNavPagesBtns(page);
-
-    if (!query) {
+    if (!query || query === "") {
       const listings = await get("listingsByPage", page);
       renderListings(listings, feed);
     }
@@ -41,5 +38,13 @@ export function navigatePages(nxtbtn, prvbtn) {
       renderListings(listings, feed);
     }
     window.scrollTo(0, 0);
+  });
+}
+
+export async function listenForSearch() {
+  searchInput.addEventListener("input", async () => {
+    page = 1;
+    updateCurrentPageDisplay(page);
+    search(page);
   });
 }
