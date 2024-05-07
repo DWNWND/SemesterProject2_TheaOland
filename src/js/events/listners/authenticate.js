@@ -2,7 +2,6 @@ import { register, login } from "../../api/auth/index.js";
 import { validateInput, validateRepeatPassword } from "./formValidation.js";
 import { userFeedback } from "../../ui/components/errors/userFeedback.js";
 
-let errorMessage;
 const errorContainer = document.getElementById("userFeedback");
 
 export async function loginAuth(event) {
@@ -10,12 +9,14 @@ export async function loginAuth(event) {
   const email = event.target.loginEmail.value;
   const password = event.target.loginPassword.value;
 
-  if (email && password) {
-    await login(email, password);
-  } else if (!email || !password) {
-    errorMessage = "Please fill in both email and password to log in.";
-    userFeedback(errorMessage, errorContainer);
-    throw new Error("Please fill in both email and password to log in.");
+  try {
+    if (email && password) {
+      await login(email, password);
+    } else if (!email || !password) {
+      throw new Error("Please fill in both email and password to log in.");
+    }
+  } catch (error) {
+    userFeedback(error, errorContainer);
   }
 }
 
@@ -32,12 +33,14 @@ export async function registerAuth(event) {
   const validPassword = validateInput("password", "passwordHelpBlock", firstPassword, 8, 20);
   const validRepeatPassword = validateRepeatPassword(firstPassword, passwordRepeat);
 
-  if (username && email && firstPassword && passwordRepeat && validEmail && validUsername && validPassword && validRepeatPassword) {
-    await register(username, email, firstPassword);
-  } else if (!username || !email || !firstPassword || !passwordRepeat || !validEmail || !validUsername || !validPassword || !validRepeatPassword) {
-    errorMessage = "Please fill in all the registration fields according to registration criteria.";
-    userFeedback(errorMessage, errorContainer);
-    throw new Error("Please fill in all the registration fields according to registration criteria.");
+  try {
+    if (username && email && firstPassword && passwordRepeat && validEmail && validUsername && validPassword && validRepeatPassword) {
+      await register(username, email, firstPassword);
+    } else if (!username || !email || !firstPassword || !passwordRepeat || !validEmail || !validUsername || !validPassword || !validRepeatPassword) {
+      throw new Error("Please fill in all the registration fields according to registration criteria.");
+    }
+  } catch (error) {
+    userFeedback(error, errorContainer);
   }
 }
 
