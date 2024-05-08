@@ -29,7 +29,7 @@ export function navTemplate(username) {
   newlistingLink.setAttribute("href", "/edit/index.html");
   newlistingLink.classList.add("w-100");
   const newlistingBtn = document.createElement("button");
-  newlistingBtn.classList.add("btn-local", "btn-height-l", "w-100", "btn-width-l", "ps-3", "pe-3", "btn-orange", "btn-fontsize-l", "extra-bold", "uppercase");
+  newlistingBtn.classList.add("btn-local", "btn-height-l", "w-100", "btn-width-l", "ps-3", "pe-3", "btn-purple", "btn-fontsize-l", "extra-bold", "uppercase");
   newlistingBtn.setAttribute("id", "newlistingBtn");
   newlistingBtn.innerText = "Add new listing";
   newlistingLink.append(newlistingBtn);
@@ -76,5 +76,8 @@ export function navTemplate(username) {
   }
   if (token && pathname.includes("edit")) {
     nav.append(usernameLink, homeLink);
+  }
+  if (token && pathname.includes("allListings")) {
+    nav.append(homeLink, newlistingLink, usernameLink);
   }
 }
