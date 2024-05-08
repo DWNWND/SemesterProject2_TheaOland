@@ -13,6 +13,7 @@ const nxtBtn = document.getElementById("nxtBtn");
 const prvBtn = document.getElementById("prvBtn");
 const uxElement = document.getElementById("uxElement");
 const searchElement = document.getElementById("searchElement");
+const pagination = document.getElementById("paginationElement");
 
 let page = 1;
 const token = load("token");
@@ -21,7 +22,7 @@ const profile = load("profile");
 export async function startFeed() {
   try {
     const listingsByPage = await get("listingsByPage", page);
-    renderListings(listingsByPage, feed);
+    renderListings(listingsByPage, feed, token);
     updateTotalPageDisplay();
     updateCurrentPageDisplay(page);
     updatePaginationBtns(nxtBtn, prvBtn, page);
@@ -46,8 +47,10 @@ export async function generateFeed() {
   listenForPageTurn(nxtBtn, prvBtn);
 }
 
+const pathname = window.location.pathname;
+
 //ARRAY OF LISTINGS (USING LISTING TEMPLATE)
-export function renderListings(listingsArray, container) {
+export function renderListings(listingsArray, container, token) {
   if (listingsArray.length === 0 || !listingsArray) {
     navPages.style.display = "none";
     throw new Error("there's no more listings in this search.");
@@ -57,7 +60,11 @@ export function renderListings(listingsArray, container) {
       container.append(generate.listingTemplate(listingsArray[i], token));
     }
     uxElement.innerHTML = "";
-    searchElement.style.display = "block";
     navPages.style.display = "block";
+    pagination.style.display = "block";
+
+    if (pathname.includes("feed")) {
+      searchElement.style.display = "block";
+    }
   }
 }
