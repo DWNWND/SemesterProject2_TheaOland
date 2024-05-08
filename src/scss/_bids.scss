@@ -18,7 +18,9 @@
 .timer {
   color: $white;
   padding: 0.5rem;
-  width: 100%;
+
+  width: 120px;
+
   font-size: 0.8rem;
   align-self: center;
   text-align: center;
@@ -41,11 +43,11 @@
     display: block;
   }
   .current-bid {
-    width: 55%;
+    // width: 55%;
     padding: 0.2rem;
   }
   .timer {
-    width: 45%;
+    width: 120px;
     padding: 0.2rem;
   }
 }

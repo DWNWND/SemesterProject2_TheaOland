@@ -50,7 +50,7 @@ export function listingTemplate(listingData, userIsLoggedIn) {
   titleContainer.append(title);
 
   const bidContainer = document.createElement("div");
-  bidContainer.classList.add("pill", "d-flex", "flex-column", "flex-xl-row", "justify-content-between", "semi-bold");
+  bidContainer.classList.add("pill", "d-flex", "flex-column", "justify-content-between", "semi-bold");
 
   const currentBid = document.createElement("div");
   currentBid.classList.add("current-bid");
