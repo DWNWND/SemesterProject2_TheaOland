@@ -49,7 +49,7 @@ export async function get(request, param, sparam = "") {
     return result;
   }
   if (request === "listingsByProfile") {
-    url = API_PROFILES + `${param}/listings`;
+    url = API_PROFILES + `${param}/listings?_bids=true`;
     result = await getData(url);
     console.log(request, "- username: ", param, result);
     return result;
