@@ -3,10 +3,12 @@ import { load } from "../storage/index.js";
 import { publishListing } from "../api/requests/post.js";
 import { populateEditForm } from "../events/listners/populateEditForm.js";
 import { updateListing } from "../api/requests/update.js";
+import { deleteListing } from "../api/requests/delete.js";
 
 let img = 1;
 const imageUpload = document.getElementById("imageUpload");
 const addImgsBtn = document.getElementById("addImgsBtn");
+const deleteBtn = document.getElementById("deleteBtn");
 const profile = load("profile");
 const username = profile.name;
 
@@ -20,6 +22,7 @@ export async function generateEdit() {
     navTemplate(username);
     addMoreImages(addImgsBtn);
     if (listingID) {
+      deleteBtn.style.display = "block";
       const requestListing = "../api/requests/get.js";
       const { get } = await import(requestListing);
       const listing = await get("singleListing", listingID);
@@ -28,11 +31,12 @@ export async function generateEdit() {
         const deadlineInput = document.getElementById("deadlineInput");
         deadlineInput.required;
       }
-
       populateEditForm(listing);
       updateEditedListing(listingID);
+      listenForDeleteRequest();
     }
     if (!listingID) {
+      deleteBtn.style.display = "none";
       publishNewListing();
     }
   } catch (error) {
@@ -122,6 +126,13 @@ export function generateImgInputs(url = "", alt = "") {
 
   imageFields.append(imgLabel, removeBtn, formUrlFloating, formAltFloating);
   imageUpload.append(imageFields);
+}
+
+function listenForDeleteRequest() {
+  const deleteBtn = document.getElementById("deleteBtn");
+  deleteBtn.addEventListener("click", () => {
+    deleteListing(listingID);
+  });
 }
 
 async function publishNewListing() {
