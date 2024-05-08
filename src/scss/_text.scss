@@ -59,6 +59,10 @@ p,
   text-decoration: underline;
 }
 
+.no-decoration {
+  text-decoration: none;
+}
+
 .error {
   color: $dark-red;
 }

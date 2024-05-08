@@ -8,8 +8,8 @@
 }
 .current-bid {
   background-color: $light-purple;
-  width: 55%;
-  padding: 0.2rem;
+  width: 100%;
+  padding: 0.5rem;
   border-radius: 21px;
   font-size: 0.875rem;
   text-align: center;
@@ -17,9 +17,9 @@
 }
 .timer {
   color: $white;
-  padding: 0.2rem;
-  width: 45%;
-  font-size: 0.625rem;
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 0.8rem;
   align-self: center;
   text-align: center;
 }
@@ -34,5 +34,18 @@
 @media (min-width: $breakpoint-phone) {
   .username {
     display: block;
+  }
+}
+@media (min-width: $breakpoint-desktop) {
+  .username {
+    display: block;
+  }
+  .current-bid {
+    width: 55%;
+    padding: 0.2rem;
+  }
+  .timer {
+    width: 45%;
+    padding: 0.2rem;
   }
 }
