@@ -1,9 +1,12 @@
 import { listingTemplate } from "./listings.js";
+import { load } from "../storage/load.js";
 const uxElement = document.getElementById("uxElement");
+
+const token = load("token");
 
 export function profileTemplate(userProfile) {
   const profileElement = document.createElement("div");
-  profileElement.classList.add("user-profile", "text-center", "text-red", "glassmorphism");
+  profileElement.classList.add("user-profile", "vh-75", "text-center", "text-red", "glassmorphism");
 
   const avatarContainer = document.createElement("div");
   avatarContainer.classList.add("p-4", "d-flex", "justify-content-center");
@@ -45,7 +48,7 @@ export function renderProfileListings(listingsArray, container) {
   } else {
     container.innerHTML = "";
     for (let i = 0; i < listingsArray.length; i++) {
-      container.append(listingTemplate(listingsArray[i]));
+      container.append(listingTemplate(listingsArray[i], token));
     }
     uxElement.innerHTML = "";
   }
