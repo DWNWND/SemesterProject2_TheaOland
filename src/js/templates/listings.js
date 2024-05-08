@@ -50,7 +50,7 @@ export function listingTemplate(listingData, userIsLoggedIn) {
   titleContainer.append(title);
 
   const bidContainer = document.createElement("div");
-  bidContainer.classList.add("pill", "d-flex", "justify-content-between", "semi-bold", "bg-orange");
+  bidContainer.classList.add("pill", "d-flex", "flex-column", "flex-xl-row", "justify-content-between", "semi-bold");
 
   const currentBid = document.createElement("div");
   currentBid.classList.add("current-bid");
@@ -84,7 +84,7 @@ export function listingTemplate(listingData, userIsLoggedIn) {
     listingFooter.classList.add("listing-footer", "d-flex", "flex-column", "gap-2");
 
     const viewListingLink = document.createElement("a");
-    viewListingLink.setAttribute("href", `./listing/index.html?key=${listingID}`);
+    viewListingLink.setAttribute("href", `/listing/index.html?key=${listingID}`);
 
     const viewListingBtn = document.createElement("button");
     viewListingBtn.classList.add("btn-local", "btn-height-s", "btn-width-100", "btn-white-black", "btn-fontsize-m", "uppercase");
@@ -99,13 +99,17 @@ export function listingTemplate(listingData, userIsLoggedIn) {
     col.append(listing);
 
     //LISTINGS BY USER SPESIFIC
-    if (pathname.includes("user")) {
+    if (pathname.includes("profile")) {
+      const editListingLink = document.createElement("a");
+      editListingLink.setAttribute("href", `/edit/index.html?key=${listingID}`);
+
       const editListingBtn = document.createElement("button");
       editListingBtn.classList.add("btn-local", "btn-height-s", "btn-width-100", "btn-white-black", "btn-fontsize-m", "uppercase");
       editListingBtn.setAttribute("href", "#");
       editListingBtn.innerText = "Edit";
+      editListingLink.append(editListingBtn);
 
-      listingFooter.append(editListingBtn);
+      listingFooter.append(editListingLink);
     }
   }
   return col;
