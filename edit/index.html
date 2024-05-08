@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../src/js/app.js" defer type="module"></script>
+    <title>Auction House</title>
+    <meta name="description" content="The Auction House login/register page." />
+    <!-- update the description later -->
+    <link rel="icon" href="" />
+    <!-- update the favicon later -->
+    <link rel="stylesheet" href="../dist/css/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet" />
+  </head>
+  <body class="container">
+    <header class="text-center d-flex flex-column flex-xl-row justify-content-xl-between gap-4 p-3 mb-3">
+      <div class="logo-container">
+        <a href="/"><img src="../src/img/logo_oneline.svg" alt="" class="img-fluid" /></a>
+      </div>
+      <nav id="nav" class="justify-content-center align-items-center d-flex flex-column flex-md-row gap-2"></nav>
+    </header>
+    <main>
+      <div class="container">
+        <div class="new-listing-form">
+          <form id="newListing" class="d-flex flex-column gap-5">
+            <div class="d-flex flex-column gap-2">
+              <h1 class="heading-1 text-red">Listing Details</h1>
+              <div class="form-floating">
+                <input title="" type="text" class="form-control" id="new-listing-title" name="title" required />
+                <label for="new-listing-title" class="new-listing-form-labels uppercase semi-bold text-grayish-purple">Title</label>
+              </div>
+              <div class="form-floating">
+                <input type="text" class="form-control" id="new-listing-description" name="description" required />
+                <label for="new-listing-description" class="new-listing-form-labels uppercase semi-bold text-grayish-purple">Description</label>
+              </div>
+              <div class="d-flex flex-column flex-md-row">
+                <label for="new-listing-auction-deadline" class="new-listing-form-labels uppercase extra-bold text-grayish-purple">Set auction deadline</label>
+                <input type="datetime-local" class="form-control new-listing-auction-deadline" id="new-listing-auction-deadline" name="endsAt" required />
+              </div>
+            </div>
+            <div id="listingMedia" class="d-flex flex-column gap-2">
+              <h1 class="heading-1 text-red">Listing Media</h1>
+              <label for="media-uploads" class="new-listing-form-labels uppercase extra-bold text-grayish-purple">Paste the url of the images(max 4)</label>
+              <div id="imageUpload" class="d-flex flex-column gap-2">
+                <fieldset id="image" class="d-flex flex-column gap-1 p-1 bg-grayish-purple" name="media">
+                  <input type="url" id="media-uploads" name="url" class="form-control" placeholder="image url" required />
+                  <input type="text" id="altText" name="alt" class="form-control" placeholder="image description" maxlength="120" required />
+                </fieldset>
+              </div>
+              <button id="addImgsBtn" class="btn-local btn-white-red p-1">Add more images</button>
+            </div>
+            <button type="submit" for="new-listing" class="btn-local btn-height-l btn-purple btn-fontsize-l extra-bold uppercase">Publish</button>
+          </form>
+          <div id="uxElement" class="d-flex flex-column align-items-center">
+            <div id="userFeedback" class="pb-3 pt-3"></div>
+            <!-- <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span> -->
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
