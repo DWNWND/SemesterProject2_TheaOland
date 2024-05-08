@@ -99,7 +99,7 @@ export function listingTemplate(listingData, userIsLoggedIn) {
     col.append(listing);
 
     //LISTINGS BY USER SPESIFIC
-    if (pathname.includes("profile")) {
+    if (pathname.includes("profile") || pathname.includes("allListings")) {
       const editListingLink = document.createElement("a");
       editListingLink.setAttribute("href", `/edit/index.html?key=${listingID}`);
 
