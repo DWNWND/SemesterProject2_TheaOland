@@ -31,6 +31,10 @@ async function router() {
   }
   if (pathname.toLowerCase().includes("/edit/")) {
     console.log("Pathname: ", pathname, ", Location: Edit/Publish listing page");
+    const editRequest = "./routes/edit.js";
+    const { generateEdit } = await import(editRequest);
+    await generateEdit();
+
     return;
   } else {
     throw new Error("Pathname is not defined according to the router function. Pathname: ", pathname);
