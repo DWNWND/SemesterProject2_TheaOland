@@ -1,26 +1,35 @@
 import { callApiWith } from "../apiCall.js";
 import { API_LISTINGS } from "../../constants/index.js";
 import { userFeedback } from "../../ui/components/errors/userFeedback.js";
+import { load } from "../../storage/load.js";
 
-// let errorMessage;
+const userFeedbackContainer = document.getElementById("userFeedback");
+const profile = load("profile");
+const username = profile.name;
 
 export async function publishListing(listing) {
-  // const errorContainer = document.querySelector("");
-
-  console.log(listing);
-
   const url = API_LISTINGS;
-  console.log(url);
 
   const response = await callApiWith(url, {
     method: "POST",
     body: JSON.stringify(listing),
   });
-  console.log(response);
 
   if (response.status === 201) {
-    console.log(response.status, "ok?");
-    // location.reload();
+    const publishBtn = document.getElementById("submit");
+    publishBtn.disabled = true;
+
+    userFeedback("listing successfully published", userFeedbackContainer);
+    console.log("listing posted", response.status);
+
+    setTimeout(function () {
+      const pathname = window.location.pathname;
+      if (pathname.toLowerCase().includes("/semesterproject2_theaoland/")) {
+        location.pathname = "/SemesterProject2_TheaOland/";
+      } else {
+        location.pathname = "/";
+      }
+    }, 2000);
   }
   if (response.status === 400) {
     throw new Error("You are trying to publish an empty listing.");
@@ -35,8 +44,6 @@ export async function publishListing(listing) {
 // };
 
 export async function publishNewBid(listing, bid) {
-  // const errorContainer = document.querySelector("");
-
   try {
     const url = API_LISTINGS + `${listing.id}/bids`;
     const response = await callApiWith(url, {
