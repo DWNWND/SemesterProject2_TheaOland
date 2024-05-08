@@ -107,10 +107,6 @@ p,
   width: 100%;
 }
 
-.btn-width-l {
-  width: 249px;
-}
-
 .btn-width-m {
   width: 192px;
 }
@@ -161,6 +157,11 @@ p,
   display: none;
 }
 
+@media (min-width: 768px) {
+  .btn-width-l {
+    min-width: 249px;
+  }
+}
 @media (min-width: 1200px) {
   .heading-1 {
     font-size: 1.87rem;
@@ -254,6 +255,10 @@ p,
   font-size: 1rem;
 }
 
+.new-listing-form {
+  padding: 1rem;
+}
+
 #new-listing input[type=datetime-local]::-webkit-datetime-edit {
   color: #8a77a1;
 }
@@ -263,6 +268,14 @@ p,
   color: #8a77a1;
 }
 
+@media (min-width: 1200px) {
+  .new-listing-form {
+    padding-top: 4rem;
+  }
+  #listingMedia {
+    padding: 2rem 0;
+  }
+}
 .img-profile {
   border-radius: 50%;
   height: 200px;

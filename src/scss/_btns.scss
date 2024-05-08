@@ -35,9 +35,9 @@
 .btn-width-100 {
   width: 100%;
 }
-.btn-width-l {
-  width: 249px;
-}
+// .btn-width-l {
+//   min-width: 249px;
+// }
 .btn-width-m {
   width: 192px;
 }
@@ -81,6 +81,9 @@
 }
 
 @media (min-width: $breakpoint-tablet) {
+  .btn-width-l {
+    min-width: 249px;
+  }
 }
 
 @media (min-width: $breakpoint-desktop) {

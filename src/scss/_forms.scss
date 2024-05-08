@@ -7,6 +7,10 @@
   font-size: 1rem;
 }
 
+.new-listing-form {
+  padding: 1rem;
+}
+
 #new-listing input[type="datetime-local"]::-webkit-datetime-edit {
   color: $grayish-purple;
 }
@@ -15,4 +19,13 @@
 #new-listing input[type="file"]::file-selector-button,
 #edit-profile input[type="file"]::file-selector-button {
   color: $grayish-purple;
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .new-listing-form {
+    padding-top: 4rem;
+  }
+  #listingMedia {
+    padding: 2rem 0;
+  }
 }
