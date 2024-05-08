@@ -37,14 +37,14 @@
               <p class="description">Description: <span id="description"></span></p>
             </div>
             <div class="bids glassmorphism">
-              <div id="currentBidContainer" class="pill d-flex justify-content-between semi-bold bg-orange">
+              <div id="currentBidContainer" class="pill d-flex flex-column justify-content-between semi-bold">
                 <div class="current-bid">$ <span id="currentBid">0</span></div>
                 <div id="timer" class="timer"></div>
               </div>
-              <div class="pill d-flex flex-wrap flex-sm-nowrap justify-content-between semi-bold mt-4 mb-4 gap-2">
+              <div class="pill d-flex flex-column justify-content-between semi-bold mt-4 mb-4 gap-2">
                 <input type="number" class="bid form-control semi-bold text-grayish-purple" id="bid-input" placeholder="place bid" />
                 <label for="bid-input" class="hide"></label>
-                <button type="submit" for="bid-input" class="btn-local btn-height-m btn-width-xxs btn-orange btn-fontsize-s lowercase align-self-center">Submit</button>
+                <button type="submit" for="bid-input" class="btn-local btn-height-m w-100 btn-white-red btn-fontsize-m lowercase align-self-center">Submit bid</button>
                 <div class="error-message"></div>
               </div>
               <div id="bidHistory" class="previous-bids">
