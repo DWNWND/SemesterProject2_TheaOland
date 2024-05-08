@@ -36,23 +36,18 @@
                 <input type="text" class="form-control" id="new-listing-description" name="description" required />
                 <label for="new-listing-description" class="new-listing-form-labels uppercase semi-bold text-grayish-purple">Description</label>
               </div>
-              <div class="d-flex flex-column flex-md-row">
-                <label for="new-listing-auction-deadline" class="new-listing-form-labels uppercase extra-bold text-grayish-purple">Set auction deadline</label>
-                <input type="datetime-local" class="form-control new-listing-auction-deadline" id="new-listing-auction-deadline" name="endsAt" required />
+              <div id="deadlineContainer" class="d-flex flex-column">
+                <label id="deadlineLabel" for="new-listing-auction-deadline" class="new-listing-form-labels uppercase extra-bold text-grayish-purple">Set auction deadline</label>
+                <input id="deadlineInput" type="datetime-local" class="form-control new-listing-auction-deadline" id="new-listing-auction-deadline" name="endsAt" />
               </div>
             </div>
             <div id="listingMedia" class="d-flex flex-column gap-2">
               <h1 class="heading-1 text-red">Listing Media</h1>
-              <label for="media-uploads" class="new-listing-form-labels uppercase extra-bold text-grayish-purple">Paste the url of the images(max 4)</label>
-              <div id="imageUpload" class="d-flex flex-column gap-2">
-                <fieldset id="image" class="d-flex flex-column gap-1 p-1 bg-grayish-purple" name="media">
-                  <input type="url" id="media-uploads" name="url" class="form-control" placeholder="image url" required />
-                  <input type="text" id="altText" name="alt" class="form-control" placeholder="image description" maxlength="120" required />
-                </fieldset>
-              </div>
-              <button id="addImgsBtn" class="btn-local btn-white-red p-1">Add more images</button>
+              <label for="media-uploads" class="new-listing-form-labels uppercase extra-bold text-grayish-purple">Upload images (max 8)</label>
+              <div id="imageUpload" class="d-flex flex-column gap-2"></div>
+              <a id="addImgsBtn" class="text-red p-1">Add more images</a>
             </div>
-            <button type="submit" for="new-listing" class="btn-local btn-height-l btn-purple btn-fontsize-l extra-bold uppercase">Publish</button>
+            <button id="submit" type="submit" for="new-listing" class="btn-local btn-height-l btn-purple btn-fontsize-l extra-bold uppercase">Publish</button>
           </form>
           <div id="uxElement" class="d-flex flex-column align-items-center">
             <div id="userFeedback" class="pb-3 pt-3"></div>
