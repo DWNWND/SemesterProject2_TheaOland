@@ -1,7 +1,7 @@
 import { startFeed } from "../../routes/feed.js";
 import { userFeedback } from "../../ui/components/errors/userFeedback.js";
 import { updateTotalPageDisplay, updatePaginationBtns } from "./pagination.js";
-import { renderListings } from "../../routes/feed.js";
+import { renderListings } from "../../templates/renderListings.js";
 import { get } from "../../api/requests/get.js";
 
 let query;
@@ -20,7 +20,6 @@ export async function search(page) {
     if (query) {
       const listingsBySearch = await get("listingsBySearch", page, query);
       numberOfListings = listingsBySearch.length;
-      console.log(numberOfListings);
       updateTotalPageDisplay();
       updatePaginationBtns(nxtBtn, prvBtn, page);
 
@@ -32,7 +31,7 @@ export async function search(page) {
         paginationElement.style.display = "none";
         navPages.style.display = "none";
         feed.innerHTML = "";
-        throw new Error("there's no listings matching this search.");
+        throw new Error("No listings match this search.");
       }
     } else if (!query || query === "") {
       startFeed();
