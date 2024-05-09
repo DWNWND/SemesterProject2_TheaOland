@@ -36,7 +36,7 @@ export async function get(request, param, sparam = "") {
   }
   if (request === "listingsByPage") {
     const pageLimit = 10;
-    url = API_LISTINGS + `?_bids=true&limit=${pageLimit}&page=${param}`;
+    url = API_LISTINGS + `?_bids=true&limit=${pageLimit}&page=${param}&sort=created&sortOder=asc&_active=true`;
     result = await getData(url);
     console.log(request, "- page: ", param, result);
     return result;
@@ -49,10 +49,19 @@ export async function get(request, param, sparam = "") {
     return result;
   }
   if (request === "listingsByProfile") {
-    url = API_PROFILES + `${param}/listings`;
-    result = await getData(url);
-    console.log(request, "- username: ", param, result);
-    return result;
+    if (sparam !== "") {
+      const pageLimit = 10;
+      url = API_PROFILES + `${sparam}/listings?_bids=true&limit=${pageLimit}&page=${param}`;
+      result = await getData(url);
+      console.log(request, "- username: ", param, result);
+      return result;
+    } else if (sparam === "") {
+      const pageLimit = 4;
+      url = API_PROFILES + `${param}/listings?_bids=true&limit=${pageLimit}&page=1`;
+      result = await getData(url);
+      console.log(request, "- username: ", param, result);
+      return result;
+    }
   }
   if (request === "bidsByProfile") {
     url = API_PROFILES + `${param}/bids?_listing`;

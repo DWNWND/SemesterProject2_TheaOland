@@ -57,6 +57,10 @@ p,
   text-decoration: underline;
 }
 
+.no-decoration {
+  text-decoration: none;
+}
+
 .error {
   color: #6f282b;
 }
@@ -105,10 +109,6 @@ p,
 
 .btn-width-100 {
   width: 100%;
-}
-
-.btn-width-l {
-  width: 249px;
 }
 
 .btn-width-m {
@@ -161,6 +161,11 @@ p,
   display: none;
 }
 
+@media (min-width: 768px) {
+  .btn-width-l {
+    min-width: 249px;
+  }
+}
 @media (min-width: 1200px) {
   .heading-1 {
     font-size: 1.87rem;
@@ -195,6 +200,7 @@ p,
 .main-listing-img {
   height: 150px;
   width: 100%;
+  border-radius: 20px;
 }
 
 .smallText {
@@ -254,6 +260,10 @@ p,
   font-size: 1rem;
 }
 
+.new-listing-form {
+  padding: 1rem;
+}
+
 #new-listing input[type=datetime-local]::-webkit-datetime-edit {
   color: #8a77a1;
 }
@@ -263,6 +273,14 @@ p,
   color: #8a77a1;
 }
 
+@media (min-width: 1200px) {
+  .new-listing-form {
+    padding-top: 4rem;
+  }
+  #listingMedia {
+    padding: 2rem 0;
+  }
+}
 .img-profile {
   border-radius: 50%;
   height: 200px;
@@ -273,12 +291,39 @@ p,
   max-width: 600px;
 }
 
+@media (min-width: 768px) {
+  #profileContainer,
+  #profileListingsContainer {
+    width: 50%;
+  }
+  .vh-75 {
+    height: 75vh;
+  }
+}
+@media (min-width: 1200px) {
+  #profileListingsContainer {
+    width: auto;
+  }
+  #profileContainer {
+    width: 700px;
+  }
+}
 .auction-item {
   max-width: 400px;
 }
 
 .media-gallery {
   max-width: 100%;
+}
+
+.media-gallery-img {
+  width: 100px;
+  height: 130px;
+  object-fit: cover;
+}
+
+.inFocus {
+  border: 1px solid #8a77a1;
 }
 
 @media (min-width: 768px) {
@@ -300,8 +345,8 @@ p,
 
 .current-bid {
   background-color: #cbacf1;
-  width: 55%;
-  padding: 0.2rem;
+  width: 100%;
+  padding: 0.5rem;
   border-radius: 21px;
   font-size: 0.875rem;
   text-align: center;
@@ -310,9 +355,9 @@ p,
 
 .timer {
   color: #ffffff;
-  padding: 0.2rem;
-  width: 45%;
-  font-size: 0.625rem;
+  padding: 0.5rem;
+  width: 120px;
+  font-size: 0.8rem;
   align-self: center;
   text-align: center;
 }
@@ -329,6 +374,18 @@ p,
 @media (min-width: 233px) {
   .username {
     display: block;
+  }
+}
+@media (min-width: 1200px) {
+  .username {
+    display: block;
+  }
+  .current-bid {
+    padding: 0.2rem;
+  }
+  .timer {
+    width: 120px;
+    padding: 0.2rem;
   }
 }
 #searchElement {
@@ -376,10 +433,10 @@ p,
 }
 .glassmorphism {
   background: linear-gradient(310deg, rgba(226, 226, 237, 0.3), rgba(226, 226, 237, 0.5));
-  border: 1px solid;
   border-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3)) 30;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
   padding: 1rem;
+  border-radius: 20px;
 }
 
 /*!

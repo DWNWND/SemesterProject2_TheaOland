@@ -31,9 +31,21 @@ async function router() {
   }
   if (pathname.toLowerCase().includes("/edit/")) {
     console.log("Pathname: ", pathname, ", Location: Edit/Publish listing page");
+    const editRequest = "./routes/edit.js";
+    const { generateEdit } = await import(editRequest);
+    await generateEdit();
+
+    return;
+  }
+  if (pathname.toLowerCase().includes("/alllistings/")) {
+    console.log("Pathname: ", pathname, ", Location: All userSpesific Listings");
+    const allListingsRequest = "./routes/allListings.js";
+    const { generateUserFeed } = await import(allListingsRequest);
+    await generateUserFeed();
+
     return;
   } else {
-    throw new Error("Pathname is not defined according to the router function. Pathname: ", pathname);
+    throw new Error("Pathname is not defined in the router function. Pathname: ", pathname);
   }
 }
 router();

@@ -5,8 +5,13 @@ import { updateCurrentPageDisplay, updatePaginationBtns } from "./pagination.js"
 
 const feed = document.getElementById("feed");
 const searchInput = document.getElementById("searchbar");
-const query = searchInput.value;
+let query;
 let page = 1;
+
+const pathname = window.location.pathname;
+if (pathname.includes("feed")) {
+  query = searchInput.value;
+}
 
 export function listenForPageTurn(nxtbtn, prvbtn) {
   nxtbtn.addEventListener("click", async () => {

@@ -8,3 +8,22 @@
 .user-profile {
   max-width: 600px;
 }
+
+@media (min-width: $breakpoint-tablet) {
+  #profileContainer,
+  #profileListingsContainer {
+    width: 50%;
+  }
+
+  .vh-75 {
+    height: 75vh;
+  }
+}
+@media (min-width: $breakpoint-desktop) {
+  #profileListingsContainer {
+    width: auto;
+  }
+  #profileContainer {
+    width: 700px;
+  }
+}

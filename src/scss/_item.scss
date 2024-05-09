@@ -8,10 +8,21 @@
 .media-gallery {
   max-width: 100%;
 }
-// .active {
-//   border: 1px solid $grayish-purple;
+// #mediaGallery .media {
+//   width: 150px;
+//   height: 150px;
+//   object-fit: contain;
 // }
 
+.media-gallery-img {
+  width: 100px;
+  height: 130px;
+  object-fit: cover;
+}
+
+.inFocus {
+  border: 1px solid $grayish-purple;
+}
 @media (min-width: $breakpoint-tablet) {
   .auction-item {
     max-width: 1000px;

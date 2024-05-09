@@ -56,20 +56,22 @@ function displayBids(bidsArray, listingData) {
   const listingEndsAt = new Date(listingData.endsAt);
   coundownTimer(listingEndsAt, timer);
 }
+
 function generateMediaGallery(mediaArray) {
-  const focusImg = document.getElementById("focusImg");
   const mediaGallery = document.getElementById("mediaGallery");
-  const mainImg = document.createElement("img");
-  mainImg.classList.add("img-fluid");
-  focusImg.append(mainImg);
+
+  const focusImgContainer = document.getElementById("focusImg");
+  const focusImg = document.createElement("img");
+  focusImg.classList.add("img-fluid");
+  focusImgContainer.append(focusImg);
 
   if (mediaArray.length <= 0) {
-    mainImg.src = "../src/img/placeholder.jpg";
-    mainImg.alt = "Placeholder image-text for listing image. The user have not added any image-text.";
+    focusImg.src = "../src/img/placeholder.jpg";
+    focusImg.alt = "Placeholder image-text for listing image. The user have not added any image-text.";
   }
   if (mediaArray.length >= 1) {
-    mainImg.src = mediaArray[0].url;
-    mainImg.alt = mediaArray[0].alt;
+    focusImg.src = mediaArray[0].url;
+    focusImg.alt = mediaArray[0].alt;
   }
   if (mediaArray.length >= 2) {
     for (let i = 0; i < mediaArray.length; i++) {
@@ -77,12 +79,27 @@ function generateMediaGallery(mediaArray) {
       imgContainer.classList.add("media");
 
       const img = document.createElement("img");
-      img.classList.add("img-fluid", "media-gallery-img");
+      img.classList.add("media-gallery-img");
       img.src = mediaArray[i].url;
       img.alt = mediaArray[i].alt;
 
       imgContainer.append(img);
       mediaGallery.appendChild(imgContainer);
+
+      img.addEventListener("click", (event) => {
+        const selectedImg = event.target;
+        const url = selectedImg.src;
+        const alt = selectedImg.alt;
+
+        focusImg.src = url;
+        focusImg.alt = alt;
+
+        if (img.src === focusImg.src) {
+          img.classList.add("inFocus");
+        } else {
+          img.classList.remove("inFocus");
+        }
+      });
     }
   }
 }
