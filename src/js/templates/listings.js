@@ -1,16 +1,9 @@
 import { coundownTimer } from "../events/listners/countdownTimer.js";
-const pathname = window.location.pathname;
+import { generateBtn } from "./btns.js";
 
-// ALL LISTINGS TEMPLATE
 export function listingTemplate(listingData, userIsLoggedIn) {
-  const listingMedia = listingData.media.length;
   const listingTitle = listingData.title;
-  const listingBids = listingData.bids.length;
   const listingID = listingData.id;
-  //Inspired by: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
-  const listingEndsAt = new Date(listingData.endsAt);
-  // const listingEndsAtDate = listingEndsAt.toLocaleDateString(); //NOTE: consider adding this or adjust design
-  // const listingEndsAtTime = listingEndsAt.toLocaleTimeString();
 
   const col = document.createElement("div");
   col.classList.add("col");
@@ -19,62 +12,19 @@ export function listingTemplate(listingData, userIsLoggedIn) {
   listing.classList.add("listing", "glassmorphism");
   listing.setAttribute("id", listingID);
 
-  const mainImg = document.createElement("img");
-  mainImg.classList.add("object-fit-cover", "main-listing-img");
-
-  if (listingMedia > 0) {
-    const listingPhoto = listingData.media[0].url;
-    const listingDescription = listingData.media[0].alt;
-    mainImg.src = listingPhoto;
-
-    if (listingDescription === "") {
-      mainImg.alt = "Placeholder image-text for listing image. The user have not added any image-text.";
-    }
-    if (listingDescription !== "") {
-      mainImg.alt = listingDescription;
-    }
-  }
-
-  if (listingMedia === 0) {
-    mainImg.src = "src/img/placeholder.jpg";
-    mainImg.alt = "Placeholder image. The user have not uploaded any images for this listing.";
-  }
-
   const titleContainer = document.createElement("div");
   titleContainer.classList.add("d-flex", "align-items-center", "justify-content-center", "title-container");
-
   const title = document.createElement("h2"); //double check if this should be h2 or something else
   title.classList.add("listing-title", "heading-2-feed", "uppercase", "extra-bold");
   title.innerText = listingTitle;
   titleContainer.append(title);
 
-  const bidContainer = document.createElement("div");
-  bidContainer.classList.add("pill", "d-flex", "flex-column", "justify-content-between", "semi-bold");
-
-  const currentBid = document.createElement("div");
-  currentBid.classList.add("current-bid");
-
-  //check to see if theres bids on the listing, and if there is, display the last bid
-  if (listingBids > 0) {
-    const allBids = listingData.bids;
-    //Inspired by: https://flexiple.com/javascript/get-last-array-element-javascript
-    const lastBid = allBids[allBids.length - 1];
-    currentBid.innerText = lastBid.amount + " credit";
-  }
-  if (listingBids === 0) {
-    currentBid.innerText = "no bids yet"; //NOTE: add a special styling for the ones without bids??
-    currentBid.classList.add("text-dark-purple", "fst-italic");
-  }
-
-  const bidTimer = document.createElement("div");
-  bidTimer.classList.add("timer");
-
-  coundownTimer(listingEndsAt, bidTimer);
+  const img = addMedia(listingData);
+  const currentBid = addCurrentBid(listingData);
 
   //LISTINGS DISPLAYED PUBLICLY (NOT LOGGED IN)
   if (!userIsLoggedIn) {
-    bidContainer.append(currentBid, bidTimer);
-    listing.append(mainImg, titleContainer, bidContainer);
+    listing.append(img, titleContainer, currentBid);
     col.append(listing);
   }
 
@@ -83,34 +33,78 @@ export function listingTemplate(listingData, userIsLoggedIn) {
     const listingFooter = document.createElement("div");
     listingFooter.classList.add("listing-footer", "d-flex", "flex-column", "gap-2");
 
-    const viewListingLink = document.createElement("a");
-    viewListingLink.setAttribute("href", `/listing/index.html?key=${listingID}`);
+    const link = `/listing/index.html?key=${listingID}`;
+    const viewListingBtn = generateBtn("viewListingBtn", link, "view");
 
-    const viewListingBtn = document.createElement("button");
-    viewListingBtn.classList.add("btn-local", "btn-height-s", "btn-width-100", "btn-white-black", "btn-fontsize-m", "uppercase");
-    viewListingBtn.setAttribute("id", "viewListingBtn");
-    viewListingBtn.innerText = "View";
-
-    viewListingLink.append(viewListingBtn);
-
-    bidContainer.append(currentBid, bidTimer);
-    listingFooter.append(bidContainer, viewListingLink);
-    listing.append(mainImg, titleContainer, listingFooter);
+    listingFooter.append(currentBid, viewListingBtn);
+    listing.append(img, titleContainer, listingFooter);
     col.append(listing);
 
-    //LISTINGS BY USER SPESIFIC
+    const pathname = window.location.pathname;
+
     if (pathname.includes("profile") || pathname.includes("allListings")) {
-      const editListingLink = document.createElement("a");
-      editListingLink.setAttribute("href", `/edit/index.html?key=${listingID}`);
+      const link = `/edit/index.html?key=${listingID}`;
+      const editListingBtn = generateBtn("editListingBtn", link, "edit");
 
-      const editListingBtn = document.createElement("button");
-      editListingBtn.classList.add("btn-local", "btn-height-s", "btn-width-100", "btn-white-black", "btn-fontsize-m", "uppercase");
-      editListingBtn.setAttribute("href", "#");
-      editListingBtn.innerText = "Edit";
-      editListingLink.append(editListingBtn);
-
-      listingFooter.append(editListingLink);
+      listingFooter.append(editListingBtn);
     }
   }
   return col;
+}
+
+function addMedia(listingData) {
+  const mediaArrayLength = listingData.media.length;
+
+  const imgDisplayed = document.createElement("img");
+  imgDisplayed.classList.add("object-fit-cover", "main-listing-img");
+
+  if (mediaArrayLength > 0) {
+    const mediaUrl = listingData.media[0].url;
+    const mediaAlt = listingData.media[0].alt;
+    imgDisplayed.src = mediaUrl;
+
+    if (mediaAlt === "") {
+      imgDisplayed.alt = "Placeholder image-text for listing image. The user have not added any image-text.";
+    }
+    if (mediaAlt !== "") {
+      imgDisplayed.alt = mediaAlt;
+    }
+  }
+
+  if (mediaArrayLength === 0) {
+    imgDisplayed.src = "src/img/placeholder.jpg";
+    imgDisplayed.alt = "Placeholder image. The user have not uploaded any images for this listing.";
+  }
+  return imgDisplayed;
+}
+
+function addCurrentBid(listingData) {
+  const bidArrayLength = listingData.bids.length;
+  const deadline = new Date(listingData.endsAt);
+
+  const bidContainer = document.createElement("div");
+  bidContainer.classList.add("pill", "d-flex", "flex-column", "justify-content-between", "semi-bold");
+
+  const currentBidContainer = document.createElement("div");
+  currentBidContainer.classList.add("current-bid");
+
+  if (bidArrayLength > 0) {
+    const allBids = listingData.bids;
+    const lastBid = allBids[allBids.length - 1];
+    const currentBid = lastBid.amount;
+    currentBidContainer.innerText = currentBid + " credit";
+  }
+  if (bidArrayLength === 0) {
+    currentBidContainer.innerText = "no bids yet";
+    currentBidContainer.classList.add("text-dark-purple", "fst-italic");
+  }
+
+  const timerContainer = document.createElement("div");
+  timerContainer.classList.add("timer");
+
+  coundownTimer(deadline, timerContainer);
+
+  bidContainer.append(currentBidContainer, timerContainer);
+
+  return bidContainer;
 }
