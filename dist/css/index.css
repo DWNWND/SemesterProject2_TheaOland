@@ -27,6 +27,13 @@
   color: black;
 }
 
+.heading-4 {
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: black;
+}
+
 p,
 .paragraph {
   font-size: 0.875rem;
@@ -356,7 +363,7 @@ p,
 .timer {
   color: #ffffff;
   padding: 0.5rem;
-  width: 120px;
+  width: 130px;
   font-size: 0.8rem;
   align-self: center;
   text-align: center;
@@ -381,10 +388,10 @@ p,
     display: block;
   }
   .current-bid {
+    font-size: 1.1rem;
     padding: 0.2rem;
   }
   .timer {
-    width: 120px;
     padding: 0.2rem;
   }
 }
