@@ -4,7 +4,6 @@ import { userFeedback } from "../../ui/components/errors/userFeedback.js";
 import { load } from "../../storage/load.js";
 
 const userFeedbackContainer = document.getElementById("userFeedback");
-const bidFeedbackContainer = document.getElementById("bidFeedback");
 
 export async function publishListing(listing) {
   const url = API_LISTINGS;
@@ -32,13 +31,16 @@ export async function publishListing(listing) {
     }, 2000);
   }
   if (response.status === 400) {
+    userFeedbackContainer.classList.remove("text-grayish-purple");
     throw new Error("You are trying to publish an empty listing.");
   } else if (response.status >= 401) {
+    userFeedbackContainer.classList.remove("text-grayish-purple");
     throw new Error("An unexpected error occured, please try again later");
   }
 }
 
 export async function publishNewBid(listingID, bid) {
+  const bidFeedbackContainer = document.getElementById("bidFeedback");
   const url = API_LISTINGS + `${listingID}/bids`;
 
   try {
@@ -49,8 +51,7 @@ export async function publishNewBid(listingID, bid) {
 
     if (response.status === 201) {
       console.log("Bid accepted", response);
-      bidFeedbackContainer.classList.remove("text-red");
-      bidFeedbackContainer.classList.add("text-center", "text-grayish-purple");
+      bidFeedbackContainer.classList.add("text-success");
       const userFeedbackMessage = "Bid accepted";
       userFeedback(userFeedbackMessage, bidFeedbackContainer);
 
@@ -59,11 +60,14 @@ export async function publishNewBid(listingID, bid) {
       }, 2000);
     }
     if (response.status === 400) {
+      bidFeedbackContainer.classList.add("text-error");
       throw new Error("Bid not accepted: Make sure that the listing is active and your bid is higher than the current bid.");
     }
     if (response.status === 403) {
+      bidFeedbackContainer.classList.add("text-error");
       throw new Error("You can not bid on your own listing");
     } else if (response.status >= 401) {
+      bidFeedbackContainer.classList.add("text-error");
       throw new Error("Bid not accepted: An unexpected error occured, please try again later");
     }
   } catch (error) {
