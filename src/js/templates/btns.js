@@ -1,34 +1,27 @@
-export function generateBtn(btnType, link, innerText) {
-  const btnLink = document.createElement("a");
-  btnLink.setAttribute("href", link);
-
+export function generateBtn(btnType, innerText, link) {
   const btn = document.createElement("button");
-
-  if (btnType === "editListingBtn" || btnType === "viewListingBtn") {
-    btn.classList.add("btn-local", "btn-height-s", "btn-width-100", "btn-white-black", "btn-fontsize-m", "uppercase");
-  }
   btn.innerText = innerText;
   btn.id = btnType;
+  btn.classList.add("btn-local", "btn-height-s", "w-100");
 
-  btnLink.append(btn);
-  return btnLink;
+  if (btnType === "editListingBtn" || btnType === "viewListingBtn") {
+    const btnLink = document.createElement("a");
+    btnLink.setAttribute("href", link);
+    btn.classList.add("btn-white-black", "btn-fontsize-m", "uppercase");
+    btnLink.append(btn);
+    return btnLink;
+  }
+  if (btnType === "saveBtn" || btnType === "backBtn") {
+    btn.classList.add("d-flex", "align-items-center", "justify-content-center", "btn-fontsize-l", "lowercase");
+  }
+  if (btnType === "saveBtn") {
+    btn.classList.add("btn-orange");
+    btn.type = "submit";
+    return btn;
+  }
+  if (btnType === "backBtn") {
+    btn.classList.add("btn-purple");
+    btn.type = "button";
+    return btn;
+  }
 }
-
-// const editListingLink = document.createElement("a");
-// editListingLink.setAttribute("href", `/edit/index.html?key=${listingID}`);
-
-// const editListingBtn = document.createElement("button");
-// editListingBtn.classList.add("btn-local", "btn-height-s", "btn-width-100", "btn-white-black", "btn-fontsize-m", "uppercase");
-// editListingBtn.setAttribute("href", "#");
-// editListingBtn.innerText = "Edit";
-// editListingLink.append(editListingBtn);
-
-// const viewListingLink = document.createElement("a");
-// viewListingLink.setAttribute("href", `/listing/index.html?key=${listingID}`);
-
-// const viewListingBtn = document.createElement("button");
-// viewListingBtn.classList.add("btn-local", "btn-height-s", "btn-width-100", "btn-white-black", "btn-fontsize-m", "uppercase");
-// viewListingBtn.setAttribute("id", "viewListingBtn");
-// viewListingBtn.innerText = "View";
-
-// viewListingLink.append(viewListingBtn);
