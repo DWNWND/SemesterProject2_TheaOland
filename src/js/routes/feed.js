@@ -22,7 +22,7 @@ const profile = load("profile");
 export async function startFeed() {
   try {
     const listingsByPage = await get("listingsByPage", page);
-    renderListings(listingsByPage, feed, token);
+    renderListings(listingsByPage, feed);
     updateTotalPageDisplay();
     updateCurrentPageDisplay(page);
     updatePaginationBtns(nxtBtn, prvBtn, page);
@@ -47,10 +47,9 @@ export async function generateFeed() {
   listenForPageTurn(nxtBtn, prvBtn);
 }
 
-const pathname = window.location.pathname;
-
 //ARRAY OF LISTINGS (USING LISTING TEMPLATE)
-export function renderListings(listingsArray, container, token) {
+export function renderListings(listingsArray, container) {
+  const token = load("token");
   if (listingsArray.length === 0 || !listingsArray) {
     navPages.style.display = "none";
     throw new Error("there's no more listings in this search.");
@@ -62,8 +61,9 @@ export function renderListings(listingsArray, container, token) {
     uxElement.innerHTML = "";
     navPages.style.display = "block";
     pagination.style.display = "block";
+    const pathname = window.location.pathname;
 
-    if (pathname.includes("feed")) {
+    if (pathname === "/" || pathname.includes("feed")) {
       searchElement.style.display = "block";
     }
   }
