@@ -1,18 +1,6 @@
 import { coundownTimer } from "../events/listners/countdownTimer.js";
 import { publishNewBid } from "../api/requests/post.js";
 
-// export function listingSpecificTemplate({ title, media, bids, id, description }, listingData) {
-//   const title = document.getElementById("auction-item-name");
-//   title.innerText = listingData.title;
-
-//   generateMediaGallery(listingData.media);
-//   displayBids(listingData.bids, listingData);
-//   listenForNewBid(listingData.id);
-
-//   const description = document.getElementById("description");
-//   description.innerText = listingData.description;
-// }
-
 export function listingSpecificTemplate({ title, media, bids, id, description, endsAt }) {
   const titleContainer = document.getElementById("auction-item-name");
   titleContainer.innerText = title;
@@ -60,7 +48,7 @@ function displayBids(bidsArray, endsAt) {
       const bidAmount = bidsArray[i].amount;
       const bidAmountContainer = document.createElement("div");
       bidAmountContainer.classList.add("bid");
-      bidAmountContainer.innerText = "credit " + bidAmount;
+      bidAmountContainer.innerText = bidAmount + " credit";
 
       const bidderUsername = bidsArray[i].bidder.name;
       const bidderNameContainer = document.createElement("div");
