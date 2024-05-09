@@ -22,7 +22,6 @@ export function listingTemplate(listingData, userIsLoggedIn) {
   const mainImg = document.createElement("img");
   mainImg.classList.add("object-fit-cover", "main-listing-img");
 
-  //check to see if theres images and alt-text connected to the listing, and if not use placeholders
   if (listingMedia > 0) {
     const listingPhoto = listingData.media[0].url;
     const listingDescription = listingData.media[0].alt;
@@ -35,7 +34,7 @@ export function listingTemplate(listingData, userIsLoggedIn) {
       mainImg.alt = listingDescription;
     }
   }
-  //REMOVED THE MEDIA CHECK BECAUSE THE API ADDS A BASIC PLACEHOLDER IMG
+
   if (listingMedia === 0) {
     mainImg.src = "src/img/placeholder.jpg";
     mainImg.alt = "Placeholder image. The user have not uploaded any images for this listing.";
@@ -60,10 +59,11 @@ export function listingTemplate(listingData, userIsLoggedIn) {
     const allBids = listingData.bids;
     //Inspired by: https://flexiple.com/javascript/get-last-array-element-javascript
     const lastBid = allBids[allBids.length - 1];
-    currentBid.innerText = lastBid.amount + " $";
+    currentBid.innerText = lastBid.amount + " credit";
   }
   if (listingBids === 0) {
-    currentBid.innerText = "0 $"; //NOTE: add a special styling for the ones without bids??
+    currentBid.innerText = "no bids yet"; //NOTE: add a special styling for the ones without bids??
+    currentBid.classList.add("text-dark-purple", "fst-italic");
   }
 
   const bidTimer = document.createElement("div");
