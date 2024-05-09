@@ -1,6 +1,5 @@
 import { logoutFunctionality } from "../events/listners/logout.js";
 import { updateProfile } from "../api/requests/update.js";
-import { userFeedback } from "../ui/components/errors/userFeedback.js";
 
 const uxElementSecondary = document.getElementById("uxElementSecondary");
 
@@ -62,94 +61,52 @@ export function profileTemplate(userProfile) {
   profileContainer.append(profileElement);
 }
 
+function generateFormField(id, element, type, name, data) {
+  const fieldContainer = document.createElement("div");
+  fieldContainer.classList.add("form-floating", "mb-3", "w-100");
+
+  const input = document.createElement(element);
+  input.id = id;
+  input.setAttribute("name", name);
+  input.classList.add("form-control");
+  input.required;
+  input.value = data;
+
+  const label = document.createElement("label");
+  label.setAttribute("for", id);
+  label.classList.add("edit-profile-form-labels", "uppercase", "semi-bold", "text-grayish-purple");
+  label.innerText = id;
+
+  if (name !== "bio") {
+    input.type = type;
+  }
+  if (name !== "alt") {
+    label.innerText = id;
+  }
+  if (name === "alt") {
+    label.innerText = "image description";
+  }
+  if (name === "name") {
+    const usernameHelpBlock = document.createElement("div");
+    usernameHelpBlock.id = "usernameHelpBlock";
+    usernameHelpBlock.classList.add("form-text", "mb-3");
+    usernameHelpBlock.innerText = "The username must not contain punctuation symbols apart from underscore (_).";
+    fieldContainer.append(input, label, usernameHelpBlock);
+  } else {
+    fieldContainer.append(input, label);
+  }
+  return fieldContainer;
+}
+
 function updateProfileTemplate(btn, profile, container) {
   btn.addEventListener("click", () => {
     container.innerHTML = "";
     container.classList.remove("justify-content-around");
 
-    const title = document.createElement("h1");
-    title.classList.add("heading-1", "text-red", "pb-4", "pt-4");
-    title.innerText = "update profile";
-
-    const editProfileForm = document.createElement("form");
-    editProfileForm.id = "editProfile";
-    editProfileForm.classList.add("d-flex", "flex-column", "gap-2");
-
-    const usernameContainer = document.createElement("div");
-    usernameContainer.classList.add("form-floating", "w-100");
-
-    const usernameInput = document.createElement("input");
-    usernameInput.id = "updateUsername";
-    usernameInput.classList.add("form-control");
-    usernameInput.required;
-    usernameInput.setAttribute("name", "name");
-    usernameInput.value = profile.name;
-
-    const usernameLabel = document.createElement("label");
-    usernameLabel.setAttribute("for", "updateUsername");
-    usernameLabel.classList.add("edit-profile-form-labels", "uppercase", "semi-bold", "text-grayish-purple");
-    usernameLabel.innerText = "username";
-
-    const usernameHelpBlock = document.createElement("div");
-    usernameHelpBlock.id = "usernameHelpBlock";
-    usernameHelpBlock.classList.add("form-text", "mb-3");
-    usernameHelpBlock.innerText = "The username must not contain punctuation symbols apart from underscore (_).";
-
-    usernameContainer.append(usernameInput, usernameLabel, usernameHelpBlock);
-
-    const bioContainer = document.createElement("div");
-    bioContainer.classList.add("form-floating", "mb-3", "w-100");
-
-    const bioInput = document.createElement("textarea");
-    bioInput.id = "bio";
-    // bioInput.type = "text";
-    bioInput.setAttribute("name", "bio");
-    bioInput.classList.add("form-control");
-    bioInput.required;
-    bioInput.value = profile.bio;
-
-    const bioLabel = document.createElement("label");
-    bioLabel.setAttribute("for", "bio");
-    bioLabel.classList.add("edit-profile-form-labels", "uppercase", "semi-bold", "text-grayish-purple");
-    bioLabel.innerText = "bio";
-
-    bioContainer.append(bioInput, bioLabel);
-
-    const avatarContainer = document.createElement("div");
-    avatarContainer.classList.add("form-floating", "mb-3", "w-100");
-
-    const avatarInput = document.createElement("input");
-    avatarInput.id = "avatar";
-    avatarInput.setAttribute("name", "url");
-    avatarInput.type = "url";
-    avatarInput.classList.add("form-control", "mb-3");
-    avatarInput.required;
-    avatarInput.value = profile.avatar.url;
-
-    const avatarLabel = document.createElement("label");
-    avatarLabel.setAttribute("for", "avatar");
-    avatarLabel.classList.add("edit-profile-form-labels", "uppercase", "semi-bold", "text-grayish-purple");
-    avatarLabel.innerText = "avatar";
-
-    avatarContainer.append(avatarInput, avatarLabel);
-
-    const altContainer = document.createElement("div");
-    altContainer.classList.add("form-floating", "mb-3", "w-100");
-
-    const altInput = document.createElement("input");
-    altInput.id = "alt";
-    altInput.setAttribute("name", "alt");
-    altInput.type = "text";
-    altInput.classList.add("form-control", "mb-3");
-    altInput.required;
-    altInput.value = profile.avatar.alt;
-
-    const altLabel = document.createElement("label");
-    altLabel.setAttribute("for", "alt");
-    altLabel.classList.add("edit-profile-form-labels", "uppercase", "semi-bold", "text-grayish-purple");
-    altLabel.innerText = "image description";
-
-    altContainer.append(altInput, altLabel);
+    const usernameContainer = generateFormField("username", "input", "text", "name", profile.name);
+    const bioContainer = generateFormField("bio", "textarea", "", "bio", profile.bio);
+    const avatarContainer = generateFormField("avatar", "input", "url", "url", profile.avatar.url);
+    const altContainer = generateFormField("alt", "input", "text", "alt", profile.avatar.alt);
 
     const saveBtn = document.createElement("button");
     saveBtn.classList.add("d-flex", "w-100", "align-items-center", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-orange", "btn-fontsize-l", "lowercase");
@@ -170,6 +127,14 @@ function updateProfileTemplate(btn, profile, container) {
     userFeedbackContainer.id = "userFeedbackContainer";
     userFeedbackContainer.classList.add("text-center", "text-grayish-purple");
 
+    const title = document.createElement("h1");
+    title.classList.add("heading-1", "text-red", "pb-4", "pt-4");
+    title.innerText = "update profile";
+
+    const editProfileForm = document.createElement("form");
+    editProfileForm.id = "editProfile";
+    editProfileForm.classList.add("d-flex", "flex-column", "gap-2");
+
     editProfileForm.append(title, usernameContainer, bioContainer, avatarContainer, altContainer, btnContainer, userFeedbackContainer);
     container.append(editProfileForm);
 
@@ -179,35 +144,27 @@ function updateProfileTemplate(btn, profile, container) {
 }
 
 export function saveUpdatedProfile() {
-  try {
-    document.forms.editProfile.addEventListener("submit", (event) => {
-      event.preventDefault();
+  document.forms.editProfile.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-      const form = event.target;
+    const form = event.target;
 
-      const formData = new FormData(form);
-      const updatedProfile = Object.fromEntries(formData.entries());
+    const formData = new FormData(form);
+    const updatedProfile = Object.fromEntries(formData.entries());
 
-      const profile = {
-        name: updatedProfile.name,
-        bio: updatedProfile.bio,
-        avatar: {
-          url: updatedProfile.url,
-          alt: updatedProfile.alt,
-        },
-      };
-      const saveBtn = document.getElementById("saveBtn");
-      saveBtn.disabled = true;
-      updateProfile(profile);
-    });
-  } catch (error) {
-    const userFeedbackContainer = document.getElementById("userFeedback");
-    userFeedback(error, userFeedbackContainer);
-    console.log(error);
-  }
+    const profile = {
+      name: updatedProfile.name,
+      bio: updatedProfile.bio,
+      avatar: {
+        url: updatedProfile.url,
+        alt: updatedProfile.alt,
+      },
+    };
+    updateProfile(profile);
+  });
 }
 
-export function back(container, updatedProfile) {
+export function navigateBack(container, updatedProfile) {
   try {
     uxElementSecondary.innerHTML = "";
     container.remove();
@@ -219,6 +176,6 @@ export function back(container, updatedProfile) {
 
 function exitEdit(btn, container) {
   btn.addEventListener("click", () => {
-    back(container);
+    navigateBack(container);
   });
 }
