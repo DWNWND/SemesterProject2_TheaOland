@@ -23,13 +23,19 @@
       <nav id="nav" class="justify-content-center align-items-center d-flex flex-column flex-md-row gap-2"></nav>
     </header>
     <main>
-      <div id="uxElement" class="d-flex flex-column align-items-center">
-        <div id="userFeedback" class="pb-3"></div>
-        <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>
-      </div>
       <div class="container d-flex flex-column flex-md-row gap-2 gap-sm-3">
-        <div id="profileContainer" class="vh-75"></div>
-        <div id="profileListingsContainer" class="row g-2 g-sm-3"></div>
+        <div id="profileContainer" class="d-flex flex-column justify-content-center vh-75 glassmorphism">
+          <div id="uxElementSecondary" class="d-flex flex-column align-items-center">
+            <div id="userFeedbackSecondary" class="pb-3"></div>
+            <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>
+          </div>
+        </div>
+        <div id="profileListingsContainer" class="row g-2 g-sm-3 align-items-center vh-75">
+          <div id="uxElementMain" class="d-flex flex-column align-items-center">
+            <div id="userFeedbackMain" class="pb-3"></div>
+            <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>
+          </div>
+        </div>
       </div>
     </main>
   </body>
