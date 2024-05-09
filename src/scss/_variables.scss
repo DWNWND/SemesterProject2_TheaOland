@@ -1,4 +1,4 @@
-$border-radius: 0;
+$border-radius: 10px;
 $border-width: 0;
 $border-color: $white;
 $border-color-translucent: $white;
@@ -21,6 +21,7 @@ $theme-colors: (
   "grayish-purple": #8a77a1,
   "dark-purple": #6c35af,
   "orange": #d36b0d,
+  "orange-disabled": #f9cea8,
 );
 
 // $body-color: #8a77a1;
