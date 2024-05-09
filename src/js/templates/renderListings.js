@@ -1,5 +1,5 @@
 import { load } from "../storage/index.js";
-import { listingTemplate } from "./listings.js";
+import { listingsTemplate } from "./listings.js";
 
 export function renderListings(listingsArray, container) {
   const uxElementMain = document.getElementById("uxElementMain");
@@ -20,7 +20,7 @@ export function renderListings(listingsArray, container) {
   }
 
   for (let i = 0; i < listingsArray.length; i++) {
-    container.append(listingTemplate(listingsArray[i], token));
+    container.append(listingsTemplate(listingsArray[i], token));
   }
 
   uxElementMain.innerHTML = "";

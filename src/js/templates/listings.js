@@ -1,7 +1,7 @@
 import { coundownTimer } from "../events/listners/countdownTimer.js";
 import { generateBtn } from "./btns.js";
 
-export function listingTemplate(listingData, userIsLoggedIn) {
+export function listingsTemplate(listingData, userIsLoggedIn) {
   const listingTitle = listingData.title;
   const listingID = listingData.id;
 
