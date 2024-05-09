@@ -4,13 +4,14 @@ import { logoutFunctionality } from "../events/listners/logout.js";
 import { updateProfile } from "../api/requests/update.js";
 import { userFeedback } from "../ui/components/errors/userFeedback.js";
 
-const uxElement = document.getElementById("uxElement");
+const uxElementMain = document.getElementById("uxElementMain");
+const uxElementSecondary = document.getElementById("uxElementSecondary");
 
 const token = load("token");
 
 export function profileTemplate(userProfile) {
   const profileElement = document.createElement("div");
-  profileElement.classList.add("user-profile", "vh-75", "d-flex", "flex-column", "align-items-center", "text-red", "glassmorphism", "justify-content-between");
+  profileElement.classList.add("user-profile", "vh-75", "d-flex", "flex-column", "align-items-center", "text-red", "justify-content-between");
   profileElement.id = "profileElement";
 
   const avatarContainer = document.createElement("div");
@@ -39,13 +40,13 @@ export function profileTemplate(userProfile) {
   credit.innerText = "CREDITS: " + userProfile.credits;
 
   const logoutBtn = document.createElement("button");
-  logoutBtn.classList.add("d-flex", "align-items-center", "w-100", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-purple", "btn-fontsize-l", "lowercase");
+  logoutBtn.classList.add("d-flex", "align-items-center", "w-100", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-fontsize-l", "lowercase");
   logoutBtn.id = "logoutBtn";
   logoutBtn.innerText = "log out";
   logoutFunctionality(logoutBtn);
 
   const editProfileBtn = document.createElement("button");
-  editProfileBtn.classList.add("d-flex", "w-100", "align-items-center", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-pink", "btn-fontsize-l", "lowercase");
+  editProfileBtn.classList.add("lowercase", "d-flex", "w-100", "align-items-center", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-orange", "btn-fontsize-l");
   editProfileBtn.id = "logoutBtn";
   editProfileBtn.innerText = "edit profile";
   updateProfileTemplate(editProfileBtn, userProfile, profileElement);
@@ -61,25 +62,30 @@ export function profileTemplate(userProfile) {
   profileElement.append(avatarContainer, details, btnContainer);
 
   const profileContainer = document.getElementById("profileContainer");
+  uxElementSecondary.innerHTML = "";
+
   profileContainer.append(profileElement);
 }
 
 export function renderProfileListings(listingsArray, container) {
   if (listingsArray.length === 0 || !listingsArray) {
-    uxElement.innerHTML = "";
+    uxElementMain.innerHTML = "";
     throw new Error("You have not posted any listings yet.");
   } else {
     container.innerHTML = "";
+    const heading = document.createElement("h1");
+    heading.innerText = "my latest listings";
+    heading.classList.add("heading-4", "text-red", "text-center");
+    container.append(heading);
     for (let i = 0; i < listingsArray.length; i++) {
       container.append(listingTemplate(listingsArray[i], token));
     }
     const allListings = document.createElement("a");
-    allListings.innerText = "all listings";
+    allListings.innerText = "view all my listings";
     allListings.setAttribute("href", "/allListings/index.html");
-    allListings.classList.add("text-red", "text-center");
-
+    allListings.classList.add("text-red", "text-center", "pb-4");
     container.append(allListings);
-    uxElement.innerHTML = "";
+    uxElementMain.innerHTML = "";
   }
 }
 
@@ -173,14 +179,13 @@ function updateProfileTemplate(btn, profile, container) {
     altContainer.append(altInput, altLabel);
 
     const saveBtn = document.createElement("button");
-    saveBtn.classList.add("d-flex", "w-100", "align-items-center", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-purple", "btn-fontsize-l", "lowercase");
+    saveBtn.classList.add("d-flex", "w-100", "align-items-center", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-orange", "btn-fontsize-l", "lowercase");
     saveBtn.id = "saveBtn";
     saveBtn.innerText = "save";
     saveBtn.setAttribute("type", "submit");
-    // saveBtn.type = "submit";
 
     const backBtn = document.createElement("a");
-    backBtn.classList.add("d-flex", "w-100", "no-decoration", "align-items-center", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-pink", "btn-fontsize-l", "lowercase");
+    backBtn.classList.add("d-flex", "w-100", "no-decoration", "align-items-center", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-purple", "btn-fontsize-l", "lowercase");
     backBtn.id = "backBtn";
     backBtn.innerText = "back";
 
@@ -188,7 +193,11 @@ function updateProfileTemplate(btn, profile, container) {
     btnContainer.classList.add("d-flex", "w-100", "flex-column", "align-items-center", "justify-content-center", "gap-2");
     btnContainer.append(saveBtn, backBtn);
 
-    editProfileForm.append(title, usernameContainer, bioContainer, avatarContainer, altContainer, btnContainer);
+    const userFeedbackContainer = document.createElement("div");
+    userFeedbackContainer.id = "userFeedbackContainer";
+    userFeedbackContainer.classList.add("text-center", "text-grayish-purple");
+
+    editProfileForm.append(title, usernameContainer, bioContainer, avatarContainer, altContainer, btnContainer, userFeedbackContainer);
     container.append(editProfileForm);
 
     exitEdit(backBtn, container);
@@ -214,7 +223,8 @@ export function saveUpdatedProfile() {
           alt: updatedProfile.alt,
         },
       };
-
+      const saveBtn = document.getElementById("saveBtn");
+      saveBtn.disabled = true;
       updateProfile(profile);
     });
   } catch (error) {
@@ -224,11 +234,11 @@ export function saveUpdatedProfile() {
   }
 }
 
-export function back(container) {
+export function back(container, updatedProfile) {
   try {
-    const userProfile = load("profile");
+    uxElementSecondary.innerHTML = "";
     container.remove();
-    profileTemplate(userProfile);
+    profileTemplate(updatedProfile);
   } catch (error) {
     console.log(error);
   }
@@ -236,8 +246,6 @@ export function back(container) {
 
 function exitEdit(btn, container) {
   btn.addEventListener("click", () => {
-    // const userFeedbackContainer = document.getElementById("userFeedback");
-    // userFeedback(error, userFeedbackContainer);
     back(container);
   });
 }
