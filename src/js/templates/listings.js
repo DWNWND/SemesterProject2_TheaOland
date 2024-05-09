@@ -34,7 +34,7 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
     listingFooter.classList.add("listing-footer", "d-flex", "flex-column", "gap-2");
 
     const link = `/listing/index.html?key=${listingID}`;
-    const viewListingBtn = generateBtn("viewListingBtn", link, "view");
+    const viewListingBtn = generateBtn("viewListingBtn", "view", link);
 
     listingFooter.append(currentBid, viewListingBtn);
     listing.append(img, titleContainer, listingFooter);
@@ -44,7 +44,7 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
 
     if (pathname.includes("profile") || pathname.includes("allListings")) {
       const link = `/edit/index.html?key=${listingID}`;
-      const editListingBtn = generateBtn("editListingBtn", link, "edit");
+      const editListingBtn = generateBtn("editListingBtn", "edit", link);
 
       listingFooter.append(editListingBtn);
     }
