@@ -4,6 +4,7 @@ import { userFeedback } from "../../ui/components/errors/userFeedback.js";
 import { load } from "../../storage/load.js";
 
 const userFeedbackContainer = document.getElementById("userFeedback");
+const bidFeedbackContainer = document.getElementById("bidFeedback");
 const profile = load("profile");
 const username = profile.name;
 
@@ -38,31 +39,36 @@ export async function publishListing(listing) {
   }
 }
 
-// example listing to publish newBid;
-// const bid = {
-//   amount: 0, // Required
-// };
+export async function publishNewBid(listingID, bid) {
+  const url = API_LISTINGS + `${listingID}/bids`;
 
-export async function publishNewBid(listing, bid) {
   try {
-    const url = API_LISTINGS + `${listing.id}/bids`;
     const response = await callApiWith(url, {
       method: "POST",
       body: JSON.stringify(bid),
     });
 
     if (response.status === 201) {
-      location.reload();
+      console.log("Bid accepted", response);
+      bidFeedbackContainer.classList.remove("text-red");
+      bidFeedbackContainer.classList.add("text-center", "text-grayish-purple");
+      const userFeedbackMessage = "Bid accepted";
+      userFeedback(userFeedbackMessage, bidFeedbackContainer);
+
+      setTimeout(function () {
+        location.reload();
+      }, 2000);
     }
     if (response.status === 400) {
-      // errorMessage = "You are trying to publish an empty bid.";
-      // userFeedback(errorMessage, errorContainer);
+      throw new Error("Bid not accepted: Make sure that the listing is active and your bid is higher than the current bid.");
+    }
+    if (response.status === 403) {
+      throw new Error("You can not bid on your own listing");
     } else if (response.status >= 401) {
-      // errorMessage = "An unexpected error occured, please try again later";
-      // userFeedback(errorMessage, errorContainer);
-      throw new Error("Unknown error");
+      throw new Error("Bid not accepted: An unexpected error occured, please try again later");
     }
   } catch (error) {
     console.log(error);
+    userFeedback(error, bidFeedbackContainer);
   }
 }
