@@ -59,10 +59,10 @@ export async function updateProfile(userProfile) {
       userFeedbackContainer.classList.add("text-success");
       userFeedback("profile successfully updated", userFeedbackContainer);
 
-      const uxElementSecondary = document.getElementById("uxElementSecondary");
+      const fieldsInputContainer = document.getElementById("fieldsInputContainer");
+      fieldsInputContainer.innerHTML = "";
 
-      console.log(uxElementSecondary);
-      uxElementSecondary.innerHTML = `<span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>`;
+      fieldsInputContainer.innerHTML = `<span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>`;
 
       setTimeout(function () {
         const profileElement = document.getElementById("profileElement");
