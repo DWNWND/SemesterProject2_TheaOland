@@ -1,5 +1,5 @@
 import { get } from "../../api/requests/get.js";
-import { renderListings } from "../../routes/feed.js";
+import { renderListings } from "../../templates/renderListings.js";
 import { search } from "./onSearch.js";
 import { updateCurrentPageDisplay, updatePaginationBtns } from "./pagination.js";
 

@@ -1,13 +1,9 @@
-import { listingTemplate } from "./listings.js";
 import { load } from "../storage/load.js";
 import { logoutFunctionality } from "../events/listners/logout.js";
 import { updateProfile } from "../api/requests/update.js";
 import { userFeedback } from "../ui/components/errors/userFeedback.js";
 
-const uxElementMain = document.getElementById("uxElementMain");
 const uxElementSecondary = document.getElementById("uxElementSecondary");
-
-const token = load("token");
 
 export function profileTemplate(userProfile) {
   const profileElement = document.createElement("div");
@@ -65,28 +61,6 @@ export function profileTemplate(userProfile) {
   uxElementSecondary.innerHTML = "";
 
   profileContainer.append(profileElement);
-}
-
-export function renderProfileListings(listingsArray, container) {
-  if (listingsArray.length === 0 || !listingsArray) {
-    uxElementMain.innerHTML = "";
-    throw new Error("You have not posted any listings yet.");
-  } else {
-    container.innerHTML = "";
-    const heading = document.createElement("h1");
-    heading.innerText = "my latest listings";
-    heading.classList.add("heading-4", "text-red", "text-center");
-    container.append(heading);
-    for (let i = 0; i < listingsArray.length; i++) {
-      container.append(listingTemplate(listingsArray[i], token));
-    }
-    const allListings = document.createElement("a");
-    allListings.innerText = "view all my listings";
-    allListings.setAttribute("href", "/allListings/index.html");
-    allListings.classList.add("text-red", "text-center", "pb-4");
-    container.append(allListings);
-    uxElementMain.innerHTML = "";
-  }
 }
 
 function updateProfileTemplate(btn, profile, container) {

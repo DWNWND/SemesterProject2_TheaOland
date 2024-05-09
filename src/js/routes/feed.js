@@ -4,6 +4,7 @@ import { load } from "../storage/load.js";
 import * as generate from "../templates/index.js";
 import { userFeedback } from "../ui/components/errors/userFeedback.js";
 // import { listenForSearch } from "../events/listners/onSearch.js";
+import { renderListings } from "../templates/renderListings.js";
 import { updateTotalPageDisplay, updateCurrentPageDisplay, updatePaginationBtns } from "../events/listners/pagination.js";
 
 const feed = document.getElementById("feed");
@@ -11,9 +12,6 @@ const feedbackContainer = document.getElementById("feedbackContainer");
 const navPages = document.getElementById("navPages");
 const nxtBtn = document.getElementById("nxtBtn");
 const prvBtn = document.getElementById("prvBtn");
-const uxElement = document.getElementById("uxElement");
-const searchElement = document.getElementById("searchElement");
-const pagination = document.getElementById("paginationElement");
 
 let page = 1;
 const token = load("token");
@@ -27,6 +25,7 @@ export async function startFeed() {
     updateCurrentPageDisplay(page);
     updatePaginationBtns(nxtBtn, prvBtn, page);
   } catch (error) {
+    navPages.style.display = "none";
     console.log(error);
     userFeedback(error, feedbackContainer);
   }
@@ -45,26 +44,4 @@ export async function generateFeed() {
   await startFeed();
   await listenForSearch(page);
   listenForPageTurn(nxtBtn, prvBtn);
-}
-
-//ARRAY OF LISTINGS (USING LISTING TEMPLATE)
-export function renderListings(listingsArray, container) {
-  const token = load("token");
-  if (listingsArray.length === 0 || !listingsArray) {
-    navPages.style.display = "none";
-    throw new Error("there's no more listings in this search.");
-  } else {
-    container.innerHTML = "";
-    for (let i = 0; i < listingsArray.length; i++) {
-      container.append(generate.listingTemplate(listingsArray[i], token));
-    }
-    uxElement.innerHTML = "";
-    navPages.style.display = "block";
-    pagination.style.display = "block";
-    const pathname = window.location.pathname;
-
-    if (pathname === "/" || pathname.includes("feed")) {
-      searchElement.style.display = "block";
-    }
-  }
 }
