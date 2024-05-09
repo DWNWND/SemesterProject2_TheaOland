@@ -1,4 +1,5 @@
 import { coundownTimer } from "../events/listners/countdownTimer.js";
+import { publishNewBid } from "../api/requests/post.js";
 
 export function listingSpecificTemplate(listingData) {
   const title = document.getElementById("auction-item-name");
@@ -6,15 +7,38 @@ export function listingSpecificTemplate(listingData) {
 
   generateMediaGallery(listingData.media);
   displayBids(listingData.bids, listingData);
+  listenForNewBid(listingData);
 
   const description = document.getElementById("description");
   description.innerText = listingData.description;
+}
+
+function parse(newBid) {
+  let parsedBid = { ...newBid };
+  if ("amount" in newBid) {
+    parsedBid.amount = parseInt(newBid.amount);
+  }
+  return parsedBid;
+}
+
+function listenForNewBid(listingData) {
+  document.forms.placeBid.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const formData = new FormData(form);
+    const newBid = Object.fromEntries(formData.entries());
+    const parsedBid = parse(newBid);
+
+    publishNewBid(listingData.id, parsedBid);
+  });
 }
 
 function displayBids(bidsArray, listingData) {
   const bidHistory = document.getElementById("bidHistory");
   if (bidsArray.length <= 0) {
     bidHistory.innerText = "no bids yet";
+    bidHistory.classList.add("text-center", "text-grayish-purple", "fst-italic");
   }
   if (bidsArray.length >= 1) {
     const allBids = bidsArray;

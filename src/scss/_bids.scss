@@ -19,7 +19,7 @@
   color: $white;
   padding: 0.5rem;
 
-  width: 120px;
+  width: 130px;
 
   font-size: 0.8rem;
   align-self: center;
@@ -44,10 +44,11 @@
   }
   .current-bid {
     // width: 55%;
+    font-size: 1.1rem;
     padding: 0.2rem;
   }
   .timer {
-    width: 120px;
+    // width: 130px;
     padding: 0.2rem;
   }
 }

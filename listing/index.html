@@ -37,16 +37,17 @@
               <p class="description">Description: <span id="description"></span></p>
             </div>
             <div class="bids glassmorphism">
+              <h2 class="heading-4 text-white text-center">current bid:</h2>
               <div id="currentBidContainer" class="pill d-flex flex-column justify-content-between semi-bold">
-                <div class="current-bid">$ <span id="currentBid">0</span></div>
+                <div class="current-bid text-dark-purple"><span id="currentBid">0</span> credit</div>
                 <div id="timer" class="timer"></div>
               </div>
-              <div class="pill d-flex flex-column justify-content-between semi-bold mt-4 mb-4 gap-2">
-                <input type="number" class="bid form-control semi-bold text-grayish-purple" id="bid-input" placeholder="place bid" />
-                <label for="bid-input" class="hide"></label>
+              <form id="placeBid" class="d-flex flex-column justify-content-between semi-bold mt-4 mb-4 gap-2 form-floating">
+                <input name="amount" type="number" class="bid form-control semi-bold text-grayish-purple" id="bid-input" required />
+                <label for="bid-input" class="text-grayish-purple hide">place your bid</label>
                 <button type="submit" for="bid-input" class="btn-local btn-height-m w-100 btn-white-red btn-fontsize-m lowercase align-self-center">Submit bid</button>
-                <div class="error-message"></div>
-              </div>
+              </form>
+              <div id="bidFeedback" class="text-red mb-3"></div>
               <div id="bidHistory" class="previous-bids">
                 <h2 class="heading-3">Bid history:</h2>
               </div>
@@ -54,7 +55,7 @@
           </div>
         </div>
       </div>
-      <div id="feedbackContainer" class="pb-3"></div>
+      <!-- <div id="feedbackContainer" class="pb-3"></div> -->
     </main>
   </body>
 </html>

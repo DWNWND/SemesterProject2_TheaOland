@@ -28,6 +28,7 @@ export function coundownTimer(date, container) {
     if (distance < 0) {
       clearInterval(x);
       const result = "expired";
+      container.classList.add("text-red");
       container.innerText = result;
     }
   }, 1000);
