@@ -1,84 +1,99 @@
 import { coundownTimer } from "../events/listners/countdownTimer.js";
 import { publishNewBid } from "../api/requests/post.js";
 
-export function listingSpecificTemplate(listingData) {
-  const title = document.getElementById("auction-item-name");
-  title.innerText = listingData.title;
+// export function listingSpecificTemplate({ title, media, bids, id, description }, listingData) {
+//   const title = document.getElementById("auction-item-name");
+//   title.innerText = listingData.title;
 
-  generateMediaGallery(listingData.media);
-  displayBids(listingData.bids, listingData);
-  listenForNewBid(listingData);
+//   generateMediaGallery(listingData.media);
+//   displayBids(listingData.bids, listingData);
+//   listenForNewBid(listingData.id);
 
-  const description = document.getElementById("description");
-  description.innerText = listingData.description;
+//   const description = document.getElementById("description");
+//   description.innerText = listingData.description;
+// }
+
+export function listingSpecificTemplate({ title, media, bids, id, description, endsAt }) {
+  const titleContainer = document.getElementById("auction-item-name");
+  titleContainer.innerText = title;
+
+  generateMediaGallery(media);
+  displayBids(bids, endsAt);
+  listenForNewBid(id);
+
+  const descriptionContainer = document.getElementById("description");
+  descriptionContainer.innerText = description;
 }
 
-function parse(newBid) {
-  let parsedBid = { ...newBid };
-  if ("amount" in newBid) {
-    parsedBid.amount = parseInt(newBid.amount);
-  }
-  return parsedBid;
-}
-
-function listenForNewBid(listingData) {
+function listenForNewBid(listingID) {
   document.forms.placeBid.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const form = event.target;
     const formData = new FormData(form);
     const newBid = Object.fromEntries(formData.entries());
-    const parsedBid = parse(newBid);
 
-    publishNewBid(listingData.id, parsedBid);
+    let parsedBid = { ...newBid };
+    parsedBid.amount = parseInt(newBid.amount);
+
+    publishNewBid(listingID, parsedBid);
   });
 }
 
-function displayBids(bidsArray, listingData) {
-  const bidHistory = document.getElementById("bidHistory");
-  if (bidsArray.length <= 0) {
-    bidHistory.innerText = "no bids yet";
-    bidHistory.classList.add("text-center", "text-grayish-purple", "fst-italic");
+function displayBids(bidsArray, endsAt) {
+  const bidArraylength = bidsArray.length;
+  const bidHistoryContainer = document.getElementById("bidHistory");
+
+  if (bidArraylength <= 0) {
+    bidHistoryContainer.innerText = "no bids yet";
+    bidHistoryContainer.classList.add("text-center", "text-grayish-purple", "fst-italic");
   }
-  if (bidsArray.length >= 1) {
-    const allBids = bidsArray;
-    const lastBid = allBids[allBids.length - 1];
 
-    const currentBid = document.getElementById("currentBid");
-    currentBid.innerText = lastBid.amount;
+  if (bidArraylength >= 1) {
+    const lastBid = bidsArray[bidArraylength - 1];
+    const currentBid = lastBid.amount;
 
-    for (let i = 0; i < bidsArray.length; i++) {
-      const bidContainer = document.createElement("div");
-      bidContainer.classList.add("bid-container", "d-flex", "justify-content-between", "align-items-center");
+    const currentBidContainer = document.getElementById("currentBid");
+    currentBidContainer.innerText = currentBid;
 
-      const sum = document.createElement("div");
-      sum.classList.add("sum");
-      sum.innerText = "$ " + bidsArray[i].amount;
+    for (let i = 0; i < bidArraylength; i++) {
+      const bidAmount = bidsArray[i].amount;
+      const bidAmountContainer = document.createElement("div");
+      bidAmountContainer.classList.add("bid");
+      bidAmountContainer.innerText = "credit " + bidAmount;
 
-      const username = document.createElement("div");
-      username.classList.add("username");
-      username.innerText = bidsArray[i].bidder.name;
+      const bidderUsername = bidsArray[i].bidder.name;
+      const bidderNameContainer = document.createElement("div");
+      bidderNameContainer.classList.add("username");
+      bidderNameContainer.innerText = bidderUsername;
 
-      const timePlaced = document.createElement("div");
-      timePlaced.classList.add("d-flex", "flex-column", "align-items-center", "p-1");
-      const time = document.createElement("div");
-      time.classList.add("mediumText");
-      const date = document.createElement("div");
-      date.classList.add("smallText");
-      const timeDate = new Date(bidsArray[i].created);
-      const timeBidPlaced = timeDate.toLocaleTimeString();
-      const dateBidPlaced = timeDate.toLocaleDateString();
-      time.append(timeBidPlaced);
-      date.append(dateBidPlaced);
-      timePlaced.append(time, date);
+      const bidCreated = bidsArray[i].created;
+      const timeDate = new Date(bidCreated);
 
-      bidContainer.append(sum, username, timePlaced);
-      bidHistory.appendChild(bidContainer);
+      const timeContainer = document.createElement("div");
+      timeContainer.classList.add("mediumText");
+      const timeBidCreated = timeDate.toLocaleTimeString();
+      timeContainer.append(timeBidCreated);
+
+      const dateContainer = document.createElement("div");
+      dateContainer.classList.add("smallText");
+      const dateBidCreated = timeDate.toLocaleDateString();
+      dateContainer.append(dateBidCreated);
+
+      const bidCreatedContainer = document.createElement("div");
+      bidCreatedContainer.classList.add("d-flex", "flex-column", "align-items-center", "p-1");
+      bidCreatedContainer.append(timeContainer, dateContainer);
+
+      const singleBidContainer = document.createElement("div");
+      singleBidContainer.classList.add("bid-container", "d-flex", "justify-content-between", "align-items-center");
+      singleBidContainer.append(bidAmountContainer, bidderNameContainer, bidCreatedContainer);
+
+      bidHistoryContainer.appendChild(singleBidContainer);
     }
   }
-  const timer = document.getElementById("timer");
-  const listingEndsAt = new Date(listingData.endsAt);
-  coundownTimer(listingEndsAt, timer);
+  const countdownContainer = document.getElementById("timer");
+  const deadline = new Date(endsAt);
+  coundownTimer(deadline, countdownContainer);
 }
 
 function generateMediaGallery(mediaArray) {
