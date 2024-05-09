@@ -1,5 +1,6 @@
 import { logoutFunctionality } from "../events/listners/logout.js";
 import { updateProfile } from "../api/requests/update.js";
+import { generateBtn } from "./btns.js";
 
 const uxElementSecondary = document.getElementById("uxElementSecondary");
 
@@ -98,47 +99,43 @@ function generateFormField(id, element, type, name, data) {
   return fieldContainer;
 }
 
-function updateProfileTemplate(btn, profile, container) {
+function updateProfileTemplate(btn, userProfile, container) {
   btn.addEventListener("click", () => {
     container.innerHTML = "";
     container.classList.remove("justify-content-around");
 
-    const usernameContainer = generateFormField("username", "input", "text", "name", profile.name);
-    const bioContainer = generateFormField("bio", "textarea", "", "bio", profile.bio);
-    const avatarContainer = generateFormField("avatar", "input", "url", "url", profile.avatar.url);
-    const altContainer = generateFormField("alt", "input", "text", "alt", profile.avatar.alt);
+    const usernameContainer = generateFormField("username", "input", "text", "name", userProfile.name);
+    const bioContainer = generateFormField("bio", "textarea", "", "bio", userProfile.bio);
+    const avatarContainer = generateFormField("avatar", "input", "url", "url", userProfile.avatar.url);
+    const altContainer = generateFormField("alt", "input", "text", "alt", userProfile.avatar.alt);
 
-    const saveBtn = document.createElement("button");
-    saveBtn.classList.add("d-flex", "w-100", "align-items-center", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-orange", "btn-fontsize-l", "lowercase");
-    saveBtn.id = "saveBtn";
-    saveBtn.innerText = "save";
-    saveBtn.setAttribute("type", "submit");
-
-    const backBtn = document.createElement("a");
-    backBtn.classList.add("d-flex", "w-100", "no-decoration", "align-items-center", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-purple", "btn-fontsize-l", "lowercase");
-    backBtn.id = "backBtn";
-    backBtn.innerText = "back";
+    const saveBtn = generateBtn("saveBtn", "save");
+    const backBtn = generateBtn("backBtn", "back");
 
     const btnContainer = document.createElement("div");
-    btnContainer.classList.add("d-flex", "w-100", "flex-column", "align-items-center", "justify-content-center", "gap-2");
+    btnContainer.classList.add("d-flex", "w-100", "flex-column", "align-items-center", "justify-content-center", "gap-2", "pt-6");
     btnContainer.append(saveBtn, backBtn);
 
     const userFeedbackContainer = document.createElement("div");
     userFeedbackContainer.id = "userFeedbackContainer";
-    userFeedbackContainer.classList.add("text-center", "text-grayish-purple");
+    userFeedbackContainer.classList.add("text-center");
 
     const title = document.createElement("h1");
-    title.classList.add("heading-1", "text-red", "pb-4", "pt-4");
+    title.classList.add("heading-1", "text-red", "text-center", "pb-4", "pt-4");
     title.innerText = "update profile";
+
+    const fieldInputsContainer = document.createElement("div");
+    fieldInputsContainer.id = "fieldsInputContainer";
+    fieldInputsContainer.append(usernameContainer, bioContainer, avatarContainer, altContainer);
 
     const editProfileForm = document.createElement("form");
     editProfileForm.id = "editProfile";
-    editProfileForm.classList.add("d-flex", "flex-column", "gap-2");
+    editProfileForm.classList.add("d-flex", "flex-column", "w-100", "no-decoration", "align-items-center", "justify-content-center", "gap-2");
 
-    editProfileForm.append(title, usernameContainer, bioContainer, avatarContainer, altContainer, btnContainer, userFeedbackContainer);
+    editProfileForm.append(title, fieldInputsContainer, btnContainer, userFeedbackContainer);
     container.append(editProfileForm);
 
-    exitEdit(backBtn, container);
+    exitEdit(backBtn, container, userProfile);
     saveUpdatedProfile();
   });
 }
@@ -174,8 +171,8 @@ export function navigateBack(container, updatedProfile) {
   }
 }
 
-function exitEdit(btn, container) {
+function exitEdit(btn, container, userProfile) {
   btn.addEventListener("click", () => {
-    navigateBack(container);
+    navigateBack(container, userProfile);
   });
 }
