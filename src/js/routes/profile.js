@@ -5,7 +5,7 @@ import { get } from "../api/requests/get.js";
 import { renderProfileListings, profileTemplate } from "../templates/profile.js";
 const profile = load("profile");
 const feedbackContainer = document.getElementById("feedbackContainer");
-const uxElement = document.getElementById("uxElement");
+const uxElementMain = document.getElementById("uxElementMain");
 const profileListingsContainer = document.getElementById("profileListingsContainer");
 
 //getting the IDs
@@ -19,7 +19,7 @@ export async function generateUserProfile() {
     navTemplate(username);
     const userProfile = await get("singleProfile", username);
     const listings = await get("listingsByProfile", username);
-    uxElement.innerHTML = "";
+    uxElementMain.innerHTML = "";
     profileTemplate(userProfile);
     renderProfileListings(listings, profileListingsContainer);
   } catch (error) {

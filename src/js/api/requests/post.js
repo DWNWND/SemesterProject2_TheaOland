@@ -5,8 +5,6 @@ import { load } from "../../storage/load.js";
 
 const userFeedbackContainer = document.getElementById("userFeedback");
 const bidFeedbackContainer = document.getElementById("bidFeedback");
-const profile = load("profile");
-const username = profile.name;
 
 export async function publishListing(listing) {
   const url = API_LISTINGS;
@@ -21,6 +19,7 @@ export async function publishListing(listing) {
     publishBtn.disabled = true;
 
     userFeedback("listing successfully published", userFeedbackContainer);
+    userFeedbackContainer.classList.add("text-grayish-purple");
     console.log("listing posted", response.status);
 
     setTimeout(function () {

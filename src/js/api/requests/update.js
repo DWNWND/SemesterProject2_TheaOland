@@ -4,11 +4,9 @@ import { userFeedback } from "../../ui/components/errors/userFeedback.js";
 import { back } from "../../templates/profile.js";
 import { load } from "../../storage/load.js";
 
-const userFeedbackContainer = document.getElementById("userFeedback");
-const profile = load("profile");
-const username = profile.name;
-
 export async function updateListing(listing, listingID) {
+  const userFeedbackContainer = document.getElementById("userFeedbackContainer");
+
   if (!listing.id) {
     throw new Error("Update is missing a listingID");
   }
@@ -34,6 +32,8 @@ export async function updateListing(listing, listingID) {
 }
 
 export async function updateProfile(userProfile) {
+  const userFeedbackContainer = document.getElementById("userFeedbackContainer");
+
   if (!userProfile.name) {
     throw new Error("Update is missing a username");
   }
@@ -43,11 +43,12 @@ export async function updateProfile(userProfile) {
     body: JSON.stringify(userProfile),
   });
   if (response.ok) {
-    console.log("profile was updated", response); //add successmessage
-    userFeedback("listing successfully updated", userFeedbackContainer);
+    const result = await response.json();
+    console.log("profile was updated", response);
+    userFeedback("profile successfully updated", userFeedbackContainer);
     setTimeout(function () {
       const profileElement = document.getElementById("profileElement");
-      back(profileElement);
+      back(profileElement, result.data);
     }, 2000);
   } else {
     throw new Error("Couln't update userprofile");
