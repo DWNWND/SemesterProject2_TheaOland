@@ -1,9 +1,12 @@
-import { coundownTimer } from "../events/listners/countdownTimer.js";
+import { addCurrentBid, addDeadline } from "./bids.js";
 import { generateBtn } from "./btns.js";
+import { addMedia } from "./media.js";
 
 export function listingsTemplate(listingData, userIsLoggedIn) {
   const listingTitle = listingData.title;
   const listingID = listingData.id;
+  const bidsArray = listingData.bids;
+  const endsAt = listingData.endsAt;
 
   const col = document.createElement("div");
   col.classList.add("col");
@@ -20,11 +23,16 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
   titleContainer.append(title);
 
   const img = addMedia(listingData);
-  const currentBid = addCurrentBid(listingData);
+  const currentBidContainer = addCurrentBid(bidsArray);
+  const countdownContainer = addDeadline(endsAt);
+
+  const bidContainer = document.createElement("div");
+  bidContainer.classList.add("pill", "d-flex", "flex-column", "justify-content-between", "semi-bold");
+  bidContainer.append(currentBidContainer, countdownContainer);
 
   //LISTINGS DISPLAYED PUBLICLY (NOT LOGGED IN)
   if (!userIsLoggedIn) {
-    listing.append(img, titleContainer, currentBid);
+    listing.append(img, titleContainer, bidContainer);
     col.append(listing);
   }
 
@@ -36,7 +44,7 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
     const link = `/listing/index.html?key=${listingID}`;
     const viewListingBtn = generateBtn("viewListingBtn", "view", link);
 
-    listingFooter.append(currentBid, viewListingBtn);
+    listingFooter.append(bidContainer, viewListingBtn);
     listing.append(img, titleContainer, listingFooter);
     col.append(listing);
 
@@ -50,61 +58,4 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
     }
   }
   return col;
-}
-
-function addMedia(listingData) {
-  const mediaArrayLength = listingData.media.length;
-
-  const imgDisplayed = document.createElement("img");
-  imgDisplayed.classList.add("object-fit-cover", "main-listing-img");
-
-  if (mediaArrayLength > 0) {
-    const mediaUrl = listingData.media[0].url;
-    const mediaAlt = listingData.media[0].alt;
-    imgDisplayed.src = mediaUrl;
-
-    if (mediaAlt === "") {
-      imgDisplayed.alt = "Placeholder image-text for listing image. The user have not added any image-text.";
-    }
-    if (mediaAlt !== "") {
-      imgDisplayed.alt = mediaAlt;
-    }
-  }
-
-  if (mediaArrayLength === 0) {
-    imgDisplayed.src = "src/img/placeholder.jpg";
-    imgDisplayed.alt = "Placeholder image. The user have not uploaded any images for this listing.";
-  }
-  return imgDisplayed;
-}
-
-function addCurrentBid(listingData) {
-  const bidArrayLength = listingData.bids.length;
-  const deadline = new Date(listingData.endsAt);
-
-  const bidContainer = document.createElement("div");
-  bidContainer.classList.add("pill", "d-flex", "flex-column", "justify-content-between", "semi-bold");
-
-  const currentBidContainer = document.createElement("div");
-  currentBidContainer.classList.add("current-bid");
-
-  if (bidArrayLength > 0) {
-    const allBids = listingData.bids;
-    const lastBid = allBids[allBids.length - 1];
-    const currentBid = lastBid.amount;
-    currentBidContainer.innerText = currentBid + " credit";
-  }
-  if (bidArrayLength === 0) {
-    currentBidContainer.innerText = "no bids yet";
-    currentBidContainer.classList.add("text-dark-purple", "fst-italic");
-  }
-
-  const timerContainer = document.createElement("div");
-  timerContainer.classList.add("timer");
-
-  coundownTimer(deadline, timerContainer);
-
-  bidContainer.append(currentBidContainer, timerContainer);
-
-  return bidContainer;
 }
