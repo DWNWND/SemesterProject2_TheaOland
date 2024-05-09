@@ -396,6 +396,10 @@ fieldset {
   margin-right: auto;
 }
 
+.bid {
+  white-space: nowrap;
+}
+
 @media (min-width: 233px) {
   .username {
     display: block;
