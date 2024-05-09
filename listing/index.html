@@ -24,9 +24,10 @@
     </header>
     <main>
       <div id="uxElement" class="d-flex flex-column align-items-center">
-        <div id="userFeedback" class="pb-3"></div>
         <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>
       </div>
+      <div id="userFeedbackMain" class="pb-3"></div>
+
       <div id="listingContainer" class="row g-2 pt-3 container">
         <div class="container">
           <div class="auction-item d-flex flex-column flex-md-row gap-4">
@@ -39,8 +40,8 @@
             <div class="bids glassmorphism">
               <h2 class="heading-4 text-white text-center">current bid:</h2>
               <div id="currentBidContainer" class="pill d-flex flex-column justify-content-between semi-bold">
-                <div class="current-bid text-dark-purple"><span id="currentBid">0</span> credit</div>
-                <div id="timer" class="timer"></div>
+                <!-- <div class="current-bid text-dark-purple"><span id="currentBid">0</span> credit</div>
+                <div id="timer" class="timer"></div> -->
               </div>
               <form id="placeBid" class="d-flex flex-column justify-content-between semi-bold mt-4 mb-4 gap-2 form-floating">
                 <input name="amount" type="number" class="bid form-control semi-bold text-grayish-purple" id="bid-input" required />
