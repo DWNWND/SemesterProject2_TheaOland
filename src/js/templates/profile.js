@@ -1,4 +1,3 @@
-import { load } from "../storage/load.js";
 import { logoutFunctionality } from "../events/listners/logout.js";
 import { updateProfile } from "../api/requests/update.js";
 import { userFeedback } from "../ui/components/errors/userFeedback.js";
