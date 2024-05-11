@@ -1,9 +1,9 @@
-import { load } from "../storage/load.js";
-import { navTemplate } from "../templates/nav.js";
-import { userFeedback } from "../ui/components/errors/userFeedback.js";
 import { get } from "../api/requests/get.js";
-import { profileTemplate } from "../templates/profile.js";
-import { renderListings } from "../templates/renderListings.js";
+import { load } from "../storage/_index.js";
+import { navTemplate, profileTemplate } from "../templates/_index.js";
+import { renderListings } from "../handlers/events/_index.js";
+import { userFeedback } from "../ui/userFeedback/_index.js";
+
 const profile = load("profile");
 const feedbackContainer = document.getElementById("feedbackContainer");
 const uxElementMain = document.getElementById("uxElementMain");

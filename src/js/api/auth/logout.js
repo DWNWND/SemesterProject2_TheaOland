@@ -1,4 +1,4 @@
-import { remove } from "../../storage/index.js";
+import { remove } from "../../storage/_index.js";
 
 export function logout() {
   remove("token");

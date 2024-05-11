@@ -1,4 +1,4 @@
-import { totalPages } from "../api/requests/get.js";
+import { totalPages } from "../../api/requests/get.js";
 
 export function updateTotalPageDisplay() {
   const totalPagesDisplay = document.getElementById("totalPages");

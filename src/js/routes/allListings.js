@@ -1,10 +1,9 @@
-import { load } from "../storage/index.js";
 import { get } from "../api/requests/get.js";
-import { updateTotalPageDisplay, updatePaginationBtns, updateCurrentPageDisplay } from "../events/pagination.js";
-import { userFeedback } from "../ui/components/errors/userFeedback.js";
-import { navTemplate } from "../templates/nav.js";
-import { listenForPageTurn } from "../events/navPages.js";
-import { renderListings } from "../templates/renderListings.js";
+import { load } from "../storage/_index.js";
+import { navTemplate } from "../templates/_index.js";
+import { renderListings, updateTotalPageDisplay, updatePaginationBtns, updateCurrentPageDisplay } from "../handlers/events/_index.js";
+import { listenForPageTurn } from "../handlers/listners/_index.js";
+import { userFeedback } from "../ui/userFeedback/_index.js";
 
 const feed = document.getElementById("feed");
 const feedbackContainer = document.getElementById("feedbackContainer");
@@ -14,7 +13,6 @@ const prvBtn = document.getElementById("prvBtn");
 const pagination = document.getElementById("paginationElement");
 
 let page = 1;
-const token = load("token");
 const profile = load("profile");
 
 export async function userListings() {

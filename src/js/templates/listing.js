@@ -1,5 +1,6 @@
 import { generateMediaGallery } from "./media.js";
-import { listenForNewBid, addCurrentBid, addDeadline, displayBidHistory } from "./bids.js";
+import { addCurrentBid, addDeadline, displayBidHistory } from "./bids.js";
+import { listenForNewBid } from "../handlers/listners/_index.js";
 
 export function listingSpecificTemplate({ title, media, bids, id, description, endsAt }) {
   const titleContainer = document.getElementById("auction-item-name");

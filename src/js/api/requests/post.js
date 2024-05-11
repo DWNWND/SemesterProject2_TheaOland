@@ -1,7 +1,6 @@
 import { callApiWith } from "../apiCall.js";
 import { API_LISTINGS } from "../../constants/index.js";
-import { userFeedback } from "../../ui/components/errors/userFeedback.js";
-import { load } from "../../storage/load.js";
+import { userFeedback } from "../../ui/userFeedback/_index.js";
 
 const userFeedbackContainer = document.getElementById("userFeedback");
 

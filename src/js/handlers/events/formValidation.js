@@ -1,8 +1,3 @@
-const email = document.getElementById("registerEmail");
-const username = document.getElementById("registerUsername");
-const password = document.getElementById("registerPassword");
-const repeatPassword = document.getElementById("registerRepeatPassword");
-
 export async function validateRepeatPassword(firstPasswordValue, repeatPasswordValue) {
   const repeatPasswordError = document.getElementById("registerRepeatPasswordError");
   if (repeatPasswordValue === firstPasswordValue && repeatPasswordValue !== "") {
@@ -68,27 +63,4 @@ function testRegex(inputType, inputValue, minlen = "", maxlen = "") {
   } else {
     return false;
   }
-}
-
-//listeners
-export function formValidation() {
-  email.addEventListener("input", () => {
-    const inputType = "email";
-    validateInput(inputType, "emailHelpBlock", email.value);
-  });
-
-  username.addEventListener("input", () => {
-    const inputType = "username";
-    validateInput(inputType, "usernameHelpBlock", username.value, 2, 15);
-  });
-
-  password.addEventListener("input", () => {
-    const inputType = "password";
-    validateInput(inputType, "passwordHelpBlock", password.value, 8, 20);
-    validateRepeatPassword(password.value, repeatPassword.value);
-  });
-
-  repeatPassword.addEventListener("input", () => {
-    validateRepeatPassword(password.value, repeatPassword.value);
-  });
 }

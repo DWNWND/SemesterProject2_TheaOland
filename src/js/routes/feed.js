@@ -1,11 +1,9 @@
 import { get } from "../api/requests/get.js";
-import { listenForPageTurn, listenForSearch } from "../events/listners/navPages.js";
-import { load } from "../storage/load.js";
-import * as generate from "../templates/index.js";
-import { userFeedback } from "../ui/components/errors/userFeedback.js";
-// import { listenForSearch } from "../events/listners/onSearch.js";
-import { renderListings } from "../templates/renderListings.js";
-import { updateTotalPageDisplay, updateCurrentPageDisplay, updatePaginationBtns } from "../events/listners/pagination.js";
+import { load } from "../storage/_index.js";
+import * as generate from "../templates/_index.js";
+import { renderListings, updateTotalPageDisplay, updateCurrentPageDisplay, updatePaginationBtns } from "../handlers/events/_index.js";
+import { listenForPageTurn, listenForSearch } from "../handlers/listners/_index.js";
+import { userFeedback } from "../ui/userFeedback/_index.js";
 
 const feed = document.getElementById("feed");
 const feedbackContainer = document.getElementById("feedbackContainer");

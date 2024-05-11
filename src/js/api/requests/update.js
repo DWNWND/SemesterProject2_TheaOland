@@ -1,7 +1,7 @@
 import { callApiWith } from "../apiCall.js";
 import { API_LISTINGS, API_PROFILES } from "../../constants/index.js";
-import { userFeedback } from "../../ui/components/errors/userFeedback.js";
-import { navigateBack } from "../../templates/profile.js";
+import { navigateBack } from "../../handlers/events/_index.js";
+import { userFeedback } from "../../ui/userFeedback/_index.js";
 
 export async function updateListing(listing, listingID) {
   const userFeedbackContainer = document.getElementById("userFeedbackContainer");

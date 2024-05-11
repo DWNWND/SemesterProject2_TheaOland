@@ -1,8 +1,7 @@
-import { load } from "../storage/load.js";
-import { navTemplate } from "../templates/nav.js";
-import { userFeedback } from "../ui/components/errors/userFeedback.js";
 import { get } from "../api/requests/get.js";
-import { listingSpecificTemplate } from "../templates/listing.js";
+import { load } from "../storage/_index.js";
+import { navTemplate, listingSpecificTemplate } from "../templates/_index.js";
+import { userFeedback } from "../ui/userFeedback/_index.js";
 
 const profile = load("profile");
 const feedbackContainer = document.getElementById("userFeedbackMain");

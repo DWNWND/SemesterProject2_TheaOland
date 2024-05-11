@@ -1,11 +1,17 @@
-import { register, login } from "../api/auth/index.js";
-import { validateInput, validateRepeatPassword } from "./formValidation.js";
-import { userFeedback } from "../ui/components/errors/userFeedback.js";
+import { register, login } from "../../api/auth/index.js";
+import { validateInput, validateRepeatPassword } from "../events/_index.js";
+import { userFeedback } from "../../ui/userFeedback/_index.js";
 
 const errorContainer = document.getElementById("userFeedback");
 
+export function listenForAuthentication() {
+  document.forms.loginForm.addEventListener("submit", loginAuth);
+  document.forms.registerForm.addEventListener("submit", registerAuth);
+}
+
 export async function loginAuth(event) {
   event.preventDefault();
+
   const email = event.target.loginEmail.value;
   const password = event.target.loginPassword.value;
 
@@ -22,7 +28,6 @@ export async function loginAuth(event) {
 
 export async function registerAuth(event) {
   event.preventDefault();
-
   const username = event.target.registerUsername.value;
   const email = event.target.registerEmail.value;
   const firstPassword = event.target.registerPassword.value;
@@ -42,9 +47,4 @@ export async function registerAuth(event) {
   } catch (error) {
     userFeedback(error, errorContainer);
   }
-}
-
-export function listenForAuthentication() {
-  document.forms.loginForm.addEventListener("submit", loginAuth);
-  document.forms.registerForm.addEventListener("submit", registerAuth);
 }

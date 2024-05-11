@@ -1,5 +1,5 @@
-import { load } from "../storage/index.js";
-import { listingsTemplate } from "./listings.js";
+import { load } from "../../storage/_index.js";
+import { listingsTemplate } from "../../templates/listings.js";
 
 export function renderListings(listingsArray, container) {
   const uxElementMain = document.getElementById("uxElementMain");

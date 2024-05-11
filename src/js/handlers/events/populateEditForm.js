@@ -1,15 +1,11 @@
-import { countdownTimer } from "./countdownTimer.js";
-import { generateImgInputs } from "../routes/edit.js";
+import { countdownTimer } from "../../ux/components/countdownTimer.js";
+import { generateImgInputs } from "./_index.js";
 
 export async function populateEditForm(listing) {
   const editForm = document.forms.newListing;
   if (editForm) {
     const button = document.getElementById("submit");
     button.disabled = true;
-
-    // const requestListing = "../../api/requests/get.js";
-    // const { get } = await import(requestListing);
-    // const { title, description, tags, endsAt, media } = await get("singleListing", listingID);
 
     if (listing.title) {
       editForm.title.value = listing.title;

@@ -1,6 +1,5 @@
-import { logoutFunctionality } from "../events/logout.js";
-import { updateProfile } from "../api/requests/update.js";
-import { generateBtn } from "./btns.js";
+import { listenForLogout } from "../handlers/listners/logout.js";
+import { updateProfileTemplate } from "../handlers/listners/_index.js";
 
 const uxElementSecondary = document.getElementById("uxElementSecondary");
 
@@ -38,11 +37,11 @@ export function profileTemplate(userProfile) {
   logoutBtn.classList.add("d-flex", "align-items-center", "w-100", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-fontsize-l", "lowercase");
   logoutBtn.id = "logoutBtn";
   logoutBtn.innerText = "log out";
-  logoutFunctionality(logoutBtn);
+  listenForLogout(logoutBtn);
 
   const editProfileBtn = document.createElement("button");
   editProfileBtn.classList.add("lowercase", "d-flex", "w-100", "align-items-center", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-orange", "btn-fontsize-l");
-  editProfileBtn.id = "logoutBtn";
+  editProfileBtn.id = "eidtProfileBtn";
   editProfileBtn.innerText = "edit profile";
   updateProfileTemplate(editProfileBtn, userProfile, profileElement);
 
@@ -62,117 +61,117 @@ export function profileTemplate(userProfile) {
   profileContainer.append(profileElement);
 }
 
-function generateFormField(id, element, type, name, data) {
-  const fieldContainer = document.createElement("div");
-  fieldContainer.classList.add("form-floating", "mb-3", "w-100");
+// export function updateProfileFormFields(id, element, type, name, data) {
+//   const fieldContainer = document.createElement("div");
+//   fieldContainer.classList.add("form-floating", "mb-3", "w-100");
 
-  const input = document.createElement(element);
-  input.id = id;
-  input.setAttribute("name", name);
-  input.classList.add("form-control");
-  input.required;
-  input.value = data;
+//   const input = document.createElement(element);
+//   input.id = id;
+//   input.setAttribute("name", name);
+//   input.classList.add("form-control");
+//   input.required;
+//   input.value = data;
 
-  const label = document.createElement("label");
-  label.setAttribute("for", id);
-  label.classList.add("edit-profile-form-labels", "uppercase", "semi-bold", "text-grayish-purple");
-  label.innerText = id;
+//   const label = document.createElement("label");
+//   label.setAttribute("for", id);
+//   label.classList.add("edit-profile-form-labels", "uppercase", "semi-bold", "text-grayish-purple");
+//   label.innerText = id;
 
-  if (name !== "bio") {
-    input.type = type;
-  }
-  if (name !== "alt") {
-    label.innerText = id;
-  }
-  if (name === "alt") {
-    label.innerText = "image description";
-  }
-  if (name === "name") {
-    const usernameHelpBlock = document.createElement("div");
-    usernameHelpBlock.id = "usernameHelpBlock";
-    usernameHelpBlock.classList.add("form-text", "mb-3");
-    usernameHelpBlock.innerText = "The username must not contain punctuation symbols apart from underscore (_).";
-    fieldContainer.append(input, label, usernameHelpBlock);
-  } else {
-    fieldContainer.append(input, label);
-  }
-  return fieldContainer;
-}
+//   if (name !== "bio") {
+//     input.type = type;
+//   }
+//   if (name !== "alt") {
+//     label.innerText = id;
+//   }
+//   if (name === "alt") {
+//     label.innerText = "image description";
+//   }
+//   if (name === "name") {
+//     const usernameHelpBlock = document.createElement("div");
+//     usernameHelpBlock.id = "usernameHelpBlock";
+//     usernameHelpBlock.classList.add("form-text", "mb-3");
+//     usernameHelpBlock.innerText = "The username must not contain punctuation symbols apart from underscore (_).";
+//     fieldContainer.append(input, label, usernameHelpBlock);
+//   } else {
+//     fieldContainer.append(input, label);
+//   }
+//   return fieldContainer;
+// }
 
-function updateProfileTemplate(btn, userProfile, container) {
-  btn.addEventListener("click", () => {
-    container.innerHTML = "";
-    container.classList.remove("justify-content-around");
+// function updateProfileTemplate(btn, userProfile, container) {
+//   btn.addEventListener("click", () => {
+//     container.innerHTML = "";
+//     container.classList.remove("justify-content-around");
 
-    const usernameContainer = generateFormField("username", "input", "text", "name", userProfile.name);
-    const bioContainer = generateFormField("bio", "textarea", "", "bio", userProfile.bio);
-    const avatarContainer = generateFormField("avatar", "input", "url", "url", userProfile.avatar.url);
-    const altContainer = generateFormField("alt", "input", "text", "alt", userProfile.avatar.alt);
+//     const usernameContainer = generateFormField("username", "input", "text", "name", userProfile.name);
+//     const bioContainer = generateFormField("bio", "textarea", "", "bio", userProfile.bio);
+//     const avatarContainer = generateFormField("avatar", "input", "url", "url", userProfile.avatar.url);
+//     const altContainer = generateFormField("alt", "input", "text", "alt", userProfile.avatar.alt);
 
-    const saveBtn = generateBtn("saveBtn", "save");
-    const backBtn = generateBtn("backBtn", "back");
+//     const saveBtn = generateBtn("saveBtn", "save");
+//     const backBtn = generateBtn("backBtn", "back");
 
-    const btnContainer = document.createElement("div");
-    btnContainer.classList.add("d-flex", "w-100", "flex-column", "align-items-center", "justify-content-center", "gap-2", "pt-6");
-    btnContainer.append(saveBtn, backBtn);
+//     const btnContainer = document.createElement("div");
+//     btnContainer.classList.add("d-flex", "w-100", "flex-column", "align-items-center", "justify-content-center", "gap-2", "pt-6");
+//     btnContainer.append(saveBtn, backBtn);
 
-    const userFeedbackContainer = document.createElement("div");
-    userFeedbackContainer.id = "userFeedbackContainer";
-    userFeedbackContainer.classList.add("text-center");
+//     const userFeedbackContainer = document.createElement("div");
+//     userFeedbackContainer.id = "userFeedbackContainer";
+//     userFeedbackContainer.classList.add("text-center");
 
-    const title = document.createElement("h1");
-    title.classList.add("heading-1", "text-red", "text-center", "pb-4", "pt-4");
-    title.innerText = "update profile";
+//     const title = document.createElement("h1");
+//     title.classList.add("heading-1", "text-red", "text-center", "pb-4", "pt-4");
+//     title.innerText = "update profile";
 
-    const fieldInputsContainer = document.createElement("div");
-    fieldInputsContainer.id = "fieldsInputContainer";
-    fieldInputsContainer.append(usernameContainer, bioContainer, avatarContainer, altContainer);
+//     const fieldInputsContainer = document.createElement("div");
+//     fieldInputsContainer.id = "fieldsInputContainer";
+//     fieldInputsContainer.append(usernameContainer, bioContainer, avatarContainer, altContainer);
 
-    const editProfileForm = document.createElement("form");
-    editProfileForm.id = "editProfile";
-    editProfileForm.classList.add("d-flex", "flex-column", "w-100", "no-decoration", "align-items-center", "justify-content-center", "gap-2");
+//     const editProfileForm = document.createElement("form");
+//     editProfileForm.id = "editProfile";
+//     editProfileForm.classList.add("d-flex", "flex-column", "w-100", "no-decoration", "align-items-center", "justify-content-center", "gap-2");
 
-    editProfileForm.append(title, fieldInputsContainer, btnContainer, userFeedbackContainer);
-    container.append(editProfileForm);
+//     editProfileForm.append(title, fieldInputsContainer, btnContainer, userFeedbackContainer);
+//     container.append(editProfileForm);
 
-    exitEdit(backBtn, container, userProfile);
-    saveUpdatedProfile();
-  });
-}
+//     exitEdit(backBtn, container, userProfile);
+//     saveUpdatedProfile();
+//   });
+// }
 
-export function saveUpdatedProfile() {
-  document.forms.editProfile.addEventListener("submit", (event) => {
-    event.preventDefault();
+// export function saveUpdatedProfile() {
+//   document.forms.editProfile.addEventListener("submit", (event) => {
+//     event.preventDefault();
 
-    const form = event.target;
+//     const form = event.target;
 
-    const formData = new FormData(form);
-    const updatedProfile = Object.fromEntries(formData.entries());
+//     const formData = new FormData(form);
+//     const updatedProfile = Object.fromEntries(formData.entries());
 
-    const profile = {
-      name: updatedProfile.name,
-      bio: updatedProfile.bio,
-      avatar: {
-        url: updatedProfile.url,
-        alt: updatedProfile.alt,
-      },
-    };
-    updateProfile(profile);
-  });
-}
+//     const profile = {
+//       name: updatedProfile.name,
+//       bio: updatedProfile.bio,
+//       avatar: {
+//         url: updatedProfile.url,
+//         alt: updatedProfile.alt,
+//       },
+//     };
+//     updateProfile(profile);
+//   });
+// }
 
-export function navigateBack(container, updatedProfile) {
-  try {
-    uxElementSecondary.innerHTML = "";
-    container.remove();
-    profileTemplate(updatedProfile);
-  } catch (error) {
-    console.log(error);
-  }
-}
+// export function navigateBack(container, updatedProfile) {
+//   try {
+//     uxElementSecondary.innerHTML = "";
+//     container.remove();
+//     profileTemplate(updatedProfile);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
-function exitEdit(btn, container, userProfile) {
-  btn.addEventListener("click", () => {
-    navigateBack(container, userProfile);
-  });
-}
+// function exitEdit(btn, container, userProfile) {
+//   btn.addEventListener("click", () => {
+//     navigateBack(container, userProfile);
+//   });
+// }

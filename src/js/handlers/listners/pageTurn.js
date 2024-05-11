@@ -1,8 +1,7 @@
-import { get } from "../api/requests/get.js";
-import { renderListings } from "../templates/renderListings.js";
-import { search } from "./onSearch.js";
-import { load } from "../storage/load.js";
-import { updateCurrentPageDisplay, updatePaginationBtns } from "./pagination.js";
+import { get } from "../../api/requests/get.js";
+import { renderListings } from "../events/renderListings.js";
+import { load } from "../../storage/load.js";
+import { updateCurrentPageDisplay, updatePaginationBtns } from "../events/pagination.js";
 
 const feed = document.getElementById("feed");
 let page = 1;
@@ -58,14 +57,5 @@ export function listenForPageTurn(nxtbtn, prvbtn) {
       }
     }
     window.scrollTo(0, 0);
-  });
-}
-
-export async function listenForSearch() {
-  const searchInput = document.getElementById("searchbar");
-  searchInput.addEventListener("input", async () => {
-    page = 1;
-    updateCurrentPageDisplay(page);
-    search(page);
   });
 }
