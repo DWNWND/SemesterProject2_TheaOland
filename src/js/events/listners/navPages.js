@@ -5,13 +5,7 @@ import { load } from "../../storage/load.js";
 import { updateCurrentPageDisplay, updatePaginationBtns } from "./pagination.js";
 
 const feed = document.getElementById("feed");
-// const searchInput = document.getElementById("searchbar");
-// let query;
 let page = 1;
-
-// if (pathname.includes("feed")) {
-//   query = searchInput.value;
-// }
 
 export function listenForPageTurn(nxtbtn, prvbtn) {
   let query;
