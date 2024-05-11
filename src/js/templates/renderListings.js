@@ -15,7 +15,7 @@ export function renderListings(listingsArray, container) {
   if (pathname.includes("profile")) {
     const heading = document.createElement("h1");
     heading.innerText = "my latest listings";
-    heading.classList.add("heading-4", "text-red", "text-center");
+    heading.classList.add("heading-1", "text-red", "text-center");
     container.append(heading);
   }
 
