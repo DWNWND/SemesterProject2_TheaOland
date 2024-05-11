@@ -4,17 +4,24 @@ import { search } from "./onSearch.js";
 import { updateCurrentPageDisplay, updatePaginationBtns } from "./pagination.js";
 
 const feed = document.getElementById("feed");
-const searchInput = document.getElementById("searchbar");
-let query;
+// const searchInput = document.getElementById("searchbar");
+// let query;
 let page = 1;
 
-const pathname = window.location.pathname;
-if (pathname.includes("feed")) {
-  query = searchInput.value;
-}
+// if (pathname.includes("feed")) {
+//   query = searchInput.value;
+// }
 
 export function listenForPageTurn(nxtbtn, prvbtn) {
+  let query;
+  const pathname = window.location.pathname;
+  const searchInput = document.getElementById("searchbar");
+
   nxtbtn.addEventListener("click", async () => {
+    if (pathname === "/" || pathname.includes("feed")) {
+      query = searchInput.value;
+    }
+
     page++;
     updateCurrentPageDisplay(page);
     updatePaginationBtns(nxtbtn, prvbtn, page);
@@ -47,6 +54,7 @@ export function listenForPageTurn(nxtbtn, prvbtn) {
 }
 
 export async function listenForSearch() {
+  const searchInput = document.getElementById("searchbar");
   searchInput.addEventListener("input", async () => {
     page = 1;
     updateCurrentPageDisplay(page);
