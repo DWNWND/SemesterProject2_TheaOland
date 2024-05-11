@@ -147,11 +147,12 @@ async function publishNewListing() {
     const form = event.target;
     const formData = new FormData(form);
     const newListing = Object.fromEntries(formData.entries());
+    const newDeadline = new Date(newListing.endsAt);
 
     const newListingObj = {
       title: newListing.title,
       description: newListing.description,
-      endsAt: newListing.endsAt,
+      endsAt: newDeadline,
       tags: [],
       media: [
         {
