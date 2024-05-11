@@ -80,8 +80,9 @@ export function generateImgInputs(url = "", alt = "") {
   imageFields.classList.add("d-flex", "flex-column", "gap-1", "p-1", "bg-grayish-purple", "media-fieldsets");
 
   const removeBtn = document.createElement("a");
+  removeBtn.classList.add("pointer", "text-black", "text-center");
   removeBtn.id = "image" + img;
-  removeBtn.innerText = "remove img";
+  removeBtn.innerText = "delete";
 
   removeImages(removeBtn);
 
@@ -89,6 +90,10 @@ export function generateImgInputs(url = "", alt = "") {
   imgLabel.innerText = "Image " + img;
   imgLabel.classList.add("text-white", "text-center");
   imgLabel.setAttribute("for", "image" + img);
+
+  const headerContainer = document.createElement("div");
+  headerContainer.classList.add("d-flex", "justify-content-between", "p-1");
+  headerContainer.append(imgLabel, removeBtn);
 
   const urlInput = document.createElement("input");
   urlInput.classList.add("url", "form-control");
@@ -124,7 +129,7 @@ export function generateImgInputs(url = "", alt = "") {
   formUrlFloating.append(urlInput, urlLabel);
   formAltFloating.append(altInput, altLabel);
 
-  imageFields.append(imgLabel, removeBtn, formUrlFloating, formAltFloating);
+  imageFields.append(headerContainer, formUrlFloating, formAltFloating);
   imageUpload.append(imageFields);
 }
 
