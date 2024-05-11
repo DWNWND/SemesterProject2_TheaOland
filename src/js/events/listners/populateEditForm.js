@@ -1,4 +1,4 @@
-import { coundownTimer } from "./countdownTimer.js";
+import { countdownTimer } from "./countdownTimer.js";
 import { generateImgInputs } from "../../routes/edit.js";
 
 export async function populateEditForm(listing) {
@@ -41,7 +41,7 @@ export async function populateEditForm(listing) {
 
       setDeadline.innerText = deadlineString;
 
-      coundownTimer(deadline, setCountdown);
+      countdownTimer(deadline, setCountdown);
 
       deadlineContainer.append(setDeadline, countdownLabel, setCountdown);
     }

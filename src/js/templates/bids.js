@@ -1,4 +1,4 @@
-import { coundownTimer } from "../events/listners/countdownTimer.js";
+import { countdownTimer } from "../events/listners/countdownTimer.js";
 import { publishNewBid } from "../api/requests/post.js";
 
 export function listenForNewBid(listingID) {
@@ -38,7 +38,7 @@ export function addDeadline(endsAt) {
   const deadline = new Date(endsAt);
   const timerContainer = document.createElement("div");
   timerContainer.classList.add("timer");
-  coundownTimer(deadline, timerContainer);
+  countdownTimer(deadline, timerContainer);
   return timerContainer;
 }
 

@@ -1,6 +1,6 @@
 //FROM: https://www.w3schools.com/howto/howto_js_countdown.asp
 
-export function coundownTimer(deadline, container) {
+export function countdownTimer(deadline, container) {
   // Set the date we're counting down to
   // var countDownDate = new Date("Jan 5, 2030 15:37:25").getTime();
   const countDownTime = deadline.getTime();
