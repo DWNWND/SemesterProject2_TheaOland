@@ -84,6 +84,7 @@ p,
 }
 .pointer {
   cursor: pointer;
+  opacity: 1;
 }
 
 .pointer:hover {
@@ -284,10 +285,6 @@ p,
 }
 fieldset {
   border-radius: 10px;
-}
-
-.form-text {
-  margin-top: 0rem;
 }
 
 .register-form-labels,
