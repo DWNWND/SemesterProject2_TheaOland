@@ -1,6 +1,7 @@
 import { get } from "../../api/requests/get.js";
 import { renderListings } from "../../templates/renderListings.js";
 import { search } from "./onSearch.js";
+import { load } from "../../storage/load.js";
 import { updateCurrentPageDisplay, updatePaginationBtns } from "./pagination.js";
 
 const feed = document.getElementById("feed");
@@ -18,21 +19,25 @@ export function listenForPageTurn(nxtbtn, prvbtn) {
   const searchInput = document.getElementById("searchbar");
 
   nxtbtn.addEventListener("click", async () => {
-    if (pathname === "/" || pathname.includes("feed")) {
-      query = searchInput.value;
-    }
-
     page++;
     updateCurrentPageDisplay(page);
     updatePaginationBtns(nxtbtn, prvbtn, page);
 
-    if (!query || query === "") {
-      const listings = await get("listingsByPage", page);
+    if (pathname.includes("allListings")) {
+      const profile = load("profile");
+      const listings = await get("listingsByProfile", page, profile.name);
       renderListings(listings, feed);
     }
-    if (query) {
-      const listings = await get("listingsBySearch", page, query);
-      renderListings(listings, feed);
+    if (pathname === "/" || pathname.includes("feed")) {
+      query = searchInput.value;
+      if (!query || query === "") {
+        const listings = await get("listingsByPage", page);
+        renderListings(listings, feed);
+      }
+      if (query) {
+        const listings = await get("listingsBySearch", page, query);
+        renderListings(listings, feed);
+      }
     }
     window.scrollTo(0, 0);
   });
@@ -41,13 +46,22 @@ export function listenForPageTurn(nxtbtn, prvbtn) {
     updateCurrentPageDisplay(page);
     updatePaginationBtns(nxtbtn, prvbtn, page);
 
-    if (!query || query === "") {
-      const listings = await get("listingsByPage", page);
+    if (pathname.includes("allListings")) {
+      const profile = load("profile");
+      const listings = await get("listingsByProfile", page, profile.name);
       renderListings(listings, feed);
     }
-    if (query) {
-      const listings = await get("listingsBySearch", page, query);
-      renderListings(listings, feed);
+    if (pathname === "/" || pathname.includes("feed")) {
+      query = searchInput.value;
+
+      if (!query || query === "") {
+        const listings = await get("listingsByPage", page);
+        renderListings(listings, feed);
+      }
+      if (query) {
+        const listings = await get("listingsBySearch", page, query);
+        renderListings(listings, feed);
+      }
     }
     window.scrollTo(0, 0);
   });
