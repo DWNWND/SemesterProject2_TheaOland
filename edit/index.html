@@ -23,8 +23,8 @@
       <nav id="nav" class="justify-content-center align-items-center d-flex flex-column flex-md-row gap-2"></nav>
     </header>
     <main>
-      <div class="container">
-        <div class="new-listing-form">
+      <div class="container pb-5">
+        <div class="new-listing-form glassmorphism">
           <form id="newListing" class="d-flex flex-column gap-5">
             <div class="d-flex flex-column gap-2">
               <h1 class="heading-1 text-red">Listing Details</h1>
@@ -33,7 +33,7 @@
                 <label for="new-listing-title" class="new-listing-form-labels uppercase semi-bold text-grayish-purple">Title</label>
               </div>
               <div class="form-floating">
-                <input type="text" class="form-control" id="new-listing-description" name="description" required />
+                <textarea type="text" class="form-control" id="new-listing-description" name="description" required></textarea>
                 <label for="new-listing-description" class="new-listing-form-labels uppercase semi-bold text-grayish-purple">Description</label>
               </div>
               <div id="deadlineContainer" class="d-flex flex-column">
@@ -45,10 +45,10 @@
               <h1 class="heading-1 text-red">Listing Media</h1>
               <label for="media-uploads" class="new-listing-form-labels uppercase extra-bold text-grayish-purple">Upload images (max 8)</label>
               <div id="imageUpload" class="d-flex flex-column gap-2"></div>
-              <a id="addImgsBtn" class="text-red p-1">Add images</a>
+              <a id="addImgsBtn" class="text-red p-1 pointer">Add new image</a>
             </div>
             <button id="submit" type="submit" for="new-listing" class="btn-local btn-height-l btn-purple btn-fontsize-l extra-bold uppercase">Publish</button>
-            <a id="deleteBtn" class="text-red extra-bold uppercase text-center">Delete listing</a>
+            <a id="deleteBtn" class="text-red extra-bold uppercase text-center pointer">Delete listing</a>
           </form>
           <div id="uxElement" class="d-flex flex-column align-items-center">
             <div id="userFeedback" class="pb-3 pt-3"></div>
