@@ -1,9 +1,9 @@
 import { load } from "../storage/index.js";
 import { get } from "../api/requests/get.js";
-import { updateTotalPageDisplay, updatePaginationBtns, updateCurrentPageDisplay } from "../events/listners/pagination.js";
+import { updateTotalPageDisplay, updatePaginationBtns, updateCurrentPageDisplay } from "../events/pagination.js";
 import { userFeedback } from "../ui/components/errors/userFeedback.js";
 import { navTemplate } from "../templates/nav.js";
-import { listenForPageTurn } from "../events/listners/navPages.js";
+import { listenForPageTurn } from "../events/navPages.js";
 import { renderListings } from "../templates/renderListings.js";
 
 const feed = document.getElementById("feed");

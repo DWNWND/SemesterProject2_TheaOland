@@ -1,4 +1,4 @@
-import { countdownTimer } from "../events/listners/countdownTimer.js";
+import { countdownTimer } from "../events/countdownTimer.js";
 import { publishNewBid } from "../api/requests/post.js";
 
 export function listenForNewBid(listingID) {

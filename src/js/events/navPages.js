@@ -1,7 +1,7 @@
-import { get } from "../../api/requests/get.js";
-import { renderListings } from "../../templates/renderListings.js";
+import { get } from "../api/requests/get.js";
+import { renderListings } from "../templates/renderListings.js";
 import { search } from "./onSearch.js";
-import { load } from "../../storage/load.js";
+import { load } from "../storage/load.js";
 import { updateCurrentPageDisplay, updatePaginationBtns } from "./pagination.js";
 
 const feed = document.getElementById("feed");

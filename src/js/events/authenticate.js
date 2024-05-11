@@ -1,6 +1,6 @@
-import { register, login } from "../../api/auth/index.js";
+import { register, login } from "../api/auth/index.js";
 import { validateInput, validateRepeatPassword } from "./formValidation.js";
-import { userFeedback } from "../../ui/components/errors/userFeedback.js";
+import { userFeedback } from "../ui/components/errors/userFeedback.js";
 
 const errorContainer = document.getElementById("userFeedback");
 

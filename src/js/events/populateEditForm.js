@@ -1,5 +1,5 @@
 import { countdownTimer } from "./countdownTimer.js";
-import { generateImgInputs } from "../../routes/edit.js";
+import { generateImgInputs } from "../routes/edit.js";
 
 export async function populateEditForm(listing) {
   const editForm = document.forms.newListing;

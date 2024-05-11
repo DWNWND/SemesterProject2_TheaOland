@@ -1,7 +1,7 @@
 import { navTemplate } from "../templates/nav.js";
 import { load } from "../storage/index.js";
 import { publishListing } from "../api/requests/post.js";
-import { populateEditForm } from "../events/listners/populateEditForm.js";
+import { populateEditForm } from "../events/populateEditForm.js";
 import { updateListing } from "../api/requests/update.js";
 import { deleteListing } from "../api/requests/delete.js";
 

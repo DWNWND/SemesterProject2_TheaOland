@@ -1,4 +1,4 @@
-import { logoutFunctionality } from "../events/listners/logout.js";
+import { logoutFunctionality } from "../events/logout.js";
 import { updateProfile } from "../api/requests/update.js";
 import { generateBtn } from "./btns.js";
 

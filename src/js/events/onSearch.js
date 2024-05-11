@@ -1,8 +1,8 @@
-import { startFeed } from "../../routes/feed.js";
-import { userFeedback } from "../../ui/components/errors/userFeedback.js";
+import { startFeed } from "../routes/feed.js";
+import { userFeedback } from "../ui/components/errors/userFeedback.js";
 import { updateTotalPageDisplay, updatePaginationBtns } from "./pagination.js";
-import { renderListings } from "../../templates/renderListings.js";
-import { get } from "../../api/requests/get.js";
+import { renderListings } from "../templates/renderListings.js";
+import { get } from "../api/requests/get.js";
 
 let query;
 let numberOfListings;
