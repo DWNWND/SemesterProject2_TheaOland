@@ -1,6 +1,7 @@
 export * from "./formValidation.js";
 export * from "./generateFormFields.js";
 export * from "./generateImgInputs.js";
+export * from "./generateMediaObj.js";
 export * from "./navBack.js";
 export * from "./pagination.js";
 export * from "./populateEditForm.js";
