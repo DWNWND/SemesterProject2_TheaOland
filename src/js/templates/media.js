@@ -60,14 +60,14 @@ export function generateMediaGallery(mediaArray) {
         focusImg.alt = event.target.alt;
       });
     }
-    focusImg.addEventListener("click", (event) => {
-      const modalImg = document.getElementById("modalImg");
-      const imgDescription = document.getElementById("imgDescription");
-
-      modalImg.src = event.target.src;
-      modalImg.alt = event.target.alt;
-
-      imgDescription.innerText = event.target.alt;
-    });
   }
+  focusImg.addEventListener("click", (event) => {
+    const modalImg = document.getElementById("modalImg");
+    const imgDescription = document.getElementById("imgDescription");
+
+    modalImg.src = event.target.src;
+    modalImg.alt = event.target.alt;
+
+    imgDescription.innerText = event.target.alt;
+  });
 }
