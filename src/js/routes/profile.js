@@ -3,6 +3,7 @@ import { load } from "../storage/_index.js";
 import { navTemplate, profileTemplate } from "../templates/_index.js";
 import { renderListings } from "../handlers/events/_index.js";
 import { userFeedback } from "../ui/userFeedback/_index.js";
+import { displayWins, displayBids } from "../templates/_index.js";
 
 const profile = load("profile");
 const feedbackContainer = document.getElementById("feedbackContainer");
@@ -16,6 +17,8 @@ export async function generateUserProfile() {
     const userProfile = await get("singleProfile", username);
     const listingsArray = await get("listingsByProfile", username);
     uxElementMain.innerHTML = "";
+    displayBids(username);
+    displayWins(username);
     profileTemplate(userProfile);
     renderListings(listingsArray, profileListingsContainer);
   } catch (error) {

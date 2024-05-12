@@ -520,6 +520,7 @@ li {
   --bs-error: #a93338;
   --bs-success: #d36b0d;
   --bs-green: #667131;
+  --bs-pink: #f9d2d4;
   --bs-brown-rgb: 176, 116, 114;
   --bs-red-rgb: 169, 51, 56;
   --bs-grayish-purple-rgb: 138, 119, 161;
@@ -529,6 +530,7 @@ li {
   --bs-error-rgb: 169, 51, 56;
   --bs-success-rgb: 211, 107, 13;
   --bs-green-rgb: 102, 113, 49;
+  --bs-pink-rgb: 249, 210, 212;
   --bs-primary-text-emphasis: #052c65;
   --bs-secondary-text-emphasis: #2b2f32;
   --bs-success-text-emphasis: #0a3622;
@@ -3779,6 +3781,23 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: #667131;
 }
 
+.btn-pink {
+  --bs-btn-color: #000;
+  --bs-btn-bg: #f9d2d4;
+  --bs-btn-border-color: #f9d2d4;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: #fad9da;
+  --bs-btn-hover-border-color: #fad7d8;
+  --bs-btn-focus-shadow-rgb: 212, 179, 180;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: #fadbdd;
+  --bs-btn-active-border-color: #fad7d8;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #000;
+  --bs-btn-disabled-bg: #f9d2d4;
+  --bs-btn-disabled-border-color: #f9d2d4;
+}
+
 .btn-outline-brown {
   --bs-btn-color: #b07472;
   --bs-btn-border-color: #b07472;
@@ -3929,6 +3948,23 @@ textarea.form-control-lg {
   --bs-btn-disabled-color: #667131;
   --bs-btn-disabled-bg: transparent;
   --bs-btn-disabled-border-color: #667131;
+  --bs-gradient: none;
+}
+
+.btn-outline-pink {
+  --bs-btn-color: #f9d2d4;
+  --bs-btn-border-color: #f9d2d4;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: #f9d2d4;
+  --bs-btn-hover-border-color: #f9d2d4;
+  --bs-btn-focus-shadow-rgb: 249, 210, 212;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: #f9d2d4;
+  --bs-btn-active-border-color: #f9d2d4;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #f9d2d4;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: #f9d2d4;
   --bs-gradient: none;
 }
 
@@ -5627,6 +5663,13 @@ textarea.form-control-lg {
   --bs-alert-link-color: var(--bs-green-text-emphasis);
 }
 
+.alert-pink {
+  --bs-alert-color: var(--bs-pink-text-emphasis);
+  --bs-alert-bg: var(--bs-pink-bg-subtle);
+  --bs-alert-border-color: var(--bs-pink-border-subtle);
+  --bs-alert-link-color: var(--bs-pink-text-emphasis);
+}
+
 @keyframes progress-bar-stripes {
   0% {
     background-position-x: 1rem;
@@ -6067,6 +6110,19 @@ textarea.form-control-lg {
   --bs-list-group-active-color: var(--bs-green-bg-subtle);
   --bs-list-group-active-bg: var(--bs-green-text-emphasis);
   --bs-list-group-active-border-color: var(--bs-green-text-emphasis);
+}
+
+.list-group-item-pink {
+  --bs-list-group-color: var(--bs-pink-text-emphasis);
+  --bs-list-group-bg: var(--bs-pink-bg-subtle);
+  --bs-list-group-border-color: var(--bs-pink-border-subtle);
+  --bs-list-group-action-hover-color: var(--bs-emphasis-color);
+  --bs-list-group-action-hover-bg: var(--bs-pink-border-subtle);
+  --bs-list-group-action-active-color: var(--bs-emphasis-color);
+  --bs-list-group-action-active-bg: var(--bs-pink-border-subtle);
+  --bs-list-group-active-color: var(--bs-pink-bg-subtle);
+  --bs-list-group-active-bg: var(--bs-pink-text-emphasis);
+  --bs-list-group-active-border-color: var(--bs-pink-text-emphasis);
 }
 
 .btn-close {
@@ -7690,6 +7746,11 @@ textarea.form-control-lg {
   background-color: RGBA(var(--bs-green-rgb), var(--bs-bg-opacity, 1)) !important;
 }
 
+.text-bg-pink {
+  color: #000 !important;
+  background-color: RGBA(var(--bs-pink-rgb), var(--bs-bg-opacity, 1)) !important;
+}
+
 .link-brown {
   color: RGBA(var(--bs-brown-rgb), var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(var(--bs-brown-rgb), var(--bs-link-underline-opacity, 1)) !important;
@@ -7769,6 +7830,15 @@ textarea.form-control-lg {
 .link-green:hover, .link-green:focus {
   color: RGBA(82, 90, 39, var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(82, 90, 39, var(--bs-link-underline-opacity, 1)) !important;
+}
+
+.link-pink {
+  color: RGBA(var(--bs-pink-rgb), var(--bs-link-opacity, 1)) !important;
+  text-decoration-color: RGBA(var(--bs-pink-rgb), var(--bs-link-underline-opacity, 1)) !important;
+}
+.link-pink:hover, .link-pink:focus {
+  color: RGBA(250, 219, 221, var(--bs-link-opacity, 1)) !important;
+  text-decoration-color: RGBA(250, 219, 221, var(--bs-link-underline-opacity, 1)) !important;
 }
 
 .link-body-emphasis {
@@ -8218,6 +8288,10 @@ textarea.form-control-lg {
   --bs-focus-ring-color: rgba(var(--bs-green-rgb), var(--bs-focus-ring-opacity));
 }
 
+.focus-ring-pink {
+  --bs-focus-ring-color: rgba(var(--bs-pink-rgb), var(--bs-focus-ring-opacity));
+}
+
 .position-static {
   position: static !important;
 }
@@ -8413,6 +8487,11 @@ textarea.form-control-lg {
 .border-green {
   --bs-border-opacity: 1;
   border-color: rgba(var(--bs-green-rgb), var(--bs-border-opacity)) !important;
+}
+
+.border-pink {
+  --bs-border-opacity: 1;
+  border-color: rgba(var(--bs-pink-rgb), var(--bs-border-opacity)) !important;
 }
 
 .border-black {
@@ -9371,6 +9450,11 @@ textarea.form-control-lg {
   color: rgba(var(--bs-green-rgb), var(--bs-text-opacity)) !important;
 }
 
+.text-pink {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-pink-rgb), var(--bs-text-opacity)) !important;
+}
+
 .text-black {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-black-rgb), var(--bs-text-opacity)) !important;
@@ -9578,6 +9662,11 @@ textarea.form-control-lg {
   text-decoration-color: rgba(var(--bs-green-rgb), var(--bs-link-underline-opacity)) !important;
 }
 
+.link-underline-pink {
+  --bs-link-underline-opacity: 1;
+  text-decoration-color: rgba(var(--bs-pink-rgb), var(--bs-link-underline-opacity)) !important;
+}
+
 .link-underline {
   --bs-link-underline-opacity: 1;
   text-decoration-color: rgba(var(--bs-link-color-rgb), var(--bs-link-underline-opacity, 1)) !important;
@@ -9674,6 +9763,11 @@ textarea.form-control-lg {
 .bg-green {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-green-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.bg-pink {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-pink-rgb), var(--bs-bg-opacity)) !important;
 }
 
 .bg-black {

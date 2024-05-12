@@ -1,5 +1,6 @@
 import { listenForLogout } from "../handlers/listners/logout.js";
 import { updateProfileTemplate } from "../handlers/listners/_index.js";
+import { get } from "../api/requests/get.js";
 
 const uxElementSecondary = document.getElementById("uxElementSecondary");
 
@@ -61,117 +62,43 @@ export function profileTemplate(userProfile) {
   profileContainer.append(profileElement);
 }
 
-// export function updateProfileFormFields(id, element, type, name, data) {
-//   const fieldContainer = document.createElement("div");
-//   fieldContainer.classList.add("form-floating", "mb-3", "w-100");
+export async function displayWins(username) {
+  const wins = await get("winsByProfile", username);
+  const winsContainer = document.getElementById("wins");
+  if (wins.length === 0) {
+    winsContainer.innerText = "no wins yet";
+  } else {
+    wins.forEach((win) => {
+      const winContainer = document.createElement("div");
+      winContainer.classList.add("d-flex", "bg-light-orange", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center");
 
-//   const input = document.createElement(element);
-//   input.id = id;
-//   input.setAttribute("name", name);
-//   input.classList.add("form-control");
-//   input.required;
-//   input.value = data;
+      const titleContainer = document.createElement("div");
+      titleContainer.classList.add("uppercase", "heading-2-feed");
+      const winAmountContainer = document.createElement("div");
+      titleContainer.innerHTML = win.listing.title;
+      winAmountContainer.innerText = win.amount + " credit";
 
-//   const label = document.createElement("label");
-//   label.setAttribute("for", id);
-//   label.classList.add("edit-profile-form-labels", "uppercase", "semi-bold", "text-grayish-purple");
-//   label.innerText = id;
+      winContainer.append(titleContainer, winAmountContainer);
+      winsContainer.append(winContainer);
+    });
+  }
+}
 
-//   if (name !== "bio") {
-//     input.type = type;
-//   }
-//   if (name !== "alt") {
-//     label.innerText = id;
-//   }
-//   if (name === "alt") {
-//     label.innerText = "image description";
-//   }
-//   if (name === "name") {
-//     const usernameHelpBlock = document.createElement("div");
-//     usernameHelpBlock.id = "usernameHelpBlock";
-//     usernameHelpBlock.classList.add("form-text", "mb-3");
-//     usernameHelpBlock.innerText = "The username must not contain punctuation symbols apart from underscore (_).";
-//     fieldContainer.append(input, label, usernameHelpBlock);
-//   } else {
-//     fieldContainer.append(input, label);
-//   }
-//   return fieldContainer;
-// }
+export async function displayBids(username) {
+  const bids = await get("bidsByProfile", username);
 
-// function updateProfileTemplate(btn, userProfile, container) {
-//   btn.addEventListener("click", () => {
-//     container.innerHTML = "";
-//     container.classList.remove("justify-content-around");
+  const bidsContainer = document.getElementById("bids");
+  bids.forEach((bid) => {
+    const bidContainer = document.createElement("div");
+    bidContainer.classList.add("d-flex", "bg-pink", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center");
+    const titleContainer = document.createElement("div");
+    titleContainer.classList.add("uppercase", "heading-2-feed");
+    const bidAmountContainer = document.createElement("div");
 
-//     const usernameContainer = generateFormField("username", "input", "text", "name", userProfile.name);
-//     const bioContainer = generateFormField("bio", "textarea", "", "bio", userProfile.bio);
-//     const avatarContainer = generateFormField("avatar", "input", "url", "url", userProfile.avatar.url);
-//     const altContainer = generateFormField("alt", "input", "text", "alt", userProfile.avatar.alt);
+    titleContainer.innerText = bid.listing.title;
+    bidAmountContainer.innerText = bid.amount + " credit";
 
-//     const saveBtn = generateBtn("saveBtn", "save");
-//     const backBtn = generateBtn("backBtn", "back");
-
-//     const btnContainer = document.createElement("div");
-//     btnContainer.classList.add("d-flex", "w-100", "flex-column", "align-items-center", "justify-content-center", "gap-2", "pt-6");
-//     btnContainer.append(saveBtn, backBtn);
-
-//     const userFeedbackContainer = document.createElement("div");
-//     userFeedbackContainer.id = "userFeedbackContainer";
-//     userFeedbackContainer.classList.add("text-center");
-
-//     const title = document.createElement("h1");
-//     title.classList.add("heading-1", "text-red", "text-center", "pb-4", "pt-4");
-//     title.innerText = "update profile";
-
-//     const fieldInputsContainer = document.createElement("div");
-//     fieldInputsContainer.id = "fieldsInputContainer";
-//     fieldInputsContainer.append(usernameContainer, bioContainer, avatarContainer, altContainer);
-
-//     const editProfileForm = document.createElement("form");
-//     editProfileForm.id = "editProfile";
-//     editProfileForm.classList.add("d-flex", "flex-column", "w-100", "no-decoration", "align-items-center", "justify-content-center", "gap-2");
-
-//     editProfileForm.append(title, fieldInputsContainer, btnContainer, userFeedbackContainer);
-//     container.append(editProfileForm);
-
-//     exitEdit(backBtn, container, userProfile);
-//     saveUpdatedProfile();
-//   });
-// }
-
-// export function saveUpdatedProfile() {
-//   document.forms.editProfile.addEventListener("submit", (event) => {
-//     event.preventDefault();
-
-//     const form = event.target;
-
-//     const formData = new FormData(form);
-//     const updatedProfile = Object.fromEntries(formData.entries());
-
-//     const profile = {
-//       name: updatedProfile.name,
-//       bio: updatedProfile.bio,
-//       avatar: {
-//         url: updatedProfile.url,
-//         alt: updatedProfile.alt,
-//       },
-//     };
-//     updateProfile(profile);
-//   });
-// }
-
-// export function navigateBack(container, updatedProfile) {
-//   try {
-//     uxElementSecondary.innerHTML = "";
-//     container.remove();
-//     profileTemplate(updatedProfile);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// function exitEdit(btn, container, userProfile) {
-//   btn.addEventListener("click", () => {
-//     navigateBack(container, userProfile);
-//   });
-// }
+    bidContainer.append(titleContainer, bidAmountContainer);
+    bidsContainer.append(bidContainer);
+  });
+}
