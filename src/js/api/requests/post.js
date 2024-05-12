@@ -50,7 +50,7 @@ export async function publishNewBid(listingID, bid) {
 
     if (response.status === 201) {
       console.log("Bid accepted", response);
-      bidFeedbackContainer.classList.add("text-success");
+      bidFeedbackContainer.classList.add("text-success", "uppercase");
       const userFeedbackMessage = "Bid accepted";
       userFeedback(userFeedbackMessage, bidFeedbackContainer);
 
@@ -59,13 +59,16 @@ export async function publishNewBid(listingID, bid) {
       }, 2000);
     }
     if (response.status === 400) {
+      bidFeedbackContainer.classList.remove("uppercase");
       bidFeedbackContainer.classList.add("text-error");
       throw new Error("Bid not accepted: Make sure that the listing is active and your bid is higher than the current bid.");
     }
     if (response.status === 403) {
+      bidFeedbackContainer.classList.remove("uppercase");
       bidFeedbackContainer.classList.add("text-error");
       throw new Error("You can not bid on your own listing");
     } else if (response.status >= 401) {
+      bidFeedbackContainer.classList.remove("uppercase");
       bidFeedbackContainer.classList.add("text-error");
       throw new Error("Bid not accepted: An unexpected error occured, please try again later");
     }
