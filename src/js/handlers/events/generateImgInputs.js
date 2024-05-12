@@ -1,40 +1,53 @@
 import { listenForRemoveImg } from "../listners/_index.js";
-let img = 1;
-const imageUpload = document.getElementById("imageUpload");
 
-export function generateImgInputs(url = "", alt = "") {
-  const imageFieldsets = document.querySelectorAll("fieldset");
-  const amountOfFieldsets = imageFieldsets.length;
-  if (!amountOfFieldsets) {
-    img = 1;
+const addImgsBtn = document.getElementById("addImgsBtn");
+let imagesArray = [];
+
+export function addFieldToArray(imgUrl, imgAlt) {
+  const imgId = Math.floor(Math.random() * 10000);
+  generateImgFields(imgUrl, imgAlt, imgId);
+
+  const newImage = {
+    id: imgId,
+  };
+  imagesArray.push(newImage);
+  checkNumberOfImg();
+}
+
+export function removeFieldFromArray(imgFieldID) {
+  imagesArray = imagesArray.filter((img) => {
+    return img.id !== imgFieldID;
+  });
+}
+
+export function checkNumberOfImg() {
+  const imgArrLen = imagesArray.length;
+  if (imgArrLen < 8) {
+    addImgsBtn.innerText = "Add images";
+    addImgsBtn.classList.remove("no-decoration");
+    addImgsBtn.disabled = false;
   }
-  const imageFields = document.createElement("fieldset");
-  imageFields.id = "image" + img;
-  // imageFields.name = "media"
-  imageFields.classList.add("d-flex", "flex-column", "gap-1", "p-1", "bg-grayish-purple", "media-fieldsets");
+  if (imgArrLen >= 8) {
+    addImgsBtn.innerText = "Max amound of images pr. listing";
+    addImgsBtn.classList.add("no-decoration");
+    addImgsBtn.disabled = true;
+  }
+}
 
-  const removeBtn = document.createElement("a");
-  removeBtn.classList.add("pointer", "text-black", "text-center");
-  removeBtn.id = "image" + img;
-  removeBtn.innerText = "delete";
-
-  listenForRemoveImg(removeBtn);
-
-  const imgLabel = document.createElement("label");
-  imgLabel.innerText = "Image " + img;
-  imgLabel.classList.add("text-white", "text-center");
-  imgLabel.setAttribute("for", "image" + img);
-
-  const headerContainer = document.createElement("div");
-  headerContainer.classList.add("d-flex", "justify-content-between", "p-1");
-  headerContainer.append(imgLabel, removeBtn);
-
+export function generateImgFields(url = "", alt = "", imgId) {
   const urlInput = document.createElement("input");
   urlInput.classList.add("url", "form-control");
   urlInput.type = "url";
   urlInput.id = "urlUpload";
   urlInput.name = "url";
   urlInput.value = url;
+  const urlLabel = document.createElement("label");
+  urlLabel.setAttribute("for", "urlUpload");
+  urlLabel.classList.add("new-listing-form-labels", "uppercase", "semi-bold", "text-grayish-purple");
+  urlLabel.innerText = "image url";
+  const urlField = document.createElement("div");
+  urlField.classList.add("form-floating");
+  urlField.append(urlInput, urlLabel);
 
   const altInput = document.createElement("input");
   altInput.classList.add("alt", "form-control");
@@ -43,26 +56,29 @@ export function generateImgInputs(url = "", alt = "") {
   altInput.name = "alt";
   altInput.maxLength = "120";
   altInput.value = alt;
-
-  const urlLabel = document.createElement("label");
-  urlLabel.setAttribute("for", "urlUpload");
-  urlLabel.classList.add("new-listing-form-labels", "uppercase", "semi-bold", "text-grayish-purple");
-  urlLabel.innerText = "image url";
-
   const altLabel = document.createElement("label");
   altLabel.setAttribute("for", "altText");
   altLabel.classList.add("new-listing-form-labels", "uppercase", "semi-bold", "text-grayish-purple");
   altLabel.innerText = "image description";
+  const altField = document.createElement("div");
+  altField.classList.add("form-floating");
+  altField.append(altInput, altLabel);
 
-  const formUrlFloating = document.createElement("div");
-  formUrlFloating.classList.add("form-floating");
+  const fieldset = document.createElement("fieldset");
+  fieldset.classList.add("d-flex", "flex-column", "gap-1");
+  fieldset.append(urlField, altField);
 
-  const formAltFloating = document.createElement("div");
-  formAltFloating.classList.add("form-floating");
+  const removeBtn = document.createElement("a");
+  removeBtn.classList.add("pointer", "text-white", "position-absolute", "top-1", "end-2");
+  removeBtn.id = imgId;
+  removeBtn.innerText = "delete";
+  listenForRemoveImg(removeBtn);
 
-  formUrlFloating.append(urlInput, urlLabel);
-  formAltFloating.append(altInput, altLabel);
+  const li = document.createElement("li");
+  li.classList.add("bg-grayish-purple", "p-1", "text-white", "rounded", "position-relative", "bg-opacity-25");
+  li.id = imgId;
+  li.append(removeBtn, fieldset);
 
-  imageFields.append(headerContainer, formUrlFloating, formAltFloating);
-  imageUpload.append(imageFields);
+  const imageUpload = document.getElementById("imageUpload");
+  imageUpload.append(li);
 }
