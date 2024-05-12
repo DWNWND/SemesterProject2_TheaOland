@@ -36,7 +36,7 @@ export async function get(request, param, sparam = "") {
   }
   if (request === "listingsByPage") {
     const pageLimit = 10;
-    url = API_LISTINGS + `?_bids=true&limit=${pageLimit}&page=${param}&sort=created&sortOder=asc&_active=true`;
+    url = API_LISTINGS + `?_bids=true&limit=${pageLimit}&page=${param}&sort=endsAt&sortOrder=asc&_active=true`;
     result = await getData(url);
     console.log(request, "- page: ", param, result);
     return result;
@@ -51,13 +51,13 @@ export async function get(request, param, sparam = "") {
   if (request === "listingsByProfile") {
     if (sparam !== "") {
       const pageLimit = 10;
-      url = API_PROFILES + `${sparam}/listings?_bids=true&limit=${pageLimit}&page=${param}`;
+      url = API_PROFILES + `${sparam}/listings?_bids=true&limit=${pageLimit}&page=${param}&sort=endsAt&sortOrder=asc`;
       result = await getData(url);
       console.log(request, "- username: ", param, result);
       return result;
     } else if (sparam === "") {
-      const pageLimit = 4;
-      url = API_PROFILES + `${param}/listings?_bids=true&limit=${pageLimit}&page=1`;
+      const pageLimit = 6;
+      url = API_PROFILES + `${param}/listings?_bids=true&limit=${pageLimit}&page=1&sort=endsAt&sortOrder=asc`;
       result = await getData(url);
       console.log(request, "- username: ", param, result);
       return result;
