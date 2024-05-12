@@ -69,13 +69,13 @@ export function navTemplate(username) {
     nav.append(newlistingLink, usernameLink);
   }
   if (token && pathname.includes("listing")) {
-    nav.append(newlistingLink, usernameLink, homeLink);
+    nav.append(homeLink, newlistingLink, usernameLink);
   }
   if (token && pathname.includes("profile")) {
-    nav.append(newlistingLink, homeLink);
+    nav.append(homeLink, newlistingLink);
   }
   if (token && pathname.includes("edit")) {
-    nav.append(usernameLink, homeLink);
+    nav.append(homeLink, usernameLink);
   }
   if (token && pathname.includes("allListings")) {
     nav.append(homeLink, newlistingLink, usernameLink);
