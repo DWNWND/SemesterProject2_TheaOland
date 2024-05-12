@@ -26,8 +26,10 @@ export function addMedia(listingData) {
 
 export function generateMediaGallery(mediaArray) {
   const mediaGallery = document.getElementById("mediaGallery");
-
   const focusImgContainer = document.getElementById("focusImg");
+  focusImgContainer.setAttribute("data-bs-target", "#exampleModal");
+  focusImgContainer.setAttribute("data-bs-toggle", "modal");
+
   const focusImg = document.createElement("img");
   focusImg.classList.add("img-fluid");
   focusImgContainer.append(focusImg);
@@ -46,7 +48,7 @@ export function generateMediaGallery(mediaArray) {
       imgContainer.classList.add("media");
 
       const img = document.createElement("img");
-      img.classList.add("media-gallery-img");
+      img.classList.add("media-gallery-img", "pointer");
       img.src = mediaArray[i].url;
       img.alt = mediaArray[i].alt;
 
@@ -54,19 +56,18 @@ export function generateMediaGallery(mediaArray) {
       mediaGallery.appendChild(imgContainer);
 
       img.addEventListener("click", (event) => {
-        const selectedImg = event.target;
-        const url = selectedImg.src;
-        const alt = selectedImg.alt;
-
-        focusImg.src = url;
-        focusImg.alt = alt;
-
-        if (img.src === focusImg.src) {
-          img.classList.add("inFocus");
-        } else {
-          img.classList.remove("inFocus");
-        }
+        focusImg.src = event.target.src;
+        focusImg.alt = event.target.alt;
       });
     }
+    focusImg.addEventListener("click", (event) => {
+      const modalImg = document.getElementById("modalImg");
+      const imgDescription = document.getElementById("imgDescription");
+
+      modalImg.src = event.target.src;
+      modalImg.alt = event.target.alt;
+
+      imgDescription.innerText = event.target.alt;
+    });
   }
 }
