@@ -66,7 +66,8 @@ export async function displayWins(username) {
   const wins = await get("winsByProfile", username);
   const winsContainer = document.getElementById("wins");
   if (wins.length === 0) {
-    winsContainer.innerText = "no wins yet";
+    const userFeedbackMsg = "no wins yet";
+    winsContainer.append(userFeedbackMsg);
   } else {
     wins.forEach((win) => {
       const winContainer = document.createElement("div");
