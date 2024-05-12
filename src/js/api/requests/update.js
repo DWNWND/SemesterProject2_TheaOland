@@ -4,10 +4,12 @@ import { navigateBack } from "../../handlers/events/_index.js";
 import { userFeedback } from "../../ui/userFeedback/_index.js";
 
 export async function updateListing(listing, listingID) {
-  const userFeedbackContainer = document.getElementById("userFeedbackContainer");
+  const userFeedbackContainer = document.getElementById("userFeedback");
 
   try {
-    if (!listing.id) {
+    if (!listingID) {
+      userFeedbackContainer.classList.remove("uppercase");
+      userFeedbackContainer.classList.add("text-error");
       throw new Error("Update is missing a listingID");
     }
     const url = API_LISTINGS + `${listingID}`;
@@ -16,7 +18,7 @@ export async function updateListing(listing, listingID) {
       body: JSON.stringify(listing),
     });
     if (response.ok) {
-      userFeedbackContainer.classList.add("text-success");
+      userFeedbackContainer.classList.add("text-success", "uppercase");
       userFeedback("listing successfully updated", userFeedbackContainer);
       // const uxElementSecondary = document.getElementById("uxElementSecondary");
       // uxElementSecondary.innerHTML = `<span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>`;
@@ -30,10 +32,11 @@ export async function updateListing(listing, listingID) {
         }
       }, 2000);
     } else {
+      userFeedbackContainer.classList.remove("uppercase");
+      userFeedbackContainer.classList.add("text-error");
       throw new Error("Couln't update listing");
     }
   } catch (error) {
-    userFeedbackContainer.classList.add("text-error");
     userFeedback(error, userFeedbackContainer);
   }
 }
