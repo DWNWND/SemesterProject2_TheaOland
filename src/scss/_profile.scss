@@ -11,7 +11,8 @@
 
 @media (min-width: $breakpoint-tablet) {
   #profileContainer,
-  #profileListingsContainer {
+  #profileListingsContainer,
+  .leftside {
     width: 50%;
   }
 
@@ -23,7 +24,8 @@
   #profileListingsContainer {
     width: auto;
   }
-  #profileContainer {
+  #profileContainer,
+  .leftside {
     width: 700px;
   }
 }
