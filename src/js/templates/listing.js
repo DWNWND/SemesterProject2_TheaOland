@@ -19,10 +19,14 @@ export function listingSpecificTemplate({ title, media, bids, id, description, t
   descriptionContainer.innerText = description;
 
   const tagsContainer = document.getElementById("tags");
-  tags.forEach((tag) => {
-    console.log(tag);
-    tagsContainer.append(tag);
-  });
+  if (tags.length == 0) {
+    tagsContainer.innerText = "no tags";
+  } else {
+    tags.forEach((tag) => {
+      const tagHtml = " #" + tag;
+      tagsContainer.append(tagHtml);
+    });
+  }
   const sellerContainer = document.getElementById("seller");
   sellerContainer.innerText = seller.name;
 

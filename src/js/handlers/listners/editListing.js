@@ -36,11 +36,15 @@ export async function listenForUpdate(listingID) {
     const fieldsets = document.querySelectorAll("fieldset");
     generateMediaObj(mediaObjArr, fieldsets);
 
+    const tags = newListing.tags;
+    const newTags = tags.split(",");
+    const trimmedTagsArr = newTags.map((tag) => tag.trim());
+
     const newListingObj = {
       title: newListing.title,
       description: newListing.description,
       endsAt: newListing.endsAt,
-      tags: [],
+      tags: trimmedTagsArr,
       media: mediaObjArr,
     };
 

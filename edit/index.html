@@ -36,6 +36,11 @@
                 <textarea type="text" class="form-control" id="new-listing-description" name="description" required></textarea>
                 <label for="new-listing-description" class="new-listing-form-labels uppercase semi-bold text-grayish-purple">Description</label>
               </div>
+              <div class="form-floating">
+                <input type="text" class="form-control" id="new-listing-tags" name="tags" />
+                <label for="new-listing-tags" class="new-listing-form-labels uppercase semi-bold text-grayish-purple">Tags</label>
+              </div>
+              <div id="tagsHelpBlock" class="form-text mb-3">Separate tags by comma sign ( , )</div>
               <div id="deadlineContainer" class="d-flex flex-column">
                 <label id="deadlineLabel" for="new-listing-auction-deadline" class="new-listing-form-labels uppercase extra-bold text-grayish-purple">Set auction deadline</label>
                 <input id="deadlineInput" type="datetime-local" class="form-control new-listing-auction-deadline" id="new-listing-auction-deadline" name="endsAt" />
