@@ -27,7 +27,7 @@ export function addMedia(listingData) {
 export function generateMediaGallery(mediaArray) {
   const mediaGallery = document.getElementById("mediaGallery");
   const focusImgContainer = document.getElementById("focusImg");
-  focusImgContainer.setAttribute("data-bs-target", "#exampleModal");
+  focusImgContainer.setAttribute("data-bs-target", "#imageModal");
   focusImgContainer.setAttribute("data-bs-toggle", "modal");
 
   const focusImg = document.createElement("img");
