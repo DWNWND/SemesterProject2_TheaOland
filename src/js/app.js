@@ -1,17 +1,17 @@
 //https://stackoverflow.com/questions/11071314/javascript-execute-after-all-images-have-loaded
 
 function hideLoader() {
-  const loader = document.getElementById("uxElement");
-  loader.innerHTML = "";
+  const loader = document.getElementById("loaderContainerMain");
+  loader.style.display = "none";
 }
 
 function showContent() {
   const content = document.querySelector(".content");
-  const navPages = document.getElementById("navPages");
-  if (navPages) {
-    navPages.classList.remove("hidden");
-    navPages.classList.add("d-flex");
-  }
+  // const navPages = document.getElementById("navPages");
+  // if (navPages) {
+  //   navPages.classList.remove("hidden");
+  //   navPages.classList.add("d-flex");
+  // }
   content.classList.remove("hidden");
 }
 
