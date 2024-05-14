@@ -3,6 +3,7 @@ import { validateInput, validateRepeatPassword } from "../events/_index.js";
 import { userFeedback } from "../../ui/userFeedback/_index.js";
 
 const errorContainer = document.getElementById("userFeedback");
+const loaderContainer = document.getElementById("loaderContainer");
 
 export function listenForAuthentication() {
   document.forms.loginForm.addEventListener("submit", loginAuth);
@@ -17,7 +18,9 @@ export async function loginAuth(event) {
 
   try {
     if (email && password) {
+      loaderContainer.style.display = "block";
       await login(email, password);
+      loaderContainer.style.display = "none";
     } else if (!email || !password) {
       throw new Error("Please fill in both email and password to log in.");
     }
@@ -40,7 +43,9 @@ export async function registerAuth(event) {
 
   try {
     if (username && email && firstPassword && passwordRepeat && validEmail && validUsername && validPassword && validRepeatPassword) {
+      loaderContainer.style.display = "block";
       await register(username, email, firstPassword);
+      loaderContainer.style.display = "none";
     } else if (!username || !email || !firstPassword || !passwordRepeat || !validEmail || !validUsername || !validPassword || !validRepeatPassword) {
       throw new Error("Please fill in all the registration fields according to registration criteria.");
     }
