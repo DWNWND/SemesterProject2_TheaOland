@@ -10,3 +10,12 @@
 //     margin-bottom: 5rem;
 //   }
 // }
+
+// .logo-container {
+//   max-height: 50px;
+// }
+
+.logo-container img {
+  max-height: 80px;
+  object-fit: contain;
+}

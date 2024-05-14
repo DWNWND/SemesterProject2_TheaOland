@@ -18,10 +18,12 @@ export async function generateEdit() {
   try {
     navTemplate(username);
     listenForAddImg(addImgsBtn);
+    const metaTitle = document.querySelector("title");
 
     if (listingID) {
       deleteBtn.style.display = "block";
       const listing = await get("singleListing", listingID);
+      metaTitle.innerText = "Edit listing: " + listing.title + " | BAZAAR";
 
       if (!listing.endsAt) {
         const deadlineInput = document.getElementById("deadlineInput");
@@ -32,6 +34,7 @@ export async function generateEdit() {
       listenForDelete(listingID);
     }
     if (!listingID) {
+      // metaTitle.innerText = "BAZAAR + New listing";
       deleteBtn.style.display = "none";
       listenForPublish();
     }

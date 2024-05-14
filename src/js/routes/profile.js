@@ -16,6 +16,8 @@ export async function generateUserProfile() {
     navTemplate(username);
     const userProfile = await get("singleProfile", username);
     const listingsArray = await get("listingsByProfile", username);
+    const metaTitle = document.querySelector("title");
+    metaTitle.innerText = username + " | BAZAAR";
     // uxElementMain.innerHTML = "";
     displayBids(username);
     displayWins(username);
