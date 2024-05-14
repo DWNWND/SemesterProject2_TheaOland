@@ -1,21 +1,8 @@
 import { load } from "../../storage/_index.js";
 import { listingsTemplate } from "../../templates/listings.js";
 
-export function removeContent() {
-  const content = document.querySelector(".content");
-  const navPages = document.getElementById("navPages");
-  if (navPages) {
-    navPages.classList.add("hidden");
-    navPages.classList.remove("d-flex");
-  }
-  // content.style.display = "block";
-  content.classList.add("hidden");
-}
-
 export function renderListings(listingsArray, container) {
-  // const uxElementMain = document.getElementById("uxElementMain");
   const token = load("token");
-  removeContent();
 
   // if (listingsArray.length === 0 || !listingsArray) {
   //   throw new Error("there's no more listings in this search.");
@@ -35,12 +22,8 @@ export function renderListings(listingsArray, container) {
     container.append(listingsTemplate(listingsArray[i], token));
   }
 
-  // uxElementMain.innerHTML = "";
-
   if (pathname === "/" || pathname.includes("feed") || pathname.includes("allListings")) {
-    // const navPages = document.getElementById("navPages");
     const paginationElement = document.getElementById("paginationElement");
-    // navPages.style.display = "block";
     paginationElement.style.display = "block";
   }
 
