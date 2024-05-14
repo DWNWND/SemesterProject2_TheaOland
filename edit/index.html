@@ -23,7 +23,11 @@
       <nav id="nav" class="justify-content-center align-items-center d-flex flex-column flex-md-row gap-2"></nav>
     </header>
     <main>
-      <div class="container pb-5">
+      <div id="uxElement" class="d-flex flex-column align-items-center">
+        <div id="userFeedback" class="pb-3 pt-3"></div>
+        <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>
+      </div>
+      <div class="container pb-5 content hidden">
         <div class="new-listing-form glassmorphism">
           <form id="newListing" class="d-flex flex-column gap-5">
             <div class="d-flex flex-column gap-2">
@@ -55,10 +59,6 @@
             <button id="submit" type="submit" for="new-listing" class="btn-local btn-height-l btn-purple btn-fontsize-l extra-bold uppercase">Publish</button>
             <a id="deleteBtn" class="text-red extra-bold uppercase text-center pointer">Delete listing</a>
           </form>
-          <div id="uxElement" class="d-flex flex-column align-items-center">
-            <div id="userFeedback" class="pb-3 pt-3"></div>
-            <!-- <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span> -->
-          </div>
         </div>
       </div>
     </main>
