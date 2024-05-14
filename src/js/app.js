@@ -1,3 +1,20 @@
+//https://stackoverflow.com/questions/11071314/javascript-execute-after-all-images-have-loaded
+
+function hideLoader() {
+  const loader = document.getElementById("uxElement");
+  loader.innerHTML = "";
+}
+
+function showContent() {
+  const content = document.querySelector(".content");
+  const navPages = document.getElementById("navPages");
+  if (navPages) {
+    navPages.classList.remove("hidden");
+    navPages.classList.add("d-flex");
+  }
+  content.classList.remove("hidden");
+}
+
 async function router() {
   const loadRequest = "./storage/load.js";
   const { load } = await import(loadRequest);
@@ -10,6 +27,23 @@ async function router() {
     const feedRequest = "./routes/feed.js";
     const { generateFeed } = await import(feedRequest);
     await generateFeed();
+
+    Promise.all(
+      Array.from(document.images)
+        .filter((img) => !img.complete)
+        .map(
+          (img) =>
+            new Promise((resolve) => {
+              img.onload = img.onerror = resolve;
+            })
+        )
+    ).then(() => {
+      const content = document.querySelector(".content");
+      hideLoader();
+      showContent();
+      content.classList.add("row");
+    });
+
     return;
   }
   if (pathname.toLowerCase().includes("/auth/")) {
@@ -33,6 +67,19 @@ async function router() {
       const listingRequest = "./routes/listing.js";
       const { generateListingSpesific } = await import(listingRequest);
       await generateListingSpesific();
+      Promise.all(
+        Array.from(document.images)
+          .filter((img) => !img.complete)
+          .map(
+            (img) =>
+              new Promise((resolve) => {
+                img.onload = img.onerror = resolve;
+              })
+          )
+      ).then(() => {
+        hideLoader();
+        showContent();
+      });
     }
     return;
   }
@@ -45,6 +92,21 @@ async function router() {
       const profileRequest = "./routes/profile.js";
       const { generateUserProfile } = await import(profileRequest);
       await generateUserProfile();
+      Promise.all(
+        Array.from(document.images)
+          .filter((img) => !img.complete)
+          .map(
+            (img) =>
+              new Promise((resolve) => {
+                img.onload = img.onerror = resolve;
+              })
+          )
+      ).then(() => {
+        const content = document.querySelector(".content");
+        hideLoader();
+        showContent();
+        content.classList.add("d-flex");
+      });
     }
     return;
   }
@@ -57,6 +119,19 @@ async function router() {
       const editRequest = "./routes/edit.js";
       const { generateEdit } = await import(editRequest);
       await generateEdit();
+      Promise.all(
+        Array.from(document.images)
+          .filter((img) => !img.complete)
+          .map(
+            (img) =>
+              new Promise((resolve) => {
+                img.onload = img.onerror = resolve;
+              })
+          )
+      ).then(() => {
+        hideLoader();
+        showContent();
+      });
     }
     return;
   }
@@ -69,6 +144,21 @@ async function router() {
       const allListingsRequest = "./routes/allListings.js";
       const { generateUserFeed } = await import(allListingsRequest);
       await generateUserFeed();
+      Promise.all(
+        Array.from(document.images)
+          .filter((img) => !img.complete)
+          .map(
+            (img) =>
+              new Promise((resolve) => {
+                img.onload = img.onerror = resolve;
+              })
+          )
+      ).then(() => {
+        const content = document.querySelector(".content");
+        hideLoader();
+        showContent();
+        content.classList.add("row");
+      });
     }
     return;
   } else {
