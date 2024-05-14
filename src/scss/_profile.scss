@@ -2,6 +2,7 @@
 
 .img-profile {
   border-radius: 50%;
+  border: solid 2px $grayish-purple;
   height: 200px;
   width: 200px;
 }
@@ -10,7 +11,11 @@
 }
 
 @media (min-width: $breakpoint-tablet) {
-  #profileContainer,
+  .img-profile {
+    height: 250px;
+    width: 250px;
+  }
+  // #profileContainer,
   .leftside {
     width: 50%;
   }
@@ -23,8 +28,8 @@
   #profileListingsContainer {
     width: auto;
   }
-  #profileContainer,
+  // #profileContainer,
   .leftside {
-    width: 700px;
+    min-width: 450px;
   }
 }
