@@ -7,7 +7,7 @@ import { userFeedback } from "../ui/userFeedback/_index.js";
 
 const feed = document.getElementById("feed");
 const feedbackContainer = document.getElementById("feedbackContainer");
-const navPages = document.getElementById("navPages");
+// const navPages = document.getElementById("navPages");
 const nxtBtn = document.getElementById("nxtBtn");
 const prvBtn = document.getElementById("prvBtn");
 const pagination = document.getElementById("paginationElement");
@@ -17,7 +17,7 @@ const profile = load("profile");
 
 export async function userListings() {
   try {
-    navPages.style.display = "none";
+    // navPages.style.display = "none";
     pagination.style.display = "none";
 
     const listingsArrray = await get("listingsByProfile", page, profile.name);
