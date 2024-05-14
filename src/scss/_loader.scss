@@ -10,7 +10,8 @@
   animation: rotation 1s linear infinite;
 }
 
-.hidden {
+.hidden,
+#loaderContainer {
   display: none;
 }
 
