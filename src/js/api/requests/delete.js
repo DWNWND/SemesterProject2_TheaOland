@@ -2,9 +2,6 @@ import { callApiWith } from "../apiCall.js";
 import { API_LISTINGS } from "../../constants/index.js";
 import { load } from "../../storage/load.js";
 
-const profile = load("profile");
-const username = profile.name;
-
 export async function deleteListing(id) {
   if (!id) {
     throw new Error("Delete is missing a listingID");
