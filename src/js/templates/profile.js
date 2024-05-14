@@ -6,7 +6,7 @@ import { get } from "../api/requests/get.js";
 
 export function profileTemplate(userProfile) {
   const profileElement = document.createElement("div");
-  profileElement.classList.add("user-profile", "vh-75", "d-flex", "flex-column", "align-items-center", "text-red", "justify-content-between");
+  profileElement.classList.add("user-profile", "d-flex", "flex-column", "align-items-center", "text-red", "justify-content-between");
   profileElement.id = "profileElement";
 
   const avatarContainer = document.createElement("div");
@@ -90,11 +90,14 @@ export async function displayBids(username) {
 
   const bidsContainer = document.getElementById("bids");
   bids.forEach((bid) => {
-    const bidContainer = document.createElement("div");
-    bidContainer.classList.add("d-flex", "bg-pink", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center");
+    const bidContainer = document.createElement("a");
+    const link = `/listing/index.html?key=${bid.listing.id}`;
+    bidContainer.href = link;
+    bidContainer.classList.add("d-flex", "bg-pink", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "no-decoration", "pointer");
     const titleContainer = document.createElement("div");
     titleContainer.classList.add("uppercase", "heading-2-feed");
     const bidAmountContainer = document.createElement("div");
+    bidAmountContainer.classList.add("text-red");
 
     titleContainer.innerText = bid.listing.title;
     bidAmountContainer.innerText = bid.amount + " credit";
