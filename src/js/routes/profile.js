@@ -7,7 +7,7 @@ import { displayWins, displayBids } from "../templates/_index.js";
 
 const profile = load("profile");
 const feedbackContainer = document.getElementById("feedbackContainer");
-const uxElementMain = document.getElementById("uxElementMain");
+// const uxElementMain = document.getElementById("uxElementMain");
 const profileListingsContainer = document.getElementById("profileListingsContainer");
 
 export async function generateUserProfile() {
@@ -16,7 +16,7 @@ export async function generateUserProfile() {
     navTemplate(username);
     const userProfile = await get("singleProfile", username);
     const listingsArray = await get("listingsByProfile", username);
-    uxElementMain.innerHTML = "";
+    // uxElementMain.innerHTML = "";
     displayBids(username);
     displayWins(username);
     profileTemplate(userProfile);

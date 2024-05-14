@@ -4,7 +4,7 @@ import { API_LISTINGS, API_PROFILES } from "../../constants/index.js";
 export let totalPages = 0;
 export let currentPage = 0;
 const navPages = document.getElementById("navPages");
-const loader = document.getElementById("loader");
+// const loader = document.getElementById("loader");
 
 export async function getData(url) {
   const response = await callApiWith(url);
@@ -15,7 +15,7 @@ export async function getData(url) {
     const data = result.data;
     return data;
   } else if (!response.ok) {
-    loader.style.display = "none";
+    // loader.style.display = "none";
     navPages.style.display = "none";
     throw new Error("couldn't fetch from api");
   }

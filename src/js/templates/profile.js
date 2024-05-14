@@ -2,7 +2,7 @@ import { listenForLogout } from "../handlers/listners/logout.js";
 import { updateProfileTemplate } from "../handlers/listners/_index.js";
 import { get } from "../api/requests/get.js";
 
-const uxElementSecondary = document.getElementById("uxElementSecondary");
+// const uxElementSecondary = document.getElementById("uxElementSecondary");
 
 export function profileTemplate(userProfile) {
   const profileElement = document.createElement("div");
@@ -35,7 +35,7 @@ export function profileTemplate(userProfile) {
   credit.innerText = "CREDITS: " + userProfile.credits;
 
   const logoutBtn = document.createElement("button");
-  logoutBtn.classList.add("d-flex", "align-items-center", "w-100", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-fontsize-l", "lowercase");
+  logoutBtn.classList.add("d-flex", "btn-purple", "align-items-center", "w-100", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-fontsize-l", "lowercase");
   logoutBtn.id = "logoutBtn";
   logoutBtn.innerText = "log out";
   listenForLogout(logoutBtn);
@@ -57,7 +57,7 @@ export function profileTemplate(userProfile) {
   profileElement.append(avatarContainer, details, btnContainer);
 
   const profileContainer = document.getElementById("profileContainer");
-  uxElementSecondary.innerHTML = "";
+  // uxElementSecondary.innerHTML = "";
 
   profileContainer.append(profileElement);
 }
