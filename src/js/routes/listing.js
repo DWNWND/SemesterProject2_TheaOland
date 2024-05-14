@@ -18,9 +18,7 @@ export async function generateListingSpesific() {
     const username = profile.name;
     navTemplate(username);
     const listing = await get("singleListing", listingID);
-    // uxElement.innerHTML = "";
     const metaTitle = document.querySelector("title");
-    console.log(metaTitle);
     metaTitle.innerText = listing.title + " | BAZAAR";
     listingSpecificTemplate(listing);
   } catch (error) {
