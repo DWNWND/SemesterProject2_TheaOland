@@ -1,6 +1,7 @@
 import { generateBtn } from "../../templates/_index.js";
 import { generateUpdateProfileFormFields, navigateBack } from "../events/_index.js";
 import { updateProfile } from "../../api/requests/update.js";
+import { load } from "../../storage/load.js";
 
 export function updateProfileTemplate(btn, userProfile, container) {
   btn.addEventListener("click", () => {
@@ -16,8 +17,14 @@ export function updateProfileTemplate(btn, userProfile, container) {
     const backBtn = generateBtn("backBtn", "back");
 
     const btnContainer = document.createElement("div");
+    btnContainer.id = "btnContainer";
     btnContainer.classList.add("d-flex", "w-100", "flex-column", "align-items-center", "justify-content-center", "gap-2", "pt-6");
     btnContainer.append(saveBtn, backBtn);
+
+    const loaderContainer = document.createElement("div");
+    loaderContainer.id = "loaderContainer";
+    loaderContainer.classList.add("p-5");
+    loaderContainer.innerHTML = `<span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>`;
 
     const userFeedbackContainer = document.createElement("div");
     userFeedbackContainer.id = "userFeedbackContainer";
@@ -35,7 +42,7 @@ export function updateProfileTemplate(btn, userProfile, container) {
     editProfileForm.id = "editProfile";
     editProfileForm.classList.add("d-flex", "flex-column", "w-100", "no-decoration", "align-items-center", "justify-content-center", "gap-2");
 
-    editProfileForm.append(title, fieldInputsContainer, btnContainer, userFeedbackContainer);
+    editProfileForm.append(title, fieldInputsContainer, btnContainer, userFeedbackContainer, loaderContainer);
     container.append(editProfileForm);
 
     exitEdit(backBtn, container, userProfile);
