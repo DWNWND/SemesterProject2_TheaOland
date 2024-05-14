@@ -23,7 +23,7 @@ export async function startFeed() {
     updateCurrentPageDisplay(page);
     updatePaginationBtns(nxtBtn, prvBtn, page);
   } catch (error) {
-    navPages.style.display = "none";
+    // navPages.style.display = "none";
     console.log(error);
     userFeedback(error, feedbackContainer);
   }
