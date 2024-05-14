@@ -14,8 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet" />
   </head>
   <body class="container">
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="image modal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
           <div class="modal-header">
@@ -35,33 +34,33 @@
       <nav id="nav" class="justify-content-center align-items-center d-flex flex-column flex-md-row gap-2"></nav>
     </header>
     <main>
-      <div id="userFeedbackMain" class="pb-3"></div>
       <div id="uxElement" class="d-flex flex-column align-items-center">
-        <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>
+        <div id="userFeedbackContainer" class="pb-3"></div>
+        <div id="loaderContainerMain" class="p-5">
+          <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>
+        </div>
       </div>
-      <div id="listingContainer" class="content g-2 pt-3 container mb-5 hidden">
-        <div class="auction-item d-flex flex-column flex-md-row gap-4">
-          <div class="auction-item-details d-flex flex-column gap-2 mb-5">
-            <h1 id="auction-item-name" class="auction-item-name heading-2 text-center"></h1>
-            <div id="focusImg" class="media"></div>
-            <div id="mediaGallery" class="media-gallery d-flex gap-2 flex-wrap"></div>
-            <p>
-              <span class="description d-block">Listing description: <b id="description"></b></span><span class="seller d-block">Seller: <b id="seller"></b></span><span class="created d-block">Created: <b id="created"></b></span> <span class="updated d-block">Last updated: <b id="updated"></b></span
-              ><span class="tags d-block">Listing tags: <b id="tags"></b></span>
-            </p>
-          </div>
-          <div class="bids glassmorphism mb-5">
-            <h2 class="heading-4 text-white text-center">current bid:</h2>
-            <div id="currentBidContainer" class="pill d-flex flex-column justify-content-between semi-bold"></div>
-            <form id="placeBid" class="d-flex flex-column justify-content-between semi-bold mt-4 mb-4 gap-2 form-floating">
-              <input name="amount" type="number" class="bid form-control semi-bold text-grayish-purple" id="bid-input" required />
-              <label for="bid-input" class="text-grayish-purple hide">place your bid</label>
-              <button type="submit" for="bid-input" class="btn-local btn-height-m w-100 btn-white-red btn-fontsize-m lowercase align-self-center">Submit bid</button>
-            </form>
-            <div id="bidFeedback" class="mb-3"></div>
-            <div id="bidHistory" class="previous-bids">
-              <h2 class="heading-3">Bid history:</h2>
-            </div>
+      <div id="auction-item" class="content pt-3 container mb-2 hidden d-flex flex-column flex-md-row gap-2">
+        <div id="auction-item-details" class="d-flex flex-column gap-2 mb-5">
+          <h1 id="auction-item-name" class="auction-item-name heading-2 text-center"></h1>
+          <div id="focusImg" class="media"></div>
+          <div id="mediaGallery" class="media-gallery d-flex gap-2 flex-wrap"></div>
+          <p>
+            <span class="description d-block">Listing description: <b id="description"></b></span><span class="seller d-block">Seller: <b id="seller"></b></span><span class="created d-block">Created: <b id="created"></b></span> <span class="updated d-block">Last updated: <b id="updated"></b></span
+            ><span class="tags d-block">Listing tags: <b id="tags"></b></span>
+          </p>
+        </div>
+        <div class="bids glassmorphism mb-5">
+          <h2 class="heading-4 text-white text-center">current bid:</h2>
+          <div id="currentBidContainer" class="pill d-flex flex-column justify-content-between semi-bold"></div>
+          <form id="placeBid" class="d-flex flex-column justify-content-between semi-bold mt-4 mb-4 gap-2 form-floating">
+            <input name="amount" type="number" class="bid form-control semi-bold text-grayish-purple" id="bid-input" required />
+            <label for="bid-input" class="text-grayish-purple hide">place your bid</label>
+            <button type="submit" for="bid-input" class="btn-local btn-height-m w-100 btn-white-red btn-fontsize-m lowercase align-self-center">Submit bid</button>
+          </form>
+          <div id="bidFeedback" class="mb-3"></div>
+          <div id="bidHistory" class="previous-bids">
+            <h2 class="heading-3">Bid history:</h2>
           </div>
         </div>
       </div>
