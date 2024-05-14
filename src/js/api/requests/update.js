@@ -43,6 +43,11 @@ export async function updateListing(listing, listingID) {
 
 export async function updateProfile(userProfile) {
   const userFeedbackContainer = document.getElementById("userFeedbackContainer");
+  const saveBtn = document.getElementById("saveBtn");
+  const backBtn = document.getElementById("backBtn");
+  saveBtn.disabled = true;
+  backBtn.disabled = true;
+
   try {
     if (!userProfile.name) {
       throw new Error("Update is missing a username.");
@@ -53,19 +58,14 @@ export async function updateProfile(userProfile) {
       body: JSON.stringify(userProfile),
     });
     if (response.ok) {
-      const saveBtn = document.getElementById("saveBtn");
-      saveBtn.disabled = true;
+      const loaderContainer = document.getElementById("loaderContainer");
+      loaderContainer.style.display = "block";
 
       const result = await response.json();
       const updatedProfile = result.data;
 
       userFeedbackContainer.classList.add("text-success");
       userFeedback("profile successfully updated", userFeedbackContainer);
-
-      const fieldsInputContainer = document.getElementById("fieldsInputContainer");
-      fieldsInputContainer.innerHTML = "";
-
-      fieldsInputContainer.innerHTML = `<span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>`;
 
       setTimeout(function () {
         const profileElement = document.getElementById("profileElement");
