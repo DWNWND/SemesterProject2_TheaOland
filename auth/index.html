@@ -4,11 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="../src/js/app.js" defer type="module"></script>
-    <title>Auction House</title>
-    <meta name="description" content="The Auction House login/register page." />
-    <!-- update the description later -->
-    <link rel="icon" href="" />
-    <!-- update the favicon later -->
+    <title>Login | BAZAAR</title>
+    <meta name="description" content="Login or sign up to get access to your initial 1000 credit. Start bidding today!" />
+    <link rel="icon" type="image/png" href="../src/img/favicon.png" />
     <link rel="stylesheet" href="../dist/css/index.css" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,64 +15,70 @@
   </head>
   <body class="container">
     <header class="text-center d-flex flex-column flex-xl-row justify-content-xl-between gap-4 p-3 mb-3">
-      <div class="logo-container">
-        <a href="/"><img src="../src/img/logo_oneline.svg" alt="" class="img-fluid" /></a>
+      <div class="logo-container p-3">
+        <a href="/"><img src="../src/img/logo.svg" alt="" class="img-fluid" /></a>
       </div>
     </header>
     <main>
-      <div class="container">
-        <div class="glassmorphism">
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active heading-1 text-red" id="home-tab" data-bs-toggle="tab" data-bs-target="#login-tab-pane" type="button" role="tab" aria-controls="login-tab-pane" aria-selected="true">Login</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link link text-red" id="profile-tab" data-bs-toggle="tab" data-bs-target="#new-user-tab-pane" type="button" role="tab" aria-controls="new-user-tab-pane" aria-selected="false">Register new user</button>
-            </li>
-          </ul>
-          <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="login-tab-pane" role="tabpanel" aria-labelledby="login-tab" tabindex="0">
-              <form id="loginForm" class="d-flex flex-column gap-2 mt-4">
-                <div class="form-floating">
-                  <input title="" type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required />
-                  <label for="loginEmail" class="login-form-labels uppercase semi-bold text-brown">Email address</label>
-                </div>
-                <div class="form-floating">
-                  <input type="password" class="form-control" id="loginPassword" placeholder="Password" required />
-                  <label for="loginPassword" class="login-form-labels uppercase semi-bold text-brown">Password</label>
-                </div>
-                <button type="submit" for="loginForm" class="btn-local btn-height-l btn-width-m btn-white-red extra-bold btn-fontsize-l uppercase mt-3">Login</button>
-              </form>
-            </div>
-            <div class="tab-pane fade" id="new-user-tab-pane" role="tabpanel" aria-labelledby="new-user-tab" tabindex="0">
-              <form id="registerForm" action="" class="d-flex flex-column gap-2 mt-4">
-                <div class="form-floating">
-                  <input type="email" class="form-control" id="registerEmail" placeholder="name@example.com" required />
-                  <label for="registerEmail" class="register-form-labels uppercase semi-bold text-grayish-purple">Email address</label>
-                </div>
-                <div id="emailHelpBlock" class="form-text mb-3">The email value must be a valid stud.noroff.no email address.</div>
-                <div class="form-floating mb-3">
-                  <input type="username" class="form-control" id="registerUsername" placeholder="Username" required />
-                  <label for="registerUsername" class="register-form-labels uppercase semi-bold text-grayish-purple">Username</label>
-                </div>
-                <div id="usernameHelpBlock" class="form-text mb-3">The username must not contain punctuation symbols apart from underscore (_).</div>
-                <div class="form-floating">
-                  <input type="password" class="form-control" id="registerPassword" placeholder="Password" required />
-                  <label for="registerPassword" class="register-form-labels uppercase semi-bold text-grayish-purple">Password</label>
-                </div>
-                <div id="passwordHelpBlock" class="form-text">Your password must be 8-20 characters long and contain letters, numbers and special characters.</div>
-                <div class="form-floating password-form mt-3">
-                  <input type="password" class="form-control" id="registerRepeatPassword" placeholder="Repeat Password" required />
-                  <label for="registerRepeatPassword" class="register-form-labels uppercase semi-bold text-grayish-purple">Repeat password</label>
-                  <div id="registerRepeatPasswordError" class="form-text mb-3"></div>
-                </div>
-                <button type="submit" for="registerForm" class="btn-local btn-height-l btn-width-m btn-purple extra-bold btn-fontsize-l uppercase mt-3">Register</button>
-              </form>
-            </div>
+      <div class="container glassmorphism">
+        <div class="nav nav-tabs" id="auth" role="tablist">
+          <div class="nav-item" role="presentation">
+            <button class="nav-link active heading-1 text-red" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-tab-pane" type="button" role="tab" aria-controls="login-tab-pane" aria-selected="true">Login</button>
           </div>
-          <div id="uxElement" class="d-flex flex-column align-items-center">
-            <div id="userFeedback" class="pb-3 pt-3"></div>
-            <!-- <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span> -->
+          <div class="nav-item" role="presentation">
+            <button class="nav-link link text-red" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup-tab-pane" type="button" role="tab" aria-controls="signup-tab-pane" aria-selected="false">Register new user</button>
+          </div>
+        </div>
+
+        <div class="tab-content" id="auth-tab-pane">
+          <div class="tab-pane fade show active" id="login-tab-pane" role="tabpanel" aria-labelledby="login-tab" tabindex="0">
+            <form id="loginForm" class="d-flex flex-column gap-2 mt-4">
+              <div class="form-floating">
+                <input title="" type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required />
+                <label for="loginEmail" class="login-form-labels uppercase semi-bold text-brown">Email address</label>
+              </div>
+
+              <div class="form-floating">
+                <input type="password" class="form-control" id="loginPassword" placeholder="Password" required />
+                <label for="loginPassword" class="login-form-labels uppercase semi-bold text-brown">Password</label>
+              </div>
+              <button type="submit" for="loginForm" class="btn-local btn-height-l btn-width-m btn-white-red extra-bold btn-fontsize-l uppercase mt-3">Login</button>
+            </form>
+          </div>
+
+          <div class="tab-pane fade" id="signup-tab-pane" role="tabpanel" aria-labelledby="signup-tab" tabindex="0">
+            <form id="registerForm" action="" class="d-flex flex-column gap-2 mt-4">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="registerEmail" placeholder="name@example.com" required />
+                <label for="registerEmail" class="register-form-labels uppercase semi-bold text-grayish-purple">Email address</label>
+              </div>
+              <div id="emailHelpBlock" class="form-text mb-3">The email value must be a valid stud.noroff.no email address.</div>
+
+              <div class="form-floating">
+                <input type="username" class="form-control" id="registerUsername" placeholder="Username" required />
+                <label for="registerUsername" class="register-form-labels uppercase semi-bold text-grayish-purple">Username</label>
+              </div>
+              <div id="usernameHelpBlock" class="form-text mb-3">The username must not contain punctuation symbols apart from underscore (_).</div>
+
+              <div class="form-floating">
+                <input type="password" class="form-control" id="registerPassword" placeholder="Password" required />
+                <label for="registerPassword" class="register-form-labels uppercase semi-bold text-grayish-purple">Password</label>
+              </div>
+              <div id="passwordHelpBlock" class="form-text">Your password must be 8-20 characters long and contain letters, numbers and special characters.</div>
+
+              <div class="form-floating password-form">
+                <input type="password" class="form-control" id="registerRepeatPassword" placeholder="Repeat Password" required />
+                <label for="registerRepeatPassword" class="register-form-labels uppercase semi-bold text-grayish-purple">Repeat password</label>
+                <div id="registerRepeatPasswordError" class="form-text mb-3"></div>
+              </div>
+              <button type="submit" for="registerForm" class="btn-local btn-height-l btn-width-m btn-purple extra-bold btn-fontsize-l uppercase mt-3">Register</button>
+            </form>
+          </div>
+        </div>
+        <div id="uxElement" class="d-flex flex-column align-items-center">
+          <div id="feedbackContainer" class="pb-3 pt-3"></div>
+          <div id="loaderContainer" class="p-5">
+            <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>
           </div>
         </div>
       </div>

@@ -1,16 +1,12 @@
-import { coundownTimer } from "../events/listners/countdownTimer.js";
-const pathname = window.location.pathname;
+import { addCurrentBid, addDeadline } from "./bids.js";
+import { generateBtn } from "./btns.js";
+import { addMedia } from "./media.js";
 
-// ALL LISTINGS TEMPLATE
-export function listingTemplate(listingData, userIsLoggedIn) {
-  const listingMedia = listingData.media.length;
+export function listingsTemplate(listingData, userIsLoggedIn) {
   const listingTitle = listingData.title;
-  const listingBids = listingData.bids.length;
   const listingID = listingData.id;
-  //Inspired by: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
-  const listingEndsAt = new Date(listingData.endsAt);
-  // const listingEndsAtDate = listingEndsAt.toLocaleDateString(); //NOTE: consider adding this or adjust design
-  // const listingEndsAtTime = listingEndsAt.toLocaleTimeString();
+  const bidsArray = listingData.bids;
+  const endsAt = listingData.endsAt;
 
   const col = document.createElement("div");
   col.classList.add("col");
@@ -19,62 +15,32 @@ export function listingTemplate(listingData, userIsLoggedIn) {
   listing.classList.add("listing", "glassmorphism");
   listing.setAttribute("id", listingID);
 
-  const mainImg = document.createElement("img");
-  mainImg.classList.add("object-fit-cover", "main-listing-img");
-
-  //check to see if theres images and alt-text connected to the listing, and if not use placeholders
-  if (listingMedia > 0) {
-    const listingPhoto = listingData.media[0].url;
-    const listingDescription = listingData.media[0].alt;
-    mainImg.src = listingPhoto;
-
-    if (listingDescription === "") {
-      mainImg.alt = "Placeholder image-text for listing image. The user have not added any image-text.";
-    }
-    if (listingDescription !== "") {
-      mainImg.alt = listingDescription;
-    }
-  }
-  //REMOVED THE MEDIA CHECK BECAUSE THE API ADDS A BASIC PLACEHOLDER IMG
-  if (listingMedia === 0) {
-    mainImg.src = "src/img/placeholder.jpg";
-    mainImg.alt = "Placeholder image. The user have not uploaded any images for this listing.";
-  }
-
   const titleContainer = document.createElement("div");
   titleContainer.classList.add("d-flex", "align-items-center", "justify-content-center", "title-container");
-
   const title = document.createElement("h2"); //double check if this should be h2 or something else
   title.classList.add("listing-title", "heading-2-feed", "uppercase", "extra-bold");
   title.innerText = listingTitle;
   titleContainer.append(title);
 
+  const img = addMedia(listingData);
+  const currentBidContainer = addCurrentBid(bidsArray);
+  const countdownContainer = addDeadline(endsAt);
+
+  const imgContainer = document.createElement("div");
+  const ImgLoaderContainer = document.createElement("div");
+  ImgLoaderContainer.classList.add("d-flex", "flex-column", "align-items-center", "p-3");
+  ImgLoaderContainer.innerHTML = `<span id="loader" class="loader"><span class="visually-hidden">Loading listings...</span></span>`;
+  ImgLoaderContainer.id = "ImgLoaderContainer";
+
+  imgContainer.append(ImgLoaderContainer, img);
+
   const bidContainer = document.createElement("div");
   bidContainer.classList.add("pill", "d-flex", "flex-column", "justify-content-between", "semi-bold");
-
-  const currentBid = document.createElement("div");
-  currentBid.classList.add("current-bid");
-
-  //check to see if theres bids on the listing, and if there is, display the last bid
-  if (listingBids > 0) {
-    const allBids = listingData.bids;
-    //Inspired by: https://flexiple.com/javascript/get-last-array-element-javascript
-    const lastBid = allBids[allBids.length - 1];
-    currentBid.innerText = lastBid.amount + " $";
-  }
-  if (listingBids === 0) {
-    currentBid.innerText = "0 $"; //NOTE: add a special styling for the ones without bids??
-  }
-
-  const bidTimer = document.createElement("div");
-  bidTimer.classList.add("timer");
-
-  coundownTimer(listingEndsAt, bidTimer);
+  bidContainer.append(currentBidContainer, countdownContainer);
 
   //LISTINGS DISPLAYED PUBLICLY (NOT LOGGED IN)
   if (!userIsLoggedIn) {
-    bidContainer.append(currentBid, bidTimer);
-    listing.append(mainImg, titleContainer, bidContainer);
+    listing.append(imgContainer, titleContainer, bidContainer);
     col.append(listing);
   }
 
@@ -83,33 +49,20 @@ export function listingTemplate(listingData, userIsLoggedIn) {
     const listingFooter = document.createElement("div");
     listingFooter.classList.add("listing-footer", "d-flex", "flex-column", "gap-2");
 
-    const viewListingLink = document.createElement("a");
-    viewListingLink.setAttribute("href", `/listing/index.html?key=${listingID}`);
+    const link = `/listing/index.html?key=${listingID}`;
+    const viewListingBtn = generateBtn("viewListingBtn", "view", link);
 
-    const viewListingBtn = document.createElement("button");
-    viewListingBtn.classList.add("btn-local", "btn-height-s", "btn-width-100", "btn-white-black", "btn-fontsize-m", "uppercase");
-    viewListingBtn.setAttribute("id", "viewListingBtn");
-    viewListingBtn.innerText = "View";
-
-    viewListingLink.append(viewListingBtn);
-
-    bidContainer.append(currentBid, bidTimer);
-    listingFooter.append(bidContainer, viewListingLink);
-    listing.append(mainImg, titleContainer, listingFooter);
+    listingFooter.append(bidContainer, viewListingBtn);
+    listing.append(imgContainer, titleContainer, listingFooter);
     col.append(listing);
 
-    //LISTINGS BY USER SPESIFIC
+    const pathname = window.location.pathname;
+
     if (pathname.includes("profile") || pathname.includes("allListings")) {
-      const editListingLink = document.createElement("a");
-      editListingLink.setAttribute("href", `/edit/index.html?key=${listingID}`);
+      const link = `/edit/index.html?key=${listingID}`;
+      const editListingBtn = generateBtn("editListingBtn", "edit", link);
 
-      const editListingBtn = document.createElement("button");
-      editListingBtn.classList.add("btn-local", "btn-height-s", "btn-width-100", "btn-white-black", "btn-fontsize-m", "uppercase");
-      editListingBtn.setAttribute("href", "#");
-      editListingBtn.innerText = "Edit";
-      editListingLink.append(editListingBtn);
-
-      listingFooter.append(editListingLink);
+      listingFooter.append(editListingBtn);
     }
   }
   return col;

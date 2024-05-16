@@ -11,7 +11,7 @@
   width: 100%;
   padding: 0.5rem;
   border-radius: 21px;
-  font-size: 0.875rem;
+  font-size: 1rem;
   text-align: center;
   align-self: center;
 }
@@ -20,7 +20,7 @@
   padding: 0.5rem;
 
   width: 130px;
-
+  height: 35px;
   font-size: 0.8rem;
   align-self: center;
   text-align: center;
@@ -31,6 +31,9 @@
 .auction-item {
   margin-left: auto;
   margin-right: auto;
+}
+.bid {
+  white-space: nowrap;
 }
 
 @media (min-width: $breakpoint-phone) {
@@ -43,12 +46,9 @@
     display: block;
   }
   .current-bid {
-    // width: 55%;
     font-size: 1.1rem;
-    padding: 0.2rem;
   }
   .timer {
-    // width: 130px;
     padding: 0.2rem;
   }
 }

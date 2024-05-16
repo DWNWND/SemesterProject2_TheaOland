@@ -1,7 +1,15 @@
-$border-radius: 0;
+$border-radius: 10px;
 $border-width: 0;
 $border-color: $white;
 $border-color-translucent: $white;
+
+$position-values: (
+  0: 0,
+  1: 0.2rem,
+  2: 0.6rem,
+  50: 50%,
+  100: 100%,
+);
 
 $grid-breakpoints: (
   xs: 0,
@@ -21,6 +29,12 @@ $theme-colors: (
   "grayish-purple": #8a77a1,
   "dark-purple": #6c35af,
   "orange": #d36b0d,
+  "orange-disabled": #f9cea8,
+  "light-orange": #f9cea8,
+  "error": #a93338,
+  "success": #d36b0d,
+  "green": #667131,
+  "pink": #f9d2d4,
 );
 
 // $body-color: #8a77a1;
@@ -41,6 +55,8 @@ $theme-colors: (
 // "grayish-purple": #8a77a1,
 // "orange": #d36b0d,
 // "pink": #ef7f83,
+// "error": #d36b0d,
+// "suc": #ef7f83,
 
 // "red-30": rgba(169, 51, 56, 0.3),
 // "red-50": rgba(169, 51, 56, 0.5),

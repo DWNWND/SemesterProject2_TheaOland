@@ -1,6 +1,6 @@
-import { load } from "../../storage/index.js";
+import { load } from "../../storage/_index.js";
 
-export function logoutFunctionality(btn) {
+export function listenForLogout(btn) {
   btn.addEventListener("click", () => {
     localStorage.clear();
     const token = load("token");

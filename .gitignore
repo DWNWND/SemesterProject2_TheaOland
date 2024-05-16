@@ -2,7 +2,7 @@
 /node_modules
 
 # CSS files
-# /dist
+/dist
 
 # The lint cache
 .eslintcache
@@ -13,4 +13,3 @@
 # Environmental Secrets
 .env
 cypress.env.json
-api_secret.mjs

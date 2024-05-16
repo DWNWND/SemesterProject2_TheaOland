@@ -4,11 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="../src/js/app.js" defer type="module"></script>
-    <title>Auction House</title>
-    <meta name="description" content="The Auction House landing page." />
-    <!-- update the description later -->
-    <link rel="icon" href="" />
-    <!-- update the favicon later -->
+    <title>Listing | BAZAAR</title>
+    <meta name="description" content="Place your bids and keep watch of the bid history of this listing." />
+    <link rel="icon" type="image/png" href="../src/img/favicon.png" />
     <link rel="stylesheet" href="../dist/css/index.css" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,46 +14,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet" />
   </head>
   <body class="container">
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="image modal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div id="modal-body" class="modal-body">
+            <img id="modalImg" class="img-fluid" />
+            <p>Image description: <b id="imgDescription"></b></p>
+          </div>
+        </div>
+      </div>
+    </div>
     <header class="text-center d-flex flex-column flex-xl-row justify-content-xl-between gap-4 p-3 mb-3">
-      <div class="logo-container">
-        <a href="/"><img src="../src/img/logo_oneline.svg" alt="" class="img-fluid" /></a>
+      <div class="logo-container p-3">
+        <a href="/"><img src="../src/img/logo.svg" alt="" class="img-fluid" /></a>
       </div>
       <nav id="nav" class="justify-content-center align-items-center d-flex flex-column flex-md-row gap-2"></nav>
     </header>
     <main>
       <div id="uxElement" class="d-flex flex-column align-items-center">
-        <div id="userFeedback" class="pb-3"></div>
-        <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>
+        <div id="userFeedbackContainer" class="pb-3"></div>
+        <div id="loaderContainerMain" class="p-5">
+          <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>
+        </div>
       </div>
-      <div id="listingContainer" class="row g-2 pt-3 container">
-        <div class="container">
-          <div class="auction-item d-flex flex-column flex-md-row gap-4">
-            <div class="auction-item-details d-flex flex-column gap-2">
-              <h1 id="auction-item-name" class="auction-item-name heading-2 text-center"></h1>
-              <div id="focusImg" class="media"></div>
-              <div id="mediaGallery" class="media-gallery d-flex gap-2 flex-wrap"></div>
-              <p class="description">Description: <span id="description"></span></p>
-            </div>
-            <div class="bids glassmorphism">
-              <h2 class="heading-4 text-white text-center">current bid:</h2>
-              <div id="currentBidContainer" class="pill d-flex flex-column justify-content-between semi-bold">
-                <div class="current-bid text-dark-purple"><span id="currentBid">0</span> credit</div>
-                <div id="timer" class="timer"></div>
-              </div>
-              <form id="placeBid" class="d-flex flex-column justify-content-between semi-bold mt-4 mb-4 gap-2 form-floating">
-                <input name="amount" type="number" class="bid form-control semi-bold text-grayish-purple" id="bid-input" required />
-                <label for="bid-input" class="text-grayish-purple hide">place your bid</label>
-                <button type="submit" for="bid-input" class="btn-local btn-height-m w-100 btn-white-red btn-fontsize-m lowercase align-self-center">Submit bid</button>
-              </form>
-              <div id="bidFeedback" class="text-red mb-3"></div>
-              <div id="bidHistory" class="previous-bids">
-                <h2 class="heading-3">Bid history:</h2>
-              </div>
+      <div id="auction-item" class="content pt-3 container mb-2 hidden flex-column flex-md-row gap-2 gap-md-5">
+        <div id="auction-item-details" class="d-flex flex-column gap-2 mb-5">
+          <h1 id="auction-item-name" class="auction-item-name heading-2 text-center"></h1>
+          <div id="focusImg" class="media"></div>
+          <div id="mediaGallery" class="media-gallery d-flex gap-2 flex-wrap"></div>
+          <p>
+            <span class="description d-block">Listing description: <b id="description"></b></span><span class="seller d-block">Seller: <b id="seller"></b></span><span class="created d-block">Created: <b id="created"></b></span> <span class="updated d-block">Last updated: <b id="updated"></b></span
+            ><span class="tags d-block">Listing tags: <b id="tags"></b></span>
+          </p>
+        </div>
+        <div class="bids mb-5">
+          <div class="glassmorphism mt-md-5">
+            <h2 id="currentBidHeading" class="heading-4 text-white text-center"></h2>
+            <div id="currentBidContainer" class="pill d-flex flex-column justify-content-between semi-bold"></div>
+            <form id="placeBid" class="d-flex flex-column justify-content-between semi-bold mt-4 mb-4 gap-2 form-floating"></form>
+            <div id="bidFeedback" class="mb-3"></div>
+            <div id="bidHistory" class="previous-bids">
+              <h2 class="heading-3">Bid history:</h2>
             </div>
           </div>
         </div>
       </div>
-      <!-- <div id="feedbackContainer" class="pb-3"></div> -->
     </main>
   </body>
 </html>

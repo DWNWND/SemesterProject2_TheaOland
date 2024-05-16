@@ -1,15 +1,12 @@
-import { coundownTimer } from "./countdownTimer.js";
-import { generateImgInputs } from "../../routes/edit.js";
+import { countdownTimer } from "../../ux/components/countdownTimer.js";
+import { addFieldToArray } from "./_index.js";
 
 export async function populateEditForm(listing) {
   const editForm = document.forms.newListing;
+
   if (editForm) {
     const button = document.getElementById("submit");
     button.disabled = true;
-
-    // const requestListing = "../../api/requests/get.js";
-    // const { get } = await import(requestListing);
-    // const { title, description, tags, endsAt, media } = await get("singleListing", listingID);
 
     if (listing.title) {
       editForm.title.value = listing.title;
@@ -18,15 +15,14 @@ export async function populateEditForm(listing) {
       editForm.description.value = listing.description;
     }
     if (listing.tags) {
-      // console.log(tags);
-      // editForm.tags.value = tags;
+      editForm.tags.value = listing.tags;
     }
     if (listing.endsAt) {
       const deadlineLabel = document.getElementById("deadlineLabel");
       const deadlineInput = document.getElementById("deadlineInput");
       const deadlineContainer = document.getElementById("deadlineContainer");
 
-      deadlineLabel.innerText = "deadline is set";
+      deadlineLabel.innerText = "deadline:";
       deadlineInput.style.display = "none";
 
       const setDeadline = document.createElement("p");
@@ -41,13 +37,14 @@ export async function populateEditForm(listing) {
 
       setDeadline.innerText = deadlineString;
 
-      coundownTimer(deadline, setCountdown);
+      countdownTimer(deadline, setCountdown);
 
       deadlineContainer.append(setDeadline, countdownLabel, setCountdown);
     }
+
     if (listing.media) {
-      listing.media.forEach((img) => {
-        generateImgInputs(img.url, img.alt);
+      listing.media.forEach((image) => {
+        addFieldToArray(image.url, image.alt);
       });
     }
     button.disabled = false;

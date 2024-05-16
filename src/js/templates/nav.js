@@ -1,6 +1,5 @@
 // import { logoutFunctionality } from "../events/listners/logout.js";
 import { load } from "../storage/load.js";
-const pathname = window.location.pathname;
 const token = load("token");
 
 export function navTemplate(username) {
@@ -44,40 +43,12 @@ export function navTemplate(username) {
   homeBtn.innerText = "Home";
   homeLink.append(homeBtn);
 
-  //LOGOUT BTN
-  // const logoutLink = document.createElement("a");
-
-  // if (pathname.toLowerCase().includes("/semesterproject2_theaoland/")) {
-  //   logoutLink.setAttribute("href", "/SemesterProject2_TheaOland/");
-  //   homeLink.setAttribute("href", "/SemesterProject2_TheaOland/");
-  // } else {
-  //   logoutLink.setAttribute("href", "/");
-  //   homeLink.setAttribute("href", "/");
-  // }
-  // const logoutBtn = document.createElement("button");
-  // logoutBtn.classList.add("btn-local", "btn-height-s", "btn-width-xs", "btn-white-black", "btn-fontsize-l", "lowercase");
-  // logoutBtn.setAttribute("id", "logoutBtn");
-  // logoutBtn.innerText = "log out";
-  // logoutLink.append(logoutBtn);
-
   const nav = document.getElementById("nav");
 
   if (!token) {
     nav.append(loginLink);
   }
-  if (token && (pathname === "/" || pathname.toLowerCase() === "/semesterproject2_theaoland/")) {
-    nav.append(newlistingLink, usernameLink);
-  }
-  if (token && pathname.includes("listing")) {
-    nav.append(newlistingLink, usernameLink, homeLink);
-  }
-  if (token && pathname.includes("profile")) {
-    nav.append(newlistingLink, homeLink);
-  }
-  if (token && pathname.includes("edit")) {
-    nav.append(usernameLink, homeLink);
-  }
-  if (token && pathname.includes("allListings")) {
+  if (token) {
     nav.append(homeLink, newlistingLink, usernameLink);
   }
 }

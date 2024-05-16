@@ -4,6 +4,13 @@
 //BTN-styles
 //linear-gradient border with border radius: https://gist.github.com/stereokai/36dc0095b9d24ce93b045e2ddc60d7a0
 //also: https://res.cloudinary.com/practicaldev/image/fetch/s--761_Vo9x--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/i/1kfsw08obq1iug2v37ex.png
+.pointer {
+  cursor: pointer;
+  opacity: 1;
+}
+.pointer:hover {
+  opacity: 0.6;
+}
 .btn-local {
   border-radius: 21px;
   border: double 1px transparent;
@@ -56,10 +63,20 @@
   background-color: $light-purple;
   background-image: linear-gradient($light-purple, $light-purple), radial-gradient(circle at top left, $dark-purple-50, $dark-purple-30);
 }
+
+.btn-purple:disabled {
+  background-color: $light-purple-disabled;
+  background-image: linear-gradient($light-purple-disabled, $light-purple-disabled), radial-gradient(circle at top left, $dark-purple-50, $dark-purple-30);
+}
 .btn-orange {
   color: $white;
   background-color: $orange;
   background-image: linear-gradient($orange, $orange), radial-gradient(circle at top left, $white-50, $white-30);
+}
+
+.btn-orange:disabled {
+  background-color: $orange-disabled;
+  background-image: linear-gradient($orange-disabled, $orange-disabled), radial-gradient(circle at top left, $white-50, $white-30);
 }
 .btn-white-red {
   color: $red;
@@ -72,9 +89,12 @@
   background-image: linear-gradient($white, $white), radial-gradient(circle at top left, $black-50, $black-30);
 }
 .btn-pink {
-  color: $red;
-  background-color: $pink;
+  color: $white;
+  background-color: $white;
   background-image: linear-gradient($pink, $pink), radial-gradient(circle at top left, $red-50, $red-30);
+}
+.btn-pink:disabled {
+  background-image: linear-gradient($pink-disabled, $pink-disabled), radial-gradient(circle at top left, $red-50, $red-30);
 }
 #loadMore {
   display: none;

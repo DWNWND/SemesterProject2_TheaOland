@@ -1,5 +1,13 @@
 @import "_colors";
 
+fieldset {
+  border-radius: 10px;
+}
+
+li {
+  list-style-type: decimal;
+}
+
 .register-form-labels,
 .new-listing-form-labels,
 .login-form-labels,

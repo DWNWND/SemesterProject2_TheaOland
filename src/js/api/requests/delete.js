@@ -1,9 +1,5 @@
 import { callApiWith } from "../apiCall.js";
-import { API_LISTINGS } from "../../constants/index.js";
-import { load } from "../../storage/load.js";
-
-const profile = load("profile");
-const username = profile.name;
+import { API_LISTINGS } from "../../constants/apiParams.js";
 
 export async function deleteListing(id) {
   if (!id) {
@@ -14,8 +10,6 @@ export async function deleteListing(id) {
     method: "DELETE",
   });
   if (response.ok) {
-    console.log("listing deleted");
-    //checking if its on the deployed site or locally
     removeUrlParameter("key");
     const pathname = window.location.pathname;
     if (pathname.toLowerCase().includes("/semesterproject2_theaoland/")) {
@@ -23,8 +17,6 @@ export async function deleteListing(id) {
     } else {
       location.pathname = "/";
     }
-
-    // location.reload();
   } else {
     throw new Error("Something went wrong when contacting the API");
   }
