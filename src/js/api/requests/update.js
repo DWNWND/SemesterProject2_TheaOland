@@ -37,6 +37,7 @@ export async function updateListing(listing, listingID) {
       throw new Error("Couln't update listing");
     }
   } catch (error) {
+    console.log(error);
     loaderContainerOnAction.style.display = "none";
     userFeedback(error, userFeedbackContainer);
   }
@@ -76,6 +77,7 @@ export async function updateProfile(userProfile) {
       throw new Error("Couln't update userprofile");
     }
   } catch (error) {
+    console.log(error);
     userFeedbackContainer.classList.add("text-error");
     userFeedback(error, userFeedbackContainer);
   }

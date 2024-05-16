@@ -7,7 +7,6 @@ import { userFeedback } from "../ui/userFeedback/_index.js";
 
 const feed = document.getElementById("feed");
 const feedbackContainer = document.getElementById("feedbackContainer");
-// const navPages = document.getElementById("navPages");
 const nxtBtn = document.getElementById("nxtBtn");
 const prvBtn = document.getElementById("prvBtn");
 
@@ -23,7 +22,6 @@ export async function startFeed() {
     updateCurrentPageDisplay(page);
     updatePaginationBtns(nxtBtn, prvBtn, page);
   } catch (error) {
-    // navPages.style.display = "none";
     console.log(error);
     userFeedback(error, feedbackContainer);
   }
@@ -31,12 +29,10 @@ export async function startFeed() {
 
 export async function generateFeed() {
   if (token) {
-    console.log("logged in");
     const username = profile.name;
     generate.navTemplate(username);
   }
   if (!token) {
-    console.log("not logged in");
     generate.navTemplate();
   }
   await startFeed();

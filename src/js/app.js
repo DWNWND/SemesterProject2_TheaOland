@@ -7,11 +7,6 @@ function hideLoader() {
 
 function showContent() {
   const content = document.querySelector(".content");
-  // const navPages = document.getElementById("navPages");
-  // if (navPages) {
-  //   navPages.classList.remove("hidden");
-  //   navPages.classList.add("d-flex");
-  // }
   content.classList.remove("hidden");
 }
 

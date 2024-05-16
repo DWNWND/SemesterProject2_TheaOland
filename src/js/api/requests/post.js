@@ -14,12 +14,9 @@ export async function publishListing(listing) {
     });
 
     if (response.status === 201) {
-      // const publishBtn = document.getElementById("submit");
-      // publishBtn.disabled = true;
       loaderContainerOnAction.style.display = "none";
       userFeedback("listing successfully published", feedbackContainerOnAction);
       feedbackContainerOnAction.classList.add("text-grayish-purple");
-      console.log("listing posted", response.status);
 
       setTimeout(function () {
         const pathname = window.location.pathname;
@@ -38,6 +35,7 @@ export async function publishListing(listing) {
       throw new Error("An unexpected error occured, please try again later");
     }
   } catch (error) {
+    console.log(error);
     loaderContainerOnAction.style.display = "none";
     userFeedback(error, feedbackContainerOnAction);
   }
@@ -54,7 +52,6 @@ export async function publishNewBid(listingID, bid) {
     });
 
     if (response.status === 201) {
-      console.log("Bid accepted", response);
       bidFeedbackContainer.classList.add("text-success", "uppercase");
       const userFeedbackMessage = "Bid accepted";
       userFeedback(userFeedbackMessage, bidFeedbackContainer);

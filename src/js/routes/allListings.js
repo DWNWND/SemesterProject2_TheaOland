@@ -7,7 +7,6 @@ import { userFeedback } from "../ui/userFeedback/_index.js";
 
 const feed = document.getElementById("feed");
 const feedbackContainer = document.getElementById("feedbackContainer");
-// const navPages = document.getElementById("navPages");
 const nxtBtn = document.getElementById("nxtBtn");
 const prvBtn = document.getElementById("prvBtn");
 const pagination = document.getElementById("paginationElement");

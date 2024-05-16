@@ -11,8 +11,6 @@ export async function deleteListing(id) {
     method: "DELETE",
   });
   if (response.ok) {
-    console.log("listing deleted");
-    //checking if its on the deployed site or locally
     removeUrlParameter("key");
     const pathname = window.location.pathname;
     if (pathname.toLowerCase().includes("/semesterproject2_theaoland/")) {
@@ -20,8 +18,6 @@ export async function deleteListing(id) {
     } else {
       location.pathname = "/";
     }
-
-    // location.reload();
   } else {
     throw new Error("Something went wrong when contacting the API");
   }

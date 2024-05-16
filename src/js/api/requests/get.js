@@ -4,7 +4,6 @@ import { API_LISTINGS, API_PROFILES } from "../../constants/index.js";
 export let totalPages = 0;
 export let currentPage = 0;
 const navPages = document.getElementById("navPages");
-// const loader = document.getElementById("loader");
 
 export async function getData(url) {
   const response = await callApiWith(url);
@@ -15,7 +14,6 @@ export async function getData(url) {
     const data = result.data;
     return data;
   } else if (!response.ok) {
-    // loader.style.display = "none";
     navPages.style.display = "none";
     throw new Error("couldn't fetch from api");
   }
@@ -28,68 +26,53 @@ export async function get(request, param, sparam = "") {
   if (!request) {
     throw new Error("the get function is called with a falsy request value");
   }
-  if (request === "allListings") {
-    url = API_LISTINGS;
-    result = await getData(url);
-    console.log(request, "- ", result);
-    return result;
-  }
+  // if (request === "allListings") {
+  //   result = await getData(API_LISTINGS);
+  //   return result;
+  // }
   if (request === "listingsByPage") {
     const pageLimit = 10;
-    url = API_LISTINGS + `?_bids=true&limit=${pageLimit}&page=${param}&sort=endsAt&sortOrder=asc&_active=true`;
-    result = await getData(url);
-    console.log(request, "- page: ", param, result);
+    result = await getData(API_LISTINGS + `?_bids=true&limit=${pageLimit}&page=${param}&sort=endsAt&sortOrder=asc&_active=true`);
     return result;
   }
   if (request === "listingsBySearch") {
     const pageLimit = 10;
-    url = API_LISTINGS + `search?q=${sparam}&_bids=true&limit=${pageLimit}&page=${param}`;
-    result = await getData(url);
-    console.log(request, "- searchParam: ", sparam, "page: ", param, result);
+    result = await getData(API_LISTINGS + `search?q=${sparam}&_bids=true&limit=${pageLimit}&page=${param}`);
     return result;
   }
   if (request === "listingsByProfile") {
     if (sparam !== "") {
       const pageLimit = 10;
-      url = API_PROFILES + `${sparam}/listings?_bids=true&limit=${pageLimit}&page=${param}&sort=endsAt&sortOrder=asc`;
-      result = await getData(url);
-      console.log(request, "- username: ", param, result);
+      result = await getData(API_PROFILES + `${sparam}/listings?_bids=true&limit=${pageLimit}&page=${param}&sort=endsAt&sortOrder=asc`);
       return result;
     } else if (sparam === "") {
       const pageLimit = 6;
-      url = API_PROFILES + `${param}/listings?_bids=true&limit=${pageLimit}&page=1&sort=endsAt&sortOrder=asc`;
-      result = await getData(url);
-      console.log(request, "- username: ", param, result);
+      result = await getData(API_PROFILES + `${param}/listings?_bids=true&limit=${pageLimit}&page=1&sort=endsAt&sortOrder=asc`);
       return result;
     }
   }
   if (request === "bidsByProfile") {
-    url = API_PROFILES + `${param}/bids?_listings=true`;
-    result = await getData(url);
-    console.log(request, "- username: ", param, result);
+    result = await getData(API_PROFILES + `${param}/bids?_listings=true`);
     return result;
   }
   if (request === "winsByProfile") {
     result = await getData(API_PROFILES + `${param}/wins?_listing&_bids=true`);
-    console.log(request, "- username: ", param, result);
     return result;
   }
-  if (request === "profileBySearch") {
-    url = API_PROFILES + `search?q=${param}`;
-    result = await getData(url);
-    console.log(request, "- username: ", param, result);
-    return result;
-  }
+  // if (request === "profileBySearch") {
+  //   url = API_PROFILES + `search?q=${param}`;
+  //   result = await getData(url);
+  //   console.log(request, "- username: ", param, result);
+  //   return result;
+  // }
   if (request === "singleProfile") {
     url = API_PROFILES + `${param}`;
     result = await getData(url);
-    console.log(request, "- username: ", param, result);
     return result;
   }
   if (request === "singleListing") {
     url = API_LISTINGS + `${param}?_bids=true&_seller=true`;
     result = await getData(url);
-    console.log(request, "- listing-id: ", param, result);
     return result;
   } else {
     throw new Error("the get function is called with a typo");
