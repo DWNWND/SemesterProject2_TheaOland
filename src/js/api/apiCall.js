@@ -1,7 +1,9 @@
 import { load } from "../storage/load.js";
-import { API_KEY } from "../constants/index.js";
+import { API_KEY } from "../../../test.js";
 
 export async function callApiWith(url, options = {}) {
+  console.log(API_KEY);
+
   return fetch(url, {
     ...options,
     headers: headers(Boolean(options.body)),
