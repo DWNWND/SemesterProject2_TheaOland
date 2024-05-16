@@ -34,7 +34,6 @@ export async function generateEdit() {
       listenForDelete(listingID);
     }
     if (!listingID) {
-      // metaTitle.innerText = "BAZAAR + New listing";
       deleteBtn.style.display = "none";
       listenForPublish();
     }
