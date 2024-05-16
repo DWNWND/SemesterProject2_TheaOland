@@ -1,6 +1,7 @@
 import { updateListing } from "../../api/requests/update.js";
 import { deleteListing } from "../../api/requests/delete.js";
 import { publishListing } from "../../api/requests/post.js";
+import { clearUserFeedback } from "../../ui/userFeedback/_index.js";
 import { generateMediaObj, checkNumberOfImg, removeFieldFromArray, addFieldToArray } from "../events/_index.js";
 
 let mediaObjArr = [];
@@ -26,8 +27,10 @@ export function listenForRemoveImg(btn) {
 }
 
 export async function listenForUpdate(listingID) {
+  const publishBtn = document.getElementById("submit");
+  const userFeedbackContainer = document.getElementById("feedbackContainerOnAction");
+
   document.forms.newListing.addEventListener("submit", (event) => {
-    const publishBtn = document.getElementById("submit");
     publishBtn.disabled = true;
 
     const loaderContainerOnAction = document.getElementById("loaderContainerOnAction");
@@ -56,11 +59,14 @@ export async function listenForUpdate(listingID) {
 
     updateListing(newListingObj, listingID);
   });
+  clearUserFeedback(userFeedbackContainer, publishBtn);
 }
 
 export async function listenForPublish() {
+  const publishBtn = document.getElementById("submit");
+  const userFeedbackContainer = document.getElementById("feedbackContainerOnAction");
+
   document.forms.newListing.addEventListener("submit", (event) => {
-    const publishBtn = document.getElementById("submit");
     publishBtn.disabled = true;
 
     const loaderContainerOnAction = document.getElementById("loaderContainerOnAction");
@@ -85,6 +91,7 @@ export async function listenForPublish() {
     };
     publishListing(newListingObj);
   });
+  clearUserFeedback(userFeedbackContainer, publishBtn);
 }
 
 export function listenForDelete(listingID) {

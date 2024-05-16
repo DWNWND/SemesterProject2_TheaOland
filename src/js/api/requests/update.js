@@ -61,7 +61,7 @@ export async function updateProfile(userProfile) {
     });
     if (response.ok) {
       const loaderContainer = document.getElementById("loaderContainer");
-      loaderContainer.style.display = "block";
+      loaderContainer.style.display = "none";
 
       const result = await response.json();
       const updatedProfile = result.data;

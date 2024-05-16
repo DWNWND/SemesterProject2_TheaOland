@@ -15,11 +15,9 @@
     height: 250px;
     width: 250px;
   }
-  // #profileContainer,
   .leftside {
-    width: 50%;
+    min-width: 300px;
   }
-
   .vh-75 {
     height: 75vh;
   }
@@ -28,8 +26,8 @@
   #profileListingsContainer {
     width: auto;
   }
-  // #profileContainer,
+  #profileContainer,
   .leftside {
-    min-width: 450px;
+    min-width: 350px;
   }
 }

@@ -51,7 +51,9 @@ export function updateProfileTemplate(btn, userProfile, container) {
 }
 
 function saveUpdatedProfile() {
+  const loaderContainer = document.getElementById("loaderContainer");
   document.forms.editProfile.addEventListener("submit", (event) => {
+    loaderContainer.style.display = "block";
     event.preventDefault();
 
     const form = event.target;
