@@ -40,7 +40,7 @@
           <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>
         </div>
       </div>
-      <div id="auction-item" class="content pt-3 container mb-2 hidden flex-column flex-md-row gap-2">
+      <div id="auction-item" class="content pt-3 container mb-2 hidden flex-column flex-md-row gap-2 gap-md-5">
         <div id="auction-item-details" class="d-flex flex-column gap-2 mb-5">
           <h1 id="auction-item-name" class="auction-item-name heading-2 text-center"></h1>
           <div id="focusImg" class="media"></div>
@@ -50,17 +50,15 @@
             ><span class="tags d-block">Listing tags: <b id="tags"></b></span>
           </p>
         </div>
-        <div class="bids glassmorphism mb-5">
-          <h2 class="heading-4 text-white text-center">current bid:</h2>
-          <div id="currentBidContainer" class="pill d-flex flex-column justify-content-between semi-bold"></div>
-          <form id="placeBid" class="d-flex flex-column justify-content-between semi-bold mt-4 mb-4 gap-2 form-floating">
-            <input name="amount" type="number" class="bid form-control semi-bold text-grayish-purple" id="bid-input" required />
-            <label for="bid-input" class="text-grayish-purple hide">place your bid</label>
-            <button type="submit" for="bid-input" class="btn-local btn-height-m w-100 btn-white-red btn-fontsize-m lowercase align-self-center">Submit bid</button>
-          </form>
-          <div id="bidFeedback" class="mb-3"></div>
-          <div id="bidHistory" class="previous-bids">
-            <h2 class="heading-3">Bid history:</h2>
+        <div class="bids mb-5">
+          <div class="glassmorphism mt-md-5">
+            <h2 id="currentBidHeading" class="heading-4 text-white text-center"></h2>
+            <div id="currentBidContainer" class="pill d-flex flex-column justify-content-between semi-bold"></div>
+            <form id="placeBid" class="d-flex flex-column justify-content-between semi-bold mt-4 mb-4 gap-2 form-floating"></form>
+            <div id="bidFeedback" class="mb-3"></div>
+            <div id="bidHistory" class="previous-bids">
+              <h2 class="heading-3">Bid history:</h2>
+            </div>
           </div>
         </div>
       </div>
