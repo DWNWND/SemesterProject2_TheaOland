@@ -1,5 +1,5 @@
 import { callApiWith } from "../apiCall.js";
-import { API_LISTINGS, API_PROFILES } from "../../constants/index.js";
+import { API_LISTINGS, API_PROFILES } from "../../constants/apiParams.js";
 import { navigateBack } from "../../handlers/events/_index.js";
 import { userFeedback } from "../../ui/userFeedback/_index.js";
 

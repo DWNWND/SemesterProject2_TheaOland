@@ -1,6 +1,5 @@
 import { callApiWith } from "../apiCall.js";
-import { API_LISTINGS } from "../../constants/index.js";
-import { load } from "../../storage/load.js";
+import { API_LISTINGS } from "../../constants/apiParams.js";
 
 export async function deleteListing(id) {
   if (!id) {

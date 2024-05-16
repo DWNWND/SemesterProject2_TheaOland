@@ -1,5 +1,5 @@
 import { callApiWith } from "../apiCall.js";
-import { API_LISTINGS, API_PROFILES } from "../../constants/index.js";
+import { API_LISTINGS, API_PROFILES } from "../../constants/apiParams.js";
 
 export let totalPages = 0;
 export let currentPage = 0;

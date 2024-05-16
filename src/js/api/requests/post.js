@@ -1,5 +1,5 @@
 import { callApiWith } from "../apiCall.js";
-import { API_LISTINGS } from "../../constants/index.js";
+import { API_LISTINGS } from "../../constants/apiParams.js";
 import { userFeedback } from "../../ui/userFeedback/_index.js";
 
 export async function publishListing(listing) {

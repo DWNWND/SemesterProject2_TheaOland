@@ -13,4 +13,3 @@
 # Environmental Secrets
 .env
 cypress.env.json
-api_secret.mjs

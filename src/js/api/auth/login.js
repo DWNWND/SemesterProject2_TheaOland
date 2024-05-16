@@ -1,7 +1,6 @@
 import { callApiWith } from "../apiCall.js";
-import { API_BASE, API_LOGIN } from "../../constants/index.js";
+import { API_BASE, API_LOGIN } from "../../constants/apiParams.js";
 import { save } from "../../storage/_index.js";
-//add a call to fetch the api key??
 
 export async function login(email, password) {
   const url = API_BASE + API_LOGIN;
@@ -16,7 +15,6 @@ export async function login(email, password) {
     save("token", accessToken);
     save("profile", profile);
 
-    //checking if its on the deployed site or locally
     const pathname = window.location.pathname;
     if (pathname.toLowerCase().includes("/semesterproject2_theaoland/")) {
       location.pathname = "/SemesterProject2_TheaOland/";
