@@ -14,10 +14,9 @@ export async function populateEditForm(listing) {
     if (listing.description) {
       editForm.description.value = listing.description;
     }
-    // if (listing.tags) {
-    //   console.log(tags);
-    //   editForm.tags.value = tags;
-    // }
+    if (listing.tags) {
+      editForm.tags.value = listing.tags;
+    }
     if (listing.endsAt) {
       const deadlineLabel = document.getElementById("deadlineLabel");
       const deadlineInput = document.getElementById("deadlineInput");
