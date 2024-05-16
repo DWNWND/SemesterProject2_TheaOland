@@ -4,7 +4,8 @@ import { navigateBack } from "../../handlers/events/_index.js";
 import { userFeedback } from "../../ui/userFeedback/_index.js";
 
 export async function updateListing(listing, listingID) {
-  const userFeedbackContainer = document.getElementById("userFeedback");
+  const userFeedbackContainer = document.getElementById("feedbackContainerOnAction");
+  const loaderContainerOnAction = document.getElementById("loaderContainerOnAction");
 
   try {
     if (!listingID) {
@@ -18,10 +19,9 @@ export async function updateListing(listing, listingID) {
       body: JSON.stringify(listing),
     });
     if (response.ok) {
+      loaderContainerOnAction.style.display = "none";
       userFeedbackContainer.classList.add("text-success", "uppercase");
       userFeedback("listing successfully updated", userFeedbackContainer);
-      // const uxElementSecondary = document.getElementById("uxElementSecondary");
-      // uxElementSecondary.innerHTML = `<span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>`;
 
       setTimeout(function () {
         const pathname = window.location.pathname;
@@ -37,6 +37,7 @@ export async function updateListing(listing, listingID) {
       throw new Error("Couln't update listing");
     }
   } catch (error) {
+    loaderContainerOnAction.style.display = "none";
     userFeedback(error, userFeedbackContainer);
   }
 }

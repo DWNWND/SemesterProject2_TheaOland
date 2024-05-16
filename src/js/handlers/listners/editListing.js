@@ -27,6 +27,12 @@ export function listenForRemoveImg(btn) {
 
 export async function listenForUpdate(listingID) {
   document.forms.newListing.addEventListener("submit", (event) => {
+    const publishBtn = document.getElementById("submit");
+    publishBtn.disabled = true;
+
+    const loaderContainerOnAction = document.getElementById("loaderContainerOnAction");
+    loaderContainerOnAction.style.display = "block";
+
     event.preventDefault();
 
     const form = event.target;
@@ -54,6 +60,12 @@ export async function listenForUpdate(listingID) {
 
 export async function listenForPublish() {
   document.forms.newListing.addEventListener("submit", (event) => {
+    const publishBtn = document.getElementById("submit");
+    publishBtn.disabled = true;
+
+    const loaderContainerOnAction = document.getElementById("loaderContainerOnAction");
+    loaderContainerOnAction.style.display = "block";
+
     event.preventDefault();
 
     const form = event.target;
@@ -78,6 +90,9 @@ export async function listenForPublish() {
 export function listenForDelete(listingID) {
   const deleteBtn = document.getElementById("deleteBtn");
   deleteBtn.addEventListener("click", () => {
+    const loaderContainerOnAction = document.getElementById("loaderContainerOnAction");
+    loaderContainerOnAction.style.display = "block";
+
     deleteListing(listingID);
   });
 }
