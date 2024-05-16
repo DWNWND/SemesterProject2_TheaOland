@@ -15,7 +15,7 @@ export function generateBtn(btnType, innerText, link) {
     btn.classList.add("d-flex", "align-items-center", "justify-content-center", "btn-fontsize-l", "lowercase");
   }
   if (btnType === "saveBtn") {
-    btn.classList.add("btn-orange");
+    btn.classList.add("btn-purple");
     btn.type = "submit";
     return btn;
   }
