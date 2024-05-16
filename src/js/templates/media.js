@@ -31,7 +31,7 @@ export function generateMediaGallery(mediaArray) {
   focusImgContainer.setAttribute("data-bs-toggle", "modal");
 
   const focusImg = document.createElement("img");
-  focusImg.classList.add("img-fluid");
+  focusImg.classList.add("img-fluid", "pointer");
   focusImgContainer.append(focusImg);
 
   if (mediaArray.length <= 0) {
