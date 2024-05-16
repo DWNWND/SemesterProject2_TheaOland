@@ -35,13 +35,13 @@ export function profileTemplate(userProfile) {
   credit.innerText = "CREDITS: " + userProfile.credits;
 
   const logoutBtn = document.createElement("button");
-  logoutBtn.classList.add("d-flex", "btn-purple", "align-items-center", "w-100", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-fontsize-l", "lowercase");
+  logoutBtn.classList.add("d-flex", "btn-pink", "align-items-center", "w-100", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-fontsize-l", "lowercase");
   logoutBtn.id = "logoutBtn";
   logoutBtn.innerText = "log out";
   listenForLogout(logoutBtn);
 
-  const editProfileBtn = document.createElement("button");
-  editProfileBtn.classList.add("lowercase", "d-flex", "w-100", "align-items-center", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-orange", "btn-fontsize-l");
+  const editProfileBtn = document.createElement("p");
+  editProfileBtn.classList.add("lowercase", "text-decoration-underline", "text-red", "pointer");
   editProfileBtn.id = "eidtProfileBtn";
   editProfileBtn.innerText = "edit profile";
   updateProfileTemplate(editProfileBtn, userProfile, profileElement);
@@ -65,19 +65,31 @@ export function profileTemplate(userProfile) {
 export async function displayWins(username) {
   const wins = await get("winsByProfile", username);
   const winsContainer = document.getElementById("wins");
+
   if (wins.length === 0) {
     const userFeedbackMsg = "no wins yet";
     winsContainer.append(userFeedbackMsg);
   } else {
     wins.forEach((win) => {
-      const winContainer = document.createElement("div");
-      winContainer.classList.add("d-flex", "bg-light-orange", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center");
+      const bidsArray = win.bids;
+      const bidArraylength = win.bids.length;
 
       const titleContainer = document.createElement("div");
       titleContainer.classList.add("uppercase", "heading-2-feed");
       const winAmountContainer = document.createElement("div");
-      titleContainer.innerHTML = win.listing.title;
-      winAmountContainer.innerText = win.amount + " credit";
+      winAmountContainer.classList.add("text-orange");
+      titleContainer.innerHTML = win.title;
+
+      const winContainer = document.createElement("a");
+      winContainer.classList.add("d-flex", "bg-light-orange", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "no-decoration", "pointer");
+      const link = `/listing/index.html?key=${win.id}`;
+      winContainer.href = link;
+
+      if (bidArraylength > 0) {
+        const lastBid = bidsArray[bidArraylength - 1];
+        const winningBid = lastBid.amount;
+        winAmountContainer.innerText = winningBid + " credit";
+      }
 
       winContainer.append(titleContainer, winAmountContainer);
       winsContainer.append(winContainer);
@@ -87,22 +99,27 @@ export async function displayWins(username) {
 
 export async function displayBids(username) {
   const bids = await get("bidsByProfile", username);
-
   const bidsContainer = document.getElementById("bids");
-  bids.forEach((bid) => {
-    const bidContainer = document.createElement("a");
-    const link = `/listing/index.html?key=${bid.listing.id}`;
-    bidContainer.href = link;
-    bidContainer.classList.add("d-flex", "bg-pink", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "no-decoration", "pointer");
-    const titleContainer = document.createElement("div");
-    titleContainer.classList.add("uppercase", "heading-2-feed");
-    const bidAmountContainer = document.createElement("div");
-    bidAmountContainer.classList.add("text-red");
 
-    titleContainer.innerText = bid.listing.title;
-    bidAmountContainer.innerText = bid.amount + " credit";
+  if (bids.length === 0) {
+    const userFeedbackMsg = "no bids yet";
+    bidsContainer.append(userFeedbackMsg);
+  } else {
+    bids.forEach((bid) => {
+      const bidContainer = document.createElement("a");
+      const link = `/listing/index.html?key=${bid.listing.id}`;
+      bidContainer.href = link;
+      bidContainer.classList.add("d-flex", "bg-pink", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "no-decoration", "pointer");
+      const titleContainer = document.createElement("div");
+      titleContainer.classList.add("uppercase", "heading-2-feed");
+      const bidAmountContainer = document.createElement("div");
+      bidAmountContainer.classList.add("text-red");
 
-    bidContainer.append(titleContainer, bidAmountContainer);
-    bidsContainer.append(bidContainer);
-  });
+      titleContainer.innerText = bid.listing.title;
+      bidAmountContainer.innerText = bid.amount + " credit";
+
+      bidContainer.append(titleContainer, bidAmountContainer);
+      bidsContainer.append(bidContainer);
+    });
+  }
 }

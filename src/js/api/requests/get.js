@@ -70,7 +70,7 @@ export async function get(request, param, sparam = "") {
     return result;
   }
   if (request === "winsByProfile") {
-    result = await getData(API_PROFILES + `${param}/wins?_listing`);
+    result = await getData(API_PROFILES + `${param}/wins?_listing&_bids=true`);
     console.log(request, "- username: ", param, result);
     return result;
   }
