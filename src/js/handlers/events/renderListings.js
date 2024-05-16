@@ -30,7 +30,7 @@ export function renderListings(listingsArray, container) {
   if (pathname.includes("profile")) {
     const allListings = document.createElement("a");
     allListings.innerText = "view all my listings";
-    allListings.setAttribute("href", "/allListings/index.html");
+    allListings.setAttribute("href", "./allListings/index.html");
     allListings.classList.add("text-red", "text-center", "pb-4");
     container.append(allListings);
   }

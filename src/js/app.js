@@ -57,7 +57,7 @@ async function router() {
   }
   if (pathname.toLowerCase().includes("/auth/")) {
     if (loggedIn) {
-      location.pathname = "/";
+      location.pathname = "./";
     }
     if (!loggedIn) {
       const authRequest = "./routes/auth.js";
@@ -68,7 +68,7 @@ async function router() {
   }
   if (pathname.toLowerCase().includes("/listing/")) {
     if (!loggedIn) {
-      location.pathname = "/";
+      location.pathname = "./";
     }
     if (loggedIn) {
       const listingRequest = "./routes/listing.js";
@@ -94,7 +94,7 @@ async function router() {
   }
   if (pathname.toLowerCase().includes("/profile/")) {
     if (!loggedIn) {
-      location.pathname = "/";
+      location.pathname = "./";
     }
     if (loggedIn) {
       const profileRequest = "./routes/profile.js";
@@ -123,7 +123,7 @@ async function router() {
   }
   if (pathname.toLowerCase().includes("/edit/")) {
     if (!loggedIn) {
-      location.pathname = "/";
+      location.pathname = "./";
     }
     if (loggedIn) {
       const editRequest = "./routes/edit.js";
@@ -147,7 +147,7 @@ async function router() {
   }
   if (pathname.toLowerCase().includes("/alllistings/")) {
     if (!loggedIn) {
-      location.pathname = "/";
+      location.pathname = "./";
     }
     if (loggedIn) {
       const allListingsRequest = "./routes/allListings.js";

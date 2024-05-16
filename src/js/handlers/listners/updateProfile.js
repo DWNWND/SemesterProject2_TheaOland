@@ -1,7 +1,6 @@
 import { generateBtn } from "../../templates/_index.js";
 import { generateUpdateProfileFormFields, navigateBack } from "../events/_index.js";
 import { updateProfile } from "../../api/requests/update.js";
-import { load } from "../../storage/load.js";
 
 export function updateProfileTemplate(btn, userProfile, container) {
   btn.addEventListener("click", () => {

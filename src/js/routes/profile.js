@@ -7,7 +7,6 @@ import { displayWins, displayBids } from "../templates/_index.js";
 
 const profile = load("profile");
 const feedbackContainer = document.getElementById("feedbackContainer");
-// const uxElementMain = document.getElementById("uxElementMain");
 const profileListingsContainer = document.getElementById("profileListingsContainer");
 
 export async function generateUserProfile() {
@@ -18,7 +17,6 @@ export async function generateUserProfile() {
     const listingsArray = await get("listingsByProfile", username);
     const metaTitle = document.querySelector("title");
     metaTitle.innerText = username + " | BAZAAR";
-    // uxElementMain.innerHTML = "";
     displayBids(username);
     displayWins(username);
     profileTemplate(userProfile);

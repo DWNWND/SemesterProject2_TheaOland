@@ -14,13 +14,8 @@ export async function login(email, password) {
     const { accessToken, ...profile } = result.data;
     save("token", accessToken);
     save("profile", profile);
+    location.pathname = "./";
 
-    const pathname = window.location.pathname;
-    if (pathname.toLowerCase().includes("/semesterproject2_theaoland/")) {
-      location.pathname = "/SemesterProject2_TheaOland/";
-    } else {
-      location.pathname = "/";
-    }
     return;
   }
   if (response.status === 401) {

@@ -59,7 +59,7 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
     const pathname = window.location.pathname;
 
     if (pathname.includes("profile") || pathname.includes("allListings")) {
-      const link = `/edit/index.html?key=${listingID}`;
+      const link = `./edit/index.html?key=${listingID}`;
       const editListingBtn = generateBtn("editListingBtn", "edit", link);
 
       listingFooter.append(editListingBtn);
