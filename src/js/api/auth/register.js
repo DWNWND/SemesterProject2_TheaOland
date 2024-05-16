@@ -1,5 +1,5 @@
 import { callApiWith } from "../apiCall.js";
-import { API_BASE, API_REGISTER } from "../../constants/index.js";
+import { API_BASE, API_REGISTER } from "../../constants/apiParams.js";
 import { login } from "./index.js";
 import { userFeedback } from "../../ui/userFeedback/_index.js";
 
