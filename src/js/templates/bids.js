@@ -33,6 +33,29 @@ export function addCurrentBid(bidsArray) {
   return currentBidContainer;
 }
 
+export function addPlaceBidForm(endsAt) {
+  const deadline = new Date(endsAt);
+  const now = new Date().getTime();
+  const countDownTime = deadline.getTime();
+  const distance = countDownTime - now;
+
+  const placeBidForm = document.getElementById("placeBid");
+
+  if (distance > 0) {
+    const currentBidHeading = document.getElementById("currentBidHeading");
+    currentBidHeading.innerText = "current bid:";
+    placeBidForm.innerHTML = `
+        <input name="amount" type="number" class="bid form-control semi-bold text-grayish-purple" id="bid-input" required />
+        <label for="bid-input" class="text-grayish-purple hide">place your bid</label>
+        <button type="submit" for="bid-input" class="btn-local btn-height-m w-100 btn-white-red btn-fontsize-m lowercase align-self-center">Submit bid</button>`;
+  }
+
+  if (distance < 0) {
+    const currentBidHeading = document.getElementById("currentBidHeading");
+    currentBidHeading.innerText = "winning bid:";
+  }
+}
+
 export function addDeadline(endsAt) {
   const deadline = new Date(endsAt);
   const timerContainer = document.createElement("div");

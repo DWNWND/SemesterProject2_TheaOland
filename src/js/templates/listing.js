@@ -1,5 +1,5 @@
 import { generateMediaGallery } from "./media.js";
-import { addCurrentBid, addDeadline, displayBidHistory } from "./bids.js";
+import { addCurrentBid, addDeadline, displayBidHistory, addPlaceBidForm } from "./bids.js";
 import { listenForNewBid } from "../handlers/listners/_index.js";
 
 export function listingSpecificTemplate({ title, media, bids, id, description, tags, created, updated, endsAt, seller }) {
@@ -9,6 +9,7 @@ export function listingSpecificTemplate({ title, media, bids, id, description, t
   generateMediaGallery(media);
   displayBidHistory(bids);
   listenForNewBid(id);
+  addPlaceBidForm(endsAt);
 
   const countdownContainer = addDeadline(endsAt);
   const currentBidContainer = addCurrentBid(bids);
