@@ -26,13 +26,21 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
   const currentBidContainer = addCurrentBid(bidsArray);
   const countdownContainer = addDeadline(endsAt);
 
+  const imgContainer = document.createElement("div");
+  const ImgLoaderContainer = document.createElement("div");
+  ImgLoaderContainer.classList.add("d-flex", "flex-column", "align-items-center", "p-3");
+  ImgLoaderContainer.innerHTML = `<span id="loader" class="loader"><span class="visually-hidden">Loading listings...</span></span>`;
+  ImgLoaderContainer.id = "ImgLoaderContainer";
+
+  imgContainer.append(ImgLoaderContainer, img);
+
   const bidContainer = document.createElement("div");
   bidContainer.classList.add("pill", "d-flex", "flex-column", "justify-content-between", "semi-bold");
   bidContainer.append(currentBidContainer, countdownContainer);
 
   //LISTINGS DISPLAYED PUBLICLY (NOT LOGGED IN)
   if (!userIsLoggedIn) {
-    listing.append(img, titleContainer, bidContainer);
+    listing.append(imgContainer, titleContainer, bidContainer);
     col.append(listing);
   }
 
@@ -45,7 +53,7 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
     const viewListingBtn = generateBtn("viewListingBtn", "view", link);
 
     listingFooter.append(bidContainer, viewListingBtn);
-    listing.append(img, titleContainer, listingFooter);
+    listing.append(imgContainer, titleContainer, listingFooter);
     col.append(listing);
 
     const pathname = window.location.pathname;

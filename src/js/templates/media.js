@@ -2,7 +2,7 @@ export function addMedia(listingData) {
   const mediaArrayLength = listingData.media.length;
 
   const imgDisplayed = document.createElement("img");
-  imgDisplayed.classList.add("object-fit-cover", "main-listing-img");
+  imgDisplayed.classList.add("object-fit-cover", "main-listing-img", "hidden");
 
   if (mediaArrayLength > 0) {
     const mediaUrl = listingData.media[0].url;

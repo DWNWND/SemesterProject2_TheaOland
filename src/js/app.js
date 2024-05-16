@@ -5,6 +5,20 @@ function hideLoader() {
   loader.style.display = "none";
 }
 
+function hideImageLoader() {
+  const ImgLoaderContainer = document.querySelectorAll("#ImgLoaderContainer");
+  ImgLoaderContainer.forEach((loader) => {
+    loader.classList.remove("d-flex");
+    loader.style.display = "none";
+  });
+}
+function showImages() {
+  const images = document.querySelectorAll("img");
+  images.forEach((img) => {
+    img.classList.remove("hidden");
+  });
+}
+
 function showContent() {
   const content = document.querySelector(".content");
   content.classList.remove("hidden");
@@ -21,7 +35,10 @@ async function router() {
     const feedRequest = "./routes/feed.js";
     const { generateFeed } = await import(feedRequest);
     await generateFeed();
-
+    const content = document.querySelector(".content");
+    hideLoader();
+    showContent();
+    content.classList.add("row");
     Promise.all(
       Array.from(document.images)
         .filter((img) => !img.complete)
@@ -32,10 +49,8 @@ async function router() {
             })
         )
     ).then(() => {
-      const content = document.querySelector(".content");
-      hideLoader();
-      showContent();
-      content.classList.add("row");
+      hideImageLoader();
+      showImages();
     });
 
     return;
@@ -85,6 +100,11 @@ async function router() {
       const profileRequest = "./routes/profile.js";
       const { generateUserProfile } = await import(profileRequest);
       await generateUserProfile();
+      const content = document.querySelector(".content");
+      hideLoader();
+      showContent();
+      content.classList.add("d-flex");
+
       Promise.all(
         Array.from(document.images)
           .filter((img) => !img.complete)
@@ -95,10 +115,8 @@ async function router() {
               })
           )
       ).then(() => {
-        const content = document.querySelector(".content");
-        hideLoader();
-        showContent();
-        content.classList.add("d-flex");
+        hideImageLoader();
+        showImages();
       });
     }
     return;
@@ -135,6 +153,10 @@ async function router() {
       const allListingsRequest = "./routes/allListings.js";
       const { generateUserFeed } = await import(allListingsRequest);
       await generateUserFeed();
+      const content = document.querySelector(".content");
+      hideLoader();
+      showContent();
+      content.classList.add("row");
       Promise.all(
         Array.from(document.images)
           .filter((img) => !img.complete)
@@ -145,10 +167,8 @@ async function router() {
               })
           )
       ).then(() => {
-        const content = document.querySelector(".content");
-        hideLoader();
-        showContent();
-        content.classList.add("row");
+        hideImageLoader();
+        showImages();
       });
     }
     return;
