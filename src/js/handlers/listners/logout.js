@@ -6,7 +6,7 @@ export function listenForLogout(btn) {
     const token = load("token");
 
     if (!token) {
-      location.href = "./";
+      location.pathname = "./";
     }
   });
 }
