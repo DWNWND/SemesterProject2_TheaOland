@@ -82,7 +82,7 @@ export async function displayWins(username) {
 
       const winContainer = document.createElement("a");
       winContainer.classList.add("d-flex", "bg-light-orange", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "no-decoration", "pointer");
-      const link = `./listing/index.html?key=${win.id}`;
+      const link = `/listing/index.html?key=${win.id}`;
       winContainer.href = link;
 
       if (bidArraylength > 0) {

@@ -19,12 +19,7 @@ export async function publishListing(listing) {
       feedbackContainerOnAction.classList.add("text-grayish-purple");
 
       setTimeout(function () {
-        const pathname = window.location.pathname;
-        if (pathname.toLowerCase().includes("/semesterproject2_theaoland/")) {
-          location.pathname = "/SemesterProject2_TheaOland/";
-        } else {
-          location.pathname = "/";
-        }
+        location.pathname = "/";
       }, 2000);
     }
     if (response.status === 400) {
