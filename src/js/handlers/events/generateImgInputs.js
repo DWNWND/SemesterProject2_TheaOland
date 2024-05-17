@@ -28,7 +28,7 @@ export function checkNumberOfImg() {
     addImgsBtn.disabled = false;
   }
   if (imgArrLen >= 8) {
-    addImgsBtn.innerText = "Max amound of images pr. listing";
+    addImgsBtn.innerText = "Max amount of images pr. listing";
     addImgsBtn.classList.add("no-decoration");
     addImgsBtn.disabled = true;
   }
