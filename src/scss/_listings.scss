@@ -17,13 +17,13 @@
   height: 60px;
 }
 
-.listing-title {
+#listing-title {
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.main-listing-img {
+#main-listing-img {
   height: 150px;
   width: 100%;
   border-radius: 20px;
@@ -42,7 +42,7 @@
   .listing {
     min-width: 130px;
   }
-  .main-listing-img {
+  #main-listing-img {
     height: 130px;
   }
 }
@@ -51,7 +51,7 @@
   .listing {
     min-width: 200px;
   }
-  .main-listing-img {
+  #main-listing-img {
     height: 180px;
   }
   .latest-bid {
@@ -66,7 +66,7 @@
   .listing {
     min-width: 220px;
   }
-  .main-listing-img {
+  #main-listing-img {
     height: 200px;
   }
 }
@@ -75,7 +75,7 @@
   .listing {
     min-width: 250px;
   }
-  .main-listing-img {
+  #main-listing-img {
     height: 250px;
   }
 }
