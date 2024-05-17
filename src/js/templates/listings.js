@@ -18,7 +18,8 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
   const titleContainer = document.createElement("div");
   titleContainer.classList.add("d-flex", "align-items-center", "justify-content-center", "title-container");
   const title = document.createElement("h2"); //double check if this should be h2 or something else
-  title.classList.add("listing-title", "heading-2-feed", "uppercase", "extra-bold");
+  title.classList.add("heading-2-feed", "uppercase", "extra-bold");
+  title.id = "listing-title";
   title.innerText = listingTitle;
   titleContainer.append(title);
 
