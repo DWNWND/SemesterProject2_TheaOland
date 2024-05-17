@@ -38,7 +38,7 @@ export async function publishListing(listing) {
 
 export async function publishNewBid(listingID, bid) {
   const bidFeedbackContainer = document.getElementById("bidFeedback");
-  const url = API_LISTINGS + `${listingID}/bids`;
+  const url = API_LISTINGS + `/${listingID}/bids`;
 
   try {
     const response = await callApiWith(url, {
