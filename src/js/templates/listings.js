@@ -26,21 +26,13 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
   const currentBidContainer = addCurrentBid(bidsArray);
   const countdownContainer = addDeadline(endsAt);
 
-  const imgContainer = document.createElement("div");
-  const ImgLoaderContainer = document.createElement("div");
-  ImgLoaderContainer.classList.add("d-flex", "flex-column", "align-items-center", "p-3");
-  ImgLoaderContainer.innerHTML = `<span id="loader" class="loader"><span class="visually-hidden">Loading listings...</span></span>`;
-  ImgLoaderContainer.id = "ImgLoaderContainer";
-
-  imgContainer.append(ImgLoaderContainer, img);
-
   const bidContainer = document.createElement("div");
   bidContainer.classList.add("pill", "d-flex", "flex-column", "justify-content-between", "semi-bold");
   bidContainer.append(currentBidContainer, countdownContainer);
 
   //LISTINGS DISPLAYED PUBLICLY (NOT LOGGED IN)
   if (!userIsLoggedIn) {
-    listing.append(imgContainer, titleContainer, bidContainer);
+    listing.append(img, titleContainer, bidContainer);
     col.append(listing);
   }
 
@@ -53,13 +45,13 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
     const viewListingBtn = generateBtn("viewListingBtn", "view", link);
 
     listingFooter.append(bidContainer, viewListingBtn);
-    listing.append(imgContainer, titleContainer, listingFooter);
+    listing.append(img, titleContainer, listingFooter);
     col.append(listing);
 
     const pathname = window.location.pathname;
 
     if (pathname.includes("profile") || pathname.includes("allListings")) {
-      const link = `./edit/index.html?key=${listingID}`;
+      const link = `/edit/index.html?key=${listingID}`;
       const editListingBtn = generateBtn("editListingBtn", "edit", link);
 
       listingFooter.append(editListingBtn);
