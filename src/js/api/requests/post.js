@@ -24,7 +24,7 @@ export async function publishListing(listing) {
     }
     if (response.status === 400) {
       feedbackContainerOnAction.classList.remove("text-grayish-purple");
-      throw new Error("You are trying to publish a listing lacking required fields. Please make sure you have filled out all required fields.");
+      throw new Error("You are trying to publish a listing lacking required fields. Please make sure you have filled out all required fields and that you have a valid deadline date.");
     } else if (response.status >= 401) {
       feedbackContainerOnAction.classList.remove("text-grayish-purple");
       throw new Error("An unexpected error occured, please try again later");
