@@ -26,10 +26,6 @@ export async function get(request, param, sparam = "") {
   if (!request) {
     throw new Error("the get function is called with a falsy request value");
   }
-  // if (request === "allListings") {
-  //   result = await getData(API_LISTINGS);
-  //   return result;
-  // }
   if (request === "listingsByPage") {
     const pageLimit = 10;
     result = await getData(API_LISTINGS + `?_bids=true&limit=${pageLimit}&page=${param}&sort=endsAt&sortOrder=asc&_active=true`);
@@ -60,12 +56,6 @@ export async function get(request, param, sparam = "") {
     result = await getData(API_PROFILES + `${param}/wins?_listing&_bids=true`);
     return result;
   }
-  // if (request === "profileBySearch") {
-  //   url = API_PROFILES + `search?q=${param}`;
-  //   result = await getData(url);
-  //   console.log(request, "- username: ", param, result);
-  //   return result;
-  // }
   if (request === "singleProfile") {
     url = API_PROFILES + `${param}`;
     result = await getData(url);

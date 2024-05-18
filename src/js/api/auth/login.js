@@ -1,5 +1,7 @@
 import { callApiWith } from "../apiCall.js";
 import { API_BASE, API_LOGIN } from "../../constants/apiParams.js";
+import { checkIfDeployed } from "../../deployment/checkUrl.js";
+import { baseRepoUrl } from "../../constants/baseUrl.js";
 import { save } from "../../storage/_index.js";
 
 export async function login(email, password) {
@@ -14,7 +16,16 @@ export async function login(email, password) {
     const { accessToken, ...profile } = result.data;
     save("token", accessToken);
     save("profile", profile);
-    location.pathname = "./";
+
+    const deployed = checkIfDeployed();
+    if (deployed) {
+      location.pathname = `${baseRepoUrl}`;
+    }
+    if (!deployed) {
+      location.pathname = "./";
+    } else {
+      throw new Error("An unexpected error occured, please try again later.");
+    }
     return;
   }
   if (response.status === 401) {

@@ -1,6 +1,8 @@
 import { callApiWith } from "../apiCall.js";
 import { API_LISTINGS } from "../../constants/apiParams.js";
 import { userFeedback } from "../../ui/userFeedback/userFeedback.js";
+import { baseRepoUrl } from "../../constants/baseUrl.js";
+import { checkIfDeployed } from "../../deployment/checkUrl.js";
 
 export async function deleteListing(id) {
   const feedbackContainerOnAction = document.getElementById("feedbackContainerOnAction");
@@ -20,11 +22,15 @@ export async function deleteListing(id) {
 
     setTimeout(function () {
       removeUrlParameter("key");
-      const pathname = window.location.pathname;
-      if (pathname.toLowerCase().includes("/semesterproject2_theaoland/")) {
-        location.pathname = "/SemesterProject2_TheaOland/";
-      } else {
+
+      const deployed = checkIfDeployed();
+      if (deployed) {
+        location.pathname = `${baseRepoUrl}`;
+      }
+      if (!deployed) {
         location.pathname = "/";
+      } else {
+        throw new Error("An unexpected error occured, please try again later.");
       }
     }, 2000);
   } else {

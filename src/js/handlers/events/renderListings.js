@@ -1,5 +1,7 @@
 import { load } from "../../storage/_index.js";
 import { listingsTemplate } from "../../templates/listings.js";
+import { baseRepoUrl } from "../../constants/baseUrl.js";
+import { checkIfDeployed } from "../../deployment/checkUrl.js";
 
 export function renderListings(listingsArray, container) {
   const token = load("token");
@@ -30,7 +32,15 @@ export function renderListings(listingsArray, container) {
   if (pathname.includes("profile")) {
     const allListings = document.createElement("a");
     allListings.innerText = "view all my listings";
-    allListings.setAttribute("href", "/allListings/index.html");
+    const deployed = checkIfDeployed();
+    if (deployed) {
+      allListings.setAttribute("href", `${baseRepoUrl}/allListings/index.html`);
+    }
+    if (!deployed) {
+      allListings.setAttribute("href", `/allListings/index.html`);
+    } else {
+      throw new Error("An unexpected error occured, please try again later.");
+    }
     allListings.classList.add("text-red", "text-center", "pb-4");
     container.append(allListings);
   }

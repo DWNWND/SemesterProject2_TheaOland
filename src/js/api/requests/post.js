@@ -1,6 +1,8 @@
 import { callApiWith } from "../apiCall.js";
 import { API_LISTINGS } from "../../constants/apiParams.js";
 import { userFeedback } from "../../ui/userFeedback/_index.js";
+import { baseRepoUrl } from "../../constants/baseUrl.js";
+import { checkIfDeployed } from "../../deployment/checkUrl.js";
 
 export async function publishListing(listing) {
   const feedbackContainerOnAction = document.getElementById("feedbackContainerOnAction");
@@ -19,7 +21,15 @@ export async function publishListing(listing) {
       feedbackContainerOnAction.classList.add("text-grayish-purple");
 
       setTimeout(function () {
-        location.pathname = "/";
+        const deployed = checkIfDeployed();
+        if (deployed) {
+          location.pathname = `${baseRepoUrl}`;
+        }
+        if (!deployed) {
+          location.pathname = "/";
+        } else {
+          throw new Error("An unexpected error occured, please try again later.");
+        }
       }, 2000);
     }
     if (response.status === 400) {

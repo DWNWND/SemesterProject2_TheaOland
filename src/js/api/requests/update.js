@@ -2,6 +2,8 @@ import { callApiWith } from "../apiCall.js";
 import { API_LISTINGS, API_PROFILES } from "../../constants/apiParams.js";
 import { navigateBack } from "../../handlers/events/_index.js";
 import { userFeedback } from "../../ui/userFeedback/_index.js";
+import { baseRepoUrl } from "../../constants/baseUrl.js";
+import { checkIfDeployed } from "../../deployment/checkUrl.js";
 
 export async function updateListing(listing, listingID) {
   const userFeedbackContainer = document.getElementById("feedbackContainerOnAction");
@@ -24,11 +26,14 @@ export async function updateListing(listing, listingID) {
       userFeedback("listing successfully updated", userFeedbackContainer);
 
       setTimeout(function () {
-        const pathname = window.location.pathname;
-        if (pathname.toLowerCase().includes("/semesterproject2_theaoland/")) {
-          location.pathname = "/SemesterProject2_TheaOland/";
-        } else {
+        const deployed = checkIfDeployed();
+        if (deployed) {
+          location.pathname = `${baseRepoUrl}`;
+        }
+        if (!deployed) {
           location.pathname = "/";
+        } else {
+          throw new Error("An unexpected error occured, please try again later.");
         }
       }, 2000);
     } else {
