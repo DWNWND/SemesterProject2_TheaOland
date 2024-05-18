@@ -28,8 +28,7 @@ describe("listing spesific page, place bid and bid history functionality", () =>
     expect("#bidHistory").not.to.be.empty;
   });
   it("displays an error if you try to bid on your own item", () => {
-    cy.get("#searchbar").should("be.visible").type("gallery");
-    cy.wait(2000);
+    cy.get("#usernameBtn").click();
     cy.get("#viewListingBtn").should("be.visible").click();
     cy.get("#placeBid").should("be.visible");
     cy.get("#bid-input").type("1");
@@ -38,21 +37,17 @@ describe("listing spesific page, place bid and bid history functionality", () =>
     cy.get("#bidFeedback").should("be.visible").should("contain", "You can not bid on your own listing");
   });
   it("displays an error if a user is trying to bid lower than the current bid", () => {
-    cy.get("#searchbar").should("be.visible").type("test");
-    cy.wait(2000);
     cy.get("#viewListingBtn").should("be.visible").click();
     cy.get("#placeBid").should("be.visible");
-    cy.get("#bid-input").type("1");
+    cy.get("#bid-input").clear();
+    cy.get("#bid-input").type("0");
     cy.get("#placeBid").submit();
     cy.wait(1000);
     cy.get("#bidFeedback").should("be.visible").should("contain", "Make sure that the listing is active and your bid is higher than the current bid.");
   });
   it("submits a bid if it's higher than the current one", () => {
-    cy.get("#searchbar").should("be.visible").type("test");
-    cy.wait(2000);
     cy.get("#viewListingBtn").should("be.visible").click();
     cy.get("#placeBid").should("be.visible");
-    cy.get("#bid-input").type("1");
     cy.get("#placeBid").submit();
     cy.wait(1000);
     cy.get("#bidHistory").should("be.contain", validUsername);

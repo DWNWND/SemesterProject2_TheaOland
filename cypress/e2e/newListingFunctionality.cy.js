@@ -11,7 +11,7 @@ describe("publish new listing functionality", () => {
   });
   it("displays error message if the listing is not filled out correctly", () => {
     cy.publishNewListingError();
-    cy.get("#feedbackContainerOnAction").should("contain", "Please make sure you have filled out all required fields.");
+    cy.get("#feedbackContainerOnAction").should("contain", "Please make sure you have filled out all required fields");
   });
   it("displays a message when a listing is published correctly", () => {
     cy.publishNewListing();
@@ -27,6 +27,6 @@ describe("publish new listing functionality", () => {
     cy.get("#addImgsBtn").click();
     cy.get("#addImgsBtn").click();
     cy.get("#addImgsBtn").click();
-    cy.get("#addImgsBtn").should("contain", "Max amount of images pr. listing");
+    cy.get("#addImgsBtn").should("have.text", "Max amount of images pr. listing");
   });
 });
