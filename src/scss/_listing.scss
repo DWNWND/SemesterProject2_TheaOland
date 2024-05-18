@@ -20,9 +20,9 @@
   object-fit: cover;
 }
 
-.inFocus {
-  border: 1px solid $grayish-purple;
-}
+// .inFocus {
+//   border: 1px solid $grayish-purple;
+// }
 @media (min-width: $breakpoint-tablet) {
   #auction-item {
     max-width: 1000px;

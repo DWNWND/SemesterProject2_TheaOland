@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="container pb-5 content hidden">
-        <div class="new-listing-form glassmorphism">
+        <div class="p-3 p-sm-4 glassmorphism">
           <form id="newListing" class="d-flex flex-column gap-5">
             <div class="d-flex flex-column gap-2">
               <h1 class="heading-1 text-red">Listing Details</h1>
@@ -50,10 +50,10 @@
                 <input id="deadlineInput" type="datetime-local" class="form-control new-listing-auction-deadline" name="endsAt" />
               </div>
             </div>
-            <div id="listingMedia" class="d-flex flex-column gap-2">
+            <div id="listingMedia" class="d-flex flex-column gap-2 pt-sm-4 pb-sm-4">
               <h1 class="heading-1 text-red">Listing Media</h1>
-              <h2 class="new-listing-form-labels uppercase extra-bold text-grayish-purple">Upload images (max 8)</h2>
-              <div id="imageUpload" class="d-flex flex-column gap-3"></div>
+              <div class="inputInfo uppercase extra-bold text-grayish-purple">Upload images (max 8)</div>
+              <ol id="imageUpload" class="d-flex flex-column gap-3"></ol>
               <button type="button" id="addImgsBtn" class="btn-local text-red bg-light-orange p-1 mt-2 pointer">Add new image</button>
             </div>
             <button id="submit" type="submit" class="btn-local btn-height-l btn-purple btn-fontsize-l extra-bold uppercase">Publish</button>

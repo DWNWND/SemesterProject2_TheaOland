@@ -8,7 +8,7 @@ export function navTemplate(username) {
   const loginLink = document.createElement("a");
   loginLink.classList.add("w-100");
   const loginBtn = document.createElement("button");
-  loginBtn.classList.add("btn-local", "btn-height-l", "w-100", "ps-3", "pe-3", "btn-width-l", "btn-white-red", "btn-fontsize-l", "uppercase");
+  loginBtn.classList.add("btn-local", "btn-height-l", "w-100", "ps-3", "pe-3", "btn-width-l", "btn-white-red", "text-uppercase");
   loginBtn.setAttribute("id", "loginBtnLanding");
   loginBtn.innerText = "Login";
   loginBtn.type = "button";
@@ -18,7 +18,7 @@ export function navTemplate(username) {
   const usernameLink = document.createElement("a");
   usernameLink.classList.add("w-100");
   const usernameBtn = document.createElement("button");
-  usernameBtn.classList.add("btn-local", "btn-height-l", "ps-3", "pe-3", "w-100", "btn-width-l", "btn-pink", "btn-fontsize-l", "extra-bold", "uppercase");
+  usernameBtn.classList.add("btn-local", "btn-height-l", "ps-3", "pe-3", "w-100", "btn-width-l", "btn-pink", "extra-bold", "text-uppercase");
   usernameBtn.setAttribute("id", "usernameBtn");
   usernameBtn.innerText = username;
   usernameBtn.type = "button";
@@ -28,7 +28,7 @@ export function navTemplate(username) {
   const newlistingLink = document.createElement("a");
   newlistingLink.classList.add("w-100");
   const newlistingBtn = document.createElement("button");
-  newlistingBtn.classList.add("btn-local", "btn-height-l", "w-100", "btn-width-l", "ps-3", "pe-3", "btn-purple", "btn-fontsize-l", "extra-bold", "uppercase");
+  newlistingBtn.classList.add("btn-local", "btn-height-l", "w-100", "btn-width-l", "ps-3", "pe-3", "btn-purple", "extra-bold", "text-uppercase");
   newlistingBtn.setAttribute("id", "newlistingBtn");
   newlistingBtn.innerText = "Add new listing";
   newlistingBtn.type = "button";
@@ -38,7 +38,7 @@ export function navTemplate(username) {
   const homeLink = document.createElement("a");
   homeLink.classList.add("w-100");
   const homeBtn = document.createElement("button");
-  homeBtn.classList.add("btn-local", "btn-height-l", "w-100", "btn-width-l", "ps-3", "pe-3", "btn-orange", "btn-fontsize-l", "extra-bold", "uppercase");
+  homeBtn.classList.add("btn-local", "btn-height-l", "w-100", "btn-width-l", "ps-3", "pe-3", "btn-orange", "extra-bold", "text-uppercase");
   homeBtn.setAttribute("id", "homeBtn");
   homeBtn.innerText = "Home";
   homeBtn.type = "button";

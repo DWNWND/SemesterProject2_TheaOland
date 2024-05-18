@@ -7,13 +7,13 @@ export function generateBtn(btnType, innerText, link) {
   if (btnType === "editListingBtn" || btnType === "viewListingBtn") {
     const btnLink = document.createElement("a");
     btnLink.setAttribute("href", link);
-    btn.classList.add("btn-white-black", "btn-fontsize-m", "uppercase");
+    btn.classList.add("btn-white-black", "text-uppercase");
     btn.type = "button";
     btnLink.append(btn);
     return btnLink;
   }
   if (btnType === "saveBtn" || btnType === "backBtn") {
-    btn.classList.add("d-flex", "align-items-center", "justify-content-center", "btn-fontsize-l", "lowercase");
+    btn.classList.add("d-flex", "align-items-center", "justify-content-center", "text-lowercase");
     btn.type = "button";
   }
   if (btnType === "saveBtn") {

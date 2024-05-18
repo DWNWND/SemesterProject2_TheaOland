@@ -1,7 +1,9 @@
+@import "_colors";
 //userFeedback
+
 .success {
   color: rgb(113, 200, 113);
 }
 .error {
-  color: rgb(199, 38, 38);
+  color: $dark-red;
 }

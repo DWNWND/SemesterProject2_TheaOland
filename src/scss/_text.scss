@@ -51,12 +51,12 @@ p,
 .extra-bold {
   font-weight: 800;
 }
-.uppercase {
-  text-transform: uppercase;
-}
-.lowercase {
-  text-transform: lowercase;
-}
+// .uppercase {
+//   text-transform: uppercase;
+// }
+// .lowercase {
+//   text-transform: lowercase;
+// }
 
 .link {
   font-size: 1rem;
@@ -70,21 +70,17 @@ p,
   text-decoration: none;
 }
 
-.error {
-  color: $dark-red;
-}
-
 @media (min-width: $breakpoint-small-tablet) {
   .heading-2 {
     font-size: 1.25rem;
   }
 }
 
-@media (min-width: $breakpoint-tablet) {
-}
-
 @media (min-width: $breakpoint-desktop) {
   .heading-1 {
     font-size: 1.87rem;
+  }
+  .heading-2 {
+    font-size: 1.25rem;
   }
 }

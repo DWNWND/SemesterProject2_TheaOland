@@ -108,7 +108,7 @@ export async function displayBids(username) {
       const link = `../listing/index.html?key=${bid.listing.id}`;
       bidContainer.href = link;
 
-      bidContainer.classList.add("d-flex", "bg-pink", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "no-decoration", "pointer");
+      bidContainer.classList.add("d-flex", "bg-light-pink", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "no-decoration", "pointer");
       const titleContainer = document.createElement("div");
       titleContainer.classList.add("uppercase", "heading-2-feed");
       const bidAmountContainer = document.createElement("div");

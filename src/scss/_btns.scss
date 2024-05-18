@@ -4,14 +4,8 @@
 //BTN-styles
 //linear-gradient border with border radius: https://gist.github.com/stereokai/36dc0095b9d24ce93b045e2ddc60d7a0
 //also: https://res.cloudinary.com/practicaldev/image/fetch/s--761_Vo9x--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/i/1kfsw08obq1iug2v37ex.png
-.pointer {
-  cursor: pointer;
-  opacity: 1;
-}
-.pointer:hover {
-  opacity: 0.6;
-}
 .btn-local {
+  font-size: 1rem;
   border-radius: 21px;
   border: double 1px transparent;
   background-origin: border-box;
@@ -19,44 +13,38 @@
   // box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.btn-fontsize-l {
-  font-size: 1rem;
-}
-.btn-fontsize-m {
-  font-size: 1rem;
-}
-.btn-fontsize-s {
-  font-size: 0.75rem;
-}
+// .btn-fontsize-m {
+//   font-size: 1rem;
+// }
 
 .btn-height-l {
   height: 46px;
 }
-.btn-height-m {
-  height: 32px;
-}
+// .btn-height-m {
+//   height: 32px;
+// }
 .btn-height-s {
   height: 25px;
 }
 
-.btn-width-100 {
-  width: 100%;
-}
+// .btn-width-100 {
+//   width: 100%;
+// }
 // .btn-width-l {
 //   min-width: 249px;
 // }
-.btn-width-m {
-  width: 192px;
-}
-.btn-width-s {
-  width: 142px;
-}
-.btn-width-xs {
-  width: 121px;
-}
-.btn-width-xxs {
-  width: 70px;
-}
+// .btn-width-m {
+//   width: 192px;
+// }
+// .btn-width-s {
+//   width: 142px;
+// }
+// .btn-width-xs {
+//   width: 121px;
+// }
+// .btn-width-xxs {
+//   width: 70px;
+// }
 
 .btn-purple {
   color: $dark-purple;
@@ -64,7 +52,6 @@
   background-image: linear-gradient($light-purple, $light-purple), radial-gradient(circle at top left, $dark-purple-50, $dark-purple-30);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
-
 .btn-purple:disabled {
   background-color: $light-purple-disabled;
   background-image: linear-gradient($light-purple-disabled, $light-purple-disabled), radial-gradient(circle at top left, $dark-purple-50, $dark-purple-30);
@@ -75,7 +62,6 @@
   background-image: linear-gradient($orange, $orange), radial-gradient(circle at top left, $white-50, $white-30);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
-
 .btn-orange:disabled {
   background-color: $orange-disabled;
   background-image: linear-gradient($orange-disabled, $orange-disabled), radial-gradient(circle at top left, $white-50, $white-30);
@@ -101,9 +87,9 @@
 .btn-pink:disabled {
   background-image: linear-gradient($pink-disabled, $pink-disabled), radial-gradient(circle at top left, $red-50, $red-30);
 }
-#loadMore {
-  display: none;
-}
+// #loadMore {
+//   display: none;
+// }
 
 @media (min-width: $breakpoint-tablet) {
   .btn-width-l {
@@ -112,12 +98,6 @@
 }
 
 @media (min-width: $breakpoint-desktop) {
-  .heading-1 {
-    font-size: 1.87rem;
-  }
-  .heading-2 {
-    font-size: 1.25rem;
-  }
   .btn-white-red:hover,
   .btn-pink:hover {
     border-color: $red;

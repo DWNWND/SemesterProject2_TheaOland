@@ -26,7 +26,7 @@ $grid-breakpoints: (
 $theme-colors: (
   "brown": #603432,
   "red": #a93338,
-  "dark-red": #5f0005,
+  "dark-red": #6f282b,
   "grayish-purple": #544862,
   "dark-purple": #6c35af,
   "light-purple": #cbacf1,
@@ -39,30 +39,23 @@ $theme-colors: (
   "error": #5f0005,
   "success": #4e0081,
   "green": #667131,
-  "pink": #f9d2d4,
+  "pink": #ef7f83,
+  "pink-disabled": #f9d2d4,
+  "light-pink": #f9d2d4,
 );
 
-// $body-color: #8a77a1;
-
-// $gradient: linear-gradient(180deg, rgba($white, 0.50), rgba($white, 0));
-
-// "white": #ffffff,
-// "white-30": rgba(255, 255, 255, 0.3),
-// "white-50": rgba(255, 255, 255, 0.5),
-// "black-30": rgba(0, 0, 0, 0.3),
-// "black-50": rgba(0, 0, 0, 0.5),
-// $gray-30: rgba(226, 226, 237, 30%),
-// $gray-50: rgba(226, 226, 237, 50%),
-// "light-purple": #cbacf1,
-// "dark-purple": #6c35af,
-// "dark-purple-30": rgba(108, 53, 175, 0.3),
-// "dark-purple-50": rgba(108, 53, 175, 0.5),
-// "grayish-purple": #8a77a1,
-// "orange": #d36b0d,
-// "pink": #ef7f83,
-// "error": #d36b0d,
-// "suc": #ef7f83,
-
-// "red-30": rgba(169, 51, 56, 0.3),
-// "red-50": rgba(169, 51, 56, 0.5),
-// "dark-red": #6f282b
+//Local color variables:
+// $white: #ffffff;
+// $white-30: rgba(255, 255, 255, 0.3);
+// $white-50: rgba(255, 255, 255, 0.5);
+// $black-30: rgba(0, 0, 0, 0.3);
+// $black-50: rgba(0, 0, 0, 0.5);
+// $gray-30: rgba(226, 226, 237, 30%);
+// $gray-50: rgba(226, 226, 237, 50%);
+// $light-purple: #cbacf1;
+// $light-purple-disabled: #e0d6eb;
+// $dark-purple: #6c35af;
+// $dark-purple-30: rgba(108, 53, 175, 0.3);
+// $dark-purple-50: rgba(108, 53, 175, 0.5);
+// $grayish-purple: #8a77a1;
+// $brown: #b07472;

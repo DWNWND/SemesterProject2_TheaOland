@@ -1,14 +1,13 @@
 @import "_colors";
 @import "_breakpoints";
 
-.pill {
-  border-radius: 21px;
-  width: 100%;
-  min-width: 110px;
-}
+// .pill {
+//   border-radius: 21px;
+//   // width: 100%;
+//   min-width: 110px;
+// }
 .current-bid {
-  // background-color: $light-purple;
-  width: 100%;
+  // width: 100%;
   padding: 0.5rem;
   border-radius: 21px;
   font-size: 1rem;
@@ -16,18 +15,14 @@
   align-self: center;
 }
 .timer {
-  color: $red;
+  // color: $red;
   padding: 0.5rem;
   margin-top: 1rem;
-
-  width: 146px;
+  width: 148px;
   height: 35px;
   font-size: 1rem;
   align-self: center;
   text-align: center;
-}
-.username {
-  display: none;
 }
 .auction-item {
   margin-left: auto;
@@ -37,15 +32,19 @@
   white-space: nowrap;
 }
 
-@media (min-width: $breakpoint-phone) {
-  .username {
-    display: block;
+@media (min-width: $breakpoint-tablet) {
+  .latest-bid {
+    font-size: 1.25rem;
+  }
+  .timer {
+    font-size: 0.938rem;
   }
 }
+
 @media (min-width: $breakpoint-desktop) {
-  .username {
-    display: block;
-  }
+  // .username {
+  //   display: block;
+  // }
   .current-bid {
     font-size: 1.1rem;
   }
