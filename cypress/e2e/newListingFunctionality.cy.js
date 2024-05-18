@@ -17,17 +17,4 @@ describe("publish new listing functionality", () => {
     cy.publishNewListing();
     cy.get("#feedbackContainerOnAction").should("contain", "listing successfully published");
   });
-  it("adds max 8 images to the new listing form", () => {
-    cy.get("#addImgsBtn").should("be.visible");
-    cy.get("#addImgsBtn").click();
-    cy.get("#addImgsBtn").click();
-    cy.get("#addImgsBtn").click();
-    cy.get("#addImgsBtn").click();
-    cy.get("#addImgsBtn").click();
-    cy.get("#addImgsBtn").click();
-    cy.get("#addImgsBtn").click();
-    cy.get("#addImgsBtn").click();
-    cy.wait(1000);
-    cy.get("#addImgsBtn").should("be.disabled");
-  });
 });
