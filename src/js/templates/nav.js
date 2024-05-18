@@ -54,8 +54,6 @@ export function navTemplate(username) {
     usernameLink.setAttribute("href", `/profile/index.html?key=${username}`);
     newlistingLink.setAttribute("href", `/edit/index.html`);
     homeLink.setAttribute("href", `/`);
-  } else {
-    throw new Error("An unexpected error occured, please try again later.");
   }
   if (!token) {
     nav.append(loginLink);
