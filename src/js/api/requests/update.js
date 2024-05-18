@@ -11,8 +11,6 @@ export async function updateListing(listing, listingID) {
 
   try {
     if (!listingID) {
-      userFeedbackContainer.classList.remove("uppercase");
-      userFeedbackContainer.classList.add("text-error");
       throw new Error("Update is missing a listingID");
     }
     const url = API_LISTINGS + `/${listingID}`;
@@ -22,7 +20,7 @@ export async function updateListing(listing, listingID) {
     });
     if (response.ok) {
       loaderContainerOnAction.style.display = "none";
-      userFeedbackContainer.classList.add("text-success", "uppercase");
+      userFeedbackContainer.classList.add("success", "text-uppercase");
       userFeedback("listing successfully updated", userFeedbackContainer);
 
       setTimeout(function () {
@@ -35,11 +33,11 @@ export async function updateListing(listing, listingID) {
         }
       }, 2000);
     } else {
-      userFeedbackContainer.classList.remove("uppercase");
-      userFeedbackContainer.classList.add("text-error");
       throw new Error("Couln't update listing, make sure you have filled out all required fields.");
     }
   } catch (error) {
+    userFeedbackContainer.classList.remove("text-uppercase");
+    userFeedbackContainer.classList.add("error");
     console.log(error);
     loaderContainerOnAction.style.display = "none";
     userFeedback(error, userFeedbackContainer);
