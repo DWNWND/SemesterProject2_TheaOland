@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="../src/js/app.js" defer type="module"></script>
+    <script src="../src/js/app.js" type="module"></script>
     <title>New listing | BAZAAR</title>
     <meta name="description" content="Post new listings and edit, update or delete your excisting listings." />
     <link rel="icon" type="image/png" href="../src/img/favicon.png" />
@@ -33,11 +33,11 @@
             <div class="d-flex flex-column gap-2">
               <h1 class="heading-1 text-red">Listing Details</h1>
               <div class="form-floating">
-                <input title="" type="text" class="form-control" id="new-listing-title" name="title" required />
+                <input type="text" class="form-control" id="new-listing-title" name="title" required />
                 <label for="new-listing-title" class="new-listing-form-labels uppercase semi-bold text-grayish-purple">Title</label>
               </div>
               <div class="form-floating">
-                <textarea type="text" class="form-control" id="new-listing-description" name="description" required></textarea>
+                <textarea class="form-control" id="new-listing-description" name="description" required></textarea>
                 <label for="new-listing-description" class="new-listing-form-labels uppercase semi-bold text-grayish-purple">Description</label>
               </div>
               <div class="form-floating">
@@ -56,13 +56,13 @@
               <div id="imageUpload" class="d-flex flex-column gap-3"></div>
               <button type="button" id="addImgsBtn" class="btn-local text-red bg-light-orange p-1 mt-2 pointer">Add new image</button>
             </div>
-            <button id="submit" type="submit" for="new-listing" class="btn-local btn-height-l btn-purple btn-fontsize-l extra-bold uppercase">Publish</button>
+            <button id="submit" type="submit" class="btn-local btn-height-l btn-purple btn-fontsize-l extra-bold uppercase">Publish</button>
             <a id="deleteBtn" class="text-red extra-bold uppercase text-center pointer">Delete listing</a>
           </form>
-          <div id="uxElement" class="d-flex flex-column align-items-center">
+          <div id="uxElementOnAction" class="d-flex flex-column align-items-center">
             <div id="feedbackContainerOnAction" class="pb-3 pt-3"></div>
             <div id="loaderContainerOnAction" class="p-5">
-              <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>
+              <span id="loaderOnAction" class="loader"><span class="visually-hidden">Loading...</span></span>
             </div>
           </div>
         </div>

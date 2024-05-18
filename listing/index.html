@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="../src/js/app.js" defer type="module"></script>
+    <script src="../src/js/app.js" type="module"></script>
     <title>Listing | BAZAAR</title>
     <meta name="description" content="Place your bids and keep watch of the bid history of this listing." />
     <link rel="icon" type="image/png" href="../src/img/favicon.png" />
@@ -21,7 +21,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div id="modal-body" class="modal-body">
-            <img id="modalImg" alt="placeholder alt text" class="img-fluid" />
+            <img id="modalImg" alt="placeholder alt text" src="../src/img/placeholder.jpg" class="img-fluid" />
             <p>Image description: <b id="imgDescription"></b></p>
           </div>
         </div>
@@ -42,7 +42,7 @@
       </div>
       <div id="auction-item" class="content pt-3 container mb-2 hidden flex-column flex-md-row gap-2 gap-md-5">
         <div id="auction-item-details" class="d-flex flex-column gap-2 mb-5">
-          <h1 id="auction-item-name" class="auction-item-name heading-2 text-center"></h1>
+          <h1 id="auction-item-name" class="auction-item-name heading-2 text-center">Listing title</h1>
           <div id="focusImg" class="media"></div>
           <div id="mediaGallery" class="media-gallery d-flex gap-2 flex-wrap"></div>
           <p id="details">
@@ -52,7 +52,7 @@
         </div>
         <div class="bids mb-5">
           <div class="glassmorphism mt-md-5">
-            <h2 id="currentBidHeading" class="heading-4 text-center"></h2>
+            <h2 id="currentBidHeading" class="heading-4 text-center">Current bid</h2>
             <div id="currentBidContainer" class="pill d-flex flex-column justify-content-between semi-bold"></div>
             <form id="placeBid" class="d-flex flex-column justify-content-between semi-bold mt-4 mb-4 gap-2 form-floating"></form>
             <div id="bidFeedback" class="mb-3"></div>
