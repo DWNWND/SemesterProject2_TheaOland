@@ -13,10 +13,11 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
 
   const listing = document.createElement("div");
   listing.classList.add("listing", "glassmorphism");
-  listing.setAttribute("id", listingID);
+  listing.id = listingID;
 
   const titleContainer = document.createElement("div");
-  titleContainer.classList.add("d-flex", "align-items-center", "justify-content-center", "title-container");
+  titleContainer.classList.add("d-flex", "align-items-center", "justify-content-center");
+  titleContainer.id = "title-container";
   const title = document.createElement("h2");
   title.classList.add("heading-2-feed", "text-uppercase", "extra-bold");
   title.id = "listing-title";
