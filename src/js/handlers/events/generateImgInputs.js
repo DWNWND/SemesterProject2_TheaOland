@@ -69,13 +69,13 @@ export function generateImgFields(url = "", alt = "", imgId) {
   fieldset.append(urlField, altField);
 
   const removeBtn = document.createElement("a");
-  removeBtn.classList.add("pointer", "text-white", "position-absolute", "top-1", "end-2");
+  removeBtn.classList.add("pointer", "text-black", "position-absolute", "top-1", "end-2");
   removeBtn.id = imgId;
-  removeBtn.innerText = "delete";
+  removeBtn.innerText = "delete image";
   listenForRemoveImg(removeBtn);
 
   const li = document.createElement("li");
-  li.classList.add("bg-grayish-purple", "p-1", "text-white", "rounded", "position-relative", "bg-opacity-25");
+  li.classList.add("bg-grayish-purple", "p-1", "text-grayish-purple", "rounded", "position-relative", "bg-opacity-25");
   li.id = imgId;
   li.append(removeBtn, fieldset);
 
