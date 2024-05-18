@@ -4,7 +4,7 @@ export function addCurrentBid(bidsArray) {
   const bidArraylength = bidsArray.length;
 
   const currentBidContainer = document.createElement("div");
-  currentBidContainer.classList.add("current-bid");
+  currentBidContainer.classList.add("current-bid", "bg-light-purple");
 
   if (bidArraylength > 0) {
     const lastBid = bidsArray[bidArraylength - 1];
@@ -19,7 +19,7 @@ export function addCurrentBid(bidsArray) {
   }
   if (bidArraylength === 0) {
     currentBidContainer.innerText = "no bids yet";
-    currentBidContainer.classList.add("text-dark-purple", "fst-italic");
+    currentBidContainer.classList.add("text-dark-gray", "fst-italic", "bg-light-purple-disabled");
   }
   return currentBidContainer;
 }
@@ -35,8 +35,9 @@ export function addPlaceBidForm(endsAt) {
   if (distance > 0) {
     const currentBidHeading = document.getElementById("currentBidHeading");
     currentBidHeading.innerText = "current bid:";
+    currentBidHeading.classList.add("text-red", "mt-2", "mb-3");
     placeBidForm.innerHTML = `
-        <input name="amount" type="number" class="bid form-control semi-bold text-grayish-purple" id="bid-input" required />
+        <input name="amount" type="number" class="bid form-control" id="bid-input" required />
         <label for="bid-input" class="text-grayish-purple hide">place your bid</label>
         <button type="submit" for="bid-input" class="btn-local btn-height-m w-100 btn-white-red btn-fontsize-m lowercase align-self-center">Submit bid</button>`;
   }
