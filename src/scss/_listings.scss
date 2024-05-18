@@ -15,15 +15,6 @@
   width: 100%;
   border-radius: 20px;
 }
-// .smallText {
-//   font-size: 0.7rem;
-// }
-// .mediumText {
-//   font-size: 0.9rem;
-// }
-// .sum {
-//   width: 50px;
-// }
 
 @media (min-width: $breakpoint-phone) {
   .listing {
@@ -41,12 +32,6 @@
   #main-listing-img {
     height: 180px;
   }
-  // .latest-bid {
-  //   font-size: 1.25rem;
-  // }
-  // .timer {
-  //   font-size: 0.938rem;
-  // }
 }
 
 @media (min-width: $breakpoint-medium-tablet) {

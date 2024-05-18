@@ -51,13 +51,6 @@ p,
 .extra-bold {
   font-weight: 800;
 }
-// .uppercase {
-//   text-transform: uppercase;
-// }
-// .lowercase {
-//   text-transform: lowercase;
-// }
-
 .link {
   font-size: 1rem;
   font-weight: 600; //semi bold
@@ -65,10 +58,6 @@ p,
   color: $dark-red;
   text-decoration: underline;
 }
-
-// .no-decoration {
-//   text-decoration: none;
-// }
 
 @media (min-width: $breakpoint-small-tablet) {
   .heading-2 {

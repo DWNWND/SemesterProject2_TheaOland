@@ -1,13 +1,7 @@
 @import "_colors";
 @import "_breakpoints";
 
-// .pill {
-//   border-radius: 21px;
-//   // width: 100%;
-//   min-width: 110px;
-// }
 .current-bid {
-  // width: 100%;
   padding: 0.5rem;
   border-radius: 21px;
   font-size: 1rem;
@@ -15,7 +9,6 @@
   align-self: center;
 }
 .timer {
-  // color: $red;
   padding: 0.5rem;
   margin-top: 1rem;
   width: 148px;
@@ -42,9 +35,6 @@
 }
 
 @media (min-width: $breakpoint-desktop) {
-  // .username {
-  //   display: block;
-  // }
   .current-bid {
     font-size: 1.1rem;
   }
