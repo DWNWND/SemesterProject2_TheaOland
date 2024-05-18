@@ -3,6 +3,7 @@ import { API_LISTINGS } from "../../constants/apiParams.js";
 import { userFeedback } from "../../ui/userFeedback/userFeedback.js";
 import { baseRepoUrl } from "../../constants/baseUrl.js";
 import { checkIfDeployed } from "../../deployment/checkUrl.js";
+import { removeUrlParameter } from "../../deployment/removeUrlParam.js";
 
 export async function deleteListing(id) {
   const feedbackContainerOnAction = document.getElementById("feedbackContainerOnAction");
@@ -34,12 +35,4 @@ export async function deleteListing(id) {
   } else {
     throw new Error("Something went wrong when contacting the API");
   }
-}
-
-export function removeUrlParameter(paramKey) {
-  const url = window.location.href;
-  var currentUrl = new URL(url);
-  currentUrl.searchParams.delete(paramKey);
-  const newUrl = currentUrl.href;
-  window.history.pushState({ path: newUrl }, "", newUrl);
 }
