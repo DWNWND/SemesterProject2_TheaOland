@@ -29,7 +29,6 @@ export async function get(request, param, sparam = "") {
   if (request === "listingsByPage") {
     const pageLimit = 10;
     result = await getData(API_LISTINGS + `?_bids=true&limit=${pageLimit}&page=${param}&sort=endsAt&sortOrder=asc&_active=true`);
-    console.log(result);
     return result;
   }
   if (request === "listingsBySearch") {
@@ -45,7 +44,6 @@ export async function get(request, param, sparam = "") {
     } else if (sparam === "") {
       const pageLimit = 6;
       result = await getData(API_PROFILES + `${param}/listings?_bids=true&limit=${pageLimit}&page=1&sort=created&sortOrder=desc`);
-      console.log(result);
       return result;
     }
   }

@@ -63,13 +63,6 @@ export function navTemplate(username) {
     usernameLink.setAttribute("href", `../profile/index.html?key=${username}`);
     newlistingLink.setAttribute("href", `../edit/index.html`);
   }
-  // }
-  // if (!deployed) {
-  //   loginLink.setAttribute("href", `/auth/index.html`);
-  //   usernameLink.setAttribute("href", `/profile/index.html?key=${username}`);
-  //   newlistingLink.setAttribute("href", `/edit/index.html`);
-  //   homeLink.setAttribute("href", `/`);
-  // }
   if (!token) {
     nav.append(loginLink);
   }
