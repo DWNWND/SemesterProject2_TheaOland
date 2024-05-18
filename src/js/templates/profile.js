@@ -34,13 +34,13 @@ export function profileTemplate(userProfile) {
   credit.innerText = "CREDITS: " + userProfile.credits;
 
   const logoutBtn = document.createElement("button");
-  logoutBtn.classList.add("d-flex", "btn-pink", "align-items-center", "w-100", "justify-content-center", "btn-local", "btn-height-s", "btn-width-xs", "btn-fontsize-l", "lowercase");
+  logoutBtn.classList.add("d-flex", "btn-pink", "align-items-center", "w-100", "justify-content-center", "btn-local", "btn-height-s", "text-lowercase");
   logoutBtn.id = "logoutBtn";
   logoutBtn.innerText = "log out";
   listenForLogout(logoutBtn);
 
   const editProfileBtn = document.createElement("p");
-  editProfileBtn.classList.add("lowercase", "text-decoration-underline", "text-dark-red", "pointer");
+  editProfileBtn.classList.add("text-lowercase", "text-decoration-underline", "text-dark-red", "pointer");
   editProfileBtn.id = "editProfileBtn";
   editProfileBtn.innerText = "edit profile";
   updateProfileTemplate(editProfileBtn, userProfile, profileElement);
@@ -72,13 +72,13 @@ export async function displayWins(username) {
       const bidArraylength = win.bids.length;
 
       const titleContainer = document.createElement("div");
-      titleContainer.classList.add("uppercase", "heading-2-feed");
+      titleContainer.classList.add("text-uppercase", "heading-2-feed");
       const winAmountContainer = document.createElement("div");
       winAmountContainer.classList.add("text-dark-orange");
       titleContainer.innerHTML = win.title;
 
       const winContainer = document.createElement("a");
-      winContainer.classList.add("d-flex", "bg-light-orange", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "no-decoration", "pointer");
+      winContainer.classList.add("d-flex", "bg-light-orange", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "text-decoration-none", "pointer");
 
       const link = `../listing/index.html?key=${win.id}`;
       winContainer.href = link;
@@ -108,9 +108,9 @@ export async function displayBids(username) {
       const link = `../listing/index.html?key=${bid.listing.id}`;
       bidContainer.href = link;
 
-      bidContainer.classList.add("d-flex", "bg-light-pink", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "no-decoration", "pointer");
+      bidContainer.classList.add("d-flex", "bg-light-pink", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "text-decoration-none", "pointer");
       const titleContainer = document.createElement("div");
-      titleContainer.classList.add("uppercase", "heading-2-feed");
+      titleContainer.classList.add("text-uppercase", "heading-2-feed");
       const bidAmountContainer = document.createElement("div");
       bidAmountContainer.classList.add("text-dark-red");
 

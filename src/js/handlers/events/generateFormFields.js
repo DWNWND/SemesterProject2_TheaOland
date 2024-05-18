@@ -11,7 +11,7 @@ export function generateUpdateProfileFormFields(id, element, type, name, data) {
 
   const label = document.createElement("label");
   label.setAttribute("for", id);
-  label.classList.add("edit-profile-form-labels", "uppercase", "semi-bold", "text-grayish-purple");
+  label.classList.add("edit-profile-form-labels", "text-uppercase", "semi-bold", "text-grayish-purple");
   label.innerText = id;
 
   if (name !== "bio") {

@@ -24,12 +24,10 @@ export function checkNumberOfImg() {
   const imgArrLen = imagesArray.length;
   if (imgArrLen < 8) {
     addImgsBtn.innerText = "Add images";
-    addImgsBtn.classList.remove("no-decoration");
     addImgsBtn.disabled = false;
   }
   if (imgArrLen >= 8) {
     addImgsBtn.innerText = "Max amount of images pr. listing";
-    addImgsBtn.classList.add("no-decoration");
     addImgsBtn.disabled = true;
   }
 }
@@ -43,7 +41,7 @@ export function generateImgFields(url = "", alt = "", imgId) {
   urlInput.value = url;
   const urlLabel = document.createElement("label");
   urlLabel.setAttribute("for", "urlUpload");
-  urlLabel.classList.add("new-listing-form-labels", "uppercase", "semi-bold", "text-grayish-purple");
+  urlLabel.classList.add("text-uppercase", "semi-bold", "text-grayish-purple");
   urlLabel.innerText = "image url";
   const urlField = document.createElement("div");
   urlField.classList.add("form-floating");
@@ -58,7 +56,7 @@ export function generateImgFields(url = "", alt = "", imgId) {
   altInput.value = alt;
   const altLabel = document.createElement("label");
   altLabel.setAttribute("for", "altText");
-  altLabel.classList.add("new-listing-form-labels", "uppercase", "semi-bold", "text-grayish-purple");
+  altLabel.classList.add("text-uppercase", "semi-bold", "text-grayish-purple");
   altLabel.innerText = "image description";
   const altField = document.createElement("div");
   altField.classList.add("form-floating");
