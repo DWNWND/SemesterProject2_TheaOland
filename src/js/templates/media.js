@@ -41,7 +41,7 @@ export function generateMediaGallery(mediaArray) {
   focusImgContainer.append(focusImg);
 
   if (mediaArray.length <= 0) {
-    focusImg.src = "src/img/placeholder.jpg";
+    focusImg.src = "../src/img/placeholder.jpg";
     focusImg.alt = "Placeholder image-text for listing image. The user have not added any image-text.";
   }
   if (mediaArray.length >= 1) {

@@ -1,6 +1,5 @@
 import { load } from "../../storage/_index.js";
 import { listingsTemplate } from "../../templates/listings.js";
-import { baseRepoUrl } from "../../constants/baseUrl.js";
 import { checkIfDeployed } from "../../deployment/checkUrl.js";
 
 export function renderListings(listingsArray, container) {
@@ -24,7 +23,7 @@ export function renderListings(listingsArray, container) {
     container.append(listingsTemplate(listingsArray[i], token));
   }
 
-  if (pathname === "/" || pathname.includes("feed") || pathname.includes("allListings")) {
+  if (pathname === "/SemesterProject2_TheaOland/" || pathname === "/" || pathname.includes("feed") || pathname.includes("allListings")) {
     const paginationElement = document.getElementById("paginationElement");
     paginationElement.style.display = "block";
   }
@@ -43,7 +42,7 @@ export function renderListings(listingsArray, container) {
     container.append(allListings);
   }
 
-  if (pathname === "/" || pathname.includes("feed")) {
+  if (pathname === "/SemesterProject2_TheaOland/" || pathname === "/" || pathname.includes("feed")) {
     const searchElement = document.getElementById("searchElement");
     searchElement.style.display = "block";
   }
