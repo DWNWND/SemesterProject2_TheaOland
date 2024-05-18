@@ -49,6 +49,13 @@ export function navTemplate(username) {
     usernameLink.setAttribute("href", `profile/index.html?key=${username}`);
     newlistingLink.setAttribute("href", `edit/index.html`);
     homeLink.setAttribute("href", `/${baseRepoUrl}`);
+
+    const pathname = window.location.pathname;
+    if (pathname.includes("profile") || pathname.includes("allListings") || pathname.includes("listing")) {
+      usernameLink.setAttribute("href", `../profile/index.html?key=${username}`);
+      newlistingLink.setAttribute("href", `../edit/index.html`);
+      homeLink.setAttribute("href", `/${baseRepoUrl}`);
+    }
   }
   if (!deployed) {
     loginLink.setAttribute("href", `/auth/index.html`);

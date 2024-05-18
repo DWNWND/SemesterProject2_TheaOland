@@ -29,8 +29,6 @@ export async function deleteListing(id) {
       }
       if (!deployed) {
         location.pathname = "/";
-      } else {
-        throw new Error("An unexpected error occured, please try again later.");
       }
     }, 2000);
   } else {

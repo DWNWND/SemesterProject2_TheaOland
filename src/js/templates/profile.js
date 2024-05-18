@@ -1,10 +1,6 @@
 import { listenForLogout } from "../handlers/listners/logout.js";
 import { updateProfileTemplate } from "../handlers/listners/_index.js";
 import { get } from "../api/requests/get.js";
-import { baseRepoUrl } from "../constants/baseUrl.js";
-import { checkIfDeployed } from "../deployment/checkUrl.js";
-
-// const uxElementSecondary = document.getElementById("uxElementSecondary");
 
 export function profileTemplate(userProfile) {
   const profileElement = document.createElement("div");
@@ -60,8 +56,6 @@ export function profileTemplate(userProfile) {
   profileElement.append(avatarContainer, details, btnContainer);
 
   const profileContainer = document.getElementById("profileContainer");
-  // uxElementSecondary.innerHTML = "";
-
   profileContainer.append(profileElement);
 }
 
@@ -86,16 +80,7 @@ export async function displayWins(username) {
       const winContainer = document.createElement("a");
       winContainer.classList.add("d-flex", "bg-light-orange", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "no-decoration", "pointer");
 
-      let link;
-      const deployed = checkIfDeployed();
-      if (deployed) {
-        link = `${baseRepoUrl}/listing/index.html?key=${win.id}`;
-      }
-      if (!deployed) {
-        link = `/listing/index.html?key=${win.id}`;
-      } else {
-        throw new Error("An unexpected error occured, please try again later.");
-      }
+      const link = `listing/index.html?key=${win.id}`;
       winContainer.href = link;
 
       if (bidArraylength > 0) {
@@ -120,16 +105,7 @@ export async function displayBids(username) {
   } else {
     bids.forEach((bid) => {
       const bidContainer = document.createElement("a");
-      let link;
-      const deployed = checkIfDeployed();
-      if (deployed) {
-        link = `${baseRepoUrl}/listing/index.html?key=${bid.listing.id}`;
-      }
-      if (!deployed) {
-        link = `/listing/index.html?key=${bid.listing.id}`;
-      } else {
-        throw new Error("An unexpected error occured, please try again later.");
-      }
+      const link = `listing/index.html?key=${bid.listing.id}`;
       bidContainer.href = link;
 
       bidContainer.classList.add("d-flex", "bg-pink", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "no-decoration", "pointer");

@@ -23,8 +23,6 @@ export async function login(email, password) {
     }
     if (!deployed) {
       location.pathname = "/";
-    } else {
-      throw new Error("An unexpected error occured, please try again later.");
     }
     return;
   }
