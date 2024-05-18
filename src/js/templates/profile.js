@@ -2,8 +2,6 @@ import { listenForLogout } from "../handlers/listners/logout.js";
 import { updateProfileTemplate } from "../handlers/listners/_index.js";
 import { get } from "../api/requests/get.js";
 
-// const uxElementSecondary = document.getElementById("uxElementSecondary");
-
 export function profileTemplate(userProfile) {
   const profileElement = document.createElement("div");
   profileElement.classList.add("user-profile", "d-flex", "flex-column", "align-items-center", "text-red", "justify-content-between");
@@ -31,6 +29,7 @@ export function profileTemplate(userProfile) {
   }
 
   const credit = document.createElement("div");
+  credit.id = "totalCredit";
   credit.classList.add("heading-1", "text-dark-purple", "text-center", "pt-4", "pb-4");
   credit.innerText = "CREDITS: " + userProfile.credits;
 
@@ -42,7 +41,7 @@ export function profileTemplate(userProfile) {
 
   const editProfileBtn = document.createElement("p");
   editProfileBtn.classList.add("lowercase", "text-decoration-underline", "text-red", "pointer");
-  editProfileBtn.id = "eidtProfileBtn";
+  editProfileBtn.id = "editProfileBtn";
   editProfileBtn.innerText = "edit profile";
   updateProfileTemplate(editProfileBtn, userProfile, profileElement);
 
@@ -57,8 +56,6 @@ export function profileTemplate(userProfile) {
   profileElement.append(avatarContainer, details, btnContainer);
 
   const profileContainer = document.getElementById("profileContainer");
-  // uxElementSecondary.innerHTML = "";
-
   profileContainer.append(profileElement);
 }
 
@@ -82,7 +79,8 @@ export async function displayWins(username) {
 
       const winContainer = document.createElement("a");
       winContainer.classList.add("d-flex", "bg-light-orange", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "no-decoration", "pointer");
-      const link = `/listing/index.html?key=${win.id}`;
+
+      const link = `../listing/index.html?key=${win.id}`;
       winContainer.href = link;
 
       if (bidArraylength > 0) {
@@ -107,8 +105,9 @@ export async function displayBids(username) {
   } else {
     bids.forEach((bid) => {
       const bidContainer = document.createElement("a");
-      const link = `/listing/index.html?key=${bid.listing.id}`;
+      const link = `../listing/index.html?key=${bid.listing.id}`;
       bidContainer.href = link;
+
       bidContainer.classList.add("d-flex", "bg-pink", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "no-decoration", "pointer");
       const titleContainer = document.createElement("div");
       titleContainer.classList.add("uppercase", "heading-2-feed");

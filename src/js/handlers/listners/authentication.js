@@ -1,8 +1,8 @@
 import { register, login } from "../../api/auth/index.js";
 import { validateInput, validateRepeatPassword } from "../events/_index.js";
-import { userFeedback } from "../../ui/userFeedback/_index.js";
+import { clearUserFeedback, userFeedback } from "../../ui/userFeedback/_index.js";
 
-const errorContainer = document.getElementById("userFeedback");
+const feedbackContainer = document.getElementById("feedbackContainer");
 const loaderContainer = document.getElementById("loaderContainer");
 
 export function listenForAuthentication() {
@@ -15,17 +15,21 @@ export async function loginAuth(event) {
 
   const email = event.target.loginEmail.value;
   const password = event.target.loginPassword.value;
+  const loginBtn = document.getElementById("loginSubmitBtn");
 
   try {
     if (email && password) {
       loaderContainer.style.display = "block";
+      loginBtn.disabled = true;
       await login(email, password);
       loaderContainer.style.display = "none";
     } else if (!email || !password) {
       throw new Error("Please fill in both email and password to log in.");
     }
   } catch (error) {
-    userFeedback(error, errorContainer);
+    userFeedback(error, feedbackContainer);
+    clearUserFeedback(feedbackContainer, loginBtn);
+    loaderContainer.style.display = "none";
   }
 }
 
@@ -41,15 +45,20 @@ export async function registerAuth(event) {
   const validPassword = validateInput("password", "passwordHelpBlock", firstPassword, 8, 20);
   const validRepeatPassword = validateRepeatPassword(firstPassword, passwordRepeat);
 
+  const registerBtn = document.getElementById("registerSubmitBtn");
+
   try {
     if (username && email && firstPassword && passwordRepeat && validEmail && validUsername && validPassword && validRepeatPassword) {
       loaderContainer.style.display = "block";
+      registerBtn.disabled = true;
       await register(username, email, firstPassword);
       loaderContainer.style.display = "none";
     } else if (!username || !email || !firstPassword || !passwordRepeat || !validEmail || !validUsername || !validPassword || !validRepeatPassword) {
       throw new Error("Please fill in all the registration fields according to registration criteria.");
     }
   } catch (error) {
-    userFeedback(error, errorContainer);
+    userFeedback(error, feedbackContainer);
+    clearUserFeedback(feedbackContainer, registerBtn);
+    loaderContainer.style.display = "none";
   }
 }

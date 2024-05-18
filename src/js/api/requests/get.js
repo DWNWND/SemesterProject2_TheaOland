@@ -26,10 +26,6 @@ export async function get(request, param, sparam = "") {
   if (!request) {
     throw new Error("the get function is called with a falsy request value");
   }
-  // if (request === "allListings") {
-  //   result = await getData(API_LISTINGS);
-  //   return result;
-  // }
   if (request === "listingsByPage") {
     const pageLimit = 10;
     result = await getData(API_LISTINGS + `?_bids=true&limit=${pageLimit}&page=${param}&sort=endsAt&sortOrder=asc&_active=true`);
@@ -37,17 +33,17 @@ export async function get(request, param, sparam = "") {
   }
   if (request === "listingsBySearch") {
     const pageLimit = 10;
-    result = await getData(API_LISTINGS + `search?q=${sparam}&_bids=true&limit=${pageLimit}&page=${param}`);
+    result = await getData(API_LISTINGS + `/search?q=${sparam}&_bids=true&limit=${pageLimit}&page=${param}`);
     return result;
   }
   if (request === "listingsByProfile") {
     if (sparam !== "") {
       const pageLimit = 10;
-      result = await getData(API_PROFILES + `${sparam}/listings?_bids=true&limit=${pageLimit}&page=${param}&sort=endsAt&sortOrder=asc`);
+      result = await getData(API_PROFILES + `${sparam}/listings?_bids=true&limit=${pageLimit}&page=${param}&sort=created&sortOrder=desc`);
       return result;
     } else if (sparam === "") {
       const pageLimit = 6;
-      result = await getData(API_PROFILES + `${param}/listings?_bids=true&limit=${pageLimit}&page=1&sort=endsAt&sortOrder=asc`);
+      result = await getData(API_PROFILES + `${param}/listings?_bids=true&limit=${pageLimit}&page=1&sort=created&sortOrder=desc`);
       return result;
     }
   }
@@ -59,19 +55,13 @@ export async function get(request, param, sparam = "") {
     result = await getData(API_PROFILES + `${param}/wins?_listing&_bids=true`);
     return result;
   }
-  // if (request === "profileBySearch") {
-  //   url = API_PROFILES + `search?q=${param}`;
-  //   result = await getData(url);
-  //   console.log(request, "- username: ", param, result);
-  //   return result;
-  // }
   if (request === "singleProfile") {
     url = API_PROFILES + `${param}`;
     result = await getData(url);
     return result;
   }
   if (request === "singleListing") {
-    url = API_LISTINGS + `${param}?_bids=true&_seller=true`;
+    url = API_LISTINGS + `/${param}?_bids=true&_seller=true`;
     result = await getData(url);
     return result;
   } else {

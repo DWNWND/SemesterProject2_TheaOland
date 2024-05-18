@@ -1,5 +1,7 @@
 import { callApiWith } from "../apiCall.js";
 import { API_BASE, API_LOGIN } from "../../constants/apiParams.js";
+import { checkIfDeployed } from "../../deployment/checkUrl.js";
+import { baseRepoUrl } from "../../constants/baseUrl.js";
 import { save } from "../../storage/_index.js";
 
 export async function login(email, password) {
@@ -15,10 +17,11 @@ export async function login(email, password) {
     save("token", accessToken);
     save("profile", profile);
 
-    const pathname = window.location.pathname;
-    if (pathname.toLowerCase().includes("/semesterproject2_theaoland/")) {
-      location.pathname = "/SemesterProject2_TheaOland/";
-    } else {
+    const deployed = checkIfDeployed();
+    if (deployed) {
+      location.pathname = `/${baseRepoUrl}`;
+    }
+    if (!deployed) {
       location.pathname = "/";
     }
     return;
@@ -26,6 +29,6 @@ export async function login(email, password) {
   if (response.status === 401) {
     throw new Error("Email and/or password does not match.");
   } else if (response.status === 400 || response.status >= 402) {
-    throw new Error("An unexpected error occured, please try again later.", response.statusText);
+    throw new Error("An error occured. Check that your credentials are correct or try again later.");
   }
 }

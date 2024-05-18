@@ -1,5 +1,6 @@
 import { load } from "../../storage/_index.js";
 import { listingsTemplate } from "../../templates/listings.js";
+import { checkIfDeployed } from "../../deployment/checkUrl.js";
 
 export function renderListings(listingsArray, container) {
   const token = load("token");
@@ -22,7 +23,7 @@ export function renderListings(listingsArray, container) {
     container.append(listingsTemplate(listingsArray[i], token));
   }
 
-  if (pathname === "/" || pathname.includes("feed") || pathname.includes("allListings")) {
+  if (pathname === "/SemesterProject2_TheaOland/" || pathname === "/" || pathname.includes("feed") || pathname.includes("allListings")) {
     const paginationElement = document.getElementById("paginationElement");
     paginationElement.style.display = "block";
   }
@@ -30,12 +31,18 @@ export function renderListings(listingsArray, container) {
   if (pathname.includes("profile")) {
     const allListings = document.createElement("a");
     allListings.innerText = "view all my listings";
-    allListings.setAttribute("href", "/allListings/index.html");
+    const deployed = checkIfDeployed();
+    if (deployed) {
+      allListings.setAttribute("href", `../allListings/index.html`);
+    }
+    if (!deployed) {
+      allListings.setAttribute("href", `/allListings/index.html`);
+    }
     allListings.classList.add("text-red", "text-center", "pb-4");
     container.append(allListings);
   }
 
-  if (pathname === "/" || pathname.includes("feed")) {
+  if (pathname === "/SemesterProject2_TheaOland/" || pathname === "/" || pathname.includes("feed")) {
     const searchElement = document.getElementById("searchElement");
     searchElement.style.display = "block";
   }

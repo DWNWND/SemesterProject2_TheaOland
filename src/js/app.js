@@ -5,20 +5,6 @@ function hideLoader() {
   loader.style.display = "none";
 }
 
-function hideImageLoader() {
-  const ImgLoaderContainer = document.querySelectorAll("#ImgLoaderContainer");
-  ImgLoaderContainer.forEach((loader) => {
-    loader.classList.remove("d-flex");
-    loader.style.display = "none";
-  });
-}
-function showImages() {
-  const images = document.querySelectorAll("img");
-  images.forEach((img) => {
-    img.classList.remove("hidden");
-  });
-}
-
 function showContent() {
   const content = document.querySelector(".content");
   content.classList.remove("hidden");
@@ -39,25 +25,11 @@ async function router() {
     hideLoader();
     showContent();
     content.classList.add("row");
-    Promise.all(
-      Array.from(document.images)
-        .filter((img) => !img.complete)
-        .map(
-          (img) =>
-            new Promise((resolve) => {
-              img.onload = img.onerror = resolve;
-            })
-        )
-    ).then(() => {
-      hideImageLoader();
-      showImages();
-    });
-
     return;
   }
   if (pathname.toLowerCase().includes("/auth/")) {
     if (loggedIn) {
-      location.pathname = "/";
+      location.pathname = "../";
     }
     if (!loggedIn) {
       const authRequest = "./routes/auth.js";
@@ -68,7 +40,7 @@ async function router() {
   }
   if (pathname.toLowerCase().includes("/listing/")) {
     if (!loggedIn) {
-      location.pathname = "/";
+      location.pathname = "../";
     }
     if (loggedIn) {
       const listingRequest = "./routes/listing.js";
@@ -94,7 +66,7 @@ async function router() {
   }
   if (pathname.toLowerCase().includes("/profile/")) {
     if (!loggedIn) {
-      location.pathname = "/";
+      location.pathname = "../";
     }
     if (loggedIn) {
       const profileRequest = "./routes/profile.js";
@@ -104,50 +76,25 @@ async function router() {
       hideLoader();
       showContent();
       content.classList.add("d-flex");
-
-      Promise.all(
-        Array.from(document.images)
-          .filter((img) => !img.complete)
-          .map(
-            (img) =>
-              new Promise((resolve) => {
-                img.onload = img.onerror = resolve;
-              })
-          )
-      ).then(() => {
-        hideImageLoader();
-        showImages();
-      });
     }
     return;
   }
   if (pathname.toLowerCase().includes("/edit/")) {
     if (!loggedIn) {
-      location.pathname = "/";
+      location.pathname = "../";
     }
     if (loggedIn) {
       const editRequest = "./routes/edit.js";
       const { generateEdit } = await import(editRequest);
       await generateEdit();
-      Promise.all(
-        Array.from(document.images)
-          .filter((img) => !img.complete)
-          .map(
-            (img) =>
-              new Promise((resolve) => {
-                img.onload = img.onerror = resolve;
-              })
-          )
-      ).then(() => {
-        hideLoader();
-        showContent();
-      });
+      hideLoader();
+      showContent();
     }
     return;
   }
   if (pathname.toLowerCase().includes("/alllistings/")) {
     if (!loggedIn) {
-      location.pathname = "/";
+      location.pathname = "../";
     }
     if (loggedIn) {
       const allListingsRequest = "./routes/allListings.js";
@@ -157,19 +104,6 @@ async function router() {
       hideLoader();
       showContent();
       content.classList.add("row");
-      Promise.all(
-        Array.from(document.images)
-          .filter((img) => !img.complete)
-          .map(
-            (img) =>
-              new Promise((resolve) => {
-                img.onload = img.onerror = resolve;
-              })
-          )
-      ).then(() => {
-        hideImageLoader();
-        showImages();
-      });
     }
     return;
   } else {

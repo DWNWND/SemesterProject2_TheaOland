@@ -1,6 +1,8 @@
 import { callApiWith } from "../apiCall.js";
 import { API_LISTINGS } from "../../constants/apiParams.js";
 import { userFeedback } from "../../ui/userFeedback/_index.js";
+import { baseRepoUrl } from "../../constants/baseUrl.js";
+import { checkIfDeployed } from "../../deployment/checkUrl.js";
 
 export async function publishListing(listing) {
   const feedbackContainerOnAction = document.getElementById("feedbackContainerOnAction");
@@ -19,17 +21,18 @@ export async function publishListing(listing) {
       feedbackContainerOnAction.classList.add("text-grayish-purple");
 
       setTimeout(function () {
-        const pathname = window.location.pathname;
-        if (pathname.toLowerCase().includes("/semesterproject2_theaoland/")) {
-          location.pathname = "/SemesterProject2_TheaOland/";
-        } else {
+        const deployed = checkIfDeployed();
+        if (deployed) {
+          location.pathname = `${baseRepoUrl}`;
+        }
+        if (!deployed) {
           location.pathname = "/";
         }
       }, 2000);
     }
     if (response.status === 400) {
       feedbackContainerOnAction.classList.remove("text-grayish-purple");
-      throw new Error("You are trying to publish an empty listing.");
+      throw new Error("You are trying to publish a listing lacking required fields. Please make sure you have filled out all required fields and that you have a valid deadline date.");
     } else if (response.status >= 401) {
       feedbackContainerOnAction.classList.remove("text-grayish-purple");
       throw new Error("An unexpected error occured, please try again later");
@@ -43,7 +46,7 @@ export async function publishListing(listing) {
 
 export async function publishNewBid(listingID, bid) {
   const bidFeedbackContainer = document.getElementById("bidFeedback");
-  const url = API_LISTINGS + `${listingID}/bids`;
+  const url = API_LISTINGS + `/${listingID}/bids`;
 
   try {
     const response = await callApiWith(url, {

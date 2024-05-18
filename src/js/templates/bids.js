@@ -1,20 +1,5 @@
 import { countdownTimer } from "../ux/components/countdownTimer.js";
 
-// export function listenForNewBid(listingID) {
-//   document.forms.placeBid.addEventListener("submit", (event) => {
-//     event.preventDefault();
-
-//     const form = event.target;
-//     const formData = new FormData(form);
-//     const newBid = Object.fromEntries(formData.entries());
-
-//     let parsedBid = { ...newBid };
-//     parsedBid.amount = parseInt(newBid.amount);
-
-//     publishNewBid(listingID, parsedBid);
-//   });
-// }
-
 export function addCurrentBid(bidsArray) {
   const bidArraylength = bidsArray.length;
 
@@ -25,6 +10,12 @@ export function addCurrentBid(bidsArray) {
     const lastBid = bidsArray[bidArraylength - 1];
     const currentBid = lastBid.amount;
     currentBidContainer.innerText = currentBid + " credit";
+
+    const bidInput = document.getElementById("bid-input");
+    if (bidInput) {
+      const currentBidPlusOne = currentBid + 1;
+      bidInput.value = currentBidPlusOne;
+    }
   }
   if (bidArraylength === 0) {
     currentBidContainer.innerText = "no bids yet";

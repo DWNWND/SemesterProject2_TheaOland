@@ -2,7 +2,8 @@ export function addMedia(listingData) {
   const mediaArrayLength = listingData.media.length;
 
   const imgDisplayed = document.createElement("img");
-  imgDisplayed.classList.add("object-fit-cover", "main-listing-img", "hidden");
+  imgDisplayed.classList.add("object-fit-cover");
+  imgDisplayed.id = "main-listing-img";
 
   if (mediaArrayLength > 0) {
     const mediaUrl = listingData.media[0].url;
@@ -18,7 +19,12 @@ export function addMedia(listingData) {
   }
 
   if (mediaArrayLength === 0) {
+    const pathname = window.location.pathname;
     imgDisplayed.src = "src/img/placeholder.jpg";
+
+    if (pathname.includes("profile") || pathname.includes("allListings") || pathname.includes("listing")) {
+      imgDisplayed.src = "../src/img/placeholder.jpg";
+    }
     imgDisplayed.alt = "Placeholder image. The user have not uploaded any images for this listing.";
   }
   return imgDisplayed;
