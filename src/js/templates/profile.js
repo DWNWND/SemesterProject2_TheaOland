@@ -74,7 +74,7 @@ export async function displayWins(username) {
       const titleContainer = document.createElement("div");
       titleContainer.classList.add("uppercase", "heading-2-feed");
       const winAmountContainer = document.createElement("div");
-      winAmountContainer.classList.add("text-orange");
+      winAmountContainer.classList.add("text-dark-orange");
       titleContainer.innerHTML = win.title;
 
       const winContainer = document.createElement("a");
@@ -112,7 +112,7 @@ export async function displayBids(username) {
       const titleContainer = document.createElement("div");
       titleContainer.classList.add("uppercase", "heading-2-feed");
       const bidAmountContainer = document.createElement("div");
-      bidAmountContainer.classList.add("text-red");
+      bidAmountContainer.classList.add("text-dark-red");
 
       titleContainer.innerText = bid.listing.title;
       bidAmountContainer.innerText = bid.amount + " credit";
