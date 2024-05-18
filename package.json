@@ -1,6 +1,6 @@
 {
   "name": "semesterproject2",
-  "version": "0.9.11",
+  "version": "0.9.12",
   "description": "My semester project for the second year at Noroff Frontend Development studies.",
   "type": "module",
   "main": "src/index.js",
