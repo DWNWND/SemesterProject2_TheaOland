@@ -15,8 +15,10 @@ const feed = document.getElementById("feed");
 
 export async function search(page) {
   query = searchInput.value;
+  const mainHeading = document.getElementById("mainHeading");
   try {
     if (query) {
+      mainHeading.innerText = "Listings by search";
       const listingsBySearch = await get("listingsBySearch", page, query);
       numberOfListings = listingsBySearch.length;
       updateTotalPageDisplay();
@@ -34,6 +36,7 @@ export async function search(page) {
         throw new Error("No listings match this search.");
       }
     } else if (!query || query === "") {
+      mainHeading.innerText = "All listings";
       startFeed();
     }
   } catch (error) {

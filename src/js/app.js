@@ -17,7 +17,7 @@ async function router() {
 
   const pathname = window.location.pathname;
 
-  if (pathname.toLowerCase() === "/semesterproject2_theaoland/" || pathname === "/") {
+  if (pathname.toLowerCase() === "/semesterproject2_theaoland/" || pathname === "/" || pathname === "/index.html") {
     const feedRequest = "./routes/feed.js";
     const { generateFeed } = await import(feedRequest);
     await generateFeed();
