@@ -46,9 +46,9 @@ export function navTemplate(username) {
   console.log(deployed);
   if (deployed) {
     loginLink.setAttribute("href", `auth/index.html`);
-    usernameLink.setAttribute("href", `${baseRepoUrl}/profile/index.html?key=${username}`);
-    newlistingLink.setAttribute("href", `${baseRepoUrl}/edit/index.html`);
-    homeLink.setAttribute("href", `${baseRepoUrl}/`);
+    usernameLink.setAttribute("href", `profile/index.html?key=${username}`);
+    newlistingLink.setAttribute("href", `edit/index.html`);
+    homeLink.setAttribute("href", `/${baseRepoUrl}`);
   }
   if (!deployed) {
     loginLink.setAttribute("href", `/auth/index.html`);
