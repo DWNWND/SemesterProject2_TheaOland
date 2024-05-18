@@ -1,6 +1,6 @@
 import { load } from "../../storage/_index.js";
 import { listingsTemplate } from "../../templates/listings.js";
-import { checkIfDeployed } from "../../deployment/checkUrl.js";
+import { checkIfDeployed } from "../../tools/checkUrl.js";
 
 export function renderListings(listingsArray, container) {
   const token = load("token");

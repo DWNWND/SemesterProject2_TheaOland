@@ -1,5 +1,5 @@
 import { load } from "../storage/load.js";
-import { checkIfDeployed } from "../deployment/checkUrl.js";
+import { checkIfDeployed } from "../tools/checkUrl.js";
 import { baseRepoUrl } from "../constants/baseUrl.js";
 const token = load("token");
 

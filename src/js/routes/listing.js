@@ -5,7 +5,6 @@ import { userFeedback } from "../ui/userFeedback/_index.js";
 
 const profile = load("profile");
 const feedbackContainer = document.getElementById("userFeedbackContainer");
-const uxElement = document.getElementById("uxElement");
 const pageContent = document.getElementById("auction-item");
 
 //getting the IDs

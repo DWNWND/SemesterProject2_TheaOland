@@ -2,7 +2,7 @@ import { callApiWith } from "../apiCall.js";
 import { API_LISTINGS } from "../../constants/apiParams.js";
 import { userFeedback } from "../../ui/userFeedback/userFeedback.js";
 import { baseRepoUrl } from "../../constants/baseUrl.js";
-import { checkIfDeployed } from "../../deployment/checkUrl.js";
+import { checkIfDeployed } from "../../tools/checkUrl.js";
 
 export async function deleteListing(id) {
   const feedbackContainerOnAction = document.getElementById("feedbackContainerOnAction");

@@ -3,7 +3,7 @@ import { API_LISTINGS, API_PROFILES } from "../../constants/apiParams.js";
 import { navigateBack } from "../../handlers/events/_index.js";
 import { userFeedback } from "../../ui/userFeedback/_index.js";
 import { baseRepoUrl } from "../../constants/baseUrl.js";
-import { checkIfDeployed } from "../../deployment/checkUrl.js";
+import { checkIfDeployed } from "../../tools/checkUrl.js";
 
 export async function updateListing(listing, listingID) {
   const userFeedbackContainer = document.getElementById("feedbackContainerOnAction");

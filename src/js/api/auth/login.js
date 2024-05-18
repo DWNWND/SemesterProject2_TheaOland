@@ -1,6 +1,6 @@
 import { callApiWith } from "../apiCall.js";
 import { API_BASE, API_LOGIN } from "../../constants/apiParams.js";
-import { checkIfDeployed } from "../../deployment/checkUrl.js";
+import { checkIfDeployed } from "../../tools/checkUrl.js";
 import { baseRepoUrl } from "../../constants/baseUrl.js";
 import { save } from "../../storage/_index.js";
 

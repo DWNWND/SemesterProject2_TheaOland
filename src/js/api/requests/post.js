@@ -2,7 +2,7 @@ import { callApiWith } from "../apiCall.js";
 import { API_LISTINGS } from "../../constants/apiParams.js";
 import { userFeedback } from "../../ui/userFeedback/_index.js";
 import { baseRepoUrl } from "../../constants/baseUrl.js";
-import { checkIfDeployed } from "../../deployment/checkUrl.js";
+import { checkIfDeployed } from "../../tools/checkUrl.js";
 
 export async function publishListing(listing) {
   const feedbackContainerOnAction = document.getElementById("feedbackContainerOnAction");
