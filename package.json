@@ -30,7 +30,7 @@
   "bugs": {
     "url": "https://github.com/DWNWND/SemesterProject2_TheaOland/issues"
   },
-  "homepage": "https://github.com/DWNWND/SemesterProject2_TheaOland#readme",
+  "homepage": "https://dwnwnd.github.io/SemesterProject2_TheaOland/",
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/preset-env": "^7.19.4",
