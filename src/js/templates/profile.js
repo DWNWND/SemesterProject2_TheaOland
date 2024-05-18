@@ -80,7 +80,7 @@ export async function displayWins(username) {
       const winContainer = document.createElement("a");
       winContainer.classList.add("d-flex", "bg-light-orange", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "no-decoration", "pointer");
 
-      const link = `listing/index.html?key=${win.id}`;
+      const link = `../listing/index.html?key=${win.id}`;
       winContainer.href = link;
 
       if (bidArraylength > 0) {
@@ -105,7 +105,7 @@ export async function displayBids(username) {
   } else {
     bids.forEach((bid) => {
       const bidContainer = document.createElement("a");
-      const link = `listing/index.html?key=${bid.listing.id}`;
+      const link = `../listing/index.html?key=${bid.listing.id}`;
       bidContainer.href = link;
 
       bidContainer.classList.add("d-flex", "bg-pink", "w-100", "rounded", "p-2", "justify-content-between", "align-items-center", "no-decoration", "pointer");

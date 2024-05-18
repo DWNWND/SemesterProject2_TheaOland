@@ -34,7 +34,7 @@ export function renderListings(listingsArray, container) {
     allListings.innerText = "view all my listings";
     const deployed = checkIfDeployed();
     if (deployed) {
-      allListings.setAttribute("href", `${baseRepoUrl}/allListings/index.html`);
+      allListings.setAttribute("href", `../allListings/index.html`);
     }
     if (!deployed) {
       allListings.setAttribute("href", `/allListings/index.html`);

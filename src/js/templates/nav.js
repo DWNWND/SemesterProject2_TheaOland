@@ -51,7 +51,7 @@ export function navTemplate(username) {
     homeLink.setAttribute("href", `/${baseRepoUrl}`);
 
     const pathname = window.location.pathname;
-    if (pathname.includes("profile") || pathname.includes("allListings") || pathname.includes("listing")) {
+    if (pathname.includes("profile") || pathname.includes("allListings") || pathname.includes("listing") || pathname.includes("edit")) {
       usernameLink.setAttribute("href", `../profile/index.html?key=${username}`);
       newlistingLink.setAttribute("href", `../edit/index.html`);
       homeLink.setAttribute("href", `/${baseRepoUrl}`);
