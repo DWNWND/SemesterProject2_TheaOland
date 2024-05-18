@@ -16,14 +16,14 @@
   border: double 1px transparent;
   background-origin: border-box;
   background-clip: padding-box, border-box;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  // box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .btn-fontsize-l {
   font-size: 1rem;
 }
 .btn-fontsize-m {
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 .btn-fontsize-s {
   font-size: 0.75rem;
@@ -62,6 +62,7 @@
   color: $dark-purple;
   background-color: $light-purple;
   background-image: linear-gradient($light-purple, $light-purple), radial-gradient(circle at top left, $dark-purple-50, $dark-purple-30);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .btn-purple:disabled {
@@ -72,6 +73,7 @@
   color: $white;
   background-color: $orange;
   background-image: linear-gradient($orange, $orange), radial-gradient(circle at top left, $white-50, $white-30);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .btn-orange:disabled {
@@ -82,16 +84,19 @@
   color: $red;
   background-color: $white;
   background-image: linear-gradient($white, $white), radial-gradient(circle at top left, $red-50, $red-30);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 .btn-white-black {
   color: black;
   background-color: $white;
   background-image: linear-gradient($white, $white), radial-gradient(circle at top left, $black-50, $black-30);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 .btn-pink {
   color: $white;
   background-color: $white;
   background-image: linear-gradient($pink, $pink), radial-gradient(circle at top left, $red-50, $red-30);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 .btn-pink:disabled {
   background-image: linear-gradient($pink-disabled, $pink-disabled), radial-gradient(circle at top left, $red-50, $red-30);

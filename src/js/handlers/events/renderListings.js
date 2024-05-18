@@ -5,10 +5,6 @@ import { checkIfDeployed } from "../../tools/checkUrl.js";
 export function renderListings(listingsArray, container) {
   const token = load("token");
 
-  // if (listingsArray.length === 0 || !listingsArray) {
-  //   throw new Error("there's no more listings in this search.");
-  // }
-
   container.innerHTML = "";
   const pathname = window.location.pathname;
 
@@ -42,7 +38,7 @@ export function renderListings(listingsArray, container) {
     container.append(allListings);
   }
 
-  if (pathname === "/SemesterProject2_TheaOland/" || pathname === "/" || pathname.includes("feed")) {
+  if (pathname === "/SemesterProject2_TheaOland/" || pathname === "/index.html" || pathname === "/" || pathname.includes("feed")) {
     const searchElement = document.getElementById("searchElement");
     searchElement.style.display = "block";
   }

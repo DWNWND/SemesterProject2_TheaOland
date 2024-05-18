@@ -40,7 +40,7 @@ export function profileTemplate(userProfile) {
   listenForLogout(logoutBtn);
 
   const editProfileBtn = document.createElement("p");
-  editProfileBtn.classList.add("lowercase", "text-decoration-underline", "text-red", "pointer");
+  editProfileBtn.classList.add("lowercase", "text-decoration-underline", "text-dark-red", "pointer");
   editProfileBtn.id = "editProfileBtn";
   editProfileBtn.innerText = "edit profile";
   updateProfileTemplate(editProfileBtn, userProfile, profileElement);

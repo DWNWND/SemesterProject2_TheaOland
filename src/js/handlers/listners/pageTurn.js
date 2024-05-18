@@ -22,7 +22,7 @@ export function listenForPageTurn(nxtbtn, prvbtn) {
         const listings = await get("listingsByProfile", page, profile.name);
         renderListings(listings, feed);
       }
-      if (pathname === "/SemesterProject2_TheaOland/" || pathname === "/" || pathname.includes("feed")) {
+      if (pathname === "/SemesterProject2_TheaOland/" || pathname === "/index.html" || pathname === "/" || pathname.includes("feed")) {
         query = searchInput.value;
         if (!query || query === "") {
           const listings = await get("listingsByPage", page);
@@ -45,7 +45,7 @@ export function listenForPageTurn(nxtbtn, prvbtn) {
         const listings = await get("listingsByProfile", page, profile.name);
         renderListings(listings, feed);
       }
-      if (pathname === "/" || pathname.includes("feed")) {
+      if (pathname === "/SemesterProject2_TheaOland/" || pathname === "/index.html" || pathname === "/" || pathname.includes("feed")) {
         query = searchInput.value;
 
         if (!query || query === "") {
