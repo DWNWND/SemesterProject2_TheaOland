@@ -19,7 +19,7 @@ export function addMedia(listingData) {
   }
 
   if (mediaArrayLength === 0) {
-    imgDisplayed.src = "../../src/img/placeholder.jpg";
+    imgDisplayed.src = "src/img/placeholder.jpg";
     imgDisplayed.alt = "Placeholder image. The user have not uploaded any images for this listing.";
   }
   return imgDisplayed;
@@ -36,7 +36,7 @@ export function generateMediaGallery(mediaArray) {
   focusImgContainer.append(focusImg);
 
   if (mediaArray.length <= 0) {
-    focusImg.src = "../src/img/placeholder.jpg";
+    focusImg.src = "src/img/placeholder.jpg";
     focusImg.alt = "Placeholder image-text for listing image. The user have not added any image-text.";
   }
   if (mediaArray.length >= 1) {
