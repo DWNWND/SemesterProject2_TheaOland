@@ -47,14 +47,17 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
 
     if (pathname.includes("profile") || pathname.includes("allListings")) {
       viewLink = `../listing/index.html?key=${listingID}`;
-      const editLink = `../edit/index.html?key=${listingID}`;
-      const editListingBtn = generateBtn("editListingBtn", "edit", editLink);
-
-      listingFooter.append(editListingBtn);
     }
 
     const viewListingBtn = generateBtn("viewListingBtn", "view", viewLink);
     listingFooter.append(bidContainer, viewListingBtn);
+
+    if (pathname.includes("profile") || pathname.includes("allListings")) {
+      const editLink = `../edit/index.html?key=${listingID}`;
+      const editListingBtn = generateBtn("editListingBtn", "edit", editLink);
+      listingFooter.append(editListingBtn);
+    }
+
     listing.append(img, titleContainer, listingFooter);
     col.append(listing);
   }
