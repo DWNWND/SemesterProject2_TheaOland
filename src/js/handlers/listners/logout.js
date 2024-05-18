@@ -1,5 +1,5 @@
 import { load } from "../../storage/_index.js";
-import { removeUrlParameter } from "../../deployment/removeUrlParam.js";
+import { removeUrlParameter } from "../../tools/removeUrlParam.js";
 
 export function listenForLogout(btn) {
   btn.addEventListener("click", () => {
