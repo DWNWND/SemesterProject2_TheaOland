@@ -42,21 +42,21 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
     const listingFooter = document.createElement("div");
     listingFooter.classList.add("listing-footer", "d-flex", "flex-column", "gap-2");
 
-    const link = `/listing/index.html?key=${listingID}`;
-    const viewListingBtn = generateBtn("viewListingBtn", "view", link);
-
-    listingFooter.append(bidContainer, viewListingBtn);
-    listing.append(img, titleContainer, listingFooter);
-    col.append(listing);
-
     const pathname = window.location.pathname;
+    let viewLink = `listing/index.html?key=${listingID}`;
 
     if (pathname.includes("profile") || pathname.includes("allListings")) {
-      const link = `/edit/index.html?key=${listingID}`;
-      const editListingBtn = generateBtn("editListingBtn", "edit", link);
+      viewLink = `../listing/index.html?key=${listingID}`;
+      const editLink = `../edit/index.html?key=${listingID}`;
+      const editListingBtn = generateBtn("editListingBtn", "edit", editLink);
 
       listingFooter.append(editListingBtn);
     }
+
+    const viewListingBtn = generateBtn("viewListingBtn", "view", viewLink);
+    listingFooter.append(bidContainer, viewListingBtn);
+    listing.append(img, titleContainer, listingFooter);
+    col.append(listing);
   }
   return col;
 }

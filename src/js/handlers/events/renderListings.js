@@ -38,8 +38,6 @@ export function renderListings(listingsArray, container) {
     }
     if (!deployed) {
       allListings.setAttribute("href", `/allListings/index.html`);
-    } else {
-      throw new Error("An unexpected error occured, please try again later.");
     }
     allListings.classList.add("text-red", "text-center", "pb-4");
     container.append(allListings);
