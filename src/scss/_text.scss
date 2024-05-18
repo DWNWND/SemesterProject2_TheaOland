@@ -36,11 +36,9 @@
   font-weight: 600;
   font-size: 1.2rem;
   text-transform: uppercase;
-  // color: black;
 }
 
-p,
-.paragraph {
+p {
   font-size: 0.875rem;
   color: black;
 }
@@ -51,12 +49,9 @@ p,
 .extra-bold {
   font-weight: 800;
 }
-.link {
-  font-size: 1rem;
-  font-weight: 600; //semi bold
-  text-transform: uppercase;
-  color: $dark-red;
-  text-decoration: underline;
+
+#navPages {
+  font-size: 1.2rem;
 }
 
 @media (min-width: $breakpoint-small-tablet) {
@@ -68,8 +63,5 @@ p,
 @media (min-width: $breakpoint-desktop) {
   .heading-1 {
     font-size: 1.87rem;
-  }
-  .heading-2 {
-    font-size: 1.25rem;
   }
 }
