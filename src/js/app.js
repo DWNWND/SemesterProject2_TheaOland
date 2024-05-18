@@ -17,16 +17,6 @@ async function router() {
 
   const pathname = window.location.pathname;
 
-  if (pathname.toLowerCase() === "/semesterproject2_theaoland/" || pathname === "/" || pathname === "/index.html") {
-    const feedRequest = "./routes/feed.js";
-    const { generateFeed } = await import(feedRequest);
-    await generateFeed();
-    const content = document.querySelector(".content");
-    hideLoader();
-    showContent();
-    content.classList.add("row");
-    return;
-  }
   if (pathname.toLowerCase().includes("/auth/")) {
     if (loggedIn) {
       location.pathname = "../";
@@ -107,7 +97,14 @@ async function router() {
     }
     return;
   } else {
-    throw new Error("The pathname is not recognizable: ", pathname);
+    const feedRequest = "./routes/feed.js";
+    const { generateFeed } = await import(feedRequest);
+    await generateFeed();
+    const content = document.querySelector(".content");
+    hideLoader();
+    showContent();
+    content.classList.add("row");
+    return;
   }
 }
 router();
