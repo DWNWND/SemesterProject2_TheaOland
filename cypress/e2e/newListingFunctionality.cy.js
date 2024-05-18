@@ -27,7 +27,7 @@ describe("publish new listing functionality", () => {
     cy.get("#addImgsBtn").click();
     cy.get("#addImgsBtn").click();
     cy.get("#addImgsBtn").click();
-    cy.wat(500);
+    cy.wait(500);
     cy.get("#addImgsBtn").should("have.text", "Max amount of images pr. listing");
   });
 });

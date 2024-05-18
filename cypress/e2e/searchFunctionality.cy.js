@@ -7,9 +7,9 @@ describe("search functionality", () => {
     cy.get("#feed").should("be.visible");
   });
   it("shows content related to the search query", () => {
-    cy.get("#searchbar").should("be.visible").type("animal");
+    cy.get("#searchbar").should("be.visible").type("cypress");
     cy.wait(1000);
     cy.get("#currentPage").should("contain", "1");
-    cy.get("#listing-title").should("contain", "animal");
+    cy.get("#listing-title").should("contain", "cypress");
   });
 });
