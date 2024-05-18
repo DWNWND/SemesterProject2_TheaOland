@@ -34,6 +34,8 @@ export async function generateEdit() {
       listenForDelete(listingID);
     }
     if (!listingID) {
+      const deadlineInput = document.getElementById("deadlineInput");
+      deadlineInput.required = true;
       deleteBtn.style.display = "none";
       listenForPublish();
     }
