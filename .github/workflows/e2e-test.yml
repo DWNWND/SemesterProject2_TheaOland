@@ -1,7 +1,12 @@
 name: Automated E2E Testing
-on: 
+on:
   pull_request:
   workflow_dispatch:
+
+env:
+  USER_EMAIL: ${{secrets.USER_EMAIL}}
+  USER_PASSWORD: ${{secrets.USER_PASSWORD}}
+  USER_NAME: ${{secrets.USER_NAME}}
 
 jobs:
   run-e2e-tests:

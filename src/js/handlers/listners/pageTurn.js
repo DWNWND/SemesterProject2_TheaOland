@@ -7,57 +7,61 @@ const feed = document.getElementById("feed");
 let page = 1;
 
 export function listenForPageTurn(nxtbtn, prvbtn) {
-  let query;
-  const pathname = window.location.pathname;
-  const searchInput = document.getElementById("searchbar");
+  try {
+    let query;
+    const pathname = window.location.pathname;
+    const searchInput = document.getElementById("searchbar");
 
-  nxtbtn.addEventListener("click", async () => {
-    page++;
-    updateCurrentPageDisplay(page);
-    updatePaginationBtns(nxtbtn, prvbtn, page);
+    nxtbtn.addEventListener("click", async () => {
+      page++;
+      updateCurrentPageDisplay(page);
+      updatePaginationBtns(nxtbtn, prvbtn, page);
 
-    if (pathname.includes("allListings")) {
-      const profile = load("profile");
-      const listings = await get("listingsByProfile", page, profile.name);
-      renderListings(listings, feed);
-    }
-    if (pathname === "/" || pathname.includes("feed")) {
-      query = searchInput.value;
-      if (!query || query === "") {
-        const listings = await get("listingsByPage", page);
+      if (pathname.includes("allListings")) {
+        const profile = load("profile");
+        const listings = await get("listingsByProfile", page, profile.name);
         renderListings(listings, feed);
       }
-      if (query) {
-        const listings = await get("listingsBySearch", page, query);
-        renderListings(listings, feed);
+      if (pathname === "/" || pathname.includes("feed")) {
+        query = searchInput.value;
+        if (!query || query === "") {
+          const listings = await get("listingsByPage", page);
+          renderListings(listings, feed);
+        }
+        if (query) {
+          const listings = await get("listingsBySearch", page, query);
+          renderListings(listings, feed);
+        }
       }
-    }
-    window.scrollTo(0, 0);
-  });
-  prvbtn.addEventListener("click", async () => {
-    page--;
-    updateCurrentPageDisplay(page);
-    updatePaginationBtns(nxtbtn, prvbtn, page);
+      window.scrollTo(0, 0);
+    });
+    prvbtn.addEventListener("click", async () => {
+      page--;
+      updateCurrentPageDisplay(page);
+      updatePaginationBtns(nxtbtn, prvbtn, page);
 
-    if (pathname.includes("allListings")) {
-      const profile = load("profile");
-      const listings = await get("listingsByProfile", page, profile.name);
-      renderListings(listings, feed);
-    }
-    if (pathname === "/" || pathname.includes("feed")) {
-      query = searchInput.value;
+      if (pathname.includes("allListings")) {
+        const profile = load("profile");
+        const listings = await get("listingsByProfile", page, profile.name);
+        renderListings(listings, feed);
+      }
+      if (pathname === "/" || pathname.includes("feed")) {
+        query = searchInput.value;
 
-      if (!query || query === "") {
-        const listings = await get("listingsByPage", page);
-        renderListings(listings, feed);
+        if (!query || query === "") {
+          const listings = await get("listingsByPage", page);
+          renderListings(listings, feed);
+        }
+        if (query) {
+          const listings = await get("listingsBySearch", page, query);
+          renderListings(listings, feed);
+        }
       }
-      if (query) {
-        const listings = await get("listingsBySearch", page, query);
-        renderListings(listings, feed);
-      }
-    }
-    window.scrollTo(0, 0);
-  });
+      window.scrollTo(0, 0);
+    });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function listenForSearch() {

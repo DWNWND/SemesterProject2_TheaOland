@@ -15,12 +15,11 @@ export async function login(email, password) {
     save("token", accessToken);
     save("profile", profile);
     location.pathname = "./";
-
     return;
   }
   if (response.status === 401) {
     throw new Error("Email and/or password does not match.");
   } else if (response.status === 400 || response.status >= 402) {
-    throw new Error("An unexpected error occured, please try again later.", response.statusText);
+    throw new Error("An error occured. Check that your credentials are correct or try again later.");
   }
 }

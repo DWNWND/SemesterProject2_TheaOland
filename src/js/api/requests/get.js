@@ -37,17 +37,18 @@ export async function get(request, param, sparam = "") {
   }
   if (request === "listingsBySearch") {
     const pageLimit = 10;
-    result = await getData(API_LISTINGS + `search?q=${sparam}&_bids=true&limit=${pageLimit}&page=${param}`);
+    result = await getData(API_LISTINGS + `/search?q=${sparam}&_bids=true&limit=${pageLimit}&page=${param}`);
     return result;
   }
   if (request === "listingsByProfile") {
     if (sparam !== "") {
       const pageLimit = 10;
-      result = await getData(API_PROFILES + `${sparam}/listings?_bids=true&limit=${pageLimit}&page=${param}&sort=endsAt&sortOrder=asc`);
+      result = await getData(API_PROFILES + `${sparam}/listings?_bids=true&limit=${pageLimit}&page=${param}&sort=created&sortOrder=desc`);
       return result;
     } else if (sparam === "") {
       const pageLimit = 6;
-      result = await getData(API_PROFILES + `${param}/listings?_bids=true&limit=${pageLimit}&page=1&sort=endsAt&sortOrder=asc`);
+      result = await getData(API_PROFILES + `${param}/listings?_bids=true&limit=${pageLimit}&page=1&sort=created&sortOrder=desc`);
+      console.log(result);
       return result;
     }
   }
@@ -71,7 +72,7 @@ export async function get(request, param, sparam = "") {
     return result;
   }
   if (request === "singleListing") {
-    url = API_LISTINGS + `${param}?_bids=true&_seller=true`;
+    url = API_LISTINGS + `/${param}?_bids=true&_seller=true`;
     result = await getData(url);
     return result;
   } else {

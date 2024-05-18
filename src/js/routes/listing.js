@@ -4,9 +4,9 @@ import { navTemplate, listingSpecificTemplate } from "../templates/_index.js";
 import { userFeedback } from "../ui/userFeedback/_index.js";
 
 const profile = load("profile");
-const feedbackContainer = document.getElementById("userFeedbackMain");
+const feedbackContainer = document.getElementById("userFeedbackContainer");
 const uxElement = document.getElementById("uxElement");
-const pageContent = document.getElementById("listingContainer");
+const pageContent = document.getElementById("auction-item");
 
 //getting the IDs
 const queryString = document.location.search;
@@ -22,9 +22,9 @@ export async function generateListingSpesific() {
     metaTitle.innerText = listing.title + " | BAZAAR";
     listingSpecificTemplate(listing);
   } catch (error) {
-    pageContent.innerHTML = "";
-    uxElement.innerHTML = "";
     console.log(error);
-    userFeedback(error, feedbackContainer);
+    pageContent.innerHTML = "";
+    const userFeedbackMessage = "Error: An unexpected error occurred, please try again later. If the error persist please contact BAZAAR.";
+    userFeedback(userFeedbackMessage, feedbackContainer);
   }
 }

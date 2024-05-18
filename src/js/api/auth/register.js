@@ -1,10 +1,6 @@
 import { callApiWith } from "../apiCall.js";
 import { API_BASE, API_REGISTER } from "../../constants/apiParams.js";
 import { login } from "./index.js";
-import { userFeedback } from "../../ui/userFeedback/_index.js";
-
-let feedbackMessage;
-const errorContainer = document.getElementById("userFeedback");
 
 export async function register(name, email, password) {
   const url = API_BASE + API_REGISTER;
@@ -19,12 +15,8 @@ export async function register(name, email, password) {
   }
 
   if (response.status === 400) {
-    feedbackMessage = "There is already an account with these credentials, try logging in instead";
-    userFeedback(feedbackMessage, errorContainer);
-    throw new Error("There is already an account with these credentials");
+    throw new Error("There is already an account with these credentials, try logging in instead.");
   } else if (response.status >= 401) {
-    feedbackMessage = "An unexpected error occured, please try again later";
-    userFeedback(feedbackMessage, errorContainer);
-    throw new Error("Unknown error - from register function");
+    throw new Error("An unexpected error occured, please try again later.");
   }
 }

@@ -10,6 +10,12 @@ export function addCurrentBid(bidsArray) {
     const lastBid = bidsArray[bidArraylength - 1];
     const currentBid = lastBid.amount;
     currentBidContainer.innerText = currentBid + " credit";
+
+    const bidInput = document.getElementById("bid-input");
+    if (bidInput) {
+      const currentBidPlusOne = currentBid + 1;
+      bidInput.value = currentBidPlusOne;
+    }
   }
   if (bidArraylength === 0) {
     currentBidContainer.innerText = "no bids yet";

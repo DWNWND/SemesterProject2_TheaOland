@@ -13,7 +13,7 @@ export async function updateListing(listing, listingID) {
       userFeedbackContainer.classList.add("text-error");
       throw new Error("Update is missing a listingID");
     }
-    const url = API_LISTINGS + `${listingID}`;
+    const url = API_LISTINGS + `/${listingID}`;
     const response = await callApiWith(url, {
       method: "PUT",
       body: JSON.stringify(listing),
@@ -34,7 +34,7 @@ export async function updateListing(listing, listingID) {
     } else {
       userFeedbackContainer.classList.remove("uppercase");
       userFeedbackContainer.classList.add("text-error");
-      throw new Error("Couln't update listing");
+      throw new Error("Couln't update listing, make sure you have filled out all required fields.");
     }
   } catch (error) {
     console.log(error);
@@ -74,7 +74,7 @@ export async function updateProfile(userProfile) {
         navigateBack(profileElement, updatedProfile);
       }, 2000);
     } else {
-      throw new Error("Couln't update userprofile");
+      throw new Error("Couldn't update userprofile");
     }
   } catch (error) {
     console.log(error);
