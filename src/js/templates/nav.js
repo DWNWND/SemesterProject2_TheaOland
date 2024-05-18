@@ -43,6 +43,7 @@ export function navTemplate(username) {
   const nav = document.getElementById("nav");
 
   const deployed = checkIfDeployed();
+  console.log(deployed);
   if (deployed) {
     loginLink.setAttribute("href", `${baseRepoUrl}/auth/index.html`);
     usernameLink.setAttribute("href", `${baseRepoUrl}/profile/index.html?key=${username}`);
