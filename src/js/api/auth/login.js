@@ -19,10 +19,10 @@ export async function login(email, password) {
 
     const deployed = checkIfDeployed();
     if (deployed) {
-      location.pathname = `${baseRepoUrl}`;
+      location.pathname = `/${baseRepoUrl}`;
     }
     if (!deployed) {
-      location.pathname = "./";
+      location.pathname = "/";
     } else {
       throw new Error("An unexpected error occured, please try again later.");
     }
