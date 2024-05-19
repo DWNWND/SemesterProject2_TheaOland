@@ -16,7 +16,6 @@ const profile = load("profile");
 
 export async function userListings() {
   try {
-    // navPages.style.display = "none";
     pagination.style.display = "none";
 
     const listingsArrray = await get("listingsByProfile", page, profile.name);

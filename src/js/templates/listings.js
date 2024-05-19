@@ -13,12 +13,13 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
 
   const listing = document.createElement("div");
   listing.classList.add("listing", "glassmorphism");
-  listing.setAttribute("id", listingID);
+  listing.id = listingID;
 
   const titleContainer = document.createElement("div");
-  titleContainer.classList.add("d-flex", "align-items-center", "justify-content-center", "title-container");
-  const title = document.createElement("h2"); //double check if this should be h2 or something else
-  title.classList.add("heading-2-feed", "uppercase", "extra-bold");
+  titleContainer.classList.add("d-flex", "align-items-center", "justify-content-center");
+  titleContainer.id = "title-container";
+  const title = document.createElement("h2");
+  title.classList.add("heading-2-feed", "text-uppercase", "extra-bold");
   title.id = "listing-title";
   title.innerText = listingTitle;
   titleContainer.append(title);
@@ -28,7 +29,7 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
   const countdownContainer = addDeadline(endsAt);
 
   const bidContainer = document.createElement("div");
-  bidContainer.classList.add("pill", "d-flex", "flex-column", "justify-content-between", "semi-bold");
+  bidContainer.classList.add("d-flex", "flex-column", "justify-content-between", "semi-bold");
   bidContainer.append(currentBidContainer, countdownContainer);
 
   //LISTINGS DISPLAYED PUBLICLY (NOT LOGGED IN)

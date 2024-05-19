@@ -36,11 +36,9 @@
   font-weight: 600;
   font-size: 1.2rem;
   text-transform: uppercase;
-  // color: black;
 }
 
-p,
-.paragraph {
+p {
   font-size: 0.875rem;
   color: black;
 }
@@ -51,36 +49,15 @@ p,
 .extra-bold {
   font-weight: 800;
 }
-.uppercase {
-  text-transform: uppercase;
-}
-.lowercase {
-  text-transform: lowercase;
-}
 
-.link {
-  font-size: 1rem;
-  font-weight: 600; //semi bold
-  text-transform: uppercase;
-  color: $dark-red;
-  text-decoration: underline;
-}
-
-.no-decoration {
-  text-decoration: none;
-}
-
-.error {
-  color: $dark-red;
+#navPages {
+  font-size: 1.2rem;
 }
 
 @media (min-width: $breakpoint-small-tablet) {
   .heading-2 {
     font-size: 1.25rem;
   }
-}
-
-@media (min-width: $breakpoint-tablet) {
 }
 
 @media (min-width: $breakpoint-desktop) {

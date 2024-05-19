@@ -11,26 +11,42 @@ export function generateUpdateProfileFormFields(id, element, type, name, data) {
 
   const label = document.createElement("label");
   label.setAttribute("for", id);
-  label.classList.add("edit-profile-form-labels", "uppercase", "semi-bold", "text-grayish-purple");
+  label.classList.add("edit-profile-form-labels", "text-uppercase", "semi-bold", "text-grayish-purple");
   label.innerText = id;
 
-  if (name !== "bio") {
+  // if (name !== "bio") {
+  //   input.type = type;
+  // }
+  if (name === "bio") {
+    const helpBlock = document.createElement("div");
+    helpBlock.id = "imageTextHelpBlock";
+    helpBlock.classList.add("form-text", "mb-3");
+    helpBlock.innerText = "Add a personal bio.";
+    fieldContainer.append(input, label, helpBlock);
+  }
+
+  if (name === "url") {
     input.type = type;
+    const helpBlock = document.createElement("div");
+    helpBlock.id = "imageTextHelpBlock";
+    helpBlock.classList.add("form-text", "mb-3");
+    helpBlock.innerText = "Your avatar image has to be a valid url.";
+    fieldContainer.append(input, label, helpBlock);
   }
   if (name !== "alt") {
     label.innerText = id;
   }
   if (name === "alt") {
-    label.innerText = "image description";
+    label.innerText = "captions";
+    const helpBlock = document.createElement("div");
+    helpBlock.id = "imageTextHelpBlock";
+    helpBlock.classList.add("form-text", "mb-3");
+    helpBlock.innerText = "Add image captions to your avatar image.";
+    fieldContainer.append(input, label, helpBlock);
   }
-  if (name === "name") {
-    const usernameHelpBlock = document.createElement("div");
-    usernameHelpBlock.id = "usernameHelpBlock";
-    usernameHelpBlock.classList.add("form-text", "mb-3");
-    usernameHelpBlock.innerText = "The username must not contain punctuation symbols apart from underscore (_).";
-    fieldContainer.append(input, label, usernameHelpBlock);
-  } else {
-    fieldContainer.append(input, label);
-  }
+  // fieldContainer.append(input, label);
   return fieldContainer;
 }
+
+// }
+// if (name === "name") {

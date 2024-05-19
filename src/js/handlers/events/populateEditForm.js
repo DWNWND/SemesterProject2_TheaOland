@@ -28,7 +28,7 @@ export async function populateEditForm(listing) {
       const setDeadline = document.createElement("p");
 
       const countdownLabel = document.createElement("div");
-      countdownLabel.classList.add("new-listing-form-labels", "uppercase", "extra-bold", "text-grayish-purple");
+      countdownLabel.classList.add("text-uppercase", "extra-bold", "text-grayish-purple");
       countdownLabel.innerText = "countdown:";
       const setCountdown = document.createElement("p");
 

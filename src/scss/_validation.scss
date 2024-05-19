@@ -1,7 +1,8 @@
-//userFeedback
+@import "_colors";
+
 .success {
-  color: rgb(113, 200, 113);
+  color: $success;
 }
 .error {
-  color: rgb(199, 38, 38);
+  color: $error;
 }

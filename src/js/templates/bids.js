@@ -4,7 +4,7 @@ export function addCurrentBid(bidsArray) {
   const bidArraylength = bidsArray.length;
 
   const currentBidContainer = document.createElement("div");
-  currentBidContainer.classList.add("current-bid", "bg-light-purple");
+  currentBidContainer.classList.add("current-bid", "bg-light-purple", "w-100");
 
   if (bidArraylength > 0) {
     const lastBid = bidsArray[bidArraylength - 1];
@@ -51,7 +51,7 @@ export function addPlaceBidForm(endsAt) {
 export function addDeadline(endsAt) {
   const deadline = new Date(endsAt);
   const timerContainer = document.createElement("div");
-  timerContainer.classList.add("timer");
+  timerContainer.classList.add("timer", "text-red");
   countdownTimer(deadline, timerContainer);
   return timerContainer;
 }

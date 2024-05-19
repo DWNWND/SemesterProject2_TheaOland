@@ -27,7 +27,7 @@ export async function search(page) {
       if (numberOfListings >= 1) {
         renderListings(listingsBySearch, feed);
         paginationElement.style.display = "block";
-        navPages.style.display = "block";
+        navPages.style.display = "flex";
       }
       if (numberOfListings <= 0) {
         paginationElement.style.display = "none";

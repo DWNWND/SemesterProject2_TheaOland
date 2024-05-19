@@ -20,14 +20,14 @@ export function updatePaginationBtns(nxtbtn, prvbtn, currentPage) {
   }
   if (currentPage === updatedTotalPages && updatedTotalPages >= 2) {
     nxtbtn.style.display = "none";
-    prvbtn.style.display = "block";
+    prvbtn.style.display = "flex";
   }
   if (currentPage < updatedTotalPages && currentPage > 1 && updatedTotalPages > 1) {
-    nxtbtn.style.display = "block";
-    prvbtn.style.display = "block";
+    nxtbtn.style.display = "flex";
+    prvbtn.style.display = "flex";
   }
   if (currentPage <= 1 && updatedTotalPages >= 2) {
-    nxtbtn.style.display = "block";
+    nxtbtn.style.display = "flex";
     prvbtn.style.display = "none";
   }
 }

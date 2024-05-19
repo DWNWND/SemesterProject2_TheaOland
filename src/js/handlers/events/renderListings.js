@@ -1,6 +1,7 @@
 import { load } from "../../storage/_index.js";
 import { listingsTemplate } from "../../templates/listings.js";
 import { checkIfDeployed } from "../../tools/checkUrl.js";
+import { generateBtn } from "../../templates/btns.js";
 
 export function renderListings(listingsArray, container) {
   const token = load("token");
@@ -25,17 +26,17 @@ export function renderListings(listingsArray, container) {
   }
 
   if (pathname.includes("profile")) {
-    const allListings = document.createElement("a");
-    allListings.innerText = "view all my listings";
+    let link;
     const deployed = checkIfDeployed();
     if (deployed) {
-      allListings.setAttribute("href", `../allListings/index.html`);
+      link = "../allListings/index.html";
     }
     if (!deployed) {
-      allListings.setAttribute("href", `/allListings/index.html`);
+      link = "/allListings/index.html";
     }
-    allListings.classList.add("text-red", "text-center", "pb-4");
-    container.append(allListings);
+    const allListingsBtn = generateBtn("allListings", "all my listings", link);
+    // allListings.classList.add("text-red", "text-center", "pb-4");
+    container.append(allListingsBtn);
   }
 
   if (pathname === "/SemesterProject2_TheaOland/" || pathname === "/index.html" || pathname === "/" || pathname.includes("feed")) {

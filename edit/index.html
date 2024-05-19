@@ -28,36 +28,36 @@
         </div>
       </div>
       <div class="container pb-5 content hidden">
-        <div class="new-listing-form glassmorphism">
+        <div class="p-3 p-sm-4 glassmorphism">
           <form id="newListing" class="d-flex flex-column gap-5">
             <div class="d-flex flex-column gap-2">
               <h1 class="heading-1 text-red">Listing Details</h1>
               <div class="form-floating">
                 <input type="text" class="form-control" id="new-listing-title" name="title" required />
-                <label for="new-listing-title" class="new-listing-form-labels uppercase semi-bold text-grayish-purple">Title</label>
+                <label for="new-listing-title" class="text-uppercase semi-bold text-grayish-purple">Title</label>
               </div>
               <div class="form-floating">
                 <textarea class="form-control" id="new-listing-description" name="description" required></textarea>
-                <label for="new-listing-description" class="new-listing-form-labels uppercase semi-bold text-grayish-purple">Description</label>
+                <label for="new-listing-description" class="new-listing-form-labels text-uppercase semi-bold text-grayish-purple">Description</label>
               </div>
               <div class="form-floating">
                 <input type="text" class="form-control" id="new-listing-tags" name="tags" />
-                <label for="new-listing-tags" class="new-listing-form-labels uppercase semi-bold text-grayish-purple">Tags</label>
+                <label for="new-listing-tags" class="new-listing-form-labels text-uppercase semi-bold text-grayish-purple">Tags</label>
               </div>
               <div id="tagsHelpBlock" class="form-text mb-3">Separate tags by comma sign ( , )</div>
               <div id="deadlineContainer" class="d-flex flex-column">
-                <label id="deadlineLabel" for="deadlineInput" class="new-listing-form-labels uppercase extra-bold text-grayish-purple">Set auction deadline</label>
+                <label id="deadlineLabel" for="deadlineInput" class="new-listing-form-labels text-uppercase extra-bold text-grayish-purple">Set auction deadline</label>
                 <input id="deadlineInput" type="datetime-local" class="form-control new-listing-auction-deadline" name="endsAt" />
               </div>
             </div>
-            <div id="listingMedia" class="d-flex flex-column gap-2">
+            <div id="listingMedia" class="d-flex flex-column gap-2 pt-sm-4 pb-sm-4">
               <h1 class="heading-1 text-red">Listing Media</h1>
-              <h2 class="new-listing-form-labels uppercase extra-bold text-grayish-purple">Upload images (max 8)</h2>
-              <div id="imageUpload" class="d-flex flex-column gap-3"></div>
+              <div class="inputInfo text-uppercase extra-bold text-grayish-purple">Upload images (max 8)</div>
+              <ol id="imageUpload" class="d-flex flex-column gap-3"></ol>
               <button type="button" id="addImgsBtn" class="btn-local text-red bg-light-orange p-1 mt-2 pointer">Add new image</button>
             </div>
-            <button id="submit" type="submit" class="btn-local btn-height-l btn-purple btn-fontsize-l extra-bold uppercase">Publish</button>
-            <a id="deleteBtn" class="text-red extra-bold uppercase text-center pointer">Delete listing</a>
+            <button id="submit" type="submit" class="btn-local btn-height-l btn-purple btn-fontsize-l extra-bold text-uppercase">Publish</button>
+            <a id="deleteBtn" class="text-red extra-bold text-uppercase text-center pointer">Delete listing</a>
           </form>
           <div id="uxElementOnAction" class="d-flex flex-column align-items-center">
             <div id="feedbackContainerOnAction" class="pb-3 pt-3"></div>

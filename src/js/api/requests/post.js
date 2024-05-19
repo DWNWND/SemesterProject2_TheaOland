@@ -31,14 +31,13 @@ export async function publishListing(listing) {
       }, 2000);
     }
     if (response.status === 400) {
-      feedbackContainerOnAction.classList.remove("text-grayish-purple");
       throw new Error("You are trying to publish a listing lacking required fields. Please make sure you have filled out all required fields and that you have a valid deadline date.");
     } else if (response.status >= 401) {
-      feedbackContainerOnAction.classList.remove("text-grayish-purple");
       throw new Error("An unexpected error occured, please try again later");
     }
   } catch (error) {
     console.log(error);
+    feedbackContainerOnAction.classList.remove("text-grayish-purple");
     loaderContainerOnAction.style.display = "none";
     userFeedback(error, feedbackContainerOnAction);
   }
@@ -55,7 +54,7 @@ export async function publishNewBid(listingID, bid) {
     });
 
     if (response.status === 201) {
-      bidFeedbackContainer.classList.add("text-success", "uppercase");
+      bidFeedbackContainer.classList.add("success", "text-uppercase");
       const userFeedbackMessage = "Bid accepted";
       userFeedback(userFeedbackMessage, bidFeedbackContainer);
 
@@ -64,20 +63,16 @@ export async function publishNewBid(listingID, bid) {
       }, 2000);
     }
     if (response.status === 400) {
-      bidFeedbackContainer.classList.remove("uppercase");
-      bidFeedbackContainer.classList.add("text-error");
       throw new Error("Bid not accepted: Make sure that the listing is active and your bid is higher than the current bid.");
     }
     if (response.status === 403) {
-      bidFeedbackContainer.classList.remove("uppercase");
-      bidFeedbackContainer.classList.add("text-error");
       throw new Error("You can not bid on your own listing");
     } else if (response.status >= 401) {
-      bidFeedbackContainer.classList.remove("uppercase");
-      bidFeedbackContainer.classList.add("text-error");
       throw new Error("Bid not accepted: An unexpected error occured, please try again later");
     }
   } catch (error) {
+    bidFeedbackContainer.classList.remove("text-uppercase");
+    bidFeedbackContainer.classList.add("text-error");
     console.log(error);
     userFeedback(error, bidFeedbackContainer);
   }
