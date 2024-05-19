@@ -2,9 +2,9 @@
 
 My semester project for the second year at Noroff Frontend Development studies.
 
-# repo-name/course-name | Name of task/or your name of the webapp/site
+# BAZAAR | Online auction house
 
-![app-screenshot](place img here)
+![app-screenshot](/docs/deployedSiteScreenshot_may2024.png)
 
 This is my semesterproject the first half of my second year at Noroff. The course spanned over five weeks and we were tasked "to take the skills learned over the past three semesters and create an auction website".
 
@@ -39,7 +39,7 @@ The following user stories were required for a passing submission:
 
 ### Technical restrictions
 
-The application must follow the following technical restrictions:
+The following technical restrictions had to be applied:
 
 - Must use an approved CSS Framework
 - Must be hosted on an approved Static Host
@@ -54,11 +54,13 @@ The application must follow the following technical restrictions:
 
 ### Kanban project board
 
-[Trello board](add link to Trello board here)
+[Trello board](https://trello.com/b/ap5iWvZj/semester-project-2)
 
 ### Figma Prototype
 
-[Figma prototype](https://www.figma.com/file/fEF9XXRMWkV3eB73iZBU9C/SemesterProject2?type=design&node-id=0%3A1&mode=design&t=rbl7PndHnnI7GFk3-1)
+[Figma desktop prototype](https://www.figma.com/proto/fEF9XXRMWkV3eB73iZBU9C/SemesterProject2?page-id=0%3A1&node-id=1-211&viewport=76%2C774%2C0.14&t=sV0egDxbisEinqsy-1&scaling=min-zoom&starting-point-node-id=1%3A211)
+
+[Figma mobile prototype](https://www.figma.com/proto/fEF9XXRMWkV3eB73iZBU9C/SemesterProject2?page-id=1%3A106&node-id=1-323&viewport=136%2C521%2C0.36&t=EwEUNd5y8YQERm6c-1&scaling=min-zoom&starting-point-node-id=1%3A323)
 
 ### Style guide
 
@@ -78,7 +80,7 @@ The application must follow the following technical restrictions:
 2. Clone the repo:
 
 ```bash
-git clone addlinkhere
+git clone https://github.com/DWNWND/SemesterProject2_TheaOland.git
 ```
 
 3. Open the repo with VSCode
@@ -89,13 +91,13 @@ git clone addlinkhere
 npm install
 ```
 
-5. Run tests
+5. Run build
 
 ```bash
- npm run test
+ npm run build
 ```
 
-### Add your own **.env** file based on the example
+### Add your own **.env** file based on the example file
 
 1. Register a new user [here](https://dwnwnd.github.io/SemesterProject2_TheaOland/)
 2. Make a new file called `.env` in your root folder
@@ -113,10 +115,6 @@ The web application code has been validated using the following tools:
 
 - Testing UI/UX (interviews)
 
-- Linking: SEO Spider
-
-- Other?
-
 ## Contact
 
 [My LinkedIn page](https://www.linkedin.com/in/thea-oland-b38175139/)
@@ -124,5 +122,3 @@ The web application code has been validated using the following tools:
 ## Acknowledgments
 
 Noroff Online Studies
-
-The artists at (Link to artistpages)
