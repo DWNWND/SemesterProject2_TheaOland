@@ -2,6 +2,10 @@
 
 My semester project for the second year at Noroff Frontend Development studies.
 
+[![Automated Unit Testing](https://github.com/DWNWND/SemesterProject2_TheaOland/actions/workflows/unit-test.yml/badge.svg?branch=inDev)](https://github.com/DWNWND/SemesterProject2_TheaOland/actions/workflows/unit-test.yml)
+
+[![Automated E2E Testing](https://github.com/DWNWND/SemesterProject2_TheaOland/actions/workflows/e2e-test.yml/badge.svg?branch=inDev)](https://github.com/DWNWND/SemesterProject2_TheaOland/actions/workflows/e2e-test.yml)
+
 # BAZAAR | Online auction house
 
 ![app-screenshot](/docs/deployedSiteScreenshot_may2024.png)
