@@ -1,6 +1,4 @@
-import { addCurrentBid, addDeadline } from "./bids.js";
-import { generateBtn } from "./btns.js";
-import { addMedia } from "./media.js";
+import { addCurrentBid, addDeadline, generateBtn, addMedia } from "./_index.js";
 
 /**
  * The function generates a "div" element with the class "col" for each listing passed to it.

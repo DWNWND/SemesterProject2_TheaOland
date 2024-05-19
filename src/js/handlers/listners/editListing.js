@@ -1,6 +1,4 @@
-import { updateListing } from "../../api/requests/update.js";
-import { deleteListing } from "../../api/requests/delete.js";
-import { publishListing } from "../../api/requests/post.js";
+import { updateListing, deleteListing, publishListing } from "../../api/requests/_index.js";
 import { clearUserFeedback } from "../../ui/userFeedback/_index.js";
 import { generateMediaObj, checkNumberOfImg, removeFieldFromArray, addFieldToArray } from "../events/_index.js";
 

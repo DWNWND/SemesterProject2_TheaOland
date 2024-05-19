@@ -1,5 +1,4 @@
-import { generateMediaGallery } from "./media.js";
-import { addCurrentBid, addDeadline, displayBidHistory, addPlaceBidForm } from "./bids.js";
+import { generateMediaGallery, addCurrentBid, addDeadline, displayBidHistory, addPlaceBidForm } from "./_index.js";
 import { listenForNewBid } from "../handlers/listners/_index.js";
 
 /**

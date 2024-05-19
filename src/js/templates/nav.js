@@ -1,5 +1,5 @@
-import { load } from "../storage/load.js";
-import { checkIfDeployed } from "../tools/checkUrl.js";
+import { load } from "../storage/_index.js";
+import { checkIfDeployed } from "../tools/_index.js";
 import { baseRepoUrl } from "../constants/baseUrl.js";
 
 /**

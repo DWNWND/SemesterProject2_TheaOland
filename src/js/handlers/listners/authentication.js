@@ -1,4 +1,4 @@
-import { register, login } from "../../api/auth/index.js";
+import { register, login } from "../../api/auth/_index.js";
 import { validateInput, validateRepeatPassword } from "../events/_index.js";
 import { clearUserFeedback, userFeedback } from "../../ui/userFeedback/_index.js";
 

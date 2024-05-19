@@ -1,6 +1,6 @@
 import { callApiWith } from "../apiCall.js";
 import { API_BASE, API_REGISTER } from "../../constants/apiParams.js";
-import { login } from "./index.js";
+import { login } from "./_index.js";
 
 export async function register(name, email, password) {
   const url = API_BASE + API_REGISTER;

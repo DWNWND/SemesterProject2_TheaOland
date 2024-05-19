@@ -1,5 +1,5 @@
-import { listenForLogout } from "../handlers/listners/logout.js";
-import { updateProfileTemplate } from "../handlers/listners/_index.js";
+import { listenForLogout } from "../handlers/listners/_index.js";
+import { updateProfileTemplate } from "./_index.js";
 
 /**
  * The function appends the profile information to the profile container in the DOM.
