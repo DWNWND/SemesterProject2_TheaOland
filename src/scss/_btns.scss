@@ -18,6 +18,9 @@
 .btn-height-s {
   height: 25px;
 }
+.btn-width-l {
+  min-width: 100%;
+}
 .btn-purple {
   color: $dark-purple;
   background-color: $light-purple;
@@ -42,6 +45,24 @@
   color: $red;
   background-color: $white;
   background-image: linear-gradient($white, $white), radial-gradient(circle at top left, $red-50, $red-30);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.btn-light-red {
+  color: $white;
+  background-color: $light-red;
+  background-image: linear-gradient($light-red, $light-red), radial-gradient(circle at top left, $red-50, $red-30);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.btn-red {
+  color: $white;
+  background-color: $red;
+  background-image: linear-gradient($red, $red), radial-gradient(circle at top left, $red-50, $red-30);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.btn-red:disabled {
+  color: $white;
+  background-color: $red-disabled;
+  background-image: linear-gradient($red-disabled, $red-disabled), radial-gradient(circle at top left, $red-50, $red-30);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 .btn-white-black {
