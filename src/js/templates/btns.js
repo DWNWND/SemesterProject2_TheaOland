@@ -1,3 +1,13 @@
+/**
+ * The function generates a "button" element based on the btnType param, with the details passed into the function.
+ * 
+ * @param {string} btnType The type of button, either: "editListingBtn", "viewListingBtn", "saveBtn", "backBtn" or "allListingsBtn"
+ * @param {string} innerText The inner text of the button
+ * @param {string} link A link if the button is for navigating to a new url
+
+ * @returns {string} Returns a "button" or a "a" elemement
+ */
+
 export function generateBtn(btnType, innerText, link) {
   const btn = document.createElement("button");
   btn.innerText = innerText;
@@ -27,7 +37,7 @@ export function generateBtn(btnType, innerText, link) {
     btn.type = "button";
     return btn;
   }
-  if (btnType === "allListings") {
+  if (btnType === "userListings") {
     const btnLink = document.createElement("a");
     btnLink.setAttribute("href", link);
     btnLink.classList.add("text-decoration-none", "mt-4", "align-items-center", "justify-content-center", "d-flex");
