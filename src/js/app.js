@@ -1,4 +1,4 @@
-//https://stackoverflow.com/questions/11071314/javascript-execute-after-all-images-have-loaded
+//Awaiting image load inspired by: https://stackoverflow.com/questions/11071314/javascript-execute-after-all-images-have-loaded
 
 function hideLoader() {
   const loader = document.getElementById("loaderContainerMain");
