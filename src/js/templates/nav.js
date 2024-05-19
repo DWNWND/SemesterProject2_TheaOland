@@ -25,7 +25,7 @@ export function navTemplate(username) {
 
   //USERNAME BTN
   const usernameLink = document.createElement("a");
-  usernameLink.classList.add("w-100");
+  usernameLink.classList.add("w-100", "text-decoration-none");
   const usernameBtn = document.createElement("button");
   usernameBtn.classList.add("btn-local", "btn-height-l", "ps-3", "pe-3", "w-100", "btn-width-l", "btn-pink", "extra-bold", "text-uppercase");
   usernameBtn.setAttribute("id", "usernameBtn");
@@ -35,7 +35,7 @@ export function navTemplate(username) {
 
   //NEW LISTING BTN
   const newlistingLink = document.createElement("a");
-  newlistingLink.classList.add("w-100");
+  newlistingLink.classList.add("w-100", "text-decoration-none");
   const newlistingBtn = document.createElement("button");
   newlistingBtn.classList.add("btn-local", "btn-height-l", "w-100", "btn-width-l", "ps-3", "pe-3", "btn-purple", "extra-bold", "text-uppercase");
   newlistingBtn.setAttribute("id", "newlistingBtn");
@@ -45,7 +45,7 @@ export function navTemplate(username) {
 
   //HOMEFEED BTN
   const homeLink = document.createElement("a");
-  homeLink.classList.add("w-100");
+  homeLink.classList.add("w-100", "text-decoration-none");
   const homeBtn = document.createElement("button");
   homeBtn.classList.add("btn-local", "btn-height-l", "w-100", "btn-width-l", "ps-3", "pe-3", "btn-orange", "extra-bold", "text-uppercase");
   homeBtn.setAttribute("id", "homeBtn");
