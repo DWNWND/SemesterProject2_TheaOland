@@ -101,6 +101,20 @@ npm install
  npm run build
 ```
 
+#### For testers:
+
+6. Run e2e tests
+
+```bash
+ npm run test-e2e
+```
+
+7. Run unit tests
+
+```bash
+ npm run test-unit
+```
+
 ### Add your own **.env** file based on the example file
 
 1. Register a new user [here](https://dwnwnd.github.io/SemesterProject2_TheaOland/)
