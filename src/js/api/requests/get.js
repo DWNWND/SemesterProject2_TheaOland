@@ -3,9 +3,9 @@ import { API_LISTINGS, API_PROFILES } from "../../constants/apiParams.js";
 
 export let totalPages = 0;
 export let currentPage = 0;
-const navPages = document.getElementById("navPages");
 
 export async function getData(url) {
+  const navPages = document.getElementById("navPages");
   const response = await callApiWith(url);
   if (response.ok) {
     const result = await response.json();

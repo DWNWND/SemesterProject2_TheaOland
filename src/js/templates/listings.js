@@ -59,7 +59,7 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
     const pathname = window.location.pathname;
     let viewLink = `listing/index.html?key=${listingID}`;
 
-    if (pathname.includes("profile") || pathname.includes("allListings")) {
+    if (pathname.includes("profile") || pathname.includes("userListings")) {
       viewLink = `../listing/index.html?key=${listingID}`;
     }
 
