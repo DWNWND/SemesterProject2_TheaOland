@@ -1,3 +1,9 @@
+/**
+ * The function generates a "img" element for the first image in the array passed to it
+ *
+ * @param {Object[]} listingData An array of objects containing the listings data
+ * @returns {string} Returns one "img" element
+ */
 export function addMedia(listingData) {
   const mediaArrayLength = listingData.media.length;
 
@@ -22,7 +28,7 @@ export function addMedia(listingData) {
     const pathname = window.location.pathname;
     imgDisplayed.src = "src/img/placeholder.jpg";
 
-    if (pathname.includes("profile") || pathname.includes("allListings") || pathname.includes("listing")) {
+    if (pathname.includes("profile") || pathname.includes("userListings") || pathname.includes("listing")) {
       imgDisplayed.src = "../src/img/placeholder.jpg";
     }
     imgDisplayed.alt = "Placeholder image. The user have not uploaded any images for this listing.";
@@ -30,6 +36,12 @@ export function addMedia(listingData) {
   return imgDisplayed;
 }
 
+/**
+ * The function generates populates the mediaGallery element with the images from the array passed to it.
+ * The function adds an evenlistener to the images to display whichever image is clicked on and to open the main image in a modal if clicked on.
+ *
+ * @param {Object[]} mediaArray An array of objects containing the listings images
+ */
 export function generateMediaGallery(mediaArray) {
   const mediaGallery = document.getElementById("mediaGallery");
   const focusImgContainer = document.getElementById("focusImg");

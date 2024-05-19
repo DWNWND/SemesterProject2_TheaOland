@@ -1,6 +1,15 @@
 import { countdownTimer } from "../../ux/components/countdownTimer.js";
 import { addFieldToArray } from "./_index.js";
 
+/**
+ * The function populates the edit listing form.
+ *
+ * @param {Object[]} listing The listing which is being updated
+
+ * @uses countdownTimer To generate the listings countdown timer
+ * @uses addFieldToArray To add each image to the image field array and populate the form with the fields
+ */
+
 export async function populateEditForm(listing) {
   const editForm = document.forms.newListing;
 

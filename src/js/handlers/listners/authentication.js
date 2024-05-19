@@ -1,15 +1,24 @@
-import { register, login } from "../../api/auth/index.js";
+import { register, login } from "../../api/auth/_index.js";
 import { validateInput, validateRepeatPassword } from "../events/_index.js";
 import { clearUserFeedback, userFeedback } from "../../ui/userFeedback/_index.js";
 
 const feedbackContainer = document.getElementById("feedbackContainer");
 const loaderContainer = document.getElementById("loaderContainer");
 
+/**
+ * The function listens for an event to execute the login and register functions.
+ */
 export function listenForAuthentication() {
   document.forms.loginForm.addEventListener("submit", loginAuth);
   document.forms.registerForm.addEventListener("submit", registerAuth);
 }
 
+/**
+ * The function takes the informmation from the login form and sends it to the server.
+ * @uses login To send the login information to the server
+ * @uses userFeedback To display user feedback if something is wrong when logging in
+ * @uses clearUserFeedback To clear the user feedback again
+ */
 export async function loginAuth(event) {
   event.preventDefault();
 
@@ -33,6 +42,13 @@ export async function loginAuth(event) {
   }
 }
 
+/**
+ * The function takes the informmation from the register form and sends it to the server.
+ * @uses validateInput to check if the information in the inputs follow the criteria
+ * @uses register To send the register information to the server
+ * @uses userFeedback To display user feedback if something is wrong when logging in
+ * @uses clearUserFeedback To clear the user feedback again
+ */
 export async function registerAuth(event) {
   event.preventDefault();
   const username = event.target.registerUsername.value;

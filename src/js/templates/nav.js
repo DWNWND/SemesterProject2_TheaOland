@@ -1,7 +1,16 @@
-import { load } from "../storage/load.js";
-import { checkIfDeployed } from "../tools/checkUrl.js";
+import { load } from "../storage/_index.js";
+import { checkIfDeployed } from "../tools/_index.js";
 import { baseRepoUrl } from "../constants/baseUrl.js";
-const token = load("token");
+
+/**
+ * The function generates nav "buttons" and appends them to the nav element.
+ *
+ * @param {string} username The logged in users username
+ *
+ * @uses load To load the token from local storage (check login status)
+ * @uses checkIfDeployed To check if the function is running on the deployment or locally
+ * @uses baseRepoUrl Constant with the deployed url
+ */
 
 export function navTemplate(username) {
   //LOGIN BTN
@@ -44,8 +53,6 @@ export function navTemplate(username) {
   homeBtn.type = "button";
   homeLink.append(homeBtn);
 
-  const nav = document.getElementById("nav");
-
   const deployed = checkIfDeployed();
   if (deployed) {
     homeLink.setAttribute("href", `/${baseRepoUrl}`);
@@ -56,13 +63,16 @@ export function navTemplate(username) {
 
   loginLink.setAttribute("href", `auth/index.html`);
   usernameLink.setAttribute("href", `profile/index.html?key=${username}`);
-  newlistingLink.setAttribute("href", `edit/index.html`);
+  newlistingLink.setAttribute("href", `postListing/index.html`);
 
   const pathname = window.location.pathname;
-  if (pathname.includes("profile") || pathname.includes("allListings") || pathname.includes("listing") || pathname.includes("edit")) {
+  if (pathname.includes("profile") || pathname.includes("userListings") || pathname.includes("listing") || pathname.includes("postListing")) {
     usernameLink.setAttribute("href", `../profile/index.html?key=${username}`);
-    newlistingLink.setAttribute("href", `../edit/index.html`);
+    newlistingLink.setAttribute("href", `../postListing/index.html`);
   }
+
+  const token = load("token");
+  const nav = document.getElementById("nav");
   if (!token) {
     nav.append(loginLink);
   }

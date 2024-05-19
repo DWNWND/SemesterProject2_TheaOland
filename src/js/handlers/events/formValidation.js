@@ -1,3 +1,8 @@
+/**
+ * The function checks if the repeat password and passords match and displays a validaiton message to the user based on the result.
+ * @param {string} firstPasswordValue The first password
+ * @param {string} repeatPasswordValue The repeat password
+ */
 export async function validateRepeatPassword(firstPasswordValue, repeatPasswordValue) {
   const repeatPasswordError = document.getElementById("registerRepeatPasswordError");
   if (repeatPasswordValue === firstPasswordValue && repeatPasswordValue !== "") {
@@ -21,6 +26,16 @@ export async function validateRepeatPassword(firstPasswordValue, repeatPasswordV
   }
 }
 
+/**
+ * The function runs a input value through the given regEx validation and autogenerates the validaiton message/helpBlock for each input passed to it.
+ * @param {string} inputType The type of input
+ * @param {string} helpBlock The helpBlock container
+ * @param {string} inputValue The input value to check
+ * @param {string} minlen The min length of the value
+ * @param {string} maxlen The max length of the value
+ *
+ * @uses testRegex To run the values through the regEx validation
+ */
 export function validateInput(inputType, helpBlock, inputValue, minlen = "", maxlen = "") {
   helpBlock = document.getElementById(helpBlock);
   const regExTestResult = testRegex(inputType, inputValue, minlen, maxlen);
@@ -41,6 +56,13 @@ export function validateInput(inputType, helpBlock, inputValue, minlen = "", max
   }
 }
 
+/**
+ * The function runs the given values against the given regEx
+ * @param {string} inputType The type of input
+ * @param {string} inputValue The input value to check
+ * @param {string} minlen The min length of the value
+ * @param {string} maxlen The max length of the value
+ */
 function testRegex(inputType, inputValue, minlen = "", maxlen = "") {
   if (inputType === "password") {
     if (inputValue.trim().length > minlen && inputValue.trim().length < maxlen) {

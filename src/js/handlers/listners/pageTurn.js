@@ -1,12 +1,25 @@
 import { get } from "../../api/requests/get.js";
-import { renderListings } from "../events/renderListings.js";
-import { load } from "../../storage/load.js";
-import { updateCurrentPageDisplay, updatePaginationBtns, search } from "../events/_index.js";
+import { load } from "../../storage/_index.js";
+import { updateCurrentPageDisplay, updatePaginationBtns, search, renderListings } from "../events/_index.js";
 
-const feed = document.getElementById("feed");
 let page = 1;
 
+/**
+ * The function listens for a page turn and feeds it back into update the pagination, the navPages buttons and renders the listings from the current page.
+ * Its neccessary to keep the "let page" for this function and the listenForSearch function on the same page for the pagination to work correctly also when using the searchfield.
+ *
+ * @param {string} nextbtn The next page btn, html element
+ * @param {string} prvbtn The previous page btn, html element
+
+ * @uses updateCurrentPageDisplay To update the pagination
+ * @uses updatePaginationBtns To update the display of the next and previous buttons
+ * @uses get To get the listings pr. page from the server
+ * @uses load To check if a user is logged in
+ * @uses renderListings To render the listings
+ */
 export function listenForPageTurn(nxtbtn, prvbtn) {
+  const feed = document.getElementById("feed");
+
   try {
     let query;
     const pathname = window.location.pathname;
@@ -64,6 +77,13 @@ export function listenForPageTurn(nxtbtn, prvbtn) {
   }
 }
 
+/**
+ * The function listens for a search input, executes the search function a and updated the pagination.
+ * Its neccessary to keep the "let page" for this function and the listenForPageTurn function on the same page for the pagination to work correctly also when using the searchfield.
+ *
+ * @uses updateCurrentPageDisplay To update the pagination
+ * @uses search To display the listings form the search
+ */
 export async function listenForSearch() {
   const searchInput = document.getElementById("searchbar");
   searchInput.addEventListener("input", async () => {

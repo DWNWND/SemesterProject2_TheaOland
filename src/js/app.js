@@ -22,7 +22,7 @@ async function router() {
       location.pathname = "../";
     }
     if (!loggedIn) {
-      const authRequest = "./routes/auth.js";
+      const authRequest = "./routes/authPage.js";
       const { generateAuth } = await import(authRequest);
       await generateAuth();
     }
@@ -33,7 +33,7 @@ async function router() {
       location.pathname = "../";
     }
     if (loggedIn) {
-      const listingRequest = "./routes/listing.js";
+      const listingRequest = "./routes/listingSpesificPage.js";
       const { generateListingSpesific } = await import(listingRequest);
       await generateListingSpesific();
       Promise.all(
@@ -59,7 +59,7 @@ async function router() {
       location.pathname = "../";
     }
     if (loggedIn) {
-      const profileRequest = "./routes/profile.js";
+      const profileRequest = "./routes/profilePage.js";
       const { generateUserProfile } = await import(profileRequest);
       await generateUserProfile();
       const content = document.querySelector(".content");
@@ -69,12 +69,12 @@ async function router() {
     }
     return;
   }
-  if (pathname.toLowerCase().includes("/edit/")) {
+  if (pathname.toLowerCase().includes("/postlisting/")) {
     if (!loggedIn) {
       location.pathname = "../";
     }
     if (loggedIn) {
-      const editRequest = "./routes/edit.js";
+      const editRequest = "./routes/postListingPage.js";
       const { generateEdit } = await import(editRequest);
       await generateEdit();
       hideLoader();
@@ -82,12 +82,12 @@ async function router() {
     }
     return;
   }
-  if (pathname.toLowerCase().includes("/alllistings/")) {
+  if (pathname.toLowerCase().includes("/userlistings/")) {
     if (!loggedIn) {
       location.pathname = "../";
     }
     if (loggedIn) {
-      const allListingsRequest = "./routes/allListings.js";
+      const allListingsRequest = "./routes/userListingsPage.js";
       const { generateUserFeed } = await import(allListingsRequest);
       await generateUserFeed();
       const content = document.querySelector(".content");
@@ -97,7 +97,7 @@ async function router() {
     }
     return;
   } else {
-    const feedRequest = "./routes/feed.js";
+    const feedRequest = "./routes/feedPage.js";
     const { generateFeed } = await import(feedRequest);
     await generateFeed();
     const content = document.querySelector(".content");
