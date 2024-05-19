@@ -1,5 +1,11 @@
 import { countdownTimer } from "../ux/components/countdownTimer.js";
 
+/**
+ * The function generates a "div" element displaying the current bid on a listing
+ *
+ * @param {Object[]} bidsArray An array of objects containing the listings bids
+ * @returns {string} Returns one "div" element
+ */
 export function addCurrentBid(bidsArray) {
   const bidArraylength = bidsArray.length;
 
@@ -24,6 +30,11 @@ export function addCurrentBid(bidsArray) {
   return currentBidContainer;
 }
 
+/**
+ * The function populates a listing with a form to place a new bid if theres still time on the listings countdown.
+ *
+ * @param {Date} endsAt The deadline date of the listing
+ */
 export function addPlaceBidForm(endsAt) {
   const deadline = new Date(endsAt);
   const now = new Date().getTime();
@@ -48,6 +59,14 @@ export function addPlaceBidForm(endsAt) {
   }
 }
 
+/**
+ * The function generates a "div" element containing a countdown timer
+ *
+ * @param {Date} endsAt The deadline date of the listing
+ * @returns {string} Returns one "div" element
+ *
+ * @uses countdownTimer To calculate the countdown and add it to the div
+ */
 export function addDeadline(endsAt) {
   const deadline = new Date(endsAt);
   const timerContainer = document.createElement("div");
@@ -56,6 +75,11 @@ export function addDeadline(endsAt) {
   return timerContainer;
 }
 
+/**
+ * The function populates the bid history element with all the bids put on a listing
+ *
+ * @param {Object[]} bidsArray All bids put on the listing
+ */
 export function displayBidHistory(bidsArray) {
   const bidArraylength = bidsArray.length;
   const bidHistoryContainer = document.getElementById("bidHistory");
