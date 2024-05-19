@@ -2,6 +2,23 @@ import { addCurrentBid, addDeadline } from "./bids.js";
 import { generateBtn } from "./btns.js";
 import { addMedia } from "./media.js";
 
+/**
+ * The function generates a "div" element with the class "col" for each listing passed to it.
+ * The "col" class makes it fit into a boostrap grid-layout.
+ 
+ * The function displays the listings differently if a user is logged in user or not.
+ * 
+ * @param {object} listingData An array of objects containing the listings data
+ * @param {string} userIsLoggedIn Is present if a user is logged in, not present if no ones logged in
+ * 
+ * @returns {string} Returns a "div" elemement for each listing´
+ * 
+ * @uses addMedia To display the listings main image
+ * @uses addCurrentBid To display the listings current bid
+ * @uses addDeadline To display the listings deadline countdown
+ * @uses generateBtn To generate a button element
+ */
+
 export function listingsTemplate(listingData, userIsLoggedIn) {
   const listingTitle = listingData.title;
   const listingID = listingData.id;
@@ -32,13 +49,11 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
   bidContainer.classList.add("d-flex", "flex-column", "justify-content-between", "semi-bold");
   bidContainer.append(currentBidContainer, countdownContainer);
 
-  //LISTINGS DISPLAYED PUBLICLY (NOT LOGGED IN)
   if (!userIsLoggedIn) {
     listing.append(img, titleContainer, bidContainer);
     col.append(listing);
   }
 
-  //LISTINGS DISPLAYED (LOGGED IN)
   if (userIsLoggedIn) {
     const listingFooter = document.createElement("div");
     listingFooter.classList.add("listing-footer", "d-flex", "flex-column", "gap-2");
@@ -54,7 +69,7 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
     listingFooter.append(bidContainer, viewListingBtn);
 
     if (pathname.includes("profile") || pathname.includes("allListings")) {
-      const editLink = `../edit/index.html?key=${listingID}`;
+      const editLink = `../postListing/index.html?key=${listingID}`;
       const editListingBtn = generateBtn("editListingBtn", "edit", editLink);
       listingFooter.append(editListingBtn);
     }
