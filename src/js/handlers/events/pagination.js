@@ -1,15 +1,24 @@
 import { totalPages } from "../../api/requests/get.js";
 
+/**
+ * The function updated the total page displayed
+ */
 export function updateTotalPageDisplay() {
   const totalPagesDisplay = document.getElementById("totalPages");
   totalPagesDisplay.innerText = totalPages;
 }
 
+/**
+ * The function updated the current page displayed
+ */
 export function updateCurrentPageDisplay(currentPage) {
   const currentPageDisplay = document.getElementById("currentPage");
   currentPageDisplay.innerText = currentPage;
 }
 
+/**
+ * The function updates which of the next and previous page buttons should be displayed.
+ */
 export function updatePaginationBtns(nxtbtn, prvbtn, currentPage) {
   const totalPagesDisplay = document.getElementById("totalPages");
   const updatedTotalPages = parseInt(totalPagesDisplay.innerText);

@@ -1,8 +1,16 @@
 import { listenForRemoveImg } from "../listners/_index.js";
 
-const addImgsBtn = document.getElementById("addImgsBtn");
 let imagesArray = [];
 
+/**
+ * The function adds a image to the image array, it also adds a image field for each image.
+ *
+ * @param {string} imgUrl The image url
+ * @param {string} imgAlt The image alt text
+ *
+ * @uses generateImgFields To generate a HTML field for each image
+ * @uses checkNumberOfImg To make sure its not more than 8 images in the array
+ */
 export function addFieldToArray(imgUrl, imgAlt) {
   const imgId = Math.floor(Math.random() * 10000);
   generateImgFields(imgUrl, imgAlt, imgId);
@@ -14,13 +22,21 @@ export function addFieldToArray(imgUrl, imgAlt) {
   checkNumberOfImg();
 }
 
+/**
+ * The function removes a image to the image array, it also adds a image field for each image.
+ * @param {string} imgFieldID The ID of the image that should be removed
+ */
 export function removeFieldFromArray(imgFieldID) {
   imagesArray = imagesArray.filter((img) => {
     return img.id !== imgFieldID;
   });
 }
 
+/**
+ * The function checks that theres no more than 8 images in the image array
+ */
 export function checkNumberOfImg() {
+  const addImgsBtn = document.getElementById("addImgsBtn");
   const imgArrLen = imagesArray.length;
   if (imgArrLen < 8) {
     addImgsBtn.innerText = "Add images";
@@ -32,6 +48,12 @@ export function checkNumberOfImg() {
   }
 }
 
+/**
+ * The function generates a "fieldset" for each image in the update or new listing form and adds it to the DOM.
+ * @param {string} url The image url
+ * @param {string} alt The image alt text
+ * @param {number} imgId The image id
+ */
 export function generateImgFields(url = "", alt = "", imgId) {
   const urlInput = document.createElement("input");
   urlInput.classList.add("url", "form-control");

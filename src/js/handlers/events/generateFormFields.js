@@ -1,3 +1,14 @@
+/**
+ * The function generates update profile form fields.
+ *
+ * @param {string} id The input id
+ * @param {string} element The type of element to create
+ * @param {string} type The value of the type attribute
+ * @param {string} name The name of the element
+ * @param {string} data The data that populates the value of the inputs
+ *
+ * @returns {string} a "div" HTML element
+ */
 export function generateUpdateProfileFormFields(id, element, type, name, data) {
   const fieldContainer = document.createElement("div");
   fieldContainer.classList.add("form-floating", "mb-3", "w-100");
@@ -14,9 +25,6 @@ export function generateUpdateProfileFormFields(id, element, type, name, data) {
   label.classList.add("edit-profile-form-labels", "text-uppercase", "semi-bold", "text-grayish-purple");
   label.innerText = id;
 
-  // if (name !== "bio") {
-  //   input.type = type;
-  // }
   if (name === "bio") {
     const helpBlock = document.createElement("div");
     helpBlock.id = "imageTextHelpBlock";
@@ -44,9 +52,5 @@ export function generateUpdateProfileFormFields(id, element, type, name, data) {
     helpBlock.innerText = "Add image captions to your avatar image.";
     fieldContainer.append(input, label, helpBlock);
   }
-  // fieldContainer.append(input, label);
   return fieldContainer;
 }
-
-// }
-// if (name === "name") {

@@ -3,19 +3,31 @@ import { startFeed } from "../../routes/feedPage.js";
 import { renderListings, updateTotalPageDisplay, updatePaginationBtns } from "./_index.js";
 import { userFeedback } from "../../ui/userFeedback/_index.js";
 
-let query;
-let numberOfListings;
-const feedbackContainer = document.getElementById("feedbackContainer");
-const nxtBtn = document.getElementById("nxtBtn");
-const prvBtn = document.getElementById("prvBtn");
-const navPages = document.getElementById("navPages");
-const searchInput = document.getElementById("searchbar");
-const paginationElement = document.getElementById("paginationElement");
-const feed = document.getElementById("feed");
-
+/**
+ * The function renders the listings by search.
+ *
+ * @param {number} page The page number
+ *
+ * @uses updateTotalPageDisplay To update the pagination
+ * @uses updatePaginationBtns To update the next-page and previous-ppage buttons
+ * @uses get To get the listings from the server by page
+ * @uses renderListings To render the listings
+ * @uses startFeed To go back to the startfeed if theres no search query
+ * @uses userFeedback To display user feedback
+ */
 export async function search(page) {
-  query = searchInput.value;
+  const feedbackContainer = document.getElementById("feedbackContainer");
+  const nxtBtn = document.getElementById("nxtBtn");
+  const prvBtn = document.getElementById("prvBtn");
+  const navPages = document.getElementById("navPages");
+  const searchInput = document.getElementById("searchbar");
+  const paginationElement = document.getElementById("paginationElement");
+  const feed = document.getElementById("feed");
   const mainHeading = document.getElementById("mainHeading");
+
+  let query = searchInput.value;
+  let numberOfListings;
+
   try {
     if (query) {
       mainHeading.innerText = "Listings by search";
