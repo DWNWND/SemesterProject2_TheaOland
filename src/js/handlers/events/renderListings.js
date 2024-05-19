@@ -7,9 +7,9 @@ import { checkIfDeployed } from "../../tools/_index.js";
  * It clears the HTML container before appending new elements.
  *
  * It checks the pathname and adds dispays extra elements in the DOM in regards to the current pathname:
- * - on the "profile"-page it adds H1 and an btn that links to the "allListings"-page
+ * - on the "profile"-page it adds H1 and an btn that links to the "userListings"-page
  * - on all except the "profile"-page it displays a pagination element
- * - on all except the "profile"-page and "allListings"-page it displays a search element
+ * - on all except the "profile"-page and "userListings"-page it displays a search element
  *
  * @param {Object[]} listingsArray An array of listings passed down to the listingTemplate function
  * @param {string} container The HTML container element that listings are appended to

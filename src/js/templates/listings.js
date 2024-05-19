@@ -66,7 +66,7 @@ export function listingsTemplate(listingData, userIsLoggedIn) {
     const viewListingBtn = generateBtn("viewListingBtn", "view", viewLink);
     listingFooter.append(bidContainer, viewListingBtn);
 
-    if (pathname.includes("profile") || pathname.includes("allListings")) {
+    if (pathname.includes("profile") || pathname.includes("userListings")) {
       const editLink = `../postListing/index.html?key=${listingID}`;
       const editListingBtn = generateBtn("editListingBtn", "edit", editLink);
       listingFooter.append(editListingBtn);
