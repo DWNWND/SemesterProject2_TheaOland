@@ -1,5 +1,5 @@
 import { get } from "../../api/requests/get.js";
-import { startFeed } from "../../routes/feed.js";
+import { startFeed } from "../../routes/feedPage.js";
 import { renderListings, updateTotalPageDisplay, updatePaginationBtns } from "./_index.js";
 import { userFeedback } from "../../ui/userFeedback/_index.js";
 
