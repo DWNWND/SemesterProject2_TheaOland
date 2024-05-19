@@ -15,7 +15,7 @@ import { baseRepoUrl } from "../constants/baseUrl.js";
 export function navTemplate(username) {
   //LOGIN BTN
   const loginLink = document.createElement("a");
-  loginLink.classList.add("w-100");
+  loginLink.classList.add("w-100", "text-decoration-none");
   const loginBtn = document.createElement("button");
   loginBtn.classList.add("btn-local", "btn-height-l", "w-100", "ps-3", "pe-3", "btn-width-l", "btn-white-red", "text-uppercase");
   loginBtn.setAttribute("id", "loginBtnLanding");
