@@ -1,29 +1,23 @@
 @import "_colors";
 @import "_breakpoints";
 
+.timer,
 .current-bid {
   padding: 0.5rem;
-  border-radius: 21px;
   font-size: 1rem;
   text-align: center;
   align-self: center;
 }
+
+.current-bid {
+  border-radius: 21px;
+}
+
 .timer {
-  padding: 0.5rem;
   margin-top: 1rem;
   width: 148px;
   height: 35px;
-  font-size: 1rem;
-  align-self: center;
-  text-align: center;
 }
-// .auction-item {
-//   margin-left: auto;
-//   margin-right: auto;
-// }
-// .bid {
-//   white-space: nowrap;
-// }
 
 @media (min-width: $breakpoint-tablet) {
   .latest-bid {

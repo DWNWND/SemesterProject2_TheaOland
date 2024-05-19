@@ -1,25 +1,25 @@
-@import "_colors";
-@import "_breakpoints";
-@import "_text";
-@import "_btns";
-@import "_variables";
-@import "_listings";
-@import "_forms";
-@import "_profile";
-@import "_listing";
 @import "_bids";
-@import "_search";
-@import "_pointer";
+@import "_breakpoints";
+@import "_btns";
+@import "_colors";
+@import "_forms";
+@import "_glassmorphism";
 @import "_header";
 @import "_hide";
+@import "_listing";
+@import "_listings";
 @import "_loader";
-@import "_glassmorphism";
+@import "_pointer";
+@import "_profile";
+@import "_search";
+@import "_text";
+@import "_variables";
+
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 @import "../../node_modules/bootstrap/scss/variables";
 @import "_validation";
 
-//Page-background
-//background generated at: https://www.csshero.org/mesher/
+//Background generated at: https://www.csshero.org/mesher/
 body {
   height: 100vh;
   background-color: hsla(0, 100%, 94%, 1);

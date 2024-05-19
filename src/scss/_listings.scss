@@ -11,17 +11,15 @@
 }
 
 #main-listing-img {
+  border-radius: 20px;
   height: 150px;
   width: 100%;
-  border-radius: 20px;
 }
 
 @media (min-width: $breakpoint-phone) {
-  .listing {
-    min-width: 130px;
-  }
+  .listing,
   #main-listing-img {
-    height: 130px;
+    min-width: 130px;
   }
 }
 
@@ -44,10 +42,8 @@
 }
 
 @media (min-width: $breakpoint-desktop) {
-  .listing {
-    min-width: 250px;
-  }
+  .listing,
   #main-listing-img {
-    height: 250px;
+    min-width: 250px;
   }
 }

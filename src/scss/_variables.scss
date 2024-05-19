@@ -3,23 +3,15 @@ $border-width: 0;
 $border-color: $white;
 $border-color-translucent: $white;
 
-// $position-values: (
-//   0: 0,
-//   1: 0.2rem,
-//   2: 0.6rem,
-//   50: 50%,
-//   100: 100%,
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 576px,
+//   smd: 600px,
+//   md: 768px,
+//   lg: 992px,
+//   xl: 1200px,
+//   xxl: 1400px,
 // );
-
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  smd: 600px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1400px,
-);
 
 $theme-colors: (
   "white": #ffffff,

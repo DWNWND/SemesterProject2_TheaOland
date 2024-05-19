@@ -1,57 +1,44 @@
 @import "_colors";
 @import "_breakpoints";
 
-//Text-styles
 * {
   font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "YTLC" 500;
+}
+
+.heading-1,
+.heading-2,
+.heading-2-feed,
+.heading-4 {
+  text-transform: uppercase;
 }
 
 .heading-1 {
-  font-weight: 600;
   font-size: 1.25rem;
-  text-transform: uppercase;
-  color: black;
 }
-
 .heading-2,
 .heading-2-feed {
-  font-weight: 800;
   font-size: 0.75rem;
-  text-transform: uppercase;
   color: black;
 }
-
-.heading-3 {
-  font-weight: 800;
-  font-size: 0.875rem;
-  color: black;
-}
-
-.heading-4 {
-  font-weight: 600;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-}
-
+.heading-3,
 p {
   font-size: 0.875rem;
-  color: black;
+}
+.heading-4,
+#navPages {
+  font-size: 1.2rem;
 }
 
+.heading-1,
+.heading-4,
 .semi-bold {
   font-weight: 600;
 }
+.heading-2,
+.heading-2-feed,
+.heading-3,
 .extra-bold {
   font-weight: 800;
-}
-
-#navPages {
-  font-size: 1.2rem;
 }
 
 @media (min-width: $breakpoint-small-tablet) {
