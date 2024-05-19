@@ -1,0 +1,54 @@
+@import "_colors";
+@import "_breakpoints";
+
+* {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.heading-1,
+.heading-2,
+.heading-2-feed,
+.heading-4 {
+  text-transform: uppercase;
+}
+
+.heading-1 {
+  font-size: 1.25rem;
+}
+.heading-2,
+.heading-2-feed {
+  font-size: 0.75rem;
+  color: black;
+}
+.heading-3,
+p {
+  font-size: 0.875rem;
+}
+.heading-4,
+#navPages {
+  font-size: 1.2rem;
+}
+
+.heading-1,
+.heading-4,
+.semi-bold {
+  font-weight: 600;
+}
+.heading-2,
+.heading-2-feed,
+.heading-3,
+.extra-bold {
+  font-weight: 800;
+}
+
+@media (min-width: $breakpoint-small-tablet) {
+  .heading-2 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .heading-1 {
+    font-size: 1.87rem;
+  }
+}

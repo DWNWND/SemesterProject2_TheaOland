@@ -1,0 +1,30 @@
+@import "_colors";
+
+.img-profile {
+  border-radius: 50%;
+  border: solid 2px $grayish-purple;
+  height: 200px;
+  width: 200px;
+}
+.user-profile {
+  max-width: 600px;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .img-profile {
+    height: 250px;
+    width: 250px;
+  }
+  .leftside {
+    min-width: 300px;
+  }
+}
+@media (min-width: $breakpoint-desktop) {
+  #profileListingsContainer {
+    width: auto;
+  }
+  #profileContainer,
+  .leftside {
+    min-width: 350px;
+  }
+}

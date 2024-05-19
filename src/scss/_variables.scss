@@ -1,0 +1,27 @@
+$border-radius: 10px;
+$border-width: 0;
+$border-color: $white;
+$border-color-translucent: $white;
+
+$theme-colors: (
+  "white": #ffffff,
+  "dark-gray": #4c4a50,
+  "dark-purple": #6c35af,
+  "light-purple": #cbacf1,
+  "light-purple-disabled": #e0d6eb,
+  "grayish-purple": #544862,
+  "brown": #603432,
+  "orange": #d36b0d,
+  "dark-orange": #7f3f07,
+  "light-orange": #ffefe1,
+  "orange-disabled": #f9cea8,
+  "pink": #ef7f83,
+  "light-pink": #f9d2d4,
+  "pink-disabled": #f9d2d4,
+  "red": #a93338,
+  "dark-red": #6f282b,
+  "light-red": rgba(169, 51, 56, 0.3),
+  "red-disabled": rgba(169, 51, 56, 0.5),
+  "success": #343d02,
+  "error": #6f282b,
+);

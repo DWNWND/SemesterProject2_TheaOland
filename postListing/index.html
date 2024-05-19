@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../src/js/app.js" type="module"></script>
+    <title>New listing | BAZAAR</title>
+    <meta name="description" content="Post new listings and edit, update or delete your excisting listings." />
+    <link rel="icon" type="image/png" href="../src/img/favicon.png" />
+    <link rel="stylesheet" href="../dist/css/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet" />
+  </head>
+  <body class="container">
+    <header class="text-center d-flex flex-column flex-xl-row justify-content-xl-between gap-4 p-3 mb-3">
+      <div class="logo-container p-3">
+        <a href="../"><img src="../src/img/logo.svg" alt="BAZAAR logo" class="img-fluid" /></a>
+      </div>
+      <nav id="nav" class="justify-content-center align-items-center d-flex flex-column flex-md-row gap-2"></nav>
+    </header>
+    <main>
+      <div id="uxElement" class="d-flex flex-column align-items-center">
+        <div id="feedbackContainer" class="pb-3 pt-3"></div>
+        <div id="loaderContainerMain" class="p-5">
+          <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>
+        </div>
+      </div>
+      <div class="container pb-5 content hidden">
+        <div class="p-3 p-sm-4 glassmorphism">
+          <form id="newListing" class="d-flex flex-column gap-5">
+            <div class="d-flex flex-column gap-2">
+              <h1 class="heading-1 text-red">Listing Details</h1>
+              <div class="form-floating">
+                <input type="text" class="form-control" id="new-listing-title" name="title" required />
+                <label for="new-listing-title" class="text-uppercase semi-bold text-grayish-purple">Title</label>
+              </div>
+              <div class="form-floating">
+                <textarea class="form-control" id="new-listing-description" name="description" required></textarea>
+                <label for="new-listing-description" class="new-listing-form-labels text-uppercase semi-bold text-grayish-purple">Description</label>
+              </div>
+              <div class="form-floating">
+                <input type="text" class="form-control" id="new-listing-tags" name="tags" />
+                <label for="new-listing-tags" class="new-listing-form-labels text-uppercase semi-bold text-grayish-purple">Tags</label>
+              </div>
+              <div id="tagsHelpBlock" class="form-text mb-3">Separate tags by comma sign ( , )</div>
+              <div id="deadlineContainer" class="d-flex flex-column">
+                <label id="deadlineLabel" for="deadlineInput" class="new-listing-form-labels text-uppercase extra-bold text-grayish-purple">Set auction deadline</label>
+                <input id="deadlineInput" type="datetime-local" class="form-control new-listing-auction-deadline" name="endsAt" />
+              </div>
+            </div>
+            <div id="listingMedia" class="d-flex flex-column gap-2 pt-sm-4 pb-sm-4">
+              <h1 class="heading-1 text-red">Listing Media</h1>
+              <div class="inputInfo text-uppercase extra-bold text-grayish-purple">Upload images (max 8)</div>
+              <ol id="imageUpload" class="d-flex flex-column gap-3"></ol>
+              <button type="button" id="addImgsBtn" class="btn-local text-red bg-light-orange p-1 mt-2 pointer">Add new image</button>
+            </div>
+            <button id="submit" type="submit" class="btn-local btn-height-l btn-purple btn-fontsize-l extra-bold text-uppercase">Publish</button>
+            <a id="deleteBtn" class="text-red extra-bold text-uppercase text-center pointer">Delete listing</a>
+          </form>
+          <div id="uxElementOnAction" class="d-flex flex-column align-items-center">
+            <div id="feedbackContainerOnAction" class="pb-3 pt-3"></div>
+            <div id="loaderContainerOnAction" class="p-5">
+              <span id="loaderOnAction" class="loader"><span class="visually-hidden">Loading...</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

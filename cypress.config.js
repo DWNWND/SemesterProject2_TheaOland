@@ -6,4 +6,9 @@ export default defineConfig({
       // implement node event listeners here
     },
   },
+  env: {
+    USER_PASSWORD: process.env.USER_PASSWORD,
+    USER_EMAIL: process.env.USER_EMAIL,
+    USER_NAME: process.env.USER_NAME,
+  },
 });

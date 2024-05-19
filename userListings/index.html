@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../src/js/app.js" type="module"></script>
+    <title>My listings | BAZAAR</title>
+    <meta name="description" content="Shuffle through all your personal listings at BAZAAR." />
+    <link rel="icon" type="image/png" href="../src/img/favicon.png" />
+    <link rel="stylesheet" href="../dist/css/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet" />
+  </head>
+  <body class="container">
+    <header class="text-center d-flex flex-column flex-xl-row justify-content-xl-between gap-4 p-3 mb-3">
+      <div class="logo-container p-3">
+        <a href="../"><img src="../src/img/logo.svg" alt="BAZAAR logo" class="img-fluid" /></a>
+      </div>
+      <nav id="nav" class="justify-content-center align-items-center d-flex flex-column flex-md-row gap-2"></nav>
+    </header>
+    <main>
+      <h1 class="heading-1 text-red text-center">my listings</h1>
+      <div id="paginationElement">
+        <p class="heading-3 text-brown">page <span id="currentPage"> 0 </span> of <span id="totalPages">0</span> pages</p>
+      </div>
+      <div id="uxElement" class="d-flex flex-column align-items-center">
+        <div id="feedbackContainer" class="pb-3"></div>
+        <div id="loaderContainerMain" class="p-5">
+          <span id="loader" class="loader"><span class="visually-hidden">Loading...</span></span>
+        </div>
+      </div>
+      <div id="feed" class="g-2 g-sm-3 hidden content"></div>
+      <div id="navPages" class="d-flex text-center w-100 pt-5 pb-5 align-items-center justify-content-center gap-2 flex-wrap">
+        <div id="prvBtn" class="btn-local btn-light-red btn-width-l btn-height-l pointer semi-bold text-uppercase">Previous page</div>
+        <div id="nxtBtn" class="btn-local btn-red btn-width-l btn-height-l pointer semi-bold text-uppercase">Next page</div>
+      </div>
+    </main>
+  </body>
+</html>

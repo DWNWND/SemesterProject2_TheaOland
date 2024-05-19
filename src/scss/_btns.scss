@@ -1,0 +1,104 @@
+@import "_colors";
+@import "_breakpoints";
+
+//BTN-styles inspired by: linear-gradient border with border radius: https://gist.github.com/stereokai/36dc0095b9d24ce93b045e2ddc60d7a0
+
+.btn-local {
+  font-size: 1rem;
+  border-radius: 21px;
+  border: double 1px transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-height-l {
+  height: 46px;
+}
+.btn-height-s {
+  height: 25px;
+}
+.btn-width-l {
+  min-width: 100%;
+}
+.btn-purple {
+  color: $dark-purple;
+  background-color: $light-purple;
+  background-image: linear-gradient($light-purple, $light-purple), radial-gradient(circle at top left, $dark-purple-50, $dark-purple-30);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.btn-purple:disabled {
+  background-color: $light-purple-disabled;
+  background-image: linear-gradient($light-purple-disabled, $light-purple-disabled), radial-gradient(circle at top left, $dark-purple-50, $dark-purple-30);
+}
+.btn-orange {
+  color: $white;
+  background-color: $orange;
+  background-image: linear-gradient($orange, $orange), radial-gradient(circle at top left, $white-50, $white-30);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.btn-orange:disabled {
+  background-color: $orange-disabled;
+  background-image: linear-gradient($orange-disabled, $orange-disabled), radial-gradient(circle at top left, $white-50, $white-30);
+}
+.btn-white-red {
+  color: $red;
+  background-color: $white;
+  background-image: linear-gradient($white, $white), radial-gradient(circle at top left, $red-50, $red-30);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.btn-light-red {
+  color: $white;
+  background-color: $light-red;
+  background-image: linear-gradient($light-red, $light-red), radial-gradient(circle at top left, $red-50, $red-30);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.btn-red {
+  color: $white;
+  background-color: $red;
+  background-image: linear-gradient($red, $red), radial-gradient(circle at top left, $red-50, $red-30);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.btn-red:disabled {
+  color: $white;
+  background-color: $red-disabled;
+  background-image: linear-gradient($red-disabled, $red-disabled), radial-gradient(circle at top left, $red-50, $red-30);
+}
+.btn-white-black {
+  color: black;
+  background-color: $white;
+  background-image: linear-gradient($white, $white), radial-gradient(circle at top left, $black-50, $black-30);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.btn-pink {
+  color: $white;
+  background-color: $white;
+  background-image: linear-gradient($pink, $pink), radial-gradient(circle at top left, $red-50, $red-30);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.btn-pink:disabled {
+  background-image: linear-gradient($pink-disabled, $pink-disabled), radial-gradient(circle at top left, $red-50, $red-30);
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .btn-width-l {
+    min-width: 249px;
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .btn-white-red:hover,
+  .btn-pink:hover {
+    border-color: $red;
+  }
+  .btn-white-black:hover {
+    border-color: black;
+  }
+  .btn-orange:hover {
+    border-color: $white;
+  }
+  .btn-purple:hover {
+    border-color: $dark-purple;
+  }
+}

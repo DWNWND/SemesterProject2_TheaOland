@@ -1,0 +1,49 @@
+@import "_colors";
+
+#title-container {
+  height: 60px;
+}
+
+#listing-title {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#main-listing-img {
+  border-radius: 20px;
+  height: 150px;
+  width: 100%;
+}
+
+@media (min-width: $breakpoint-phone) {
+  .listing,
+  #main-listing-img {
+    min-width: 130px;
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .listing {
+    min-width: 200px;
+  }
+  #main-listing-img {
+    height: 180px;
+  }
+}
+
+@media (min-width: $breakpoint-medium-tablet) {
+  .listing {
+    min-width: 220px;
+  }
+  #main-listing-img {
+    height: 200px;
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .listing,
+  #main-listing-img {
+    min-width: 250px;
+  }
+}

@@ -1,0 +1,38 @@
+@import "_colors";
+@import "_breakpoints";
+
+.timer,
+.current-bid {
+  padding: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+  align-self: center;
+}
+
+.current-bid {
+  border-radius: 21px;
+}
+
+.timer {
+  margin-top: 1rem;
+  width: 148px;
+  height: 35px;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .latest-bid {
+    font-size: 1.25rem;
+  }
+  .timer {
+    font-size: 0.938rem;
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .current-bid {
+    font-size: 1.1rem;
+  }
+  .timer {
+    padding: 0.2rem;
+  }
+}
