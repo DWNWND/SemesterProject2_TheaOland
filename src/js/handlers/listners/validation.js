@@ -1,5 +1,11 @@
 import { validateInput, validateRepeatPassword } from "../events/formValidation.js";
 
+/**
+ * The function listens for validation on the given inputs and feeds validation criteria to the validateInput function.
+ *
+ * @uses validateInput Checks the validation criteria
+ * @uses validateRepeatPassword Checks if the two passwords match
+ */
 export function listenForValidation() {
   const email = document.getElementById("registerEmail");
   const username = document.getElementById("registerUsername");

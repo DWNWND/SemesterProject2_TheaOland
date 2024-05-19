@@ -4,7 +4,6 @@ import { get } from "../api/requests/get.js";
  * The function appends the users wins to the wins container in the DOM.
  *
  * @param {string} username The logged in users username
- *
  * @uses get To fetch the users wins
  */
 export async function displayWins(username) {
