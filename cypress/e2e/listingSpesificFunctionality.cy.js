@@ -13,6 +13,7 @@ describe("listing spesific page, place bid and bid history functionality", () =>
     cy.get("#searchbar").should("be.visible").type("gallery");
     cy.wait(1000);
     cy.get("#viewListingBtn").should("be.visible").click();
+    cy.wait(1000);
     cy.get("#details").should("be.visible");
     cy.get("#mediaGallery").should("be.visible");
     expect("#details").not.to.be.empty;
