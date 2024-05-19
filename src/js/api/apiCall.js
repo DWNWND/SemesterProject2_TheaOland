@@ -1,6 +1,5 @@
 import { load } from "../storage/load.js";
-
-const API_KEY = "d2abe438-b85e-4837-bb83-2678d612f606";
+import { API_KEY } from "../constants/apiParams.js";
 
 export async function callApiWith(url, options = {}) {
   return fetch(url, {
